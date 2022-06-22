@@ -1,0 +1,25 @@
+
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "--build-arg",
+        "_MICROCMS_API=$_MICROCMS_API",
+        "--build-arg",
+        "_MICROCMS_SERVEICE_ID=$_MICROCMS_SERVEICE_ID",
+        "--build-arg",
+        "_PRIVATE_KEY=$_PRIVATE_KEY",
+        "--build-arg",
+        "_NODE_ENV=$_NODE_ENV",
+        "-t",
+        "asia.gcr.io/$PROJECT_ID/$_SERVICE_NAME:$_TAG_NAME",
+        ".",
+      ]
+
+substitutions:
+  _NODE_ENV: "production"
+
+  _PRIVATE_KEY: "!!!!"
+  _TAG_NAME: "latest"
+images: ["asia.gcr.io/$PROJECT_ID/$_SERVICE_NAME:$_TAG_NAME"]

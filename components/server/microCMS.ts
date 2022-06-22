@@ -1,12 +1,9 @@
-import { createClient } from 'microcms-js-sdk';
-import config from "@/nuxt.config"
+import { createClient } from 'microcms-js-sdk'
+import config from '@/nuxt.config'
 
 const serviceDomain = config.privateRuntimeConfig.microCMSServiceID
-const apiKey= config.privateRuntimeConfig.microCMSAPI
+const apiKey = config.privateRuntimeConfig.microCMSAPI
 
-const client = createClient({ serviceDomain , apiKey  });
+const client = createClient({ serviceDomain, apiKey })
 
-
-
-export default  client
-
+export default client

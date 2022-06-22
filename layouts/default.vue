@@ -1,6 +1,6 @@
 <template>
-<div>
-<a href="/">to top</a>
-    <slot></slot>
-</div>
+  <div>
+    <a href="/">to top</a>
+    <slot />
+  </div>
 </template>

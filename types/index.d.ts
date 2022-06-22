@@ -1,5 +1,4 @@
-import { Article, } from "~~/types";
-import { MicroCMSQueries } from "microcms-js-sdk";
+import { MicroCMSQueries } from 'microcms-js-sdk'
 export interface Reference{
     url:string
     title?:string
@@ -33,21 +32,19 @@ export interface Article extends Commonschema {
     references:Reference[]|null
 }
 
-export type ArticleList = Omit<Article,|"content"|"references">
+export type ArticleList = Omit<Article, |'content'|'references'>
 
-namespace Api {
-    type IndexResponsePayload ={
+export namespace Api {
+    export type IndexResponsePayload ={
         contents:Article[]
         totalCount: number
         offset?: number
         limit?:number
       }
-      interface BlogQuery  extends MicroCMSQueries{
+      export interface BlogQuery extends MicroCMSQueries{
         limit?:number
         offset?:number
         orders:string
-        fields:"id,title,subtitle,eyecatch,updatedAt,createdAt"
+        fields:'id,title,subtitle,eyecatch,updatedAt,createdAt'
       }
 }
-
-  

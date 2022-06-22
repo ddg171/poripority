@@ -1,0 +1,29 @@
+FROM node:18-slim
+
+WORKDIR /usr/src/app
+
+ARG _NODE_ENV
+ARG _MICROCMS_API
+ARG _MICROCMS_SERVEICE_ID
+ARG _PRIVATE_KEY
+
+COPY package*.json ./
+RUN npm install -g nuxt@3.0.0-rc.3 nuxt3
+RUN npm install --omit-dev
+
+ENV NODE_ENV=$_NODE_ENV
+ENV MICROCMS_API=$_MICROCMS_API
+ENV MICROCMS_SERVEICE_ID=$_MICROCMS_SERVEICE_ID
+ENV PRIVATE_KEY=$_PRIVATE_KEY
+ENV LANG C.UTF-8
+ENV PORT 8080
+ENV HOST 0.0.0.0
+
+EXPOSE 8080
+
+COPY . ./
+
+RUN ["npm","run","build"]
+
+CMD [ "node", ".output/server/index.mjs" ]
+

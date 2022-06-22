@@ -1,7 +1,7 @@
-import {hoge} from "../../components/server/common"
+import { hoge } from '../../components/server/common'
 
 export default defineEventHandler(() => {
-    return {
-      api: hoge()
-    }
-  })
+  return {
+    api: hoge()
+  }
+})

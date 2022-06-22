@@ -1,3 +1,3 @@
-export function hoge():string{
-    return "hoge"
+export function hoge ():string {
+  return 'hoge'
 }
