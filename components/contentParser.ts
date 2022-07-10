@@ -1,9 +1,9 @@
 
-import { JSDOM } from 'jsdom'
+import DOMParser from 'universal-dom-parser'
 
 function convertStrToDocument (contentRaw:string):Document {
-  const dom = new JSDOM(contentRaw)
-  return dom.window.document
+  const parser = new DOMParser()
+  return parser.parseFromString(contentRaw, 'text/html')
 }
 
 function changeImgParams (doc:Document):Document {

@@ -1,20 +1,19 @@
 /* eslint-disable vue/no-v-html */
-
 <template>
-  <div>
-    /blog
-    <div v-html="content" />
+  <section class="p-4 h-full">
+    <article class="flex flex-col gap-4" v-html="content" />
+    <hr class="my-4">
     <div>
-      <nuxt-link to="/blogs">
+      <nuxt-link to="/blog" class="border-2">
         back
       </nuxt-link>
     </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
 import { Article } from '../../types'
-import { convertContent } from '~~/components/server/contentParser'
+import { convertContent } from '~~/components/contentParser'
 const route = useRoute()
 
 const { data } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
@@ -36,3 +35,14 @@ useHead({
   }
 })
 </script>
+
+<style scoped>
+article h2{
+  font-size: 1.5rem !important;
+}
+
+article h3{
+  font-size: 1.25rem !important;
+}
+
+</style>

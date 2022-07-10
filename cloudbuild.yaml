@@ -19,7 +19,6 @@ steps:
 
 substitutions:
   _NODE_ENV: "production"
-
   _PRIVATE_KEY: "!!!!"
   _TAG_NAME: "latest"
 images: ["asia.gcr.io/$PROJECT_ID/$_SERVICE_NAME:$_TAG_NAME"]

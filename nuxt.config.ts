@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     head: {
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      meta: [],
+      meta: [{ name: 'robots', content: 'noindex,nofollow' }],
       link: [{ rel: 'icon', href: '/favicon.ico', id: 'favicon' }],
       style: [],
       script: []
@@ -31,6 +31,16 @@ export default defineNuxtConfig({
   },
   typescript: {
     shim: false
+  },
+  css: ['~/assets/css/tailwind.scss'],
+  build: {
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {}
+        }
+      }
+    }
   }
-
 })
