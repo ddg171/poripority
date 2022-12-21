@@ -1,11 +1,10 @@
 <template>
   <div class="w-screen h-screen flex flex-col">
     <MyHeader />
-    <div class="flex h-full">
-      <main class="w-full flex justify-center bg-slate-400">
-        <div class=" h-full container mx-auto bg-white">
-          <slot />
-        </div>
+    <div class="w-full h-full flex  flex-col lg:flex-row justify-center">
+      <aside class="w-full lg:w-48  h-12 lg:h-60  bg-darkblue m-0 lg:m-4" />
+      <main class="w-full flex bg-transparent max-w-4xl m-2 lg:m-4">
+        <slot />
       </main>
     </div>
   </div>

@@ -1,11 +1,8 @@
 <template>
-  <div id="app" class="bg-darkblue">
+  <div id="app" class="bg-gray">
     <NuxtLayout>
       <NuxtPage @click-img="imgClick" />
     </NuxtLayout>
-    <div v-if="imgUrl">
-      <img :src="imgUrl" alt="" @click="imgUrl=null">
-    </div>
   </div>
 </template>
 

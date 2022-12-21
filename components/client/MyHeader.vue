@@ -2,7 +2,7 @@
   <header class="w-full  bg-green text-white">
     <div id="header-container" class="header-container h-full flex flex-row justify-between">
       <SiteName />
-      <NavBar :props="{menus:menus}" />
+      <NavBar :menus="menus" />
     </div>
   </header>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="h-full flex">
+  <nav class="h-full flex px-2">
     <ul class="h-full flex self-end ">
       <li v-for="m ,i in props.menus " :key="i" class="h-full flex justify-center  items-center mx-2">
         <nuxt-link :to="m.path">
