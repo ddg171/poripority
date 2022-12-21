@@ -9,7 +9,8 @@ function convertStrToDocument (contentRaw:string):Document {
 function changeImgParams (doc:Document):Document {
   const images = doc.querySelectorAll('img')
   images.forEach((img:HTMLImageElement) => {
-    img.src = img.src + '?q=70&fm=webp'
+    img.setAttribute('data-src-url', img.src)
+    img.src = img.src + '?q=50&fm=webp'
   })
   return doc
 }

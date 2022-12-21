@@ -1,4 +1,4 @@
-/* eslint-disable vue/no-v-html */
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <section class="p-4 h-full">
     <article class="flex flex-col gap-4" v-html="content" />
@@ -14,7 +14,9 @@
 <script setup lang="ts">
 import { Article } from '../../types'
 import { convertContent } from '~~/components/contentParser'
+
 const route = useRoute()
+const emit = defineEmits(['click-img'])
 
 const { data } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const article = data
@@ -33,6 +35,17 @@ useHead({
   bodyAttrs: {
     class: 'test'
   }
+})
+onMounted(() => {
+  nextTick(() => {
+    const imgs = document.querySelectorAll('img')
+    imgs.forEach((img:HTMLImageElement) => {
+      img.addEventListener('click', () => {
+        const originalUrl = img.getAttribute('data-src-url')
+        emit('click-img', originalUrl || img.src || null)
+      })
+    })
+  })
 })
 </script>
 
