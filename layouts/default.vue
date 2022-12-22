@@ -1,33 +1,15 @@
 <template>
   <div class="w-screen h-screen flex flex-col">
-    <nav class="w-full flex justify-center mb-1">
-      <div class="container mx-auto flex justify-between h-12 px-4 py-2">
-        <h1>poripority.com(WIP)</h1>
-        <ul class="flex self-end">
-          <li v-for="m ,i in menu " :key="i">
-            <div class="mx-4">
-              <nuxt-link :to="m.path">
-                {{ m.name }}
-              </nuxt-link>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <div class="flex h-full">
-      <main class="w-full flex justify-center bg-slate-400">
-        <div class=" h-full container mx-auto bg-white">
-          <slot />
-        </div>
+    <MyHeader />
+    <div class="w-full h-full flex  flex-col lg:flex-row justify-center">
+      <aside class="w-full lg:w-48  h-12 lg:h-60  bg-darkblue m-0 lg:m-4" />
+      <main class="w-full flex bg-transparent max-w-4xl m-2 lg:m-4">
+        <slot />
       </main>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const menu = [
-  { name: 'Home', path: '/' },
-  { name: 'blog', path: '/blog' }
-]
+import MyHeader from '~~/components/client/MyHeader.vue'
 </script>
