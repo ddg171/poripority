@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-gray">
+  <div id="app" class="min-h-screen bg-gray">
     <NuxtLayout>
       <NuxtPage @click-img="imgClick" />
     </NuxtLayout>

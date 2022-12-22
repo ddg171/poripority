@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <section class="p-4 h-full">
-    <article class="flex flex-col gap-4" v-html="content" />
+  <section class="w-full p-4 h-full bg-darkblue">
+    <article class="microcms-content flex flex-col gap-4 text-white" v-html="content" />
     <hr class="my-4">
     <div>
       <nuxt-link to="/blog" class="border-2">
@@ -58,4 +58,7 @@ article h3{
   font-size: 1.25rem !important;
 }
 
+.microcms-content>p>a>img{
+  height:500px;
+}
 </style>
