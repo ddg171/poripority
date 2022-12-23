@@ -9,9 +9,9 @@
         alt="firstview"
       >
     </div>
-    <PageHeader>
+    <Header1>
       Latest topics
-    </PageHeader>
+    </Header1>
     <section v-for="i in 5" :key="i" class="w-full h-80 bg-darkblue my-2 p-4">
       <h3>Empty article-{{ i }}</h3>
     </section>
@@ -19,7 +19,7 @@
 </template>
 
 <script setup>
-import PageHeader from '~~/components/client/PageHeader.vue'
+import Header1 from '~~/components/client/Header1.vue'
 
 useHead({
   title: 'WIP|poripority.com'
