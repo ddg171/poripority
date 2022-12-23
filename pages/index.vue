@@ -1,13 +1,15 @@
 <template>
   <div class="w-full flex flex-col justify-center text-white">
     <div
-      class="firstview w-full flex justify-center items-center bg-darkblue  mb-6"
+      class="firstview w-full h-full flex justify-center items-center overflow-hidden bg-darkblue  mb-6"
     >
-      <img
-        src="
-      "
-        alt="firstview"
-      >
+      <PictureBox
+        :souce="['/images/webp/top-img01w640.webp 640w,/images/webp/top-img01w1270.webp 1024w,']"
+        alt="TOP画像。鳩"
+        title="TOP画像"
+        webp="/images/webp/top-img01w2000.webp"
+        jpg="/images/webp/top-img01w640.jpg"
+      />
     </div>
     <Header1>
       Latest topics
@@ -19,6 +21,7 @@
 </template>
 
 <script setup>
+import PictureBox from '~~/components/client/PictureBox.vue'
 import Header1 from '~~/components/client/Header1.vue'
 
 useHead({
