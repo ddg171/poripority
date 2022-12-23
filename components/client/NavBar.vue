@@ -5,9 +5,11 @@
       <span />
     </label>
     <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden">
-      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green items-center mx-2">
-        <nuxt-link :to="m.path" tabindex="0" class="w-full h-full flex justify-center items-center" @click="hideNav">
-          {{ m.name }}
+      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green items-center md:mx-4 ">
+        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="navlink w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-4 md:border-l-4  border-l-lightgray hovor:border-red focus:border-red md:pl-3 md:pb-1" @click="hideNav">
+          <span class="navlink-span" :data-transition="transitionTrigger">
+            {{ m.name }}
+          </span>
         </nuxt-link>
       </li>
     </ul>
@@ -22,13 +24,25 @@ type Menu ={
 }
 interface Props {
     menus:Menu[]
+    currentPath:string
 }
 
 const emits = defineEmits<{(e:'toggle', value:boolean)}>()
 
-const props = withDefaults(defineProps<Props>(), { menus: () => [] })
+const samePath = (path:string, fullPath:string):boolean => {
+  if (!fullPath) { return false }
+  if (!path) { return false }
+  if (fullPath === path) { return true }
+  if (path === '/') {
+    return path === fullPath
+  }
+  return !!fullPath.includes(path)
+}
+
+const props = withDefaults(defineProps<Props>(), { menus: () => [], currentPath: '/' })
 
 const isShow = ref<boolean>(false)
+const transitionTrigger = ref<boolean>(false)
 const hasResizeHandler = ref<boolean>(false)
 
 const hideNav = () => {
@@ -41,6 +55,9 @@ onMounted(() => {
     window.addEventListener('resize', hideNav)
     hasResizeHandler.value = true
   }
+  nextTick(() => {
+    transitionTrigger.value = true
+  })
 })
 
 onBeforeUnmount(() => {
@@ -94,6 +111,15 @@ onBeforeUnmount(() => {
   top:calc(50% - 5px/2);
   transform: rotate(-45deg);
 }
+.navlink-span{
+  transform: none;
+  transition: transform 0.25s ease-out;
+  transition-delay:0.2s;
+}
+.navlink-span[data-transition="false"]{
+      transform: translateY(100%);
+}
+
 @media screen and (max-width: 767px){
 
 #hamburger-toggle:checked ~ .nav-links,

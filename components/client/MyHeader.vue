@@ -2,7 +2,7 @@
   <header class="w-full  bg-green text-white" :is-sticky="isSticky">
     <div id="header-container" class="header-container h-full flex flex-row justify-between">
       <SiteName />
-      <NavBar :menus="menus" @toggle="toggle" />
+      <NavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
     </div>
   </header>
 </template>
@@ -35,7 +35,4 @@ header[is-sticky="true"]{
   z-index: 11;
 }
 
-/* .header-container{
-    max-width: 1920px;
-} */
 </style>
