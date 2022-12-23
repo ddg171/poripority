@@ -11,11 +11,16 @@
         jpg="/images/webp/top-img01w640.jpg"
       />
     </div>
-    <Header1>
-      Latest topics
-    </Header1>
-    <section v-for="i in 5" :key="i" class="w-full h-80 bg-darkblue my-2 p-4">
-      <h3>Empty article-{{ i }}</h3>
+    <section class="w-full flex flex-col justify-center p-2 bg-darkblue mb-6">
+      <Header1>
+        Latest topics
+      </Header1>
+      <article v-for="i in 5" :key="i" class="w-full bg-darkblue mb-4 p-4">
+        <h3>Empty article-{{ i }}</h3>
+        <p class="article-p break-words">
+          hogehogehugahugapiypiypohogehogehugahugapiypiypohogehogehugahugapiypiypohogehogehugahugapiypiypohogehogehugahugapiypiypo
+        </p>
+      </article>
     </section>
   </div>
 </template>
@@ -32,6 +37,9 @@ useHead({
 <style>
 .firstview{
   height: 80vh;
+}
+.article-p{
+    overflow-wrap: break-word;
 }
 
 @media screen and (min-width:768px){
