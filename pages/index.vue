@@ -1,5 +1,14 @@
 <template>
   <div class="w-full grid grid-cols-1 text-white">
+    <div
+      class="firstview w-full flex justify-center items-center bg-darkblue"
+    >
+      <img
+        src="
+      "
+        alt="firstview"
+      >
+    </div>
     <PageHeader>
       Latest topics
     </PageHeader>
@@ -17,3 +26,8 @@ useHead({
 })
 
 </script>
+<style>
+.firstview{
+  height: 50vh;
+}
+</style>
