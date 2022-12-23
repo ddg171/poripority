@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-screen flex flex-col ">
+  <div class="min-h-screen flex flex-col items-center">
     <MyHeader />
-    <div class="w-full min-h-screen flex  flex-col  items-center justify-center">
-      <main class="w-full flex bg-transparent max-w-4xl ">
+    <div class="w-full min-h-screen flex  flex-col   max-w-screen-2xl items-center">
+      <main class="w-full min-h-screen flex flex-col items-center  bg-transparent  ">
         <slot />
       </main>
       <footer class="border-t-solid border-t-4 border-red w-full h-32 bg-lightgray ">

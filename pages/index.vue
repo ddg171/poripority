@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full flex flex-col justify-center text-white">
+  <div class="w-full flex flex-col justify-center items-center text-white">
     <div
-      class="firstview w-full h-full flex justify-center items-center overflow-hidden bg-darkblue  mb-6"
+      class="firstview w-full  h-3/4h md:h-1/2h flex justify-center items-center overflow-hidden bg-darkblue  mb-6"
     >
       <PictureBox
         :souce="['/images/webp/top-img01w640.webp 640w,/images/webp/top-img01w1270.webp 1024w,']"
@@ -11,13 +11,13 @@
         jpg="/images/webp/top-img01w640.jpg"
       />
     </div>
-    <section class="w-full flex flex-col justify-center p-2 bg-darkblue mb-6">
+    <section class="max-w-4xl  flex flex-col justify-center p-2 bg-darkblue mb-6">
       <Header1>
         Latest topics
       </Header1>
-      <article v-for="i in 5" :key="i" class="w-full bg-darkblue mb-4 p-4">
+      <article v-for="i in 3" :key="i" class="w-full bg-darkblue mb-4 p-4">
         <h3>Empty article-{{ i }}</h3>
-        <p class="article-p break-words">
+        <p class="max-w-full article-p break-words">
           hogehogehugahugapiypiypohogehogehugahugapiypiypohogehogehugahugapiypiypohogehogehugahugapiypiypohogehogehugahugapiypiypo
         </p>
       </article>
@@ -35,16 +35,8 @@ useHead({
 
 </script>
 <style>
-.firstview{
-  height: 80vh;
-}
 .article-p{
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
 }
 
-@media screen and (min-width:768px){
-.firstview{
-  height: 50vh;
-}
-}
 </style>
