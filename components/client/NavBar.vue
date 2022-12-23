@@ -1,12 +1,12 @@
 <template>
   <nav class="navbar h-full px-2 bg-transparent">
     <input id="hamburger-toggle" v-model="isShow" type="checkbox" class="hidden" @change="$emit('toggle',isShow)">
-    <label for="hamburger-toggle" class="hamburger-button  block md:hidden p-2 hover:border-solid hover:border-2 hover:border-white">
+    <label for="hamburger-toggle" class="hamburger-button  block md:hidden p-2 hover:border-solid hover:border-1 hover:border-white">
       <span />
     </label>
     <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden">
-      <li v-for="m ,i in props.menus " :key="i" class=" min-w-36 h-16 flex justify-center  bg-green items-center mx-2">
-        <nuxt-link :to="m.path">
+      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green items-center mx-2">
+        <nuxt-link :to="m.path" tabindex="0" class="w-full h-full flex justify-center items-center" @click="hideNav">
           {{ m.name }}
         </nuxt-link>
       </li>
@@ -94,7 +94,10 @@ onBeforeUnmount(() => {
   top:calc(50% - 5px/2);
   transform: rotate(-45deg);
 }
-#hamburger-toggle:checked ~ .nav-links{
+@media screen and (max-width: 767px){
+
+#hamburger-toggle:checked ~ .nav-links,
+.nav-links:focus-within{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -112,4 +115,6 @@ onBeforeUnmount(() => {
 #hamburger-toggle:checked~ .nav-links li{
   margin: 0 !important;
 }
+}
+
 </style>
