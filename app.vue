@@ -1,12 +1,20 @@
 <template>
   <div id="app" class="min-h-screen bg-gray">
-    <NuxtLayout>
+    <NuxtLayout :categories="categories">
       <NuxtPage @click-img="imgClick" />
     </NuxtLayout>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { LinkParams } from '~~/types'
+
+const categories = ref<LinkParams[]>(
+  [
+    { name: 'Game', path: '/blog' },
+    { name: 'camera', path: '/blog' },
+    { name: 'others', path: '/blog' }]
+)
 
 const imgUrl = ref<string|null>(null)
 

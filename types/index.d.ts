@@ -1,4 +1,9 @@
 import { MicroCMSQueries } from 'microcms-js-sdk'
+
+export interface LinkParams {
+    name:string
+    path:string
+}
 export interface Reference{
     url:string
     title?:string

@@ -17,13 +17,10 @@
 </template>
 
 <script setup lang="ts">
+import { LinkParams } from '~~/types'
 
-type Menu ={
-    name:string
-    path:string
-}
 interface Props {
-    menus:Menu[]
+    menus:LinkParams[]
     currentPath:string
 }
 
