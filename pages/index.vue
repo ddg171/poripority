@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full grid grid-cols-1 text-white">
+  <div class="w-full flex flex-col justify-center text-white">
     <div
-      class="firstview w-full flex justify-center items-center bg-darkblue"
+      class="firstview w-full flex justify-center items-center bg-darkblue  mb-6"
     >
       <img
         src="
@@ -28,6 +28,12 @@ useHead({
 </script>
 <style>
 .firstview{
+  height: 80vh;
+}
+
+@media screen and (min-width:768px){
+.firstview{
   height: 50vh;
+}
 }
 </style>
