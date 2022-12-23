@@ -23,3 +23,9 @@ const imgClick = (url:string|null) => {
 }
 
 </script>
+
+<style>
+p{
+    overflow-wrap: anywhere !important;
+}
+</style>
