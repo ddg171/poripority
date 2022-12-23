@@ -1,11 +1,11 @@
 <template>
   <nav class="navbar h-full px-2 bg-transparent">
     <input id="hamburger-toggle" v-model="isShow" type="checkbox" class="hidden" @change="$emit('toggle',isShow)">
-    <label for="hamburger-toggle" class="hamburger-button  block md:hidden p-2 hover:border-solid hover:border-1 hover:border-white">
-      <span />
+    <label for="hamburger-toggle" class="hamburger-button  block md:hidden p-2 hover:border-solid hover:border  hover:border-white">
+      <span class="bg-lightgreen" />
     </label>
     <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden">
-      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green items-center md:mx-4 ">
+      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green hover:bg-lightgreen items-center md:mx-4 border-solid border-white md:border-none">
         <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="navlink w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-4 md:border-l-4  border-l-lightgray hovor:border-red focus:border-red md:pl-3 md:pb-1" @click="hideNav">
           <span class="navlink-span" :data-transition="transitionTrigger">
             {{ m.name }}
@@ -75,14 +75,41 @@ onBeforeUnmount(() => {
 .hamburger-button::before,
 .hamburger-button::after{
   display: block;
-  width: 50px;
+  width: 40px;
   height: 5px;
-  left: calc(50% -25px);
-  background:white;
+  left: calc(50% -20px);
   position: absolute;
   content: "";
   opacity: 1;
   transition: all 0.25s;
+}
+
+.hamburger-button::before,
+.hamburger-button::after{
+  width: 50px;
+    left: calc(50% -25px);
+  background-color: white;
+}
+
+.hamburger-button span{
+ position: relative;
+}
+
+.hamburger-button span::after,
+.hamburger-button span::before{
+  display: block;
+ position: absolute;
+ background-color: #016461;
+ width: 8px;
+ height: 100%;
+ content: "";
+}
+
+.hamburger-button span::before{
+  left: 8px;
+}
+.hamburger-button span::after{
+left: 24px;
 }
 
 .hamburger-button::before{
@@ -119,8 +146,7 @@ onBeforeUnmount(() => {
 
 @media screen and (max-width: 767px){
 
-#hamburger-toggle:checked ~ .nav-links,
-.nav-links:focus-within{
+#hamburger-toggle:checked ~ .nav-links{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
