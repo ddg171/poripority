@@ -5,8 +5,8 @@
       <span class="bg-lightgreen" />
     </label>
     <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden">
-      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green hover:bg-lightgreen items-center md:mx-4 border-solid border-white md:border-none">
-        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="navlink w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-4 md:border-l-4  border-l-lightgray hovor:border-red focus:border-red md:pl-3 md:pb-1" @click="hideNav">
+      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green hover:bg-lightgreen items-center md:mx-4 border-solid border-white border-b md:border-none">
+        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="navlink w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-8 md:border-l-4  border-l-lightgray hovor:border-red focus:border-red md:pl-3 md:pb-1" @click="hideNav">
           <span class="navlink-span" :data-transition="transitionTrigger">
             {{ m.name }}
           </span>
