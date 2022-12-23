@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar h-full px-2 bg-transparent">
     <input id="hamburger-toggle" v-model="isShow" type="checkbox" class="hidden" @change="$emit('toggle',isShow)">
-    <label for="hamburger-toggle" class="hamburger-button  block md:hidden p-2 hover:border-solid hover:border  hover:border-white">
+    <label for="hamburger-toggle" class="hamburger-button  block md:hidden p-2 border-solid border border-green  hover:border-white">
       <span class="bg-lightgreen" />
     </label>
     <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden">
