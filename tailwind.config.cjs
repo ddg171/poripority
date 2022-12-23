@@ -19,10 +19,16 @@ module.exports = {
       orange: '#FF7347',
       transparent: 'transparent'
     },
-    extend: {}
-  },
-  variants: {
-    extend: {}
+    extend: {
+      height: {
+        '1/3h': '33vh',
+        '1/2h': '50vh',
+        '3/4h': '75vh'
+      }
+    },
+    variants: {
+      extend: {}
+    }
   },
   plugins: []
 }
