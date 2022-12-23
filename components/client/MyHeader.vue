@@ -11,7 +11,8 @@
 import SiteName from './SiteName.vue'
 import NavBar from './NavBar.vue'
 const menus = [
-  { name: 'Home', path: '/' },
+  { name: 'About', path: '/' },
+  { name: 'Works', path: '/' },
   { name: 'blog', path: '/blog' }
 ]
 
