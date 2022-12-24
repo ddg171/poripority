@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       charset: 'utf-8',
+      lang: 'ja',
       viewport: 'width=device-width, initial-scale=1',
       meta: [{ name: 'robots', content: 'noindex,nofollow' }],
       link: [{ rel: 'icon', href: '/favicon.ico', id: 'favicon' }],
