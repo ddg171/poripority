@@ -4,6 +4,22 @@ export interface LinkParams {
     name:string
     path:string
 }
+
+export interface SliderContent {
+    pic: {
+        souce: string[]
+        webp: string
+        jpg: string
+        alt: string
+        title: string
+
+      },
+      text: {
+        title: string,
+        para: string[]
+      }
+}
+
 export interface Reference{
     url:string
     title?:string
