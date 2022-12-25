@@ -16,7 +16,8 @@ export interface SliderContent {
       },
       text: {
         title: string,
-        para: string[]
+        para: string[],
+        to?:string
       }
 }
 
@@ -27,8 +28,8 @@ export interface Reference{
 
 export interface Eyecatch{
     url:string
-    height:number|null
-    width:number|null
+    height:number
+    width:number
 
 }
 
@@ -66,6 +67,15 @@ export namespace Api {
         limit?:number
         offset?:number
         orders:string
-        fields:'id,title,subtitle,eyecatch,updatedAt,createdAt'
+        fields:'id,title,subtitle,eyecatch,updatedAt,createdAt,category'
       }
+}
+
+export interface WindowWithEmbed extends Window {
+    twttr?:{
+        widgets:{
+            load:Function
+        }
+    }
+    instgrm?:{embed:unknown}
 }
