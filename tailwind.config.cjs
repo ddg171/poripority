@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   // mode: "jit",
   content: [
@@ -24,6 +25,10 @@ module.exports = {
         '1/3h': '33vh',
         '1/2h': '50vh',
         '3/4h': '75vh'
+      },
+      maxWidth: {
+        'screen-3xl': '1792px',
+        'screen-1920p': '1920px'
       }
     },
     variants: {
