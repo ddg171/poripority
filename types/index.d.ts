@@ -1,4 +1,26 @@
 import { MicroCMSQueries } from 'microcms-js-sdk'
+
+export interface LinkParams {
+    name:string
+    path:string
+}
+
+export interface SliderContent {
+    pic: {
+        souce: string[]
+        webp: string
+        jpg: string
+        alt: string
+        title: string
+
+      },
+      text: {
+        title: string,
+        para: string[],
+        to?:string
+      }
+}
+
 export interface Reference{
     url:string
     title?:string
@@ -6,8 +28,8 @@ export interface Reference{
 
 export interface Eyecatch{
     url:string
-    height:number|null
-    width:number|null
+    height:number
+    width:number
 
 }
 
@@ -45,6 +67,15 @@ export namespace Api {
         limit?:number
         offset?:number
         orders:string
-        fields:'id,title,subtitle,eyecatch,updatedAt,createdAt'
+        fields:'id,title,subtitle,eyecatch,updatedAt,createdAt,category'
       }
+}
+
+export interface WindowWithEmbed extends Window {
+    twttr?:{
+        widgets:{
+            load:Function
+        }
+    }
+    instgrm?:{embed:unknown}
 }

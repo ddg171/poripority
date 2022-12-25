@@ -1,8 +1,8 @@
 import { createClient } from 'microcms-js-sdk'
 import config from '@/nuxt.config'
 
-const serviceDomain = config.privateRuntimeConfig.microCMSServiceID
-const apiKey = config.privateRuntimeConfig.microCMSAPI
+const serviceDomain = config.runtimeConfig.microCMSServiceID
+const apiKey = config.runtimeConfig.microCMSAPI
 
 const client = createClient({ serviceDomain, apiKey })
 
