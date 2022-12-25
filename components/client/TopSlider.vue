@@ -32,16 +32,17 @@
             </div>
           </div>
         </div>
-        <div class="w-full my-5  flex justify-center absolute inset-x-0 bottom-0 z-10">
+        <div class="w-full my-2 md:my-5  flex justify-center absolute inset-x-0 bottom-0 z-10">
           <button
             v-for="c in contentNum"
             :key="c"
             class="slider-page-btn mx-2  h-6 w-6 border-solid bg-lightgray ease-in duration-75 shadow-2xl"
             :isCurrent="c===sliderPage+1"
+            aria-label="スライダーのページ移動"
             tabindex="0"
             @click="jump(c-1)"
           />
-          <button class="slider-toggle-btn mx-4 h-6 w-6  relative bg-lightgray  shadow-2xl" :isStopped="timerId === 0" tabindex="0" @click="toggle">
+          <button class="slider-toggle-btn mx-4 h-6 w-6  relative bg-lightgray  shadow-2xl" aria-label="スライダーの停止・再生." :isStopped="timerId === 0" tabindex="0" @click="toggle">
             <span class=" absolute border-solid border-gray" />
           </button>
         </div>
