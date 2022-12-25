@@ -6,13 +6,23 @@
       <Header2>
         最新投稿
       </Header2>
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 relative">
         <ArticleCard v-for="a in latest" :key="a.id" :article="a" />
-        <div class="readmore-box flex justify-center items-center">
-          <NuxtLink to="/blog" class="h-8 text-3xl my-6 hover:underline">
-            記事一覧へ
-          </NuxtLink>
-        </div>
+        <template v-if="latest.length===0">
+          <div class="bg-green my-4 mx-0 md:my-2 md:mx-2 col-span-1">
+            <div class="w-full h-48   md:h-48  shrink-0 flex justify-center items-center overflow-hidden">
+              <p class="text-2xl">
+                投稿はありません。
+              </p>
+            </div>
+          </div>
+          <div v-for="i in 2" :key="i" class="bg-green my-4 mx-0 md:my-2 md:mx-2 col-span-1">
+            <div class="w-full h-48   md:h-48  shrink-0 flex justify-center items-center overflow-hidden" />
+          </div>
+        </template>
+        <NuxtLink to="/blog" class="readmore-box flex justify-center items-center bg-green border-solid border border-green/50 hover:border-lightgray text-3xl py-3 my-0 md:my-3 hover:underline">
+          記事一覧へ
+        </NuxtLink>
       </div>
     </TopSection>
     <TopSection>
@@ -41,8 +51,8 @@ import { Article, Eyecatch, SliderContent } from '~~/types'
 import { resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
 
 const { data } = await useFetch('/api/blogs', { params: { limit: 3 } })
-const contents = (data.value as any).contents
 
+const contents = data.value?.contents || []
 const latest = reactive<Array<Article>>(contents)
 const defaultContents:SliderContent[] = [
   {
