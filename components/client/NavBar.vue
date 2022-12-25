@@ -6,8 +6,8 @@
     </label>
     <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden">
       <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green hover:bg-lightgreen items-center md:mx-4 border-solid border-white border-b md:border-none">
-        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="navlink w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-8 md:border-l-4  border-l-lightgray hovor:border-red focus:border-red md:pl-3 md:pb-1" @click="hideNav">
-          <span class="navlink-span" :data-transition="transitionTrigger">
+        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="navlink w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-8 md:border-l-4  border-l-lightgray hovor:border-red focus:border-red md:pl-2 md:pb-1" @click="hideNav">
+          <span class="navlink-span translate-y-full" :data-transition="transitionTrigger">
             {{ m.name }}
           </span>
         </nuxt-link>
@@ -53,7 +53,9 @@ onMounted(() => {
     hasResizeHandler.value = true
   }
   nextTick(() => {
-    transitionTrigger.value = true
+    setTimeout(() => {
+      transitionTrigger.value = true
+    }, 300)
   })
 })
 
@@ -77,7 +79,7 @@ onBeforeUnmount(() => {
   display: block;
   width: 40px;
   height: 5px;
-  left: calc(50% -20px);
+  left: calc(50% - 20px);
   position: absolute;
   content: "";
   opacity: 1;
@@ -87,7 +89,7 @@ onBeforeUnmount(() => {
 .hamburger-button::before,
 .hamburger-button::after{
   width: 50px;
-    left: calc(50% -25px);
+    left: calc(50% - 25px);
   background-color: white;
 }
 
@@ -136,12 +138,14 @@ left: 24px;
   transform: rotate(-45deg);
 }
 .navlink-span{
-  transform: none;
-  transition: transform 0.25s ease-out;
-  transition-delay:0.2s;
+  transition: none;
+
 }
-.navlink-span[data-transition="false"]{
-      transform: translateY(100%);
+
+.navlink-span[data-transition="true"]{
+      transform: none !important;
+      transition: transform 0.3s ease-out;
+      transition-delay:0.3s;
 }
 
 @media screen and (max-width: 767px){
@@ -154,7 +158,7 @@ left: 24px;
   top:64px;
   left: 0;
   width: 100%;
-  height: calc(100vh -64px);
+  height: calc(100vh - 64px);
   margin: 0;
   padding: 0;
   z-index: 10;

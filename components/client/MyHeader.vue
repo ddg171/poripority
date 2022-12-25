@@ -21,7 +21,6 @@ const isSticky = ref<boolean>(false)
 const toggle = (val:boolean) => {
   isSticky.value = !!val
 }
-
 </script>
 
 <style scoped>

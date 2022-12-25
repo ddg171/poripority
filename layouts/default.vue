@@ -14,4 +14,5 @@
 
 <script lang="ts" setup>
 import MyHeader from '~~/components/client/MyHeader.vue'
+
 </script>
