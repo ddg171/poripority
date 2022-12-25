@@ -23,12 +23,12 @@
 </template>
 
 <script setup lang="ts">
-import { Article } from '../../types'
+import { Article } from '~~/types'
 
 const { data } = await useFetch('/api/blogs', { params: { limit: 3 } })
-const articles = reactive<Article[]>(data.value.contents)
+const articles = reactive<Article[]>(data.value?.contents || [])
 const currentCount = computed<number>(() => articles.length)
-const totalCount = ref<number>(data.value.totalCount)
+const totalCount = ref<number>(data.value?.totalCount || 0)
 
 const more = async (currentCount:number = 0) => {
   const result = await $fetch('/api/blogs', { params: { limit: 3, offset: currentCount } })
