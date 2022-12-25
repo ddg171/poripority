@@ -2,10 +2,10 @@ import client from '~~/components/server/microCMS'
 import { Api } from '~~/types'
 
 export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload> => {
-  const params = useQuery(event)
+  const params = getQuery(event)
   const queries:Api.BlogQuery = {
     orders: '-publishedAt',
-    fields: 'id,title,subtitle,eyecatch,updatedAt,createdAt'
+    fields: 'id,title,subtitle,eyecatch,updatedAt,createdAt,category'
   }
   const limit = Number(params.limit)
   if (!isNaN(limit)) {
