@@ -1,10 +1,13 @@
 {
   "hosting": {
-    "public": ".output/public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "my-blog", // "service name" (from when you deployed the container image)
+          "region": "asia-northeast2" // optional (if omitted, default is us-central1)
+        }
+      }
     ]
   }
 }
