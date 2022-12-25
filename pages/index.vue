@@ -130,12 +130,8 @@ if (contents.length) {
 }
 
 const sliderContents = ref<Array<SliderContent>>(
-  sliderContentsTemp.concat(defaultContents)
+  defaultContents.concat(sliderContentsTemp)
 )
-
-useHead({
-  title: 'WIP|poripority.com'
-})
 
 </script>
 
