@@ -1,7 +1,7 @@
 <template>
   <WidgetContainer>
     <iframe
-      name="discord"
+      title="discord"
       src="https://discord.com/widget?id=282494164799848449&theme=dark"
       loading="lazy"
       width="350"
