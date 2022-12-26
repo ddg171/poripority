@@ -22,6 +22,8 @@ module.exports = {
     },
     extend: {
       height: {
+        '1/5h': '20vh',
+        '1/4h': '25vh',
         '1/3h': '33vh',
         '1/2h': '50vh',
         '3/4h': '75vh'
