@@ -5,15 +5,16 @@ export interface LinkParams {
     path:string
 }
 
-export interface SliderContent {
-    pic: {
-        souce: string[]
-        webp: string
-        jpg: string
-        alt: string
-        title: string
+export interface PictureBoxProp {
+    souce: string[]
+    webp: string
+    jpg: string
+    alt: string
+    title: string
+}
 
-      },
+export interface SliderContent {
+    pic: PictureBoxProp,
       text: {
         title: string,
         para: string[],
