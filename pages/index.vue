@@ -20,9 +20,11 @@
             <div class="w-full h-48   md:h-48  shrink-0 flex justify-center items-center overflow-hidden" />
           </div>
         </template>
-        <NuxtLink to="/blog" class="readmore-box flex justify-center items-center bg-green border-solid border border-green/50 hover:border-lightgray text-3xl py-3 my-0 md:my-3 hover:underline">
-          記事一覧へ
-        </NuxtLink>
+        <div class="w-full h-full lg:max-w-xl flex justify-center items-center mx-2">
+          <NuxtLink to="/blog" class="readmore-link w-full h-full flex justify-center items-center bg-green border-solid border border-green/50 hover:border-lightgray text-3xl py-3 my-0 md:my-3 hover:underline">
+            記事一覧へ
+          </NuxtLink>
+        </div>
       </div>
     </TopSection>
     <TopSection>

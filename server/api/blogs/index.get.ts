@@ -1,7 +1,7 @@
 import client from '~~/components/server/microCMS'
-import { Api } from '~~/types'
+import { Api, Article } from '~~/types'
 
-export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload> => {
+export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<Article>> => {
   const params = getQuery(event)
   const queries:Api.BlogQuery = {
     orders: '-publishedAt',

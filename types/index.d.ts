@@ -22,6 +22,12 @@ export interface SliderContent {
       }
 }
 
+export interface PageTitleProp {
+    title:string,
+    topImg:PictureBoxProp|null,
+    subtitles:string[]
+}
+
 export interface Reference{
     url:string
     title?:string
@@ -58,8 +64,8 @@ export interface Article extends Commonschema {
 export type ArticleList = Omit<Article, |'content'|'references'>
 
 export namespace Api {
-    export type IndexResponsePayload ={
-        contents:Article[]
+    export type IndexResponsePayload<T=Article|Category> ={
+        contents:T[]
         totalCount: number
         offset?: number
         limit?:number

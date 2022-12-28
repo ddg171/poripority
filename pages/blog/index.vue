@@ -12,14 +12,17 @@
 
 <script setup lang="ts">
 import TopArticleCard from '~~/components/client/TopArticleCard.vue'
-import { Article } from '~~/types'
+import { Article, PageTitleProp } from '~~/types'
+
 definePageMeta({
   layout: 'blog'
 })
 
+const pageTitleStore = usePageTitleStore()
+
 const route = useRoute()
 const params = route.params
-const offset = params?.offset || 0
+const offset:number = Number(params?.offset) || 0
 
 const { data } = await useFetch('/api/blogs', { params: { limit: 5, offset } })
 
@@ -27,8 +30,16 @@ const articles = reactive<Article[]>(data.value?.contents || [])
 const currentCount = computed<number>(() => articles.length)
 const totalCount = ref<number>(data.value?.totalCount || 0)
 
+const pageTitle:PageTitleProp = {
+  title: '記事一覧',
+  topImg: null,
+  subtitles: [`全${totalCount.value}件中${offset + currentCount.value}件目までを表示中`]
+}
+
+pageTitleStore.set(pageTitle)
+
 useHead({
-  title: 'MicroCMS test page|WIP'
+  title: '記事一覧|WIP'
 })
 
 </script>
