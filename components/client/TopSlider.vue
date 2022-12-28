@@ -15,7 +15,7 @@
                 :jpg="c.pic.jpg"
               />
             </div>
-            <div class="slider-text w-full h-full static md:absolute backdrop-blur-sm">
+            <div class="slider-text w-full h-full static md:absolute ">
               <div class="w-full h-full relative">
                 <div class="absolute  w-full md:w-auto top-1/2 ml-5 md:ml-16 lg:ml-20 bg-green/75 p-4">
                   <h2 class="text-3xl md:text-5xl pb-1 mb-2 border-solid border-l-8  border-l-lightgray pl-2 flex items-center">
