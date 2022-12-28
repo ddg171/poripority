@@ -1,5 +1,5 @@
 <template>
-  <article class="flex flex-col md:flex-row items-start bg-darkblue my-4 mx-0 md:my-2 md:mx-2">
+  <article class="max-w-xl flex flex-col md:flex-row items-start bg-darkblue my-4 mx-0 md:my-2 md:mx-2">
     <div class="w-full h-48  md:w-48 md:h-48  shrink-0 flex justify-center items-center overflow-hidden">
       <picture class="w-full">
         <source :srcset="cropEyecatch(props.article.eyecatch).url" type="image/webp">
