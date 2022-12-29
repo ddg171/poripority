@@ -3,7 +3,7 @@
     <ClientHeader3>カテゴリ</ClientHeader3>
     <ul>
       <li v-for="c ,i in categories" :key="i" class="w-full text-lg hover:bg-green focus-within:bg-green p-2 md:my-1">
-        <NuxtLink :to="`/blog?category=${c.id}`" class="w-full h-full hover:underline focus:underline" tabindex="1">
+        <NuxtLink :to="`/blog?category=${c.id}`" class="w-full h-full hover:underline focus:underline" tabindex="0">
           {{ c.name }}
         </NuxtLink>
       </li>

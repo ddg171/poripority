@@ -1,6 +1,6 @@
 <template>
   <div class="top-slider-wrapper w-full   mb-4 overflow-hidden">
-    <div class="w-full h-1/5h lg:h-1/4h relative">
+    <div class="w-full h-1/4h lg:h-1/3h relative">
       <div class="page-title w-full h-full relative">
         <div class="w-full h-full  absolute">
           <div class="top-slider-content w-full h-full  relative">
@@ -18,8 +18,8 @@
             </div>
             <div class="title-box w-full h-full static md:absolute backdrop-blur-sm">
               <div class="w-full h-full relative">
-                <div class="absolute  w-full md:w-auto top-1/3 ml-1 md:ml-16 lg:ml-20 bg-green/75 p-4">
-                  <h1 class="text-3xl md:text-5xl pb-1 mb-2 border-solid border-l-8  text-white border-l-lightgray pl-2 flex items-center">
+                <div class="absolute  w-full md:w-auto h-full sm:h-auto top-0 sm:top-8 md:top-1/3 ml-0 sm:ml-1 md:ml-16 lg:ml-20 bg-green/75 p-4 flex flex-col justify-center items-center">
+                  <h1 class="text-3xl md:text-5xl pb-1 mb-0 sm:mb-2 border-solid border-l-8  text-white border-l-lightgray pl-2 flex items-center">
                     <span>{{ title }}</span>
                   </h1>
                   <p v-for="t , i in subtitles" :key="i" class="text- md:text-xl text-white">

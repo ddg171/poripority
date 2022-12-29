@@ -4,7 +4,14 @@
   >
     <section class="w-full h-full p-4 md:p-6 bg-darkblue mb-2">
       <div class="w-full grid grid-cols-1 relative">
-        <TopArticleCard v-for="a in articles" :key="a.id" :article="a" />
+        <TopArticleCard
+          v-for="a,i in articles"
+          :key="a.id"
+          :article="a"
+          :offset="i+offset"
+          :category="category"
+          :heading="2"
+        />
       </div>
     </section>
   </div>
@@ -22,7 +29,8 @@ const pageTitleStore = usePageTitleStore()
 
 const route = useRoute()
 const params = route.params
-const offset:number = Number(params?.offset) || 0
+const offset = ref<number>(Number(params?.offset) || 0)
+const category = ref<string>(params?.category?.toString() || '')
 
 const { data } = await useFetch('/api/blogs', { params: { limit: 5, offset } })
 
@@ -33,7 +41,7 @@ const totalCount = ref<number>(data.value?.totalCount || 0)
 const pageTitle:PageTitleProp = {
   title: '記事一覧',
   topImg: null,
-  subtitles: [`全${totalCount.value}件中${offset + currentCount.value}件目までを表示中`]
+  subtitles: [`全${totalCount.value}件中${offset.value + currentCount.value}件目までを表示中`]
 }
 
 pageTitleStore.set(pageTitle)

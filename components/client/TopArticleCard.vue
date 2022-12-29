@@ -8,8 +8,13 @@
     </div>
     <div class="h-full ml-2 flex flex-col justify-between">
       <div>
-        <h3 class="text-xl mb-2 md:mb-4">
-          <NuxtLink :to="`/blog/${props.article.id}`" class="hover:underline" tabindex="0">
+        <h2 v-if="props.heading===2" class="text-xl mb-2 md:mb-4">
+          <NuxtLink :to="to" class="hover:underline" tabindex="0">
+            {{ props.article.title }}
+          </NuxtLink>
+        </h2>
+        <h3 v-else class="text-xl mb-2 md:mb-4">
+          <NuxtLink :to="to" class="hover:underline" tabindex="0">
             {{ props.article.title }}
           </NuxtLink>
         </h3>
@@ -38,9 +43,26 @@ import { Article } from '~~/types'
 
 interface Props{
     article:Article
+    offset?:number
+    category?:string
+    heading?:2|3
 }
 
-const props = defineProps<Props>()
+const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined, heading: () => 3 })
+
+const to = computed<string>(
+  () => {
+    const path = `/blog/${props.article.id}`
+    const params:string[] = []
+    if (props.offset) {
+      params.push(`offset=${props.offset}`)
+    }
+    if (props.category) {
+      params.push(`category=${props.category}`)
+    }
+
+    return params.length ? path + '?' + params.join('&') : path
+  })
 
 const cropEyecatch = cropSquare
 </script>
