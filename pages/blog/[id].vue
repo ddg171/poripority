@@ -1,7 +1,10 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <ClientContentSection>
-    <article class="flex flex-col gap-4 text-white cms-content" v-html="content" />
+    <article v-if="content" class="flex flex-col gap-4 text-white cms-content" v-html="content" />
+    <article v-else class="flex flex-col gap-4 text-white cms-content">
+      記事が見つかりませんでした。
+    </article>>
     <hr class="my-4">
     <suspense>
       <template #default>
@@ -30,20 +33,19 @@ const route = useRoute()
 const articleData = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const article = articleData.data
 const value = article.value
-if (!value) { throw new Error('article not found') }
 
-const content = convertContent(value.content)
-const publishedAt = ref<string>(value.publishedAt)
+const content = convertContent(value.content) || null
+const publishedAt = ref<string|null>(value.publishedAt || null)
 
 const pageTitleStore = usePageTitleStore()
 useHead({
-  title: value.title,
+  title: value?.title || '記事が見つかりませんでした。',
   meta: [
-    { name: 'description', content: value.subtitle || 'none' },
-    { name: 'title', content: value.title }
+    { name: 'description', content: value?.subtitle || '' },
+    { name: 'title', content: value?.title || '記事が見つかりませんでした。' }
   ]
 })
-const eyecatch:Eyecatch|undefined = value.eyecatch
+const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
       webp: resizeWithTargetWidth(eyecatch, 2000).url,
@@ -55,7 +57,7 @@ const topImg:PictureBoxProp|null = eyecatch
   : null
 
 const pageTitle:PageTitleProp = {
-  title: value.title,
+  title: value?.title || '記事が見つかりませんでした',
   topImg,
   subtitles: article.value?.subtitle ? [article.value.subtitle] : []
 }
