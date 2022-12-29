@@ -84,7 +84,7 @@ const jump = (num:number) => {
   start()
 }
 
-const initialTransition = async (delay = 500) => {
+const initialTransition = async (delay = 300) => {
   await new Promise<void>((resolve) => {
     setTimeout(() => {
       nextPage()
