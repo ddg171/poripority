@@ -2,7 +2,7 @@
   <div
     class="flex flex-col items-center justify-center w-full max-w-full text-white"
   >
-    <section class="w-full h-full p-4 mb-2 md:p-6 bg-darkblue">
+    <ClientContentSection class="h-full ">
       <div class="relative grid w-full grid-cols-1">
         <TopArticleCard
           v-for="a,i in articles"
@@ -13,7 +13,7 @@
           :heading="2"
         />
       </div>
-    </section>
+    </clientcontentsection>
   </div>
 </template>
 
