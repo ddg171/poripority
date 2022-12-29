@@ -12,12 +12,10 @@
           :category="category"
           :heading="2"
         />
-        <div v-if="articles.length ===0" class="w-full">
-          <div v-for="c in limit" :key="c" class="flex items-center justify-center w-full h-48">
-            <h2 v-if="c===0">
-              {{ isLoading?"読み込み中":"記事が見つかりませんでした。" }}
-            </h2>
-          </div>
+        <div v-if="articles.length ===0" class="flex items-center justify-center w-full h-48">
+          <h2>
+            {{ isLoading?"Loading...":"記事が見つかりませんでした。" }}
+          </h2>
         </div>
       </div>
       <ClientBottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
@@ -62,7 +60,6 @@ const category = computed<string>(() => {
   return typeof c === 'string' ? c : ''
 })
 const totalCount = ref<number>(0)
-const currentCount = computed<number>(() => articles.value.length)
 
 const leftNav = computed<LinkParams>(() => {
   const currentPosition = offset.value + articles.value.length
@@ -96,7 +93,7 @@ const loadArticles = async () => {
   const t:PageTitleProp = {
     title,
     topImg: null,
-    subtitles: [`全${totalCount.value}件中${offset.value + currentCount.value}件目までを表示中`]
+    subtitles: [`${offset.value + 1}-${offset.value + articles.value.length}/${totalCount.value}件を表示中`]
   }
   setTitle(t)
   useHead({
@@ -117,7 +114,7 @@ const title = categoryName ? `${categoryName}の記事一覧` : '記事一覧'
 const t:PageTitleProp = {
   title,
   topImg: null,
-  subtitles: [`全${totalCount.value}件中${offset.value + currentCount.value}件目までを表示中`]
+  subtitles: [`${offset.value + 1}-${offset.value + articles.value.length}/${totalCount.value}件を表示中`]
 }
 setTitle(t)
 useHead({
