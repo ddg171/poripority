@@ -10,17 +10,25 @@
 <script setup lang="ts">
 import { LinkParams } from '~~/types'
 
-const props = defineProps<{publishedAt:string}>()
+const props = defineProps<{publishedAt:string|null}>()
 const next = ref<string|null>(null)
 const prev = ref<string|null>(null)
-const getNext = async (publishedAt:string) => {
+const getNext = async (publishedAt:string|null) => {
+  if (!publishedAt) {
+    next.value = ''
+    return
+  }
   const result = await useFetch('/api/blogs/next', { params: { publishedAt } })
 
   const refs = result.data.value?.contents || []
   next.value = refs.length !== 0 ? refs[0].id : null
 }
 
-const getPrev = async (publishedAt:string) => {
+const getPrev = async (publishedAt:string|null) => {
+  if (!publishedAt) {
+    next.value = ''
+    return
+  }
   const result = await useFetch('/api/blogs/prev', { params: { publishedAt } })
   const refs = result.data.value?.contents || []
   prev.value = refs.length !== 0 ? refs[0].id : null
