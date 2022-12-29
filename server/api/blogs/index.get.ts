@@ -17,7 +17,7 @@ export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload
   }
   const category = params.category
   if (category && typeof category === 'string' && !category.includes(',')) {
-    queries.fields = 'fields=' + `category.id=${category}`
+    queries.filters = `category[equals]${category}`
   }
   const res = await client
     .get({

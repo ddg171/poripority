@@ -1,6 +1,7 @@
 import { Eyecatch } from '~~/types'
 
 export function resizeWithTargetWidth (eyecatch:Eyecatch, targetWidth:number, webp:boolean = true):Eyecatch {
+  if (!eyecatch) { return eyecatch }
   const origWidth:number = eyecatch.width
   const origHeight:number = eyecatch.height
   const isBigger:boolean = origWidth > targetWidth
@@ -15,6 +16,7 @@ export function resizeWithTargetWidth (eyecatch:Eyecatch, targetWidth:number, we
 }
 
 export function cropSquare (eyecatch:Eyecatch, webp:boolean = true, size = 400):Eyecatch {
+  if (!eyecatch) { return eyecatch }
   const url = eyecatch.url + `?fit=crop&h=${size}&w=${size}&q=70` + (webp ? '&fm=webp' : '')
   return {
     url,

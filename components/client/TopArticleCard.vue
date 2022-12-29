@@ -1,8 +1,8 @@
 <template>
   <article class="flex flex-col items-start max-w-xl mx-0 my-4 md:flex-row bg-darkblue md:my-2 md:mx-2">
-    <div class="flex items-center justify-center w-full h-48 overflow-hidden md:w-48 md:h-48 shrink-0">
+    <div class="flex items-center justify-center w-full h-48 overflow-hidden md:w-48 md:h-48 shrink-0 bg-darkblue">
       <NuxtLink class="w-full" :to="to">
-        <picture class="w-full">
+        <picture v-if="props.article.eyecatch" class="w-full">
           <source :srcset="cropEyecatch(props.article.eyecatch).url" type="image/webp">
           <img :src=" cropEyecatch(props.article.eyecatch,false).url " height="400" width="400" alt="">
         </picture>
