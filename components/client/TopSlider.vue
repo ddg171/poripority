@@ -1,11 +1,11 @@
 <template>
-  <div class="top-slider-wrapper w-full   mb-4 overflow-hidden">
-    <div class="w-full h-3/4h lg:h-1/2h relative">
-      <div class="top-slider w-full h-full relative">
-        <div v-for="c,i in props.sliderContents" :key="i" class="top-slider-content-wrapper w-full h-full  absolute" :isShow="sliderPage===i">
-          <div class="top-slider-content w-full h-full  relative">
+  <div class="w-full mb-4 overflow-hidden top-slider-wrapper">
+    <div class="relative w-full h-3/4h lg:h-1/2h">
+      <div class="relative w-full h-full top-slider">
+        <div v-for="c,i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper" :isShow="sliderPage===i">
+          <div class="relative w-full h-full top-slider-content">
             <div
-              class="firstview w-full h-full absolute flex justify-center items-center overflow-hidden bg-darkblue  mb-6"
+              class="absolute flex items-center justify-center w-full h-full mb-6 overflow-hidden firstview bg-darkblue"
             >
               <PictureBox
                 :souce="c.pic.souce"
@@ -15,10 +15,10 @@
                 :jpg="c.pic.jpg"
               />
             </div>
-            <div class="slider-text w-full h-full static md:absolute ">
-              <div class="w-full h-full relative">
-                <div class="absolute  w-full md:w-auto top-1/2 ml-5 md:ml-16 lg:ml-20 bg-green/75 p-4">
-                  <h2 class="text-3xl md:text-5xl pb-1 mb-2 border-solid border-l-8  border-l-lightgray pl-2 flex items-center">
+            <div class="static w-full h-full slider-text md:absolute ">
+              <div class="relative w-full h-full">
+                <div class="absolute w-full p-4 ml-5 md:w-auto top-1/2 md:ml-16 lg:ml-20 bg-green/75">
+                  <h2 class="flex items-center pb-1 pl-2 mb-2 text-3xl border-l-8 border-solid md:text-5xl border-l-lightgray">
                     <NuxtLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                       {{ c.text.title }}
                     </NuxtLink>
@@ -32,18 +32,18 @@
             </div>
           </div>
         </div>
-        <div class="w-full my-2 md:my-5  flex justify-center absolute inset-x-0 bottom-0 z-10">
+        <div class="absolute inset-x-0 bottom-0 z-10 flex justify-center w-full my-2 md:my-5">
           <button
             v-for="c in contentNum"
             :key="c"
-            class="slider-page-btn mx-2  h-6 w-6 border-solid bg-lightgray ease-in duration-75 shadow-2xl"
+            class="w-6 h-6 mx-2 duration-75 ease-in border-solid shadow-2xl slider-page-btn bg-lightgray"
             :isCurrent="c===sliderPage+1"
             aria-label="スライダーのページ移動"
             tabindex="0"
             @click="jump(c-1)"
           />
-          <button class="slider-toggle-btn mx-4 h-6 w-6  relative bg-lightgray  shadow-2xl" aria-label="スライダーの停止・再生." :isStopped="timerId === 0" tabindex="0" @click="toggle">
-            <span class=" absolute border-solid border-gray" />
+          <button class="relative w-6 h-6 mx-4 shadow-2xl slider-toggle-btn bg-lightgray" aria-label="スライダーの停止・再生." :isStopped="timerId === 0" tabindex="0" @click="toggle">
+            <span class="absolute border-solid border-gray" />
           </button>
         </div>
       </div>
@@ -60,7 +60,7 @@ interface Props {
     duration:number
 }
 
-const sliderPage = ref<number>(0)
+const sliderPage = ref<number>(-1)
 const timerId = ref<number>(0)
 
 const props = withDefaults(defineProps<Props>(), { sliderContents: () => [], duration: 5000 })
@@ -84,6 +84,15 @@ const jump = (num:number) => {
   start()
 }
 
+const initialTransition = async (delay = 500) => {
+  await new Promise<void>((resolve) => {
+    setTimeout(() => {
+      nextPage()
+      resolve()
+    }, delay)
+  })
+}
+
 const stop = () => {
   clearInterval(timerId.value)
   timerId.value = 0
@@ -98,8 +107,9 @@ const toggle = () => {
   start()
 }
 
-onMounted(() => {
+onMounted(async () => {
   if (timerId.value) { return }
+  await initialTransition()
   start()
 })
 
