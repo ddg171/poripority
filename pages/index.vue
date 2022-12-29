@@ -1,27 +1,27 @@
 <template>
-  <div class="w-full flex flex-col justify-center items-center text-white">
+  <div class="flex flex-col items-center justify-center w-full text-white">
     <TopSlider :slider-contents="sliderContents" :duration="5000" />
 
     <TopSection>
       <Header2>
         最新投稿
       </Header2>
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2 relative">
+      <div class="relative grid w-full grid-cols-1 lg:grid-cols-2">
         <ArticleCard v-for="a in latest" :key="a.id" :article="a" />
         <template v-if="latest.length===0">
-          <div class="bg-green my-4 mx-0 md:my-2 md:mx-2 col-span-1">
-            <div class="w-full h-48   md:h-48  shrink-0 flex justify-center items-center overflow-hidden">
+          <div class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
+            <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0">
               <p class="text-2xl">
                 投稿はありません。
               </p>
             </div>
           </div>
-          <div v-for="i in 2" :key="i" class="bg-green my-4 mx-0 md:my-2 md:mx-2 col-span-1">
-            <div class="w-full h-48   md:h-48  shrink-0 flex justify-center items-center overflow-hidden" />
+          <div v-for="i in 2" :key="i" class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
+            <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0" />
           </div>
         </template>
-        <div class="w-full h-full lg:max-w-xl flex justify-center items-center mx-2">
-          <NuxtLink to="/blog" class="readmore-link w-full h-full flex justify-center items-center bg-green border-solid border border-green/50 hover:border-lightgray text-3xl py-3 my-0 md:my-3 hover:underline">
+        <div class="flex items-center justify-center w-full h-full mx-2 lg:max-w-xl">
+          <NuxtLink to="/blog" class="flex items-center justify-center w-full h-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen md:my-3 hover:underline">
             記事一覧へ
           </NuxtLink>
         </div>
@@ -31,7 +31,7 @@
       <Header2>
         SNS
       </Header2>
-      <div class="w-full flex flex-col lg:flex-row items-center lg:items-start justify-center ">
+      <div class="flex flex-col items-center justify-center w-full lg:flex-row lg:items-start ">
         <TwitterWidget />
         <InstagramWidget />
         <DiscoreWidget />
