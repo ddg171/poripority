@@ -28,6 +28,13 @@ module.exports = {
         '1/2h': '50vh',
         '3/4h': '75vh'
       },
+      'min-height': {
+        '1/5h': '20vh',
+        '1/4h': '25vh',
+        '1/3h': '33vh',
+        '1/2h': '50vh',
+        '3/4h': '75vh'
+      },
       maxWidth: {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px'
