@@ -5,7 +5,7 @@ export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload
   const params = getQuery(event)
   const queries:Api.BlogQuery = {
     orders: '-publishedAt',
-    fields: 'id,title,subtitle,eyecatch,updatedAt,createdAt,category'
+    fields: 'id,title,subtitle,eyecatch,updatedAt,createdAt,publishedAt,category'
   }
   const limit = Number(params.limit)
   if (!isNaN(limit)) {

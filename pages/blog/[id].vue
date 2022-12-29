@@ -3,17 +3,7 @@
   <section class="w-full  h-full  min-h-screen p-4 md:p-6 bg-darkblue mb-2">
     <article class="cms-content flex flex-col gap-4 text-white" v-html="content" />
     <hr class="my-4">
-    <div class="w-full flex justify-center items-center">
-      <nuxt-link to="/blog" class="border-2 text-white hover:bg-green text-lg">
-        新しい記事へ
-      </nuxt-link>
-      <nuxt-link to="/blog" class="border-2 text-white hover:bg-green text-lg">
-        記事一覧へ
-      </nuxt-link>
-      <nuxt-link to="/blog" class="border-2 text-white hover:bg-green text-lg">
-        古い記事へ
-      </nuxt-link>
-    </div>
+    <client-article-links :published-at="publishedAt" />
   </section>
 </template>
 
@@ -28,12 +18,13 @@ definePageMeta({
 
 const route = useRoute()
 
-const { data } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
-const article = data
+const articleData = await useFetch<Article>(`/api/blogs/${route.params.id}`)
+const article = articleData.data
 const value = article.value
 if (!value) { throw new Error('article not found') }
 
 const content = convertContent(value.content)
+const publishedAt = ref<string>(value.publishedAt)
 
 const pageTitleStore = usePageTitleStore()
 useHead({
@@ -41,10 +32,7 @@ useHead({
   meta: [
     { name: 'description', content: value.subtitle || 'none' },
     { name: 'title', content: value.title }
-  ],
-  bodyAttrs: {
-    class: 'test'
-  }
+  ]
 })
 const eyecatch:Eyecatch|undefined = value.eyecatch
 const topImg:PictureBoxProp|null = eyecatch
