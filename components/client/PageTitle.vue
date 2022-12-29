@@ -1,12 +1,12 @@
 <template>
-  <div class="top-slider-wrapper w-full   mb-4 overflow-hidden">
-    <div class="w-full h-1/4h lg:h-1/3h relative">
-      <div class="page-title w-full h-full relative">
-        <div class="w-full h-full  absolute">
-          <div class="top-slider-content w-full h-full  relative">
+  <div class="w-full mb-4 overflow-hidden top-slider-wrapper">
+    <div class="relative w-full h-1/4h lg:h-1/3h">
+      <div class="relative w-full h-full page-title">
+        <div class="absolute w-full h-full">
+          <div class="relative w-full h-full top-slider-content">
             <div
               v-if="img"
-              class="firstview w-full h-full absolute flex justify-center items-center overflow-hidden bg-darkblue  mb-6"
+              class="absolute flex items-center justify-center w-full h-full mb-6 overflow-hidden firstview bg-darkblue"
             >
               <PictureBox
                 :souce="img.souce"
@@ -16,13 +16,13 @@
                 :jpg="img.jpg"
               />
             </div>
-            <div class="title-box w-full h-full static md:absolute backdrop-blur-sm">
-              <div class="w-full h-full relative">
-                <div class="absolute  w-full md:w-auto h-full sm:h-auto top-0 sm:top-8 md:top-1/3 ml-0 sm:ml-1 md:ml-16 lg:ml-20 bg-green/75 p-4 flex flex-col justify-center items-center">
-                  <h1 class="text-3xl md:text-5xl pb-1 mb-0 sm:mb-2 border-solid border-l-8  text-white border-l-lightgray pl-2 flex items-center">
+            <div class="static w-full h-full title-box md:absolute backdrop-blur-sm">
+              <div class="relative w-full h-full">
+                <div class="absolute top-0 flex flex-col items-center justify-center w-full h-full p-4 ml-0 md:w-auto sm:h-auto sm:top-8 md:top-1/3 sm:ml-1 md:ml-16 lg:ml-20 bg-green/75">
+                  <h1 class="flex items-center pb-1 pl-2 mb-0 text-xl text-white border-l-8 border-solid md:text-5xl sm:mb-2 border-l-lightgray">
                     <span>{{ title }}</span>
                   </h1>
-                  <p v-for="t , i in subtitles" :key="i" class="text- md:text-xl text-white">
+                  <p v-for="t , i in subtitles" :key="i" class="text-white text-md md:text-xl">
                     {{ t }}
                   </p>
                 </div>
