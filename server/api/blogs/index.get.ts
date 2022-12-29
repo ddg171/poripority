@@ -15,6 +15,10 @@ export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload
   if (!isNaN(offset)) {
     queries.offset = offset
   }
+  const category = params.category
+  if (category && typeof category === 'string' && !category.includes(',')) {
+    queries.fields = 'fields=' + `category.id=${category}`
+  }
   const res = await client
     .get({
       endpoint: 'blogs',
