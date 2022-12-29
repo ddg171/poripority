@@ -1,9 +1,18 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <section class="w-full  h-full  min-h-screen p-4 md:p-6 bg-darkblue mb-2">
+  <section class="w-full   p-4 md:p-6 bg-darkblue mb-2">
     <article class="cms-content flex flex-col gap-4 text-white" v-html="content" />
     <hr class="my-4">
-    <client-article-links :published-at="publishedAt" />
+    <suspense>
+      <template #default>
+        <client-article-Navigation :published-at="publishedAt" />
+      </template>
+      <template #fallback>
+        <div class="w-full flex  text-white text-lg justify-center items-center">
+          Loading...
+        </div>
+      </template>
+    </suspense>
   </section>
 </template>
 
