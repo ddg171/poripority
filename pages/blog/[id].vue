@@ -33,6 +33,9 @@ const route = useRoute()
 const articleData = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const article = articleData.data
 const value = article.value
+if (!value) {
+  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+}
 
 const content = convertContent(value.content) || null
 const publishedAt = ref<string|null>(value.publishedAt || null)
