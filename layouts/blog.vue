@@ -22,10 +22,7 @@
           </aside>
         </div>
       </div>
-
-      <footer class="w-full h-32 border-t-4 border-t-solid border-red bg-lightgray ">
-        footer
-      </footer>
+      <ClientMyFooter />
     </div>
   </div>
 </template>
