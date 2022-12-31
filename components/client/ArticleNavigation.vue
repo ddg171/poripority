@@ -37,16 +37,18 @@ const getPrev = async (publishedAt:string|null) => {
 await Promise.allSettled([getNext(props.publishedAt), getPrev(props.publishedAt)])
 
 const center = ref<LinkParams>({ path: '/blog', name: '記事一覧へ' })
-const left = computed<LinkParams>(() => {
+const left = computed<LinkParams|null>(() => {
+  if (!next.value) { return null }
   return {
     name: '新しい記事へ',
-    path: next.value ? `/blog/${next.value}` : ''
+    path: `/blog/${next.value}`
   }
 })
-const right = computed<LinkParams>(() => {
+const right = computed<LinkParams|null>(() => {
+  if (!prev.value) { return null }
   return {
     name: '古い記事へ',
-    path: prev.value ? `/blog/${prev.value}` : ''
+    path: `/blog/${prev.value}`
   }
 })
 
