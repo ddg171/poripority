@@ -7,7 +7,7 @@ export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload
   const limit = 1
   const filters:string = `publishedAt[greater_than]${publishedAt}`
   const queries:Api.BlogQuery = {
-    orders: '-publishedAt',
+    orders: 'publishedAt',
     fields: 'id,title,publishedAt,category',
     filters,
     limit
