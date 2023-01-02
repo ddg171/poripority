@@ -87,7 +87,8 @@ const defaultContents:SliderContent[] = [
       title: 'Wargame: Red dragon',
       para: [
         '冷戦時代を舞台としたRTS'
-      ]
+      ],
+      to: '/blog?category=z_oug044yh'
     }
   },
   {

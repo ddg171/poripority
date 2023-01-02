@@ -8,8 +8,11 @@ export const usePageTitleStore = () => {
     () => { return { title: '記事一覧', topImg: null, subtitles: [] } })
   return {
     state,
-    set: set(state)
+    set: set(state),
+    init: init(state)
   }
 }
 
 const set = (state:Ref<PageTitleProp>) => (t:PageTitleProp) => { state.value = t }
+
+const init = (state:Ref<PageTitleProp>) => () => { state.value = { title: '記事一覧', topImg: null, subtitles: [] } }
