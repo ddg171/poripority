@@ -24,7 +24,7 @@
               </NuxtLink>
             </li>
             <li class="w-full p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
-              <NuxtLink :to="`/works`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
+              <NuxtLink :to="`/works#yodo`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
                 Yodobashic photo maker
               </NuxtLink>
             </li>
@@ -72,7 +72,12 @@
           <template #status>
             運用中
           </template>
-          <template #pic />
+          <template #pic>
+            <picture class="">
+              <source srcset="/images/webp/works-img02-02w640.webp" type="image/webp">
+              <img src="/images/works-img02-02w640.jpg" height="400" width="400" alt="">
+            </picture>
+          </template>
           <template #introduction>
             <p class="works-indent mb-2">
               "Wargame Red dragon"というゲームのリプレイデータを投稿、共有するWebアプリ。
@@ -94,7 +99,12 @@
           <template #status>
             運用中
           </template>
-          <template #pic />
+          <template #pic>
+            <picture class="">
+              <source srcset="/images/webp/works-img02-03w640.webp" type="image/webp">
+              <img src="/images/works-img02-03w640.jpg" height="400" width="400" alt="">
+            </picture>
+          </template>
           <template #introduction>
             <p class="works-indent mb-2">
               Qiitaで実施された2020年のアドベントカレンダー「湯婆婆 Advent Calendar 2020」に参加するために制作。
@@ -106,6 +116,29 @@
               結構盛りだくさんなので完成したときにはそこそこ嬉しかった記憶がある。
             </p>
             <p>一応費用の請求があるのだが、1円とか2円とかもはや駄菓子も変えないような額なので懐にも優しい。</p>
+          </template>
+        </ClientWorksArticle>
+        <ClientWorksArticle id="yodo">
+          <template #name>
+            Yodobashic photo maker
+          </template>
+          <template #status>
+            制作中断
+          </template>
+          <template #pic>
+            <div class="h-64 w-64">
+              no image
+            </div>
+          </template>
+          <template #introduction>
+            <p class="works-indent mb-2">
+              人生で初めて作ったGUIアプリ。画像のEXIF情報を文字入れした上で縮小して出力するという物で今でもたまに使っている。
+            </p>
+            <p class="works-indent mb-2">
+              中身はPython+TKinterという構成で、完成したときはかなり嬉しかった記憶がある、
+              出力画像にEXIFが乗らないという問題もあるが、SNSにはそのほうが安全なのでこれはこれでよし。
+            </p>
+            <p>このアプリを作ってからしばらくしてJavaScriptばかり触るようになってしまったため、もはや中のコードがわからなくなり放置している。</p>
           </template>
         </ClientWorksArticle>
       </ClientContentSection>
