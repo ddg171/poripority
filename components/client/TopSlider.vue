@@ -39,10 +39,18 @@
             class="w-6 h-6 mx-2 duration-75 ease-in border-solid shadow-2xl slider-page-btn bg-lightgray"
             :isCurrent="c===sliderPage+1"
             aria-label="スライダーのページ移動"
+            title="スライダーのページ移動"
             tabindex="0"
             @click="jump(c-1)"
           />
-          <button class="relative w-6 h-6 mx-4 shadow-2xl slider-toggle-btn bg-lightgray" aria-label="スライダーの停止・再生." :isStopped="timerId === 0" tabindex="0" @click="toggle">
+          <button
+            class="relative w-6 h-6 mx-4 shadow-2xl slider-toggle-btn bg-lightgray"
+            aria-label="スライダーの停止・再生切替"
+            title="スライダーの停止・再生切替"
+            :isStopped="timerId === 0"
+            tabindex="0"
+            @click="toggle"
+          >
             <span class="absolute border-solid border-gray" />
           </button>
         </div>
