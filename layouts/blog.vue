@@ -1,25 +1,37 @@
 <template>
-  <div class="min-h-screen flex flex-col ">
+  <div class="flex flex-col items-center min-h-screen">
     <MyHeader />
-    <div class="w-full min-h-full flex  flex-col lg:flex-row items-center lg:items-start lg:justify-center">
-      <aside class="w-full lg:w-48  h-12 lg:h-60 bg-darkblue text-white sticky top-4 m-0 lg:m-4">
-        <ul class="w-full flex flex-row lg:flex-col">
-          <li>hoge</li>
-          <li>huga</li>
-          <li>piyo</li>
-        </ul>
-      </aside>
-      <main class="w-full flex bg-transparent max-w-4xl m-2 lg:m-4 ">
-        <slot />
-      </main>
-      <div class="w-full lg:w-48 h-12 lg:h-60 bg-transparent" />
+    <div class="flex flex-col items-center w-full">
+      <ClientPageTitle :title="state.title" :top-img="state.topImg" :subtitles="state.subtitles" />
+      <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row">
+        <main class="flex flex-col items-center w-full max-w-full bg-transparent md:max-w-3xl ">
+          <suspense>
+            <template #default>
+              <slot />
+            </template>
+            <template #fallback>
+              <div class="flex flex-col w-full h-full p-6 text-white">
+                Loading...
+              </div>
+            </template>
+          </suspense>
+        </main>
+        <div class="sticky top-0 w-full mx-0 md:max-w-3xl lg:w-80  lg:mx-1">
+          <aside class="w-full p-4 text-white md:max-w-3xl lg:w-72 min-h-96 bg-darkblue md:p-6 ">
+            <ClientCategoryList />
+          </aside>
+        </div>
+      </div>
+      <ClientMyFooter />
     </div>
-    <footer class="border-t-solid border-t-4 border-red w-full h-60 bg-lightgray ">
-      footer
-    </footer>
   </div>
 </template>
 
 <script lang="ts" setup>
+
 import MyHeader from '~~/components/client/MyHeader.vue'
+
+const pageTitleStore = usePageTitleStore()
+const { state } = pageTitleStore
+
 </script>

@@ -5,20 +5,27 @@ export interface LinkParams {
     path:string
 }
 
-export interface SliderContent {
-    pic: {
-        souce: string[]
-        webp: string
-        jpg: string
-        alt: string
-        title: string
+export interface PictureBoxProp {
+    souce: string[]
+    webp: string
+    jpg: string
+    alt: string
+    title: string
+}
 
-      },
+export interface SliderContent {
+    pic: PictureBoxProp,
       text: {
         title: string,
         para: string[],
         to?:string
       }
+}
+
+export interface PageTitleProp {
+    title:string,
+    topImg:PictureBoxProp|null,
+    subtitles:string[]
 }
 
 export interface Reference{
@@ -35,10 +42,10 @@ export interface Eyecatch{
 
 interface Commonschema{
     id:string
-    createdAt:Date
-    updatedAt:Date
-    publishedAt:Date
-    revisedAt:Date
+    createdAt:string
+    updatedAt:string
+    publishedAt:string
+    revisedAt:string
 }
 
 export interface Category extends Commonschema{
@@ -54,11 +61,13 @@ export interface Article extends Commonschema {
     references:Reference[]|null
 }
 
+export type ArticleRef = Omit<Article, 'createdAt'|'updatedAt'|'revisedAt'|'subtitle'|'content'|'eyecatch'|'references'>
+
 export type ArticleList = Omit<Article, |'content'|'references'>
 
 export namespace Api {
-    export type IndexResponsePayload ={
-        contents:Article[]
+    export type IndexResponsePayload<T=Article|Category|ArticleRef> ={
+        contents:T[]
         totalCount: number
         offset?: number
         limit?:number
@@ -67,8 +76,10 @@ export namespace Api {
         limit?:number
         offset?:number
         orders:string
-        fields:'id,title,subtitle,eyecatch,updatedAt,createdAt,category'
+        filters?:string
+        fields:'id,title,category' |string
       }
+
 }
 
 export interface WindowWithEmbed extends Window {

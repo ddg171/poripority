@@ -1,64 +1,104 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <section class="w-full p-4 h-full bg-darkblue">
-    <article class="microcms-content flex flex-col gap-4 text-white" v-html="content" />
+  <ClientContentSection>
+    <article v-if="content" class="flex flex-col gap-4 text-white cms-content" v-html="content" />
+    <article v-else class="flex flex-col gap-4 text-white cms-content">
+      記事が見つかりませんでした。
+    </article>
     <hr class="my-4">
-    <div>
-      <nuxt-link to="/blog" class="border-2">
-        back
-      </nuxt-link>
-    </div>
-  </section>
+    <suspense>
+      <template #default>
+        <client-article-Navigation :published-at="publishedAt" :category="category" />
+      </template>
+      <template #fallback>
+        <div class="flex items-center justify-center w-full text-lg text-white">
+          Loading...
+        </div>
+      </template>
+    </suspense>
+  </ClientContentSection>
 </template>
 
 <script setup lang="ts">
-import { Article } from '../../types'
+import { Article, Eyecatch, PageTitleProp, PictureBoxProp } from '../../types'
 import { convertContent } from '~~/components/contentParser'
+import { resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
+
+definePageMeta({
+  layout: 'blog'
+})
 
 const route = useRoute()
-const emit = defineEmits(['click-img'])
 
-const { data } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
-const article = data
-const content = convertContent(article.value.content)
+const category = ref<string|null>(route.query?.category?.toString() || null)
+const articleData = await useFetch<Article>(`/api/blogs/${route.params.id}`)
+const article = articleData.data
+const value = article.value
+if (!value) {
+  throw createError({ statusCode: 404, statusMessage: '記事が見つかりませんでした。' })
+}
 
+const content = convertContent(value.content) || null
+const publishedAt = ref<string|null>(value.publishedAt || null)
+
+const pageTitleStore = usePageTitleStore()
 useHead({
-  title: article.value.title,
-  // or, instead:
-  // titleTemplate: (title) => `My App - ${title}`,
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-  charset: 'utf-8',
+  title: value?.title || '記事が見つかりませんでした。',
   meta: [
-    { name: 'description', content: article.value.subtitle || 'none' },
-    { name: 'title', content: article.value.title }
-  ],
-  bodyAttrs: {
-    class: 'test'
-  }
+    { name: 'description', content: value?.subtitle || '' },
+    { name: 'title', content: value?.title || '記事が見つかりませんでした。' }
+  ]
 })
-onMounted(() => {
-  nextTick(() => {
-    const imgs = document.querySelectorAll('img')
-    imgs.forEach((img:HTMLImageElement) => {
-      img.addEventListener('click', () => {
-        const originalUrl = img.getAttribute('data-src-url')
-        emit('click-img', originalUrl || img.src || null)
-      })
-    })
-  })
+const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
+const topImg:PictureBoxProp|null = eyecatch
+  ? {
+      webp: resizeWithTargetWidth(eyecatch, 2000).url,
+      souce: [`${resizeWithTargetWidth(eyecatch, 640).url} 640w`, `${resizeWithTargetWidth(eyecatch, 1270).url} 1024w`],
+      jpg: resizeWithTargetWidth(eyecatch, 640, false).url,
+      alt: '',
+      title: ''
+    }
+  : null
+
+const pageTitle:PageTitleProp = {
+  title: value?.title || '記事が見つかりませんでした',
+  topImg,
+  subtitles: article.value?.subtitle ? [article.value.subtitle] : []
+}
+
+pageTitleStore.set(pageTitle)
+
+onBeforeUnmount(() => {
+  pageTitleStore.init()
 })
+
 </script>
 
-<style scoped>
-article h2{
+<style>
+.cms-content{
+  display: flex;
+  flex-direction: column;
+
+}
+
+.cms-content>p,
+.cms-content>img{
+  margin-bottom: 1.5rem;
+}
+
+.cms-content h1{
   font-size: 1.5rem !important;
 }
 
-article h3{
+.cms-content h2{
+  font-size: 1.5rem !important;
+}
+
+.cms-content h3{
   font-size: 1.25rem !important;
 }
 
-.microcms-content>p>a>img{
+.cms-content img{
   height:500px;
 }
 </style>

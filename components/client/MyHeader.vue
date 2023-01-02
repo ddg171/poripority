@@ -11,9 +11,10 @@
 import SiteName from './SiteName.vue'
 import NavBar from './NavBar.vue'
 const menus = [
-  { name: 'About', path: '/' },
-  { name: 'Works', path: '/' },
-  { name: 'blog', path: '/blog' }
+  { name: 'TOP', path: '/' },
+  { name: 'Blog', path: '/blog' },
+  { name: 'Works', path: '/works' },
+  { name: 'About', path: '/about' }
 ]
 
 const isSticky = ref<boolean>(false)
