@@ -16,7 +16,7 @@
             </template>
           </suspense>
         </main>
-        <div class="sticky top-0 w-full mx-0 md:max-w-3xl lg:w-72  lg:mx-1">
+        <div class="sticky top-0 w-full mx-0 md:max-w-3xl lg:w-80  lg:mx-1">
           <aside class="w-full p-4 text-white md:max-w-3xl lg:w-72 min-h-96 bg-darkblue md:p-6 ">
             <ClientCategoryList />
           </aside>

@@ -31,6 +31,7 @@ definePageMeta({
   layout: 'blog'
 })
 const isLoading = ref<boolean>(true)
+const route = useRoute()
 const pageTitleStore = usePageTitleStore()
 const categoryStore = useCategoryStore()
 
@@ -43,8 +44,6 @@ const clearArticles = () => {
 }
 
 const articles = ref<Article[]>([])
-
-const route = useRoute()
 
 const offset = computed<number>(() => {
   const o = Number(route.query?.offset)
@@ -104,8 +103,12 @@ const loadArticles = async () => {
 watch(() => route.query.category, loadArticles)
 watch(() => route.query.offset, loadArticles)
 
-const setTilte = () => {
-  const categoryName = getCategory(category.value)?.name
+const setTilte = async () => {
+  let categoryName :string|null = getCategory(category.value)?.name || null
+  if (!categoryName) {
+    const { data } = await useFetch(`/api/category/${category.value}`)
+    categoryName = data.value?.name || null
+  }
   const title = categoryName ? `${categoryName}の記事一覧` : '記事一覧'
   const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
   const t:PageTitleProp = {
@@ -122,7 +125,7 @@ const setTilte = () => {
 const { data } = await useFetch('/api/blogs', { params: { limit: limit.value, offset: offset.value, category: category.value } })
 totalCount.value = data.value?.totalCount || 0
 articles.value = data.value?.contents || []
-onMounted(setTilte)
+await setTilte()
 
 isLoading.value = false
 
