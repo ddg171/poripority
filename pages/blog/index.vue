@@ -104,21 +104,26 @@ const loadArticles = async () => {
 watch(() => route.query.category, loadArticles)
 watch(() => route.query.offset, loadArticles)
 
+const setTilte = () => {
+  const categoryName = getCategory(category.value)?.name
+  const title = categoryName ? `${categoryName}の記事一覧` : '記事一覧'
+  const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
+  const t:PageTitleProp = {
+    title,
+    topImg: null,
+    subtitles: [subtitle]
+  }
+  pageTitleStore.set(t)
+  useHead({
+    title: title + '|WIP'
+  })
+}
+
 const { data } = await useFetch('/api/blogs', { params: { limit: limit.value, offset: offset.value, category: category.value } })
 totalCount.value = data.value?.totalCount || 0
 articles.value = data.value?.contents || []
-const categoryName = getCategory(category.value)?.name
-const title = categoryName ? `${categoryName}の記事一覧` : '記事一覧'
-const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
-const t:PageTitleProp = {
-  title,
-  topImg: null,
-  subtitles: [subtitle]
-}
-pageTitleStore.set(t)
-useHead({
-  title: title + '|WIP'
-})
+onMounted(setTilte)
+
 isLoading.value = false
 
 onBeforeUnmount(() => {
