@@ -4,7 +4,7 @@
     <article v-if="content" class="flex flex-col gap-4 text-white cms-content" v-html="content" />
     <article v-else class="flex flex-col gap-4 text-white cms-content">
       記事が見つかりませんでした。
-    </article>>
+    </article>
     <hr class="my-4">
     <suspense>
       <template #default>
@@ -35,7 +35,7 @@ const articleData = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const article = articleData.data
 const value = article.value
 if (!value) {
-  throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+  throw createError({ statusCode: 404, statusMessage: '記事が見つかりませんでした。' })
 }
 
 const content = convertContent(value.content) || null
