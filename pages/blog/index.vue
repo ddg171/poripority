@@ -34,10 +34,6 @@ const isLoading = ref<boolean>(true)
 const pageTitleStore = usePageTitleStore()
 const categoryStore = useCategoryStore()
 
-const setTitle = (pageTitle:PageTitleProp) => {
-  pageTitleStore.set(pageTitle)
-}
-
 const getCategory = (id:string):Category|null => {
   return categoryStore.get(id)
 }
@@ -61,15 +57,17 @@ const category = computed<string>(() => {
 })
 const totalCount = ref<number>(0)
 
-const leftNav = computed<LinkParams>(() => {
+const leftNav = computed<LinkParams|null>(() => {
   const currentPosition = offset.value + articles.value.length
+  if (offset.value <= 0) { return null }
   // const rem = currentPosition % limit.value === 0 ? limit.value : currentPosition % limit.value
   const p = currentPosition <= limit.value ? '' : `/blog?offset=${offset.value - limit.value}`
   return { path: p, name: `前の${limit.value}件` }
 })
 const centerNav = computed<LinkParams>(() => { return { path: '/blog', name: '記事一覧へ' } })
-const rightNav = computed<LinkParams>(() => {
+const rightNav = computed<LinkParams|null>(() => {
   const currentPosition = offset.value + articles.value.length
+  if (totalCount.value - currentPosition <= 0) { return null }
   let p = currentPosition >= totalCount.value ? '' : `/blog?offset=${currentPosition}`
   if (category.value) {
     p = p + `&category=${category.value}`
@@ -93,9 +91,9 @@ const loadArticles = async () => {
   const t:PageTitleProp = {
     title,
     topImg: null,
-    subtitles: [`${offset.value + 1}-${offset.value + articles.value.length}/${totalCount.value}件を表示中`]
+    subtitles: [`全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`]
   }
-  setTitle(t)
+  pageTitleStore.set(t)
   useHead({
     title: title + '|WIP'
   })
@@ -111,15 +109,20 @@ totalCount.value = data.value?.totalCount || 0
 articles.value = data.value?.contents || []
 const categoryName = getCategory(category.value)?.name
 const title = categoryName ? `${categoryName}の記事一覧` : '記事一覧'
+const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
 const t:PageTitleProp = {
   title,
   topImg: null,
-  subtitles: [`${offset.value + 1}-${offset.value + articles.value.length}/${totalCount.value}件を表示中`]
+  subtitles: [subtitle]
 }
-setTitle(t)
+pageTitleStore.set(t)
 useHead({
   title: title + '|WIP'
 })
 isLoading.value = false
+
+onBeforeUnmount(() => {
+  return pageTitleStore.init()
+})
 
 </script>

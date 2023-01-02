@@ -8,7 +8,7 @@
     <hr class="my-4">
     <suspense>
       <template #default>
-        <client-article-Navigation :published-at="publishedAt" />
+        <client-article-Navigation :published-at="publishedAt" :category="category" />
       </template>
       <template #fallback>
         <div class="flex items-center justify-center w-full text-lg text-white">
@@ -30,6 +30,7 @@ definePageMeta({
 
 const route = useRoute()
 
+const category = ref<string|null>(route.query?.category?.toString() || null)
 const articleData = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const article = articleData.data
 const value = article.value
@@ -66,6 +67,10 @@ const pageTitle:PageTitleProp = {
 }
 
 pageTitleStore.set(pageTitle)
+
+onBeforeUnmount(() => {
+  pageTitleStore.init()
+})
 
 </script>
 
