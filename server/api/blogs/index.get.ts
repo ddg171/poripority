@@ -1,4 +1,5 @@
 import client from '~~/components/server/microCMS'
+import { isNotEmptyString } from '~~/utils/util'
 import { Api, Article } from '~~/types'
 
 export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<Article>> => {
@@ -16,7 +17,7 @@ export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload
     queries.offset = offset
   }
   const category = params.category
-  if (category && typeof category === 'string' && !category.includes(',')) {
+  if (isNotEmptyString(category)) {
     queries.filters = `category[equals]${category}`
   }
   const res = await client

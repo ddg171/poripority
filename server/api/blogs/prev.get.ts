@@ -1,11 +1,16 @@
 import client from '~~/components/server/microCMS'
+import { isNotEmptyString } from '~~/utils/util'
 import { Api, ArticleRef } from '~~/types'
 
 export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<ArticleRef>> => {
   const params = getQuery(event)
   const publishedAt = params.publishedAt
+  const category = params.category
   const limit = 1
-  const filters:string = `publishedAt[less_than]${publishedAt}`
+  let filters:string = `publishedAt[less_than]${publishedAt}`
+  if (isNotEmptyString(category)) {
+    filters = filters + `[and]category[equals]${category}`
+  }
   const queries:Api.BlogQuery = {
     orders: '-publishedAt',
     fields: 'id,title,publishedAt,category',
