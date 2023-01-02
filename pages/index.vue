@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white">
-    <TopSlider :slider-contents="sliderContents" :duration="5000" />
+    <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
         <Header2>
@@ -42,8 +42,6 @@
 </template>
 
 <script setup lang="ts">
-
-import TopSlider from '~~/components/client/TopSlider.vue'
 
 import Header2 from '~~/components/client/Header2.vue'
 import ArticleCard from '~~/components/client/TopArticleCard.vue'
