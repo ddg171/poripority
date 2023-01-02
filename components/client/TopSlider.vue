@@ -1,7 +1,10 @@
 <template>
   <div class="w-full mb-4 overflow-hidden top-slider-wrapper">
     <div class="relative w-full h-3/4h lg:h-1/2h">
-      <div class="relative w-full h-full top-slider">
+      <div class="relative w-full h-full top-slider flex justify-center items-center">
+        <p class="text-white text-3xl">
+          loading...
+        </p>
         <div v-for="c,i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper" :isShow="sliderPage===i">
           <div class="relative w-full h-full top-slider-content">
             <div
@@ -156,4 +159,5 @@ onMounted(async () => {
     transform-origin: 50% 50%;
 
 }
+
 </style>
