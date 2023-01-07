@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center w-full text-white">
+  <div class="page-index flex flex-col items-center justify-center w-full text-white">
     <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
@@ -32,9 +32,9 @@
           SNS
         </Header2>
         <div class="flex flex-col items-center justify-center w-full lg:flex-row lg:items-start ">
-          <TwitterWidget />
+          <!-- <TwitterWidget />
           <InstagramWidget />
-          <DiscoreWidget />
+          <DiscoreWidget /> -->
         </div>
       </ClientContentSection>
     </div>

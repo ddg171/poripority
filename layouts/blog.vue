@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center min-h-screen">
+  <div class="layout-blog flex flex-col items-center min-h-screen">
     <MyHeader />
     <div class="flex flex-col items-center w-full">
       <ClientPageTitle :title="state.title" :top-img="state.topImg" :subtitles="state.subtitles" />
