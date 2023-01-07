@@ -27,9 +27,9 @@
           SNS
         </Header2>
         <div class="flex flex-col items-center justify-center w-full lg:flex-row lg:items-start ">
-          <!-- <TwitterWidget />
+          <TwitterWidget />
           <InstagramWidget />
-          <DiscoreWidget /> -->
+          <DiscoreWidget />
         </div>
       </ClientContentSection>
     </div>
