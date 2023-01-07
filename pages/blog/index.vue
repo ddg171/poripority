@@ -4,18 +4,20 @@
   >
     <ClientContentSection class="h-full ">
       <div class="relative grid w-full grid-cols-1">
-        <TopArticleCard
-          v-for="a,i in articles"
-          :key="a.id"
-          :article="a"
-          :offset="i+offset"
-          :category="category"
-          :heading="2"
-        />
-        <div v-if="articles.length ===0" class="flex items-center justify-center w-full h-48">
+        <div v-if="pending" class="flex items-center justify-center w-full h-48">
           <h2>
-            {{ articleAPI.pending?"Loading...":"記事が見つかりませんでした。" }}
+            {{ totalCount!==0?"Loading...":"記事が見つかりませんでした。" }}
           </h2>
+        </div>
+        <div v-else>
+          <TopArticleCard
+            v-for="a,i in articles"
+            :key="a.id"
+            :article="a"
+            :offset="i+offset"
+            :category="category"
+            :heading="2"
+          />
         </div>
       </div>
       <ClientBottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
@@ -24,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+import { FetchContext } from 'ohmyfetch'
 import TopArticleCard from '~~/components/client/TopArticleCard.vue'
 import { Article, LinkParams, PageTitleProp } from '~~/types'
 
@@ -40,6 +43,9 @@ const articles = computed<Article[]>(() => {
 })
 const totalCount = computed<number>(() => {
   return articleAPI.data?.value?.totalCount || 0
+})
+const pending = computed<boolean>(() => {
+  return !!articleAPI?.pending
 })
 
 const offset = computed<number>(() => {
@@ -86,7 +92,14 @@ watch(() => route.query.offset, async () => {
 })
 
 // 記事の取得
-const articleAPI = await useFetch('/api/blogs', { params: { limit: limit.value, offset: offset.value, category: category.value } })
+const articleAPI = await useFetch('/api/blogs', {
+  params: { limit: limit.value, offset: offset.value, category: category.value },
+  onRequest (ctx: FetchContext): void {
+    ctx.options.params = {
+      limit: limit.value, offset: offset.value, category: category.value
+    }
+  }
+})
 
 // カテゴリがある場合はカテゴリの取得
 const categoryName:string|null|undefined = category.value ? useFetch(`/api/category/${category.value}`)?.data?.value?.name : null || null
