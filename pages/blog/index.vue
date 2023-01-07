@@ -5,9 +5,9 @@
     <ClientContentSection class="h-full ">
       <div class="relative grid w-full grid-cols-1">
         <div v-if="pending" class="flex items-center justify-center w-full h-48">
-          <h2>
+          <p>
             Loading...
-          </h2>
+          </p>
         </div>
         <div v-else>
           <TopArticleCard
@@ -61,6 +61,7 @@ const category = computed<string>(() => {
   const c = route.query?.category
   return typeof c === 'string' ? c : ''
 })
+const categoryName = ref<string|null>(null)
 
 const rightNav = computed<LinkParams|null>(() => {
   return prev(offset.value, articles.value.length, totalCount.value, limit.value, category.value)
@@ -70,25 +71,28 @@ const leftNav = computed<LinkParams|null>(() => {
   return next(offset.value, articles.value.length, limit.value, category.value)
 })
 
-const setTilte = (category:string|null|undefined = null) => {
+const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true) => {
   const title = category ? `${category}の記事一覧` : '記事一覧'
   const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
   const t:PageTitleProp = {
     title,
     topImg: null,
-    subtitles: [subtitle]
+    subtitles: hasSubtitles ? [subtitle] : []
   }
   pageTitleStore.set(t)
+}
+
+const setTitle = (category:string|null) => {
   useHead({
-    title: title + '|WIP'
+    title: category ? `${category}の記事一覧` : '記事一覧' + '|WIP'
   })
 }
 
 watch(() => route.query.category, async () => {
   await articleAPI?.refresh()
   const { data } = await useFetch(`/api/category/${category.value}`)
-  const categoryName:string|null = data.value?.name || null
-  setTilte(categoryName)
+  categoryName.value = data.value?.name || null
+  setPageTitle(categoryName.value)
   window.scroll(0, 0)
 })
 watch(() => route.query.offset, async () => {
@@ -97,7 +101,7 @@ watch(() => route.query.offset, async () => {
 })
 
 // 記事の取得
-const articleAPI = await useFetch('/api/blogs', {
+const articleAPI = await useLazyFetch('/api/blogs', {
   params: { limit: limit.value, offset: offset.value, category: category.value },
   onRequest (ctx: FetchContext): void {
     ctx.options.params = {
@@ -107,9 +111,15 @@ const articleAPI = await useFetch('/api/blogs', {
 })
 
 // カテゴリがある場合はカテゴリの取得
-const categoryName:string|null|undefined = category.value ? useFetch(`/api/category/${category.value}`)?.data?.value?.name : null || null
+if (category) {
+  const { data: c } = await useFetch(`/api/category/${category.value}`)
+  categoryName.value = c?.value?.name || null
+}
+setTitle(categoryName.value)
 
-setTilte(categoryName)
+onMounted(() => {
+  setPageTitle(categoryName.value, false)
+})
 
 onBeforeUnmount(() => {
   return pageTitleStore.init()
