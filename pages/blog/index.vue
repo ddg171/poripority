@@ -6,7 +6,7 @@
       <div class="relative grid w-full grid-cols-1">
         <div v-if="pending" class="flex items-center justify-center w-full h-48">
           <h2>
-            {{ totalCount!==0?"Loading...":"記事が見つかりませんでした。" }}
+            Loading...
           </h2>
         </div>
         <div v-else>
@@ -18,6 +18,11 @@
             :category="category"
             :heading="2"
           />
+          <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
+            <p>
+              記事が見つかりませんでした。
+            </p>
+          </div>
         </div>
       </div>
       <ClientBottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
@@ -42,10 +47,10 @@ const articles = computed<Article[]>(() => {
   return articleAPI.data?.value?.contents || []
 })
 const totalCount = computed<number>(() => {
-  return articleAPI.data?.value?.totalCount || 0
+  return articleAPI?.data?.value?.totalCount || 0
 })
 const pending = computed<boolean>(() => {
-  return !!articleAPI?.pending
+  return !!articleAPI?.pending.value
 })
 
 const offset = computed<number>(() => {
@@ -57,11 +62,11 @@ const category = computed<string>(() => {
   return typeof c === 'string' ? c : ''
 })
 
-const leftNav = computed<LinkParams|null>(() => {
+const rightNav = computed<LinkParams|null>(() => {
   return prev(offset.value, articles.value.length, totalCount.value, limit.value, category.value)
 })
 const centerNav = computed<LinkParams>(() => { return { path: '/blog', name: '記事一覧へ' } })
-const rightNav = computed<LinkParams|null>(() => {
+const leftNav = computed<LinkParams|null>(() => {
   return next(offset.value, articles.value.length, limit.value, category.value)
 })
 
