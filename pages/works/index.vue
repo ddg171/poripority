@@ -1,35 +1,35 @@
 <template>
-  <div class="flex flex-col items-center justify-center w-full text-white">
+  <div class="page-works flex flex-col items-center justify-center w-full text-white">
     <ClientPageTitle :title="title" :top-img="topImg" :subtitles="subtitles" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
         <ClientHeader2>
           制作物一覧
         </ClientHeader2>
-        <ul>
-          <ul>
-            <li class="w-full p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
+        <div>
+          <ul class="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-2">
+            <li class=" p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
               <NuxtLink :to="`/works#this-site`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
                 The Hut of Poripority
               </NuxtLink>
             </li>
-            <li class="w-full p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
+            <li class="p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
               <NuxtLink :to="`/works#wargame`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
                 Wargame Replay uploader
               </NuxtLink>
             </li>
-            <li class="w-full p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
+            <li class="p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
               <NuxtLink :to="`/works#yubaba`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
                 Firebase湯婆婆
               </NuxtLink>
             </li>
-            <li class="w-full p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
+            <li class="p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
               <NuxtLink :to="`/works#yodo`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
                 Yodobashic photo maker
               </NuxtLink>
             </li>
           </ul>
-        </ul>
+        </div>
       </ClientContentSection>
       <ClientContentSection>
         <ClientWorksArticle id="this-site" :links="linksPrprty">
@@ -118,7 +118,7 @@
             <p>一応費用の請求があるのだが、1円とか2円とかもはや駄菓子も変えないような額なので懐にも優しい。</p>
           </template>
         </ClientWorksArticle>
-        <ClientWorksArticle id="yodo">
+        <ClientWorksArticle id="yodo" :links="[]">
           <template #name>
             Yodobashic photo maker
           </template>
