@@ -18,9 +18,9 @@
           <div class="flex items-center justify-center w-full h-full ">
             <div class="flex flex-col p-4 bg-green/75">
               <h1 class="flex items-center pb-1 pl-2 mb-0 text-xl text-white border-l-8 border-solid md:text-5xl sm:mb-2 border-l-lightgray">
-                <span>{{ title }}</span>
+                <span>{{ state.title }}</span>
               </h1>
-              <p v-for="t , i in subtitles" :key="i" class="text-white text-md md:text-xl">
+              <p v-for="t , i in state.subtitles" :key="i" class="text-white text-md md:text-xl">
                 {{ t }}
               </p>
             </div>
@@ -36,13 +36,8 @@
 import PictureBox from '~~/components/client/PictureBox.vue'
 import { PictureBoxProp } from '~~/types'
 
-  interface Props {
-      topImg:PictureBoxProp|null
-      title:string
-      subtitles:string[]
-  }
-
-const props = withDefaults(defineProps<Props>(), { img: () => null, title: '記事一覧', subtitles: ():string[] => [] })
+const pageTitleStore = usePageTitleStore()
+const { state } = pageTitleStore
 
 const blankImg:PictureBoxProp = {
   webp: '/images/webp/blanktitle01w2000.webp',
@@ -53,7 +48,7 @@ const blankImg:PictureBoxProp = {
 }
 
 const img = computed<PictureBoxProp>(() => {
-  return props.topImg || blankImg
+  return state.value.topImg || blankImg
 })
 
 </script>
