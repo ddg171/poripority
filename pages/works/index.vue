@@ -21,31 +21,35 @@
           </div>
         </div>
       </ClientContentSection>
+
       <ClientContentSection class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-        <ClientWorksArticle id="this-site" :links="linksPrprty">
-          <template #name>
-            The Hut of Poripority
-          </template>
-          <template #status>
-            運用中
-          </template>
-          <template #pic>
-            <picture class="">
-              <source srcset="/images/webp/works-img02-01w640.webp" type="image/webp">
-              <img src="/images/works-img02-01w640.jpg" height="400" width="400" alt="">
-            </picture>
-          </template>
-          <template #introduction>
-            <p class="works-indent mb-2">
-              以前運用していたBloggerから移行すると同時に自分のスキルの確認と復習も兼ねて制作したWebサイト。使用フレームワークはVue3+Nuxt3(SSR)とTailwindCSS。
-              バックエンドはGoogle CloudrunとFirebase Hostingを組み合わせている。
-              Nuxt2(静的サイト)+Firebaseの組み合わせでWebアプリを制作した経験はあったが、SSR時の挙動の把握にかなり苦労した。
-            </p>
-            <p class="works-indent mb-2">
-              今後も機能追加を行いつつ継続して運用していく予定。
-            </p>
-          </template>
-        </ClientWorksArticle>
+        <ClientIntersectionWrapper>
+          <ClientWorksArticle id="this-site" :links="linksPrprty">
+            <template #name>
+              The Hut of Poripority
+            </template>
+            <template #status>
+              運用中
+            </template>
+            <template #pic>
+              <picture class="">
+                <source srcset="/images/webp/works-img02-01w640.webp" type="image/webp">
+                <img src="/images/works-img02-01w640.jpg" height="400" width="400" alt="">
+              </picture>
+            </template>
+            <template #introduction>
+              <p class="works-indent mb-2">
+                以前運用していたBloggerから移行すると同時に自分のスキルの確認と復習も兼ねて制作したWebサイト。使用フレームワークはVue3+Nuxt3(SSR)とTailwindCSS。
+                バックエンドはGoogle CloudrunとFirebase Hostingを組み合わせている。
+                Nuxt2(静的サイト)+Firebaseの組み合わせでWebアプリを制作した経験はあったが、SSR時の挙動の把握にかなり苦労した。
+              </p>
+              <p class="works-indent mb-2">
+                今後も機能追加を行いつつ継続して運用していく予定。
+              </p>
+            </template>
+          </ClientWorksArticle>
+        </ClientIntersectionWrapper>
+
         <ClientWorksArticle id="wargame" :links="linksWgm">
           <template #name>
             Wargame Replay uploader
