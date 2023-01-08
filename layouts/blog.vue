@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col items-center min-h-screen">
+  <div class="layout-blog flex flex-col items-center min-h-screen">
     <MyHeader />
     <div class="flex flex-col items-center w-full">
-      <ClientPageTitle :title="state.title" :top-img="state.topImg" :subtitles="state.subtitles" />
+      <ClientPageTitle />
       <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row">
         <main class="flex flex-col items-center w-full max-w-full bg-transparent md:max-w-3xl ">
           <suspense>
@@ -30,8 +30,5 @@
 <script lang="ts" setup>
 
 import MyHeader from '~~/components/client/MyHeader.vue'
-
-const pageTitleStore = usePageTitleStore()
-const { state } = pageTitleStore
 
 </script>

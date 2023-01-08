@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center w-full text-white">
+  <div class="page-index flex flex-col items-center justify-center w-full text-white">
     <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
@@ -8,18 +8,13 @@
         </Header2>
         <div class="relative grid w-full grid-cols-1 lg:grid-cols-2">
           <ArticleCard v-for="a in latest" :key="a.id" :article="a" />
-          <template v-if="latest.length===0">
-            <div class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
-              <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0">
-                <p class="text-2xl">
-                  投稿はありません。
-                </p>
-              </div>
+          <div v-if="pending" class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
+            <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0">
+              <p class="text-2xl">
+                Loading...
+              </p>
             </div>
-            <div v-for="i in 2" :key="i" class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
-              <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0" />
-            </div>
-          </template>
+          </div>
           <div class="flex items-center justify-center w-full h-full mx-2 lg:max-w-xl">
             <NuxtLink to="/blog" class="flex items-center justify-center w-full h-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen md:my-3 hover:underline">
               記事一覧へ
@@ -51,7 +46,7 @@ import InstagramWidget from '~~/components/client/InstagramWidget.vue'
 import { Article, Eyecatch, SliderContent } from '~~/types'
 import { resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
 
-const { data } = await useFetch('/api/blogs', { params: { limit: 3 } })
+const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })
 
 const contents = data.value?.contents || []
 const latest = reactive<Array<Article>>(contents)

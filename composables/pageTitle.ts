@@ -5,7 +5,7 @@ import { PageTitleProp } from '~~/types'
 
 export const usePageTitleStore = () => {
   const state = useState<PageTitleProp>(
-    () => { return { title: 'データ取得中...', topImg: null, subtitles: [] } })
+    () => { return { title: '', topImg: null, subtitles: [] } })
   return {
     state,
     set: set(state),
@@ -14,5 +14,4 @@ export const usePageTitleStore = () => {
 }
 
 const set = (state:Ref<PageTitleProp>) => (t:PageTitleProp) => { state.value = t }
-
-const init = (state:Ref<PageTitleProp>) => () => { state.value = { title: '記事一覧', topImg: null, subtitles: [] } }
+const init = (state:Ref<PageTitleProp>) => () => { state.value = { title: '', topImg: null, subtitles: [] } }
