@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mb-4 overflow-hidden top-slider-wrapper">
     <div class="relative w-full h-1/4h">
-      <div :data-show="isShow" class="title-content-box relative w-full h-full page-title transition-all opacity-1">
+      <div :data-show="isShow" class="title-content-box relative w-full h-full page-title transition-all  duration-500 opacity-0">
         <div
           v-if="state.topImg"
           class="absolute flex items-center justify-center w-full h-full overflow-hidden firstview "
@@ -40,13 +40,17 @@ const isShow = ref<boolean>(false)
 
 watch(() => state.value.title, () => {
   isShow.value = false
-  setTimeout(() => { isShow.value = true }, 100)
+  setTimeout(() => { isShow.value = true }, 50)
 })
 
 </script>
 
 <style scoped>
+.title-content-box[data-show=true]{
+  opacity: 1 !important;
+}
+
 .title-content-box[data-show=false]{
-  opacity: 0 !important;
+  transition: none !important;
 }
 </style>
