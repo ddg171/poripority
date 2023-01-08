@@ -5,11 +5,11 @@
     </ClientHeader2>
 
     <div class="flex flex-col items-center ">
-      <div class="w-full lg:w-96 h-auto lg:h-96 bg-green flex justify-center items-center mb-4 p-2">
+      <div class="w-full lg:w-96 h-auto lg:h-96 bg-green flex justify-center items-center mb-2 p-2">
         <slot name="pic" />
       </div>
       <div class="w-full ml-4">
-        <p class="w-full">
+        <p class="w-full text-lg ">
           状況:
           <slot name="status" />
         </p>
