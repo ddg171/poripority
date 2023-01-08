@@ -19,7 +19,8 @@ function formatDocToString (doc:Document):string {
   return doc.body.innerHTML
 }
 
-export function convertContent (contentRaw:string):string {
+export function convertContent (contentRaw:string|null|undefined):string {
+  if (!contentRaw || typeof contentRaw !== 'string') { return '' }
   const doc = convertStrToDocument(contentRaw)
   const resizedDoc = changeImgParams(doc)
   return formatDocToString(resizedDoc)
