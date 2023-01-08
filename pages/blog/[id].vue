@@ -2,9 +2,6 @@
 <template>
   <ClientContentSection>
     <article v-if="content" class="flex flex-col gap-4 text-white cms-content" v-html="content" />
-    <article v-else class="flex flex-col gap-4 text-white cms-content">
-      記事が見つかりませんでした。
-    </article>
     <hr class="my-4">
     <suspense>
       <template #default>
@@ -29,19 +26,14 @@ definePageMeta({
 })
 
 const route = useRoute()
+const pageTitleStore = usePageTitleStore()
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
-const articleData = await useFetch<Article>(`/api/blogs/${route.params.id}`)
-const article = articleData.data
+const { data: article } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const value = article.value
 if (!value) {
   throw createError({ statusCode: 404, statusMessage: '記事が見つかりませんでした。' })
 }
-
-const content = convertContent(value.content) || null
-const publishedAt = ref<string|null>(value.publishedAt || null)
-
-const pageTitleStore = usePageTitleStore()
 useHead({
   title: value?.title || '記事が見つかりませんでした。',
   meta: [
@@ -49,6 +41,8 @@ useHead({
     { name: 'title', content: value?.title || '記事が見つかりませんでした。' }
   ]
 })
+const publishedAt = computed<string|null>(() => { return value.publishedAt || null })
+
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
@@ -59,18 +53,22 @@ const topImg:PictureBoxProp|null = eyecatch
       title: ''
     }
   : null
-
-const pageTitle:PageTitleProp = {
-  title: value?.title || '記事が見つかりませんでした',
-  topImg,
-  subtitles: article.value?.subtitle ? [article.value.subtitle] : []
-}
-
-pageTitleStore.set(pageTitle)
-
-onBeforeUnmount(() => {
-  pageTitleStore.init()
+onMounted(() => {
+  const pageTitle:PageTitleProp = {
+    title: value?.title || '記事が見つかりませんでした',
+    topImg,
+    subtitles: article.value?.subtitle ? [article.value.subtitle] : []
+  }
+  pageTitleStore.set(pageTitle)
 })
+
+const content = computed(() => {
+  return convertContent(value.content) || null
+})
+
+// onBeforeUnmount(() => {
+//   pageTitleStore.init()
+// })
 
 </script>
 

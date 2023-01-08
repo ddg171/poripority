@@ -33,7 +33,7 @@
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
 import TopArticleCard from '~~/components/client/TopArticleCard.vue'
-import { Article, LinkParams, PageTitleProp } from '~~/types'
+import { Article, LinkParams, PageTitleProp, PictureBoxProp } from '~~/types'
 
 definePageMeta({
   layout: 'blog'
@@ -73,10 +73,17 @@ const leftNav = computed<LinkParams|null>(() => {
 
 const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true) => {
   const title = category ? `${category}の記事一覧` : '記事一覧'
+  const topImg:PictureBoxProp = {
+    webp: '/images/webp/blanktitle01w2000.webp',
+    souce: ['/images/webp/blanktitle01w640.webp 640w', '/images/webp/blanktitle01w1270.webp 1024w'],
+    jpg: '/images/blanktitle01w640.jpg',
+    alt: '',
+    title: ''
+  }
   const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
   const t:PageTitleProp = {
     title,
-    topImg: null,
+    topImg,
     subtitles: hasSubtitles ? [subtitle] : []
   }
   pageTitleStore.set(t)

@@ -1,20 +1,20 @@
 <template>
   <div class="w-full mb-4 overflow-hidden top-slider-wrapper">
     <div class="relative w-full h-1/4h">
-      <div class="relative w-full h-full page-title">
+      <div :data-show="isShow" class="title-content-box relative w-full h-full page-title transition-all opacity-1">
         <div
-          v-if="img"
+          v-if="state.topImg"
           class="absolute flex items-center justify-center w-full h-full overflow-hidden firstview "
         >
-          <PictureBox
-            :souce="img.souce"
-            :alt="img.alt"
-            :title="img.title"
-            :webp="img.webp"
-            :jpg="img.jpg"
+          <ClientPictureBox
+            :souce="state.topImg.souce"
+            :alt="state.topImg.alt"
+            :title="state.topImg.title"
+            :webp="state.topImg.webp"
+            :jpg="state.topImg.jpg"
           />
         </div>
-        <div class="absolute w-full h-full title-box backdrop-blur-sm">
+        <div v-if="state.title" class="absolute w-full h-full title-box backdrop-blur-sm">
           <div class="flex items-center justify-center w-full h-full ">
             <div class="flex flex-col p-4 bg-green/75">
               <h1 class="flex items-center pb-1 pl-2 mb-0 text-xl text-white border-l-8 border-solid md:text-5xl sm:mb-2 border-l-lightgray">
@@ -33,22 +33,20 @@
 
 <script setup lang="ts">
 
-import PictureBox from '~~/components/client/PictureBox.vue'
-import { PictureBoxProp } from '~~/types'
-
 const pageTitleStore = usePageTitleStore()
 const { state } = pageTitleStore
 
-const blankImg:PictureBoxProp = {
-  webp: '/images/webp/blanktitle01w2000.webp',
-  souce: ['/images/webp/blanktitle01w640.webp 640w', '/images/webp/blanktitle01w1270.webp 1024w'],
-  jpg: '/images/blanktitle01w640.jpg',
-  alt: '',
-  title: ''
-}
+const isShow = ref<boolean>(false)
 
-const img = computed<PictureBoxProp>(() => {
-  return state.value.topImg || blankImg
+watch(() => state.value.title, () => {
+  isShow.value = false
+  setTimeout(() => { isShow.value = true }, 100)
 })
 
 </script>
+
+<style scoped>
+.title-content-box[data-show=false]{
+  opacity: 0 !important;
+}
+</style>
