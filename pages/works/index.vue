@@ -1,37 +1,27 @@
 <template>
   <div class="page-works flex flex-col items-center justify-center w-full text-white">
-    <ClientPageTitle :title="title" :top-img="topImg" :subtitles="subtitles" />
+    <ClientPageTitle />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
         <ClientHeader2>
-          制作物一覧
+          制作物について
         </ClientHeader2>
-        <div>
-          <ul class="grid grid-cols-1 md:grid-cols-3 gap-1 md:gap-2">
-            <li class=" p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
-              <NuxtLink :to="`/works#this-site`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
-                The Hut of Poripority
-              </NuxtLink>
-            </li>
-            <li class="p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
-              <NuxtLink :to="`/works#wargame`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
-                Wargame Replay uploader
-              </NuxtLink>
-            </li>
-            <li class="p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
-              <NuxtLink :to="`/works#yubaba`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
-                Firebase湯婆婆
-              </NuxtLink>
-            </li>
-            <li class="p-2 text-lg hover:bg-green focus-within:bg-green md:my-1">
-              <NuxtLink :to="`/works#yodo`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
-                Yodobashic photo maker
-              </NuxtLink>
-            </li>
-          </ul>
+        <div class="flex">
+          <div class="">
+            <p class=" works-indent mb-2">
+              筆者が最初に学習したプログラミング言語はPythonだったのだが、色々あってFirebaseを触るようになり、同時にフロントエンドが必要ということでVuejsを触り、基本が大事と言ってバニラJSを触っているうちに気がつけばJavascriptメインになっていた。
+              途中で投げたものとかも結構あるが、こうやって並べてみるとなんかそれっぽくなったので安心している。
+            </p>
+            <p class="works-indent">
+              大体のアプリはJavascriptで開発している。フレームワークはVue/Nuxtが主。デプロイ先にはGCPのサービスを使っている。あとFirebaseは最初に触ったバックエンドということもあって結構好き。
+            </p>
+            <p>
+              世の中的にはクラウドはAWS、フロントエンドはReact/Nextという話なので、そのうちここにもAWS(の無料枠)とReactを使った制作物が並ぶかもしれない。
+            </p>
+          </div>
         </div>
       </ClientContentSection>
-      <ClientContentSection>
+      <ClientContentSection class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         <ClientWorksArticle id="this-site" :links="linksPrprty">
           <template #name>
             The Hut of Poripority
@@ -50,15 +40,6 @@
               以前運用していたBloggerから移行すると同時に自分のスキルの確認と復習も兼ねて制作したWebサイト。使用フレームワークはVue3+Nuxt3(SSR)とTailwindCSS。
               バックエンドはGoogle CloudrunとFirebase Hostingを組み合わせている。
               Nuxt2(静的サイト)+Firebaseの組み合わせでWebアプリを制作した経験はあったが、SSR時の挙動の把握にかなり苦労した。
-            </p>
-            <p class="mb-2">
-              制作時の目標は以下の通り。
-              <ul class="works-indent mb-2">
-                <li>見た目を複雑にしない事</li>
-                <li>高速かつ快適に閲覧できる事</li>
-              </ul>
-              ある程度は達成できていると思う。特に2点目についてはFirebase Hostingからの静的ファイルの配信にかなり助けられている部分があり、
-              Firebase様々といったところ。月額100円に届かない費用でこの速度が出るなら万々歳である。
             </p>
             <p class="works-indent mb-2">
               今後も機能追加を行いつつ継続して運用していく予定。
@@ -85,11 +66,8 @@
               知り合いがちまちま投稿してくれる以外に利用者はほとんどいないという状況になっている。
             </p>
             <p class="works-indent mb-2">
-              中身はフロントエンドがVue.js、バックエンドがExpress.jsのアプリをGAEで動かすという単純な物。
-              更にデータはFirestore、リプレイファイルはCloud storageに保存するのでとても安価に運用できている。
-              実際請求額が100円を超えたことはほぼ無い。
+              中身はフロントエンドがVue.js、バックエンドがExpress.jsのアプリをGAEで動かすという単純な物だが、完成度はともかく良い経験だったと思う。
             </p>
-            <p>バックエンドありのアプリを作ったという意味では、完成度はともかく良い経験だったと思う。</p>
           </template>
         </ClientWorksArticle>
         <ClientWorksArticle id="yubaba" :links="linksYbb">
@@ -108,8 +86,6 @@
           <template #introduction>
             <p class="works-indent mb-2">
               Qiitaで実施された2020年のアドベントカレンダー「湯婆婆 Advent Calendar 2020」に参加するために制作。
-              当時Firebaseで自分が理解できた事をまとめるために制作するという意味合いもあったが、
-              その後FirebaseSDKもVue.jsもバージョンが上がってしまったのでコードを見返しても余り役に立たなくなってしまった。
             </p>
             <p class="works-indent mb-2">
               Firestoreのセキュリティルールから始まり、リアルタイム監視やCloud Functionを使ったプッシュ通知とデータの自動削除など、
@@ -126,9 +102,10 @@
             制作中断
           </template>
           <template #pic>
-            <div class="h-64 w-64">
-              no image
-            </div>
+            <picture class="">
+              <source srcset="/images/webp/works-img02-04w640.webp" type="image/webp">
+              <img src="/images/works-img02-04w640.jpg" height="400" width="400" alt="">
+            </picture>
           </template>
           <template #introduction>
             <p class="works-indent mb-2">
@@ -148,6 +125,7 @@
 
 <script setup lang="ts">
 import { LinkParams, PictureBoxProp } from '~~/types'
+const { set } = usePageTitleStore()
 
 const title = ref<string>('制作物')
 const topImg = ref<PictureBoxProp>({
@@ -177,8 +155,16 @@ const linksYbb = ref<LinkParams[]>([{
   path: 'https://yubaba-7bad4.web.app/'
 }, {
   name: 'Qiitaでの説明記事',
-  path: ''
+  path: 'https://qiita.com/ddg171/items/bbc445ef427af5addefb'
 }])
+
+onMounted(() => {
+  set({
+    title: title.value,
+    topImg: topImg.value,
+    subtitles: subtitles.value
+  })
+})
 
 </script>
 
