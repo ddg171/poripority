@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center w-full max-w-screen-xl ">
+  <div class="page-about flex flex-col items-center w-full max-w-screen-xl ">
     <ClientContentSection>
       <ClientHeader1>
         このWEBサイトについて
