@@ -16,9 +16,9 @@
         <div class="h-auto lg:h-64">
           <slot name="introduction" />
         </div>
-        <ul v-if="links.length!==0" class="mt-8 ml-2">
-          <li v-for="l , i in links" :key="i">
-            <NuxtLink :to="l.path" class="text-sm  hover:underline focus:underline" target="_blank" rel="noopener noreferrer">
+        <ul v-if="links.length!==0" class="">
+          <li v-for="l , i in links" :key="i" class="my-2">
+            <NuxtLink :to="l.path" class="text-sm hover:underline focus:underline w-full hover:bg-lightgreen focus:bg-lightgreen p-1" target="_blank" rel="noopener noreferrer">
               {{ l.name }}
             </NuxtLink>
           </li>
