@@ -25,23 +25,34 @@ const intersectionHandler = (e:IntersectionObserverEntry[]) => {
   trigger.value = true
 }
 
+const disable = () => {
+  observer.value?.disconnect()
+  observer.value = null
+}
+
 onMounted(() => {
   nextTick(() => {
     if (!wrapper.value) { return }
     observer.value = new IntersectionObserver(intersectionHandler, { threshold: props.threshold })
     observer.value.observe(wrapper.value)
 
+    const intViewportHeight = window.innerHeight
     const rect = wrapper.value.getClientRects()
     if (rect.length === 0) { return }
-    const bottom = rect[0].bottom
-    if (bottom > 0) { return }
+    const top = rect[0].top
+    const intersectionRate = top / intViewportHeight
+    if (intersectionRate > props.threshold) { return }
     trigger.value = true
   })
 })
 
+watch(() => trigger.value, (val:boolean) => {
+  if (!val) { return }
+  disable()
+})
+
 onUnmounted(() => {
-  observer.value?.disconnect()
-  observer.value = null
+  disable()
 })
 
 </script>
