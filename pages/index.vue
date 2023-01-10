@@ -3,11 +3,11 @@
     <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
-        <Header2>
+        <ClientHeader2>
           最新投稿
-        </Header2>
+        </ClientHeader2>
         <div class="relative grid w-full grid-cols-1 lg:grid-cols-2">
-          <ArticleCard v-for="a in latest" :key="a.id" :article="a" />
+          <ClientArticleCard v-for="a in latest" :key="a.id" :article="a" />
           <div v-if="pending" class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
             <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0">
               <p class="text-2xl">
@@ -23,13 +23,13 @@
         </div>
       </ClientContentSection>
       <ClientContentSection>
-        <Header2>
+        <ClientHeader2>
           SNS
-        </Header2>
+        </ClientHeader2>
         <div class="flex flex-col items-center justify-center w-full lg:flex-row lg:items-start ">
-          <TwitterWidget />
-          <InstagramWidget />
-          <DiscoreWidget />
+          <ClientTwitterWidget />
+          <ClientInstagramWidget />
+          <ClientDiscordWidget />
         </div>
       </ClientContentSection>
     </div>
@@ -37,12 +37,6 @@
 </template>
 
 <script setup lang="ts">
-
-import Header2 from '~~/components/client/Header2.vue'
-import ArticleCard from '~~/components/client/TopArticleCard.vue'
-import DiscoreWidget from '~~/components/client/DiscordWidget.vue'
-import TwitterWidget from '~~/components/client/TwitterWidget.vue'
-import InstagramWidget from '~~/components/client/InstagramWidget.vue'
 import { Article, Eyecatch, SliderContent } from '~~/types'
 import { resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
 

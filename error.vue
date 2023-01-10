@@ -16,7 +16,8 @@
   </div>
 </template>
 
-<script lang="ts" setup>import { NuxtApp } from '#app'
+<script lang="ts" setup>
+import { NuxtApp } from '#app'
 import { LinkParams, PageTitleProp } from '~~/types'
 
 const centerNav = ref<LinkParams>({ name: 'TOPへ戻る。', path: '/' })

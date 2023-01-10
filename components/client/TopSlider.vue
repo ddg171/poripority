@@ -10,7 +10,7 @@
             <div
               class="absolute flex items-center justify-center w-full h-full mb-6 overflow-hidden firstview bg-darkblue"
             >
-              <PictureBox
+              <ClientPictureBox
                 :souce="c.pic.souce"
                 :alt="c.pic.alt"
                 :title="c.pic.title"
@@ -63,7 +63,6 @@
 </template>
 
 <script setup lang="ts">
-import PictureBox from '~~/components/client/PictureBox.vue'
 import { SliderContent } from '~~/types'
 
 interface Props {

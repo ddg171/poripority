@@ -1,15 +1,14 @@
 <template>
   <header class="w-full  bg-green text-white" :is-sticky="isSticky">
     <div id="header-container" class="header-container h-full flex flex-row justify-between">
-      <SiteName />
-      <NavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
+      <ClientSiteName />
+      <ClientNavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
     </div>
   </header>
 </template>
 
 <script lang="ts" setup>
-import SiteName from './SiteName.vue'
-import NavBar from './NavBar.vue'
+
 const menus = [
   { name: 'TOP', path: '/' },
   { name: 'Blog', path: '/blog' },

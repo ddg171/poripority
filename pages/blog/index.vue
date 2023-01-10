@@ -10,7 +10,7 @@
           </p>
         </div>
         <div v-else>
-          <TopArticleCard
+          <ClientArticleCard
             v-for="a,i in articles"
             :key="a.id"
             :article="a"
@@ -32,7 +32,6 @@
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
-import TopArticleCard from '~~/components/client/TopArticleCard.vue'
 import { Article, LinkParams, PageTitleProp, PictureBoxProp } from '~~/types'
 
 definePageMeta({
