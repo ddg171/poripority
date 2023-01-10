@@ -1,41 +1,62 @@
 <template>
-  <div :id="id">
-    <div :trigger="trigger">
-      <slot />
-    </div>
+  <div ref="wrapper" class="intersection-wrapper" :trigger="trigger" transition="vertical">
+    <slot />
   </div>
 </template>
 
 <script setup lang="ts">
-
-const id = ref<string>(`intersection-${Math.floor(Math.random() * 100)}`)
 const trigger = ref<boolean>(false)
 const observer = ref<IntersectionObserver|null>(null)
 
-const emits = defineEmits<{(e:'in'):void}>()
+const wrapper = ref<null | Element>(null)
 
-const props = withDefaults(defineProps<{threshold:number}>(), { threshold: 0.5 })
+const emits = defineEmits<{(e:'in'):void}>()
+interface Props {
+    threshold?:number
+}
+
+const props = withDefaults(defineProps<Props>(), { threshold: 0.4 })
+
+const intersectionHandler = (e:IntersectionObserverEntry[]) => {
+  if (e.length === 0) { return }
+  if (!e[0].isIntersecting) { return }
+  emits('in')
+
+  trigger.value = true
+}
 
 onMounted(() => {
-  const target = document.querySelector(`#${id.value}`)
-  if (!target) { return }
-  const rect = target.getClientRects()
-  if (rect.length > 0) {
-    const top = rect[0].top
-    if (top < 0) {
-      trigger.value = true
-    }
-  }
-  observer.value = new IntersectionObserver((
-  ) => {
-    emits('in')
+  nextTick(() => {
+    if (!wrapper.value) { return }
+    observer.value = new IntersectionObserver(intersectionHandler, { threshold: props.threshold })
+    observer.value.observe(wrapper.value)
+
+    const rect = wrapper.value.getClientRects()
+    if (rect.length === 0) { return }
+    const bottom = rect[0].bottom
+    if (bottom > 0) { return }
     trigger.value = true
-  }, { threshold: props.threshold })
-  observer.value.observe(target)
+  })
 })
 
 onUnmounted(() => {
   observer.value?.disconnect()
+  observer.value = null
 })
 
 </script>
+
+<style>
+.intersection-wrapper[trigger=false]>*{
+    opacity: 0;
+}
+.intersection-wrapper>*{
+    opacity: 1;
+    transform: none;
+    transition: all 0.5s;
+}
+
+.intersection-wrapper[transition="vertical"][trigger=false] >*{
+  transform: translateY(20%);
+}
+</style>
