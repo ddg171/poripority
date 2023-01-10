@@ -121,9 +121,10 @@
               </p>
               <p class="works-indent mb-2">
                 中身はPython+TKinterという構成で、完成したときはかなり嬉しかった記憶がある、
-                出力画像にEXIFが乗らないという問題もあるが、SNSにはそのほうが安全なのでこれはこれでよし。
+                出力画像にEXIFが乗らないという問題もあるが、SNSに投稿する場合はそのほうが安全なのでそのままにしている。
               </p>
               <p>このアプリを作ってからしばらくしてJavaScriptばかり触るようになってしまったため、もはや中のコードがわからなくなり放置している。</p>
+              <p>気が向いたらFletというフレームワークで作り直すかもしれない。</p>
             </template>
           </ClientWorksArticle>
         </ClientIntersectionWrapper>
