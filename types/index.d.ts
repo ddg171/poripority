@@ -3,6 +3,7 @@ import { MicroCMSQueries } from 'microcms-js-sdk'
 export interface LinkParams {
     name:string
     path:string
+    disabled?:boolean
 }
 
 export interface PictureBoxProp {

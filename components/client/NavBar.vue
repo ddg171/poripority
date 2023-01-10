@@ -5,9 +5,9 @@
       <span class="bg-lightgreen" />
     </label>
     <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden" @click="hideNav">
-      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green hover:bg-lightgreen items-center md:mx-4 border-solid border-white border-b md:border-none">
-        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="navlink w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-8 md:border-l-4  border-l-lightgray hovor:border-red focus:border-red md:pl-2 md:pb-1">
-          <span class="navlink-span translate-y-full" :data-transition="transitionTrigger">
+      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green hover:bg-lightgreen items-center lg:mx-4 md:px-2 border-solid border-white border-b md:border-none">
+        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="nav-link w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-8 md:border-l-4  border-l-lightgray  md:pl-2 md:pb-1" :data-nowlocation="m.path ===currentPath ">
+          <span class="nav-link-span translate-y-full" :data-transition="transitionTrigger">
             {{ m.name }}
           </span>
         </nuxt-link>
@@ -21,7 +21,7 @@ import { LinkParams } from '~~/types'
 
 interface Props {
     menus:LinkParams[]
-    currentPath:string
+
 }
 
 const emits = defineEmits<{(e:'toggle', value:boolean):void}>()
@@ -36,11 +36,19 @@ const samePath = (path:string, fullPath:string):boolean => {
   return !!fullPath.includes(path)
 }
 
-const props = withDefaults(defineProps<Props>(), { menus: () => [], currentPath: '/' })
+const props = withDefaults(defineProps<Props>(), { menus: () => [] })
 
 const isShow = ref<boolean>(false)
 const transitionTrigger = ref<boolean>(false)
 const hasResizeHandler = ref<boolean>(false)
+
+const route = useRoute()
+
+const currentPath = computed(() => {
+  const path = route.path
+  const pathArry = path.split('/')
+  return '/' + (pathArry.length > 1 ? pathArry[1] : '')
+})
 
 const hideNav = () => {
   isShow.value = false
@@ -66,7 +74,10 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-
+.nav-link[data-nowlocation=true]{
+  border-color: #C40026 !important;
+  transition: border-color 0.5s;
+}
 .hamburger-button{
   position: relative;
   height: 64px;
@@ -137,12 +148,12 @@ left: 24px;
   top:calc(50% - 5px/2);
   transform: rotate(-45deg);
 }
-.navlink-span{
+.nav-link-span{
   transition: none;
 
 }
 
-.navlink-span[data-transition="true"]{
+.nav-link-span[data-transition="true"]{
       transform: none !important;
       transition: transform 0.3s ease-out;
       transition-delay:0.3s;

@@ -24,6 +24,11 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/tailwind.scss'],
   modules: ['@nuxtjs/tailwindcss'],
+  nitro: {
+    prerender: {
+      routes: ['/works']
+    }
+  },
   build: {
 
   }
