@@ -61,7 +61,7 @@ onUnmounted(() => {
 .intersection-wrapper[trigger=false]>*{
     opacity: 0;
 }
-.intersection-wrapper>*{
+.intersection-wrapper[trigger=true]>*{
     opacity: 1;
     transform: none;
     transition: all 0.5s;
