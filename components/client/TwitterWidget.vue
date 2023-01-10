@@ -1,5 +1,5 @@
 <template>
-  <WidgetContainer>
+  <ClientWidgetContainer>
     <blockquote>
       <a
         class="twitter-timeline"
@@ -10,10 +10,9 @@
         href="https://twitter.com/hata_kaze?ref_src=twsrc%5Etfw"
       >Tweets by hata_kaze</a>
     </blockquote>
-  </WidgetContainer>
+  </ClientWidgetContainer>
 </template>
 <script setup lang="ts">
-import WidgetContainer from '~~/components/client/WidgetContainer.vue'
 import { WindowWithEmbed } from '~~/types'
 
 useHead({

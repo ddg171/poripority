@@ -1,6 +1,6 @@
 <template>
   <div class="layout-blog flex flex-col items-center min-h-screen">
-    <MyHeader />
+    <ClientMyHeader />
     <div class="flex flex-col items-center w-full">
       <ClientPageTitle />
       <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row">
@@ -28,7 +28,4 @@
 </template>
 
 <script lang="ts" setup>
-
-import MyHeader from '~~/components/client/MyHeader.vue'
-
 </script>
