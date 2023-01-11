@@ -32,14 +32,12 @@
 </template>
 
 <script setup lang="ts">
-
 const pageTitleStore = usePageTitleStore()
 const { state } = pageTitleStore
 
 const isShow = ref<boolean>(false)
 
-watch(() => state.value.title, () => {
-  isShow.value = false
+onMounted(() => {
   setTimeout(() => { isShow.value = true }, 50)
 })
 

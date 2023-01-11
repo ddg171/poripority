@@ -124,11 +124,11 @@ if (category) {
 setTitle(categoryName.value)
 
 onMounted(() => {
-  setPageTitle(categoryName.value, false)
+  setPageTitle(categoryName.value, true)
 })
 
 onBeforeUnmount(() => {
-  return pageTitleStore.init()
+  pageTitleStore.init()
 })
 
 </script>
