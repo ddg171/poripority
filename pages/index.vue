@@ -24,12 +24,28 @@
       </ClientContentSection>
       <ClientContentSection>
         <ClientHeader2>
-          SNS
+          About Author
         </ClientHeader2>
-        <div class="flex flex-col items-center justify-center w-full lg:flex-row lg:items-start ">
-          <ClientTwitterWidget />
-          <ClientInstagramWidget />
-          <ClientDiscordWidget />
+        <div>
+          <p />
+        </div>
+      </ClientContentSection>
+      <ClientContentSection>
+        <ClientHeader2>
+          Discordサーバー/居酒屋「ハルキゲニア」
+        </ClientHeader2>
+        <div class="flex flex-col md:flex-row justify-start">
+          <ClientDiscordWidget class="flex justify-center mx-0 my-4 md:my-2 md:mx-2" />
+          <div class=" mx-0 my-4 md:my-2 md:mx-4">
+            <div class="w-full md:w-90 xl:w-3/5">
+              <p class="mb-1">
+                Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。他にも流行りのゲームを遊んだり色々やってるので、気になる方はぜひご参加ください。
+              </p>
+              <p class="mb-1">
+                おそらくWargame: RDで対人戦をもっとも積極的にやっている日本人鯖の一つです。CPU相手の戦闘に飽きてきた方や「俺より強いやつに会いたい」という方にもおすすめ。
+              </p>
+            </div>
+          </div>
         </div>
       </ClientContentSection>
     </div>
@@ -55,11 +71,10 @@ const defaultContents:SliderContent[] = [
 
     },
     text: {
-      title: 'なんかかっこいい鳩の画像',
+      title: 'Welcome!',
       para: [
-        '肖像権は無い。'
-      ],
-      to: '/'
+        'Welcome to the "hut" of Poripority.'
+      ]
     }
   },
   {
@@ -87,10 +102,11 @@ const defaultContents:SliderContent[] = [
       title: 'TOP画像3:GREEN MOVER'
     },
     text: {
-      title: 'GREEN MOVER',
+      title: 'ABOUT',
       para: [
-        '低床車しか勝たん'
-      ]
+        'このWebサイトについて'
+      ],
+      to: '/about'
     }
   }
 ]
