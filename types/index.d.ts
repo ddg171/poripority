@@ -19,7 +19,8 @@ export interface SliderContent {
       text: {
         title: string,
         para: string[],
-        to?:string
+        to?:string,
+        isTight?:boolean
       }
 }
 

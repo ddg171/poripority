@@ -21,7 +21,7 @@
             <div class="static w-full h-full slider-text md:absolute ">
               <div class="relative w-full h-full">
                 <div class="absolute w-full p-4 ml-5 md:w-auto top-1/2 md:ml-16 lg:ml-20 bg-green/75">
-                  <h2 class="flex items-center pb-1 pl-2 mb-2 text-3xl border-l-8 border-solid md:text-5xl border-l-lightgray">
+                  <h2 class="flex items-center pb-1 pl-2 mb-2 text-3xl border-l-8 border-solid md:text-5xl border-l-lightgray" :data-is-tight="!!c.text.isTight">
                     <NuxtLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                       {{ c.text.title }}
                     </NuxtLink>
@@ -125,6 +125,9 @@ onMounted(async () => {
 
 </script>
 <style scoped>
+h2[data-is-tight=true]{
+  letter-spacing: -0.125rem;
+}
 .top-slider-content-wrapper{
   opacity: 0;
   transition: opacity 0.5s ;

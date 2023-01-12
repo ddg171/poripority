@@ -73,10 +73,11 @@ const defaultContents:SliderContent[] = [
 
     },
     text: {
-      title: 'Welcome!',
+      title: 'なんかそれっぽい鳩',
       para: [
         'Welcome to the "hut" of Poripority.'
-      ]
+      ],
+      isTight: true
     }
   },
   {
