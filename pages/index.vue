@@ -15,14 +15,26 @@
               </p>
             </div>
           </div>
-          <div class="flex items-center justify-center w-full h-full mx-2 lg:max-w-xl">
+          <div class="flex items-center justify-center w-full h-full lg:max-w-xl">
             <NuxtLink to="/blog" class="flex items-center justify-center w-full h-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen md:my-3 hover:underline">
               記事一覧へ
             </NuxtLink>
           </div>
         </div>
       </ClientContentSection>
-
+      <ClientContentSection>
+        <ClientHeader2>
+          About this site
+        </ClientHeader2>
+        <div>
+          <p>このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。</p>
+          <p>
+            以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
+          </p>
+          <p>フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。</p>
+          <p>世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。製作者の技術不足で不思議な挙動をすることがありますがご容赦ください。(特にサイト内を動き回ったときに発生しやすいです。ページの再読み込みで改善します。)</p>
+        </div>
+      </ClientContentSection>
       <ClientContentSection>
         <ClientHeader2>
           Discordサーバー/居酒屋「ハルキゲニア」
@@ -39,15 +51,6 @@
               </p>
             </div>
           </div>
-        </div>
-      </ClientContentSection>
-      <ClientContentSection>
-        <ClientHeader2>
-          Notice
-        </ClientHeader2>
-        <div>
-          <div>img</div>
-          <div>intro</div>
         </div>
       </ClientContentSection>
     </div>
