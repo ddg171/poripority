@@ -135,7 +135,7 @@
 
 <script setup lang="ts">
 import { LinkParams, PictureBoxProp } from '~~/types'
-const { set } = usePageTitleStore()
+const { set, init } = usePageTitleStore()
 
 const title = ref<string>('制作物')
 const topImg = ref<PictureBoxProp>({
@@ -169,11 +169,17 @@ const linksYbb = ref<LinkParams[]>([{
 }])
 
 onMounted(() => {
-  set({
-    title: title.value,
-    topImg: topImg.value,
-    subtitles: subtitles.value
+  nextTick(() => {
+    set({
+      title: title.value,
+      topImg: topImg.value,
+      subtitles: subtitles.value
+    })
   })
+})
+
+onUnmounted(() => {
+  init()
 })
 
 </script>
