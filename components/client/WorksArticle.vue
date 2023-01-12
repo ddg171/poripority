@@ -1,8 +1,8 @@
 <template>
   <article :id="props.id" class="mx-0 my-8 md:my-2 md:mx-2 md:h-92 flex flex-col items-start ">
-    <ClientHeader2 class="">
+    <ClientHeader3 class="">
       <slot name="name" />
-    </ClientHeader2>
+    </ClientHeader3>
 
     <div class="flex flex-col items-center ">
       <div class="w-full lg:w-96 h-auto lg:h-96 bg-green flex justify-center items-center mb-2 p-2">

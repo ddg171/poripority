@@ -2,7 +2,7 @@
   <div class="page-about flex flex-col items-center w-full max-w-screen-xl ">
     <ClientContentSection>
       <ClientHeader1>
-        このWEBサイトについて
+        ABOUT ME
       </ClientHeader1>
       <p>WIP</p>
     </ClientContentSection>
@@ -10,7 +10,5 @@
 </template>
 
 <script setup lang="ts">
-
-// throw createError({ statusCode: 404, statusMessage: 'このページは現在制作中です。' })
 
 </script>
