@@ -1,5 +1,5 @@
 <template>
-  <article class="flex flex-col items-start max-w-xl mx-0 my-4 md:flex-row bg-darkblue md:my-2 md:mx-2">
+  <article class="flex flex-col items-start max-w-xl mx-0 my-4 md:flex-row bg-darkblue md:my-2">
     <div class="flex items-center justify-center w-full h-48 overflow-hidden md:w-48 md:h-48 shrink-0 bg-darkblue">
       <NuxtLink class="w-full" :to="to">
         <picture v-if="props.article.eyecatch" class="w-full">
@@ -8,19 +8,21 @@
         </picture>
       </NuxtLink>
     </div>
-    <div class="flex flex-col justify-between h-full ml-2">
-      <div>
-        <h2 v-if="props.heading===2" class="mb-2 text-xl md:mb-4">
-          <NuxtLink :to="to" class="hover:underline" tabindex="0">
-            {{ props.article.title }}
-          </NuxtLink>
-        </h2>
-        <h3 v-else class="mb-2 text-xl md:mb-4">
-          <NuxtLink :to="to" class="hover:underline" tabindex="0">
-            {{ props.article.title }}
-          </NuxtLink>
-        </h3>
-        <p class="text-lg">
+    <div class="flex flex-col justify-between h-full ml-0 md:ml-2">
+      <div class="mb-2 md:mb-0">
+        <div class="mb-0 text-2xl md:mb-1">
+          <h2 v-if="props.heading===2">
+            <NuxtLink :to="to" class="hover:underline" tabindex="0">
+              {{ props.article.title }}
+            </NuxtLink>
+          </h2>
+          <h3 v-else>
+            <NuxtLink :to="to" class="hover:underline" tabindex="0">
+              {{ props.article.title }}
+            </NuxtLink>
+          </h3>
+        </div>
+        <p class="text-md">
           {{ props.article.subtitle }}
         </p>
       </div>
