@@ -8,7 +8,6 @@
           <p>
             {{ error?.message||"エラーが発生しました。" }}
           </p>
-          <p>自動的にTOPページへ移動します。</p>
           <ClientBottomNavigation :left="null" :center="centerNav" :right="null" />
         </clientcontentsection>
       </div>
@@ -31,13 +30,10 @@ const pageTitle:PageTitleProp = {
 }
 
 pageTitleStore.set(pageTitle)
-onMounted(() => {
-  nextTick(() => {
-    setTimeout(() => {
-      clearError({ redirect: '/' })
-    }, 10000)
-  })
+onUnmounted(() => {
+  pageTitleStore.init()
 })
+
 </script>
 
   <style>
