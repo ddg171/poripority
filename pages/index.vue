@@ -27,12 +27,24 @@
           About this site
         </ClientHeader2>
         <div>
-          <p>このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。</p>
-          <p>
+          <p class="indent-4">
+            このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
+          </p>
+          <p class="mb-2">
             以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
           </p>
-          <p>フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。</p>
-          <p>世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。製作者の技術不足で不思議な挙動をすることがありますがご容赦ください。(特にサイト内を動き回ったときに発生しやすいです。ページの再読み込みで改善します。)</p>
+          <p class="indent-4">
+            フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。
+          </p>
+          <p class="mb-2">
+            ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。
+          </p>
+          <p class="indent-4">
+            世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。
+          </p>
+          <p class="mb-2">
+            製作者のNuxtのSSRモードについての経験不足のため、このサイトは不思議な挙動をすることがありますがご容赦ください。
+          </p>
         </div>
       </ClientContentSection>
       <ClientContentSection>
@@ -43,10 +55,10 @@
           <ClientDiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
           <div class=" mx-0 my-4 md:my-2 md:mx-4">
             <div class="w-full md:w-90 xl:w-3/5">
-              <p class="mb-1">
+              <p class="indent-4 mb-2">
                 Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。他にも流行りのゲームを遊んだり色々やってるので、気になる方はぜひご参加ください。
               </p>
-              <p class="mb-1">
+              <p class="indent-4 mb-2">
                 おそらくWargame: RDで対人戦をもっとも積極的にやっている日本人鯖の一つです。CPU相手の戦闘に飽きてきた方や「俺より強いやつに会いたい」という方にもおすすめ。
               </p>
             </div>
