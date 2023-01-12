@@ -23,7 +23,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     microCMSAPI: process.env.MICROCMS_API,
-    microCMSServiceID: process.env.MICROCMS_SERVEICE_ID
+    microCMSServiceID: process.env.MICROCMS_SERVEICE_ID,
+    baseURL: process.env.BASE_URL
   },
   typescript: {
     shim: false
