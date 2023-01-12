@@ -2,9 +2,9 @@
   <div class="page-about flex flex-col items-center w-full max-w-screen-xl ">
     <ClientContentSection>
       <ClientHeader1>
-        このWEBサイトについて
+        このWEBサイトと作者について
       </ClientHeader1>
-      <p>WIP</p>
+      <p>あるいはポートフォリオ</p>
     </ClientContentSection>
   </div>
 </template>

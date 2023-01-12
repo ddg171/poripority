@@ -22,14 +22,7 @@
           </div>
         </div>
       </ClientContentSection>
-      <ClientContentSection>
-        <ClientHeader2>
-          About Author
-        </ClientHeader2>
-        <div>
-          <p />
-        </div>
-      </ClientContentSection>
+
       <ClientContentSection>
         <ClientHeader2>
           Discordサーバー/居酒屋「ハルキゲニア」
@@ -46,6 +39,15 @@
               </p>
             </div>
           </div>
+        </div>
+      </ClientContentSection>
+      <ClientContentSection>
+        <ClientHeader2>
+          Notice
+        </ClientHeader2>
+        <div>
+          <div>img</div>
+          <div>intro</div>
         </div>
       </ClientContentSection>
     </div>
@@ -104,7 +106,7 @@ const defaultContents:SliderContent[] = [
     text: {
       title: 'ABOUT',
       para: [
-        'このWebサイトについて'
+        'このWebサイトと作者について'
       ],
       to: '/about'
     }
