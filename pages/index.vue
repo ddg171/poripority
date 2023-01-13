@@ -3,7 +3,7 @@
     <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
-        <ClientHeader2>
+        <ClientHeader2 class="mb-2">
           最新投稿
         </ClientHeader2>
         <div class="grid w-full grid-cols-1 lg:grid-cols-2">
@@ -23,7 +23,7 @@
         </div>
       </ClientContentSection>
       <ClientContentSection>
-        <ClientHeader2>
+        <ClientHeader2 class="mb-2">
           About this site
         </ClientHeader2>
         <div>
@@ -48,12 +48,12 @@
         </div>
       </ClientContentSection>
       <ClientContentSection>
-        <ClientHeader2>
+        <ClientHeader2 class="mb-2">
           Discordサーバー/居酒屋「ハルキゲニア」
         </ClientHeader2>
         <div class="flex flex-col justify-start md:flex-row">
           <ClientDiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
-          <div class="mx-0 my-4  md:my-2 md:mx-4">
+          <div class="mx-0 my-4 md:my-2 md:mx-4">
             <div class="w-full md:w-90 xl:w-3/5">
               <p class="mb-2 indent-4">
                 Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。他にも流行りのゲームを遊んだり色々やってるので、気になる方はぜひご参加ください。
