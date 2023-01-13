@@ -1,5 +1,5 @@
 <template>
-  <div class="page-index flex flex-col items-center justify-center w-full text-white">
+  <div class="flex flex-col items-center justify-center w-full text-white page-index">
     <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
@@ -15,8 +15,8 @@
               </p>
             </div>
           </div>
-          <div class="flex items-center justify-center w-full h-full lg:max-w-xl">
-            <NuxtLink to="/blog" class="flex items-center justify-center w-full h-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen md:my-3 hover:underline">
+          <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
+            <NuxtLink to="/blog" class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
               記事一覧へ
             </NuxtLink>
           </div>
@@ -51,14 +51,14 @@
         <ClientHeader2>
           Discordサーバー/居酒屋「ハルキゲニア」
         </ClientHeader2>
-        <div class="flex flex-col md:flex-row justify-start">
+        <div class="flex flex-col justify-start md:flex-row">
           <ClientDiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
-          <div class=" mx-0 my-4 md:my-2 md:mx-4">
+          <div class="mx-0 my-4  md:my-2 md:mx-4">
             <div class="w-full md:w-90 xl:w-3/5">
-              <p class="indent-4 mb-2">
+              <p class="mb-2 indent-4">
                 Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。他にも流行りのゲームを遊んだり色々やってるので、気になる方はぜひご参加ください。
               </p>
-              <p class="indent-4 mb-2">
+              <p class="mb-2 indent-4">
                 おそらくWargame: RDで対人戦をもっとも積極的にやっている日本人鯖の一つです。CPU相手の戦闘に飽きてきた方や「俺より強いやつに会いたい」という方にもおすすめ。
               </p>
             </div>

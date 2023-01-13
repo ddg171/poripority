@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mb-4 overflow-hidden top-slider-wrapper">
-    <div class="relative w-full  h-3/4h lg:h-1/2h top-slider flex justify-center items-center">
-      <p v-if="sliderPage===-1" class="text-white text-3xl">
+    <div class="relative flex items-center justify-center w-full h-3/4h lg:h-1/2h top-slider">
+      <p v-if="sliderPage===-1" class="text-3xl text-white">
         loading...
       </p>
       <div v-for="c,i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper" :isShow="sliderPage===i">
@@ -20,7 +20,7 @@
           <div class="static w-full h-full slider-text md:absolute ">
             <div class="relative w-full h-full">
               <div class="absolute w-full p-4 ml-5 md:w-auto top-1/2 md:ml-16 lg:ml-20 bg-green/75">
-                <h2 class="flex items-center pb-1 pl-2 mb-2  text-3xl border-l-8 border-solid md:text-6xl border-l-lightgray" :data-is-tight="!!c.text.isTight">
+                <h2 class="flex items-center pl-2 text-3xl font-medium border-l-8 border-solid md:text-6xl border-l-lightgray" :data-is-tight="!!c.text.isTight">
                   <NuxtLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                     {{ c.text.title }}
                   </NuxtLink>
