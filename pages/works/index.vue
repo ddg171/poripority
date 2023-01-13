@@ -1,14 +1,14 @@
 <template>
-  <div class="page-works flex flex-col items-center justify-center w-full text-white">
+  <div class="flex flex-col items-center justify-center w-full text-white page-works">
     <ClientPageTitle />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ClientContentSection>
-        <ClientHeader2>
+        <ClientHeader2 class="mb-2">
           制作物について
         </ClientHeader2>
         <div class="flex">
           <div class="">
-            <p class=" works-indent mb-1">
+            <p class="mb-1 works-indent">
               筆者が最初に学習したプログラミング言語はPythonだったのだが、色々あってFirebaseを触るようになり、同時にフロントエンドが必要ということでVuejsを触り、基本が大事と言ってバニラJSを触っているうちに気がつけばJavascriptメインになっていた。
               途中で投げたものとかも結構あるが、こうやって並べてみるとなんかそれっぽくなったので安心している。
             </p>
@@ -22,7 +22,7 @@
         </div>
       </ClientContentSection>
 
-      <ClientContentSection class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+      <ClientContentSection class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
         <ClientIntersectionWrapper>
           <ClientWorksArticle id="this-site" :links="linksPrprty">
             <template #name>
@@ -38,12 +38,12 @@
               </picture>
             </template>
             <template #introduction>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 以前運用していたBloggerから移行すると同時に自分のスキルの確認と復習も兼ねて制作したWebサイト。使用フレームワークはVue3+Nuxt3(SSR)とTailwindCSS。
                 バックエンドはGoogle CloudrunとFirebase Hostingを組み合わせている。
                 Nuxt2(静的サイト)+Firebaseの組み合わせでWebアプリを制作した経験はあったが、SSR時の挙動の把握にかなり苦労した。
               </p>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 今後も機能追加を行いつつ継続して運用していく予定。
               </p>
             </template>
@@ -64,12 +64,12 @@
               </picture>
             </template>
             <template #introduction>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 "Wargame Red dragon"というゲームのリプレイデータを投稿、共有するWebアプリ。
                 このアプリ以前に存在していたアップローダーは軒並み終了してしまったのだが、完成した頃にはリプレイの共有手段が公式Discordサーバーに移行していたため、
                 知り合いがちまちま投稿してくれる以外に利用者はほとんどいないという状況になっている。
               </p>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 中身はフロントエンドがVue.js、バックエンドがExpress.jsのアプリをGAEで動かすという単純な物だが、完成度はともかく良い経験だったと思う。
               </p>
             </template>
@@ -90,10 +90,10 @@
               </picture>
             </template>
             <template #introduction>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 Qiitaで実施された2020年のアドベントカレンダー「湯婆婆 Advent Calendar 2020」に参加するために制作。
               </p>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 Firestoreのセキュリティルールから始まり、リアルタイム監視やCloud Functionを使ったプッシュ通知とデータの自動削除など、
                 結構盛りだくさんなので完成したときにはそこそこ嬉しかった記憶がある。
               </p>
@@ -116,10 +116,10 @@
               </picture>
             </template>
             <template #introduction>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 人生で初めて作ったGUIアプリ。画像のEXIF情報を文字入れした上で縮小して出力するという物で今でもたまに使っている。
               </p>
-              <p class="works-indent mb-1">
+              <p class="mb-1 works-indent">
                 中身はPython+TKinterという構成で、完成したときはかなり嬉しかった記憶がある、
                 出力画像にEXIFが乗らないという問題もあるが、SNSに投稿する場合はそのほうが安全なのでそのままにしている。
               </p>

@@ -17,11 +17,7 @@ export default defineNuxtConfig({
         { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' }
       ],
       link: [
-        { rel: 'icon', href: '/favicon.ico', id: 'favicon' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-        { href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap', rel: 'stylesheet' },
-        { href: 'https://cdn.jsdelivr.net/npm/yakuhanjp@3.2.0/dist/css/yakuhanjp.min.css', rel: 'stylesheet' }
+        { rel: 'icon', href: '/favicon.ico', id: 'favicon' }
       ],
       style: [],
       script: [],
@@ -42,7 +38,7 @@ export default defineNuxtConfig({
   typescript: {
     shim: false
   },
-  css: ['~/assets/css/tailwind.scss', '~/assets/css/fonts.css'],
+  css: ['~/assets/css/tailwind.scss'],
   modules: ['@nuxtjs/tailwindcss'],
   nitro: {
     prerender: {

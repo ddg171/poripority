@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   // mode: "jit",
   content: [
@@ -38,6 +39,9 @@ module.exports = {
       maxWidth: {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px'
+      },
+      fontFamily: {
+        sans: ['Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', 'sans-serif', ...defaultTheme.fontFamily.sans]
       }
     },
     variants: {

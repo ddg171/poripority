@@ -1,13 +1,13 @@
 <template>
-  <nav class="navbar h-full px-2 bg-transparent">
+  <nav class="h-full px-2 bg-transparent navbar">
     <input id="hamburger-toggle" v-model="isShow" type="checkbox" class="hidden" @change="$emit('toggle',isShow)">
-    <label for="hamburger-toggle" class="hamburger-button  block md:hidden p-2 border-solid border border-green  hover:border-white">
+    <label for="hamburger-toggle" class="block p-2 border border-solid hamburger-button md:hidden border-green hover:border-white">
       <span class="bg-lightgreen" />
     </label>
-    <ul class="nav-links md:h-full self-end  h-0 md:flex  overflow-hidden" @click="hideNav">
-      <li v-for="m ,i in props.menus " :key="i" class=" w-full md:w-24 h-16 font-xl flex justify-center  bg-green hover:bg-lightgreen items-center lg:mx-4 md:px-2 border-solid border-white border-b md:border-none">
-        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="nav-link w-full h-full md:h-1/2 flex justify-center md:justify-start overflow-hidden items-center md:items-end  border-solid border-l-8 md:border-l-4  border-l-lightgray  md:pl-2 md:pb-1" :data-nowlocation="m.path ===currentPath ">
-          <span class="nav-link-span translate-y-full" :data-transition="transitionTrigger">
+    <ul class="self-end h-0 overflow-hidden nav-links md:h-full md:flex" @click="hideNav">
+      <li v-for="m ,i in props.menus " :key="i" class="flex items-center justify-center w-full h-16 font-semibold border-b border-white border-solid md:w-24 font-xl bg-green hover:bg-lightgreen lg:mx-4 md:px-2 md:border-none">
+        <nuxt-link :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="flex items-center justify-center w-full h-full overflow-hidden border-l-8 border-solid nav-link md:h-1/2 md:justify-start md:items-end md:border-l-4 border-l-lightgray md:pl-2 md:pb-1" :data-nowlocation="m.path ===currentPath ">
+          <span class="translate-y-full nav-link-span" :data-transition="transitionTrigger">
             {{ m.name }}
           </span>
         </nuxt-link>
