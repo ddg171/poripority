@@ -19,7 +19,8 @@
 <script setup lang="ts">
 import { Article, Eyecatch, PageTitleProp, PictureBoxProp } from '../../types'
 import { convertContent } from '~~/components/contentParser'
-import { resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
+import { cropSquare, resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
+import { makeDynamicMeta } from '~~/components/useHeadHelper'
 
 definePageMeta({
   layout: 'blog'
@@ -34,13 +35,15 @@ const value = article.value
 if (!value) {
   throw createError({ statusCode: 404, statusMessage: '記事が見つかりませんでした。' })
 }
-useHead({
-  title: value?.title || '記事が見つかりませんでした。',
-  meta: [
-    { name: 'description', content: value?.subtitle || '' },
-    { name: 'title', content: value?.title || '記事が見つかりませんでした。' }
-  ]
-})
+
+const config = useRuntimeConfig()
+const headTitle = value.title + '|' + config.public.siteName
+const description = value.subtitle || ''
+const image:string|undefined = value.eyecatch ? cropSquare(value.eyecatch).url : undefined
+
+const dynamicMeta = makeDynamicMeta(headTitle, description, 'all', 'article', image)
+useHead(dynamicMeta)
+
 const publishedAt = computed<string|null>(() => { return value.publishedAt || null })
 
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined

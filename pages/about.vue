@@ -10,5 +10,13 @@
 </template>
 
 <script setup lang="ts">
+import { makeDynamicMeta } from '~~/components/useHeadHelper'
+
+const config = useRuntimeConfig()
+const title = 'About|' + config.public.siteName
+const description = 'WIP'
+
+const dynamicMeta = makeDynamicMeta(title, description, 'none')
+useHead(dynamicMeta)
 
 </script>

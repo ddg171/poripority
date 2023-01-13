@@ -32,6 +32,7 @@
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
+import { makeDynamicMeta } from '~~/components/useHeadHelper'
 import { Article, LinkParams, PageTitleProp, PictureBoxProp } from '~~/types'
 
 definePageMeta({
@@ -40,6 +41,7 @@ definePageMeta({
 
 const route = useRoute()
 const pageTitleStore = usePageTitleStore()
+const config = useRuntimeConfig()
 
 const limit = ref<number>(5)
 const articles = computed<Article[]>(() => {
@@ -79,6 +81,7 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
     alt: '',
     title: ''
   }
+
   const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
   const t:PageTitleProp = {
     title,
@@ -89,9 +92,10 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
 }
 
 const setTitle = (category:string|null) => {
-  useHead({
-    title: category ? `${category}の記事一覧` : '記事一覧' + '|WIP'
-  })
+  const title = (category ? `${category}の記事一覧` : '記事一覧') + '|' + config.public.siteName
+  const subtitle = '記事一覧'
+  const dynamicMeta = makeDynamicMeta(title, subtitle)
+  useHead(dynamicMeta)
 }
 
 watch(() => route.query.category, async () => {
@@ -107,7 +111,7 @@ watch(() => route.query.offset, async () => {
 })
 
 // 記事の取得
-const articleAPI = await useLazyFetch('/api/blogs', {
+const articleAPI = await useFetch('/api/blogs', {
   params: { limit: limit.value, offset: offset.value, category: category.value },
   onRequest (ctx: FetchContext): void {
     ctx.options.params = {

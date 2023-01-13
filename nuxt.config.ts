@@ -1,12 +1,21 @@
 
 import { defineNuxtConfig } from 'nuxt/config'
+
+const SITE_NAME = 'The hut of Poripority'
+const DESCRIPTION = 'Hata_kazeが趣味で作ったWebサイト'
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Hut of Poripority(WIP)',
+      title: SITE_NAME,
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      meta: [{ name: 'robots', content: 'noindex,nofollow' }, { name: 'description', content: 'Nuxt3+Cloudrun+Firebase Hostingで制作中のWebサイト。' }],
+      meta: [
+        { name: 'robots', content: 'all' },
+        { name: 'description', content: DESCRIPTION },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: SITE_NAME },
+        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' }
+      ],
       link: [
         { rel: 'icon', href: '/favicon.ico', id: 'favicon' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -17,11 +26,16 @@ export default defineNuxtConfig({
       style: [],
       script: [],
       htmlAttrs: {
-        lang: 'ja'
+        lang: 'ja',
+        prefix: 'og: https://ogp.me/ns#'
       }
     }
   },
   runtimeConfig: {
+    public: {
+      siteName: SITE_NAME,
+      baseURL: process.env.BASE_URL
+    },
     microCMSAPI: process.env.MICROCMS_API,
     microCMSServiceID: process.env.MICROCMS_SERVEICE_ID
   },
@@ -32,7 +46,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   nitro: {
     prerender: {
-      routes: ['/works']
+      routes: ['/works', '/about']
     }
   },
   build: {

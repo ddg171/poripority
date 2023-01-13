@@ -10,6 +10,8 @@ steps:
         "_MICROCMS_SERVEICE_ID=$_MICROCMS_SERVEICE_ID",
         "--build-arg",
         "_NODE_ENV=$_NODE_ENV",
+        "--build-arg",
+        "_BASE_URL=$_BASE_URL",
         "-t",
         "asia.gcr.io/$PROJECT_ID/$_SERVICE_NAME:$_TAG_NAME",
         ".",

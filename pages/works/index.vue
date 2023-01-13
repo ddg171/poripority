@@ -134,6 +134,7 @@
 </template>
 
 <script setup lang="ts">
+import { makeDynamicMeta } from '~~/components/useHeadHelper'
 import { LinkParams, PictureBoxProp } from '~~/types'
 const { set, init } = usePageTitleStore()
 
@@ -167,6 +168,13 @@ const linksYbb = ref<LinkParams[]>([{
   name: 'Qiitaでの説明記事',
   path: 'https://qiita.com/ddg171/items/bbc445ef427af5addefb'
 }])
+
+const config = useRuntimeConfig()
+const headTitle = title.value + '|' + config.public.siteName
+const description = subtitles.value[0] || ''
+
+const dynamicMeta = makeDynamicMeta(headTitle, description, 'all', 'website')
+useHead(dynamicMeta)
 
 onMounted(() => {
   nextTick(() => {
