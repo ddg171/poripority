@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         { name: 'robots', content: 'all' },
         { name: 'description', content: DESCRIPTION },
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: DESCRIPTION },
+        { property: 'og:site_name', content: SITE_NAME },
         { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' }
       ],
       link: [
