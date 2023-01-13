@@ -1,14 +1,20 @@
 
 import { defineNuxtConfig } from 'nuxt/config'
+
+const SITE_NAME = 'The hut of Poripority'
+const DESCRIPTION = 'Hata_kazeが趣味で作ったWebサイト'
 export default defineNuxtConfig({
   app: {
     head: {
-      title: 'Hut of Poripority',
+      title: SITE_NAME,
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
         { name: 'robots', content: 'all' },
-        { name: 'description', content: 'Hata_kazeが趣味で作ったWebサイト' }
+        { name: 'description', content: DESCRIPTION },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: DESCRIPTION },
+        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' }
       ],
       link: [
         { rel: 'icon', href: '/favicon.ico', id: 'favicon' },
@@ -26,9 +32,12 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    public: {
+      siteName: SITE_NAME,
+      baseURL: process.env.BASE_URL
+    },
     microCMSAPI: process.env.MICROCMS_API,
-    microCMSServiceID: process.env.MICROCMS_SERVEICE_ID,
-    baseURL: process.env.BASE_URL
+    microCMSServiceID: process.env.MICROCMS_SERVEICE_ID
   },
   typescript: {
     shim: false
@@ -37,7 +46,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   nitro: {
     prerender: {
-      routes: ['/works']
+      routes: ['/works', '/about']
     }
   },
   build: {
