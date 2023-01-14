@@ -3,7 +3,7 @@
     class="page-blog flex flex-col items-center justify-center w-full max-w-full text-white"
   >
     <ClientContentSection class="h-full ">
-      <div class="relative grid w-full grid-cols-1">
+      <div class="relative grid w-full grid-cols-1 gap-4">
         <div v-if="pending" class="flex items-center justify-center w-full h-48">
           <p>
             Loading...

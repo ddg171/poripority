@@ -1,5 +1,5 @@
 <template>
-  <article class="flex flex-col items-start md:flex-row bg-darkblue md:my-2">
+  <article class="flex flex-col items-start md:flex-row bg-darkblue ">
     <div class="flex items-center justify-center w-full h-60 overflow-hidden md:w-48 md:h-48 shrink-0 bg-darkblue">
       <NuxtLink class="w-full" :to="to">
         <picture v-if="props.article.eyecatch">
