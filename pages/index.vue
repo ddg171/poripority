@@ -6,7 +6,7 @@
         <ClientHeader2 class="mb-2">
           最新投稿
         </ClientHeader2>
-        <div class="grid w-full grid-cols-1 lg:grid-cols-2">
+        <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-2">
           <ClientArticleCard v-for="a in latest" :key="a.id" :article="a" />
           <div v-if="pending" class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
             <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0">
