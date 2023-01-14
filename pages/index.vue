@@ -6,7 +6,7 @@
         <ClientHeader2 class="mb-2">
           最新投稿
         </ClientHeader2>
-        <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-2">
+        <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-4">
           <ClientArticleCard v-for="a in latest" :key="a.id" :article="a" />
           <div v-if="pending" class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
             <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0">
@@ -26,25 +26,35 @@
         <ClientHeader2 class="mb-2">
           About this site
         </ClientHeader2>
-        <div>
-          <p class="indent-4">
-            このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
-          </p>
-          <p class="mb-2">
-            以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
-          </p>
-          <p class="indent-4">
-            フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。
-          </p>
-          <p class="mb-2">
-            ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。
-          </p>
-          <p class="indent-4">
-            世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。
-          </p>
-          <p class="mb-2">
-            製作者のNuxtのSSRモードについての経験不足のため、このサイトは不思議な挙動をすることがありますがご容赦ください。
-          </p>
+        <div class="flex flex-col-reverse lg:flex-row my-2">
+          <div class="flex flex-col justify-center items-center">
+            <ClientPictureBox
+              class="w-48 h-48"
+              webp="/images/webp/shrimp.webp"
+              jpg="/images/shrimp.jpg"
+              alt="管理人近影。アノマロカリス"
+              title="管理人近影"
+            />
+            <p class="w-full text-center text-sm">
+              管理人の写真
+            </p>
+          </div>
+          <div class="md:px-2">
+            <p class="indent-4 mb-4">
+              このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
+              以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
+            </p>
+            <p class="indent-4 mb-4">
+              フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。
+              ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。
+            </p>
+            <p class="indent-4 mb-4">
+              世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。
+            </p>
+            <p class="mb-4">
+              製作者のNuxtのSSRモードについての経験不足のため、このサイトは不思議な挙動をすることがありますがご容赦ください。
+            </p>
+          </div>
         </div>
       </ClientContentSection>
       <ClientContentSection>
