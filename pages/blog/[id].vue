@@ -81,24 +81,48 @@ onUnmounted(() => {
 
 }
 
-.cms-content>p,
 .cms-content>img{
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+}
+.cms-content ul{
+  margin-left: 1rem;
+}
+.cms-content li{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.cms-content a:hover,
+.cms-content a:focus{
+  text-decoration: underline;
+  font-weight: 500;
+}
+.cms-content li::before{
+  display: block;
+  background-color: #292929;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 0.75rem;
+  margin-bottom: 0.25rem;
+  content: "";
 }
 
 .cms-content h1{
-  font-size: 1.5rem !important;
+  font-size: 2.5rem !important;
 }
 
 .cms-content h2{
-  font-size: 1.5rem !important;
+  font-size: 2rem !important;
 }
 
 .cms-content h3{
-  font-size: 1.25rem !important;
+  font-size: 1.5rem !important;
 }
 
 .cms-content img{
-  height:500px;
+  max-height:500px;
+  width: fit-content;
+  height: fit-content;
 }
 </style>
