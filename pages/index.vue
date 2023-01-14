@@ -7,19 +7,20 @@
           最新投稿
         </ClientHeader2>
         <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-4">
-          <ClientArticleCard v-for="a in latest" :key="a.id" :article="a" />
-          <div v-if="pending" class="col-span-1 mx-0 my-4 bg-green md:my-2 md:mx-2">
-            <div class="flex items-center justify-center w-full h-48 overflow-hidden md:h-48 shrink-0">
-              <p class="text-2xl">
-                Loading...
-              </p>
+          <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
+            <p class="text-2xl">
+              Loading...
+            </p>
+          </div>
+          <template v-else>
+            <ClientArticleCard v-for="a in latest" :key="a.id" :article="a" />
+            <div v-if="latest.length!==3" />
+            <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
+              <NuxtLink to="/blog" class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
+                記事一覧へ
+              </NuxtLink>
             </div>
-          </div>
-          <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
-            <NuxtLink to="/blog" class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
-              記事一覧へ
-            </NuxtLink>
-          </div>
+          </template>
         </div>
       </ClientContentSection>
       <ClientContentSection>
@@ -86,7 +87,7 @@ import { resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
 const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })
 
 const contents = data.value?.contents || []
-const latest = reactive<Array<Article>>(contents)
+const latest = computed<Article[]>(() => data.value?.contents || [])
 const defaultContents:SliderContent[] = [
   {
     pic: {
