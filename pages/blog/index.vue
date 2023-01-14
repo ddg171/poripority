@@ -9,20 +9,21 @@
             Loading...
           </p>
         </div>
-
-        <ClientArticleCard
-          v-for="a,i in articles"
-          :key="a.id"
-          :article="a"
-          :offset="i+offset"
-          :category="category"
-          :heading="2"
-        />
-        <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
-          <p>
-            記事が見つかりませんでした。
-          </p>
-        </div>
+        <template v-else>
+          <ClientArticleCard
+            v-for="a,i in articles"
+            :key="a.id"
+            :article="a"
+            :offset="i+offset"
+            :category="category"
+            :heading="2"
+          />
+          <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
+            <p>
+              記事が見つかりませんでした。
+            </p>
+          </div>
+        </template>
       </div>
       <ClientBottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
     </clientcontentsection>
