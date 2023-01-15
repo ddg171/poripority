@@ -76,7 +76,7 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
   const title = category ? `${category}の記事一覧` : '記事一覧'
   const topImg:PictureBoxProp = {
     webp: '/images/webp/blanktitle01w2000.webp',
-    souce: ['/images/webp/blanktitle01w640.webp 640w', '/images/webp/blanktitle01w1270.webp 1024w'],
+    source: ['/images/webp/blanktitle01w640.webp 640w', '/images/webp/blanktitle01w1270.webp 1024w'],
     jpg: '/images/blanktitle01w640.jpg',
     alt: '',
     title: ''

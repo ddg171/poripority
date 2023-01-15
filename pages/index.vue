@@ -91,7 +91,7 @@ const latest = computed<Article[]>(() => data.value?.contents || [])
 const defaultContents:SliderContent[] = [
   {
     pic: {
-      souce: ['/images/webp/top-img01w640.webp 640w,/images/webp/top-img01w1270.webp 1024w,'],
+      source: ['/images/webp/top-img01w640.webp 640w,/images/webp/top-img01w1270.webp 1024w,'],
       webp: '/images/webp/top-img01w2000.webp',
       jpg: '/images/webp/top-img01w640.jpg',
       alt: 'TOP画像1:鳩',
@@ -108,7 +108,7 @@ const defaultContents:SliderContent[] = [
   },
   {
     pic: {
-      souce: ['/images/webp/top-img02w640.webp 640w,/images/webp/top-img02w1270.webp 1024w,'],
+      source: ['/images/webp/top-img02w640.webp 640w,/images/webp/top-img02w1270.webp 1024w,'],
       webp: '/images/webp/top-img02w2000.webp',
       jpg: '/images/webp/top-img02w640.jpg',
       alt: 'TOP画像2:Wg:RD',
@@ -124,7 +124,7 @@ const defaultContents:SliderContent[] = [
   },
   {
     pic: {
-      souce: ['/images/webp/top-img03w640.webp 640w,/images/webp/top-img03w1270.webp 1024w,'],
+      source: ['/images/webp/top-img03w640.webp 640w,/images/webp/top-img03w1270.webp 1024w,'],
       webp: '/images/webp/top-img03w2000.webp',
       jpg: '/images/webp/top-img03w640.jpg',
       alt: 'TOP画像3:GREEN MOVER',
@@ -150,7 +150,7 @@ if (contents.length) {
 
   const ArticleforSlider:SliderContent = {
     pic: {
-      souce: [`${w640} 640w,${w1280} 1024w,`],
+      source: [`${w640} 640w,${w1280} 1024w,`],
       webp,
       jpg,
       alt: 'TOP画像。最新投稿',
