@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 
-interface Props {souce:string[]
+interface Props {souce?:string[]
     webp:string, jpg:string, alt:string, title:string}
 
 const props = withDefaults(defineProps<Props>(), { souce: () => [], webp: '', jpg: '', alt: '', title: '' })
