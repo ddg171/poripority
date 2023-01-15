@@ -69,7 +69,7 @@ const content = computed(() => {
   return convertContent(value.content) || null
 })
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
   pageTitleStore.init()
 })
 </script>
