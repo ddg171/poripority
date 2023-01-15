@@ -3,26 +3,27 @@
     class="page-blog flex flex-col items-center justify-center w-full max-w-full text-white"
   >
     <ClientContentSection class="h-full ">
-      <div class="relative grid w-full grid-cols-1">
+      <div class="relative grid w-full grid-cols-1 gap-4">
         <div v-if="pending" class="flex items-center justify-center w-full h-48">
           <p>
             Loading...
           </p>
         </div>
-
-        <ClientArticleCard
-          v-for="a,i in articles"
-          :key="a.id"
-          :article="a"
-          :offset="i+offset"
-          :category="category"
-          :heading="2"
-        />
-        <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
-          <p>
-            記事が見つかりませんでした。
-          </p>
-        </div>
+        <template v-else>
+          <ClientArticleCard
+            v-for="a,i in articles"
+            :key="a.id"
+            :article="a"
+            :offset="i+offset"
+            :category="category"
+            :heading="2"
+          />
+          <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
+            <p>
+              記事が見つかりませんでした。
+            </p>
+          </div>
+        </template>
       </div>
       <ClientBottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
     </clientcontentsection>
@@ -75,7 +76,7 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
   const title = category ? `${category}の記事一覧` : '記事一覧'
   const topImg:PictureBoxProp = {
     webp: '/images/webp/blanktitle01w2000.webp',
-    souce: ['/images/webp/blanktitle01w640.webp 640w', '/images/webp/blanktitle01w1270.webp 1024w'],
+    source: ['/images/webp/blanktitle01w640.webp 640w', '/images/webp/blanktitle01w1270.webp 1024w'],
     jpg: '/images/blanktitle01w640.jpg',
     alt: '',
     title: ''

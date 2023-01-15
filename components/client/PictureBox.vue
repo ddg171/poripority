@@ -3,7 +3,7 @@
   <picture class="picture-box w-full h-full flex justify-center items-center">
     <!-- 最大サイズ以外のWebp -->
     <source
-      v-for="s,i in props.souce"
+      v-for="s,i in props.source"
       :key="i"
       type="image/webp"
       media="(max-width:1024px)"
@@ -26,8 +26,8 @@
 
 <script setup lang="ts">
 
-interface Props {souce:string[]
+interface Props {source?:string[]
     webp:string, jpg:string, alt:string, title:string}
 
-const props = withDefaults(defineProps<Props>(), { souce: () => [], webp: '', jpg: '', alt: '', title: '' })
+const props = withDefaults(defineProps<Props>(), { source: () => [], webp: '', jpg: '', alt: '', title: '' })
 </script>

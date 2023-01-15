@@ -30,7 +30,7 @@ const pageTitle:PageTitleProp = {
 }
 
 pageTitleStore.set(pageTitle)
-onUnmounted(() => {
+onBeforeUnmount(() => {
   pageTitleStore.init()
 })
 

@@ -7,7 +7,7 @@ export interface LinkParams {
 }
 
 export interface PictureBoxProp {
-    souce: string[]
+    source: string[]
     webp: string
     jpg: string
     alt: string

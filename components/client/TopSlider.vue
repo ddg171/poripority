@@ -10,7 +10,7 @@
             class="absolute flex items-center justify-center w-full h-full mb-6 overflow-hidden firstview bg-darkblue"
           >
             <ClientPictureBox
-              :souce="c.pic.souce"
+              :source="c.pic.source"
               :alt="c.pic.alt"
               :title="c.pic.title"
               :webp="c.pic.webp"
