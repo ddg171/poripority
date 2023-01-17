@@ -1,4 +1,4 @@
-import client from '~~/components/server/microCMS'
+import client from '~~/server/microCMS'
 import { Article } from '~~/types'
 
 export default defineEventHandler(async (event):Promise<Article> => {
