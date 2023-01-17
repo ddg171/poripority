@@ -134,7 +134,7 @@
 </template>
 
 <script setup lang="ts">
-import { makeDynamicMeta } from '~~/components/useHeadHelper'
+import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 import { LinkParams, PictureBoxProp } from '~~/types'
 const { set, init } = usePageTitleStore()
 

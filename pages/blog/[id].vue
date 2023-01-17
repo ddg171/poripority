@@ -18,9 +18,9 @@
 
 <script setup lang="ts">
 import { Article, Eyecatch, PageTitleProp, PictureBoxProp } from '../../types'
-import { convertContent } from '~~/components/contentParser'
-import { cropSquare, resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
-import { makeDynamicMeta } from '~~/components/useHeadHelper'
+import { convertContent } from '~~/utils/contentParser'
+import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
+import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 definePageMeta({
   layout: 'blog'

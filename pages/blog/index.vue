@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
-import { makeDynamicMeta } from '~~/components/useHeadHelper'
+import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 import { Article, LinkParams, PageTitleProp, PictureBoxProp } from '~~/types'
 
 definePageMeta({
