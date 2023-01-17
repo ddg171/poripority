@@ -5,8 +5,8 @@ export function resizeWithTargetWidth (eyecatch:Eyecatch, targetWidth:number, we
   const origWidth:number = eyecatch.width
   const origHeight:number = eyecatch.height
   const isBigger:boolean = origWidth > targetWidth
-  const width:number = isBigger ? targetWidth : origWidth
-  const height:number = isBigger ? origHeight * (targetWidth / origWidth) : 0
+  const width:number = Math.floor(isBigger ? targetWidth : origWidth)
+  const height:number = Math.floor(isBigger ? origHeight * (targetWidth / origWidth) : origHeight)
   const url = eyecatch.url + `?h=${height}&w=${width}` + (webp ? '&fm=webp' : '')
   return {
     url,
@@ -22,5 +22,15 @@ export function cropSquare (eyecatch:Eyecatch, webp:boolean = true, size = 400):
     url,
     height: size,
     width: size
+  }
+}
+
+export function getURLParams (url:string, key:string):string|undefined {
+  try {
+    const u = new URL(url)
+    const query = u.searchParams
+    return query.get(key) || undefined
+  } catch {
+    return undefined
   }
 }
