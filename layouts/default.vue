@@ -5,7 +5,7 @@
       <main class="w-full min-h-screen flex flex-col items-center  bg-transparent  ">
         <slot />
       </main>
-      <MyFooter />
+      <Appfooter />
     </div>
   </div>
 </template>

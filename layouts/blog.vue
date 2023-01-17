@@ -22,7 +22,7 @@
           </aside>
         </div>
       </div>
-      <MyFooter />
+      <AppFooter />
     </div>
   </div>
 </template>
