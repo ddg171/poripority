@@ -16,9 +16,9 @@
       <div v-if="state.title" class="absolute w-full h-full  title-box backdrop-blur-sm">
         <div class="flex items-center justify-center w-full h-full ">
           <div class="flex flex-col p-4 bg-green/75">
-            <Header1>
+            <AppHeading1>
               <span>{{ state.title }}</span>
-            </Header1>
+            </AppHeading1>
             <p v-for="t , i in state.subtitles" :key="i" class="text-white text-md md:text-xl">
               {{ t }}
             </p>

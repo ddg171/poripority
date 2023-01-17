@@ -3,9 +3,9 @@
     <PageTitle />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
-        <Header2 class="mb-2">
+        <AppHeading2 class="mb-2">
           制作物について
-        </Header2>
+        </AppHeading2>
         <div class="flex">
           <div class="">
             <p class="mb-1 works-indent">

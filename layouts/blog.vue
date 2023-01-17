@@ -1,6 +1,6 @@
 <template>
   <div class="layout-blog flex flex-col items-center min-h-screen">
-    <MyHeader />
+    <AppHeader />
     <div class="flex flex-col items-center w-full">
       <PageTitle />
       <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row">

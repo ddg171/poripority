@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header3>カテゴリ</Header3>
+    <AppHeading3>カテゴリ</AppHeading3>
     <ul>
       <li class="w-full p-2 text-lg font-medium hover:bg-green focus-within:bg-green md:my-1">
         <NuxtLink :to="`/blog`" class="block w-full h-full hover:underline focus:underline" tabindex="0">

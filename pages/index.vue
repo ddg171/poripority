@@ -3,9 +3,9 @@
     <TopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
-        <Header2 class="mb-2">
+        <AppHeading2 class="mb-2">
           最新投稿
-        </Header2>
+        </AppHeading2>
         <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-4">
           <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
             <p class="text-2xl">
@@ -24,9 +24,9 @@
         </div>
       </ContentSection>
       <ContentSection>
-        <Header2 class="mb-2">
+        <AppHeading2 class="mb-2">
           About this site
-        </Header2>
+        </AppHeading2>
         <div class="flex flex-col-reverse lg:flex-row my-2">
           <div class="flex flex-col justify-center items-center">
             <PictureBox
@@ -59,9 +59,9 @@
         </div>
       </ContentSection>
       <ContentSection>
-        <Header2 class="mb-2">
+        <AppHeading2 class="mb-2">
           Discordサーバー/居酒屋「ハルキゲニア」
-        </Header2>
+        </AppHeading2>
         <div class="flex flex-col justify-start md:flex-row">
           <DiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
           <div class="mx-0 my-4 md:my-2 md:mx-4">
