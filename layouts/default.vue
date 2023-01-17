@@ -1,11 +1,11 @@
 <template>
   <div class="layout-default min-h-screen flex flex-col items-center">
-    <ClientMyHeader />
+    <MyHeader />
     <div class="w-full min-h-screen flex  flex-col   items-center">
       <main class="w-full min-h-screen flex flex-col items-center  bg-transparent  ">
         <slot />
       </main>
-      <ClientMyFooter />
+      <MyFooter />
     </div>
   </div>
 </template>

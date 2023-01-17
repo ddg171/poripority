@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-works">
-    <ClientPageTitle />
+    <PageTitle />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
-      <ClientContentSection>
-        <ClientHeader2 class="mb-2">
+      <ContentSection>
+        <Header2 class="mb-2">
           制作物について
-        </ClientHeader2>
+        </Header2>
         <div class="flex">
           <div class="">
             <p class="mb-1 works-indent">
@@ -20,11 +20,11 @@
             </p>
           </div>
         </div>
-      </ClientContentSection>
+      </ContentSection>
 
-      <ClientContentSection class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
-        <ClientIntersectionWrapper>
-          <ClientWorksArticle id="this-site" :links="linksPrprty">
+      <ContentSection class="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        <IntersectionWrapper>
+          <WorksArticle id="this-site" :links="linksPrprty">
             <template #name>
               The Hut of Poripority
             </template>
@@ -47,10 +47,10 @@
                 今後も機能追加を行いつつ継続して運用していく予定。
               </p>
             </template>
-          </ClientWorksArticle>
-        </ClientIntersectionWrapper>
-        <ClientIntersectionWrapper>
-          <ClientWorksArticle id="wargame" :links="linksWgm">
+          </WorksArticle>
+        </IntersectionWrapper>
+        <IntersectionWrapper>
+          <WorksArticle id="wargame" :links="linksWgm">
             <template #name>
               Wargame Replay uploader
             </template>
@@ -73,10 +73,10 @@
                 中身はフロントエンドがVue.js、バックエンドがExpress.jsのアプリをGAEで動かすという単純な物だが、完成度はともかく良い経験だったと思う。
               </p>
             </template>
-          </ClientWorksArticle>
-        </ClientIntersectionWrapper>
-        <ClientIntersectionWrapper>
-          <ClientWorksArticle id="yubaba" :links="linksYbb">
+          </WorksArticle>
+        </IntersectionWrapper>
+        <IntersectionWrapper>
+          <WorksArticle id="yubaba" :links="linksYbb">
             <template #name>
               Firebase湯婆婆
             </template>
@@ -99,10 +99,10 @@
               </p>
               <p>一応費用の請求があるのだが、1円とか2円とかもはや駄菓子も変えないような額なので懐にも優しい。</p>
             </template>
-          </ClientWorksArticle>
-        </ClientIntersectionWrapper>
-        <ClientIntersectionWrapper>
-          <ClientWorksArticle id="yodo" :links="[]">
+          </WorksArticle>
+        </IntersectionWrapper>
+        <IntersectionWrapper>
+          <WorksArticle id="yodo" :links="[]">
             <template #name>
               Yodobashic photo maker
             </template>
@@ -126,9 +126,9 @@
               <p>このアプリを作ってからしばらくしてJavaScriptばかり触るようになってしまったため、もはや中のコードがわからなくなり放置している。</p>
               <p>気が向いたらFletというフレームワークで作り直すかもしれない。</p>
             </template>
-          </ClientWorksArticle>
-        </ClientIntersectionWrapper>
-      </ClientContentSection>
+          </WorksArticle>
+        </IntersectionWrapper>
+      </ContentSection>
     </div>
   </div>
 </template>

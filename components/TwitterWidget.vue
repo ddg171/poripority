@@ -1,5 +1,5 @@
 <template>
-  <ClientWidgetContainer>
+  <WidgetContainer>
     <blockquote>
       <a
         class="twitter-timeline"
@@ -10,7 +10,7 @@
         href="https://twitter.com/hata_kaze?ref_src=twsrc%5Etfw"
       >Tweets by hata_kaze</a>
     </blockquote>
-  </ClientWidgetContainer>
+  </WidgetContainer>
 </template>
 <script setup lang="ts">
 import { WindowWithEmbed } from '~~/types'

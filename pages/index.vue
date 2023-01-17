@@ -1,11 +1,11 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-index">
-    <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
+    <TopSlider :slider-contents="sliderContents" :duration="5000" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
-      <ClientContentSection>
-        <ClientHeader2 class="mb-2">
+      <ContentSection>
+        <Header2 class="mb-2">
           最新投稿
-        </ClientHeader2>
+        </Header2>
         <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-4">
           <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
             <p class="text-2xl">
@@ -13,7 +13,7 @@
             </p>
           </div>
           <template v-else>
-            <ClientArticleCard v-for="a in latest" :key="a.id" :article="a" />
+            <ArticleCard v-for="a in latest" :key="a.id" :article="a" />
             <div v-if="latest.length!==3" />
             <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
               <NuxtLink to="/blog" class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
@@ -22,14 +22,14 @@
             </div>
           </template>
         </div>
-      </ClientContentSection>
-      <ClientContentSection>
-        <ClientHeader2 class="mb-2">
+      </ContentSection>
+      <ContentSection>
+        <Header2 class="mb-2">
           About this site
-        </ClientHeader2>
+        </Header2>
         <div class="flex flex-col-reverse lg:flex-row my-2">
           <div class="flex flex-col justify-center items-center">
-            <ClientPictureBox
+            <PictureBox
               class="w-48 h-48"
               webp="/images/webp/shrimp.webp"
               jpg="/images/shrimp.jpg"
@@ -57,13 +57,13 @@
             </p>
           </div>
         </div>
-      </ClientContentSection>
-      <ClientContentSection>
-        <ClientHeader2 class="mb-2">
+      </ContentSection>
+      <ContentSection>
+        <Header2 class="mb-2">
           Discordサーバー/居酒屋「ハルキゲニア」
-        </ClientHeader2>
+        </Header2>
         <div class="flex flex-col justify-start md:flex-row">
-          <ClientDiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
+          <DiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
           <div class="mx-0 my-4 md:my-2 md:mx-4">
             <div class="w-full md:w-90 xl:w-3/5">
               <p class="mb-2 indent-4">
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-      </ClientContentSection>
+      </ContentSection>
     </div>
   </div>
 </template>

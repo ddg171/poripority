@@ -1,11 +1,11 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <ClientContentSection>
+  <ContentSection>
     <article v-if="content" class="flex flex-col gap-4 text-white cms-content" v-html="content" />
     <hr class="my-4">
     <suspense>
       <template #default>
-        <client-article-Navigation :published-at="publishedAt" :category="category" />
+        <ArticleNavigation :published-at="publishedAt" :category="category" />
       </template>
       <template #fallback>
         <div class="flex items-center justify-center w-full text-lg text-white">
@@ -13,7 +13,7 @@
         </div>
       </template>
     </suspense>
-  </ClientContentSection>
+  </ContentSection>
 </template>
 
 <script setup lang="ts">

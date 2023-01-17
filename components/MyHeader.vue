@@ -1,8 +1,8 @@
 <template>
   <header class="w-full  bg-green text-white" :is-sticky="isSticky">
     <div id="header-container" class="header-container h-full flex flex-row justify-between">
-      <ClientSiteName />
-      <ClientNavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
+      <SiteName />
+      <NavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
     </div>
   </header>
 </template>

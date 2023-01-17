@@ -1,6 +1,6 @@
 
 <template>
-  <ClientBottomNavigation
+  <BottomNavigation
     :left="left"
     :center="center"
     :right="right"

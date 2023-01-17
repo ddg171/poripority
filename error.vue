@@ -4,12 +4,12 @@
       <div
         class="flex flex-col items-center justify-center w-full max-w-full text-white"
       >
-        <ClientContentSection class="h-full ">
+        <ContentSection class="h-full ">
           <p>
             {{ error?.message||"エラーが発生しました。" }}
           </p>
-          <ClientBottomNavigation :left="null" :center="centerNav" :right="null" />
-        </clientcontentsection>
+          <BottomNavigation :left="null" :center="centerNav" :right="null" />
+        </Contentsection>
       </div>
     </NuxtLayout>
   </div>
