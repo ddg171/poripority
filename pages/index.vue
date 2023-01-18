@@ -63,7 +63,7 @@
           Discordサーバー/居酒屋「ハルキゲニア」
         </AppHeading2>
         <div class="flex flex-col justify-start md:flex-row">
-          <DiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
+          <WidgetDiscordStatus class="flex justify-center mx-0 my-4 md:my-2" />
           <div class="mx-0 my-4 md:my-2 md:mx-4">
             <div class="w-full md:w-90 xl:w-3/5">
               <p class="mb-2 indent-4">
