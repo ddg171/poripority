@@ -1,5 +1,5 @@
 <template>
-  <WidgetContainer>
+  <CommonClientOnlyWprapper>
     <iframe
       title="discord"
       src="https://discord.com/widget?id=282494164799848449&theme=dark"
@@ -10,5 +10,5 @@
       frameborder="0"
       sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
     />
-  </WidgetContainer>
+  </CommonClientOnlyWprapper>
 </template>
