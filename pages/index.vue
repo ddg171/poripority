@@ -6,22 +6,19 @@
         <AppHeading2 class="mb-2">
           最新投稿
         </AppHeading2>
-        <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-4">
-          <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
-            <p class="text-2xl">
-              Loading...
-            </p>
-          </div>
-          <template v-else>
-            <ArticleCard v-for="a in latest" :key="a.id" :article="a" />
-            <div v-if="latest.length!==3" />
-            <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
-              <NuxtLink to="/blog" class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
-                記事一覧へ
-              </NuxtLink>
-            </div>
-          </template>
+        <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
+          <p class="text-2xl">
+            Loading...
+          </p>
         </div>
+        <ArticleList v-else :articles="latest" class="grid-cols-1 xl:grid-cols-2">
+          <div v-if="latest.length!==3" />
+          <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
+            <NuxtLink to="/blog" class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
+              記事一覧へ
+            </NuxtLink>
+          </div>
+        </ArticleList>
       </ContentSection>
       <ContentSection>
         <AppHeading2 class="mb-2">

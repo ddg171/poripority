@@ -3,28 +3,18 @@
     class="page-blog flex flex-col items-center justify-center w-full max-w-full text-white"
   >
     <ContentSection class="h-full ">
-      <div class="relative grid w-full grid-cols-1 gap-4">
-        <div v-if="pending" class="flex items-center justify-center w-full h-48">
+      <div v-if="pending" class="flex items-center justify-center w-full h-48">
+        <p>
+          Loading...
+        </p>
+      </div>
+      <ArticleList v-else :articles="articles" :offset="offset" category="category" class="grid-cols-1">
+        <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
           <p>
-            Loading...
+            記事が見つかりませんでした。
           </p>
         </div>
-        <template v-else>
-          <ArticleCard
-            v-for="a,i in articles"
-            :key="a.id"
-            :article="a"
-            :offset="i+offset"
-            :category="category"
-            :heading="2"
-          />
-          <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
-            <p>
-              記事が見つかりませんでした。
-            </p>
-          </div>
-        </template>
-      </div>
+      </ArticleList>
       <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
     </contentsection>
   </div>
@@ -32,7 +22,6 @@
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
-import { ContentSection, ArticleCard, BottomNavigation } from '~~/.nuxt/components'
 import { Article } from '~~/types/articles'
 import { LinkParams, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
