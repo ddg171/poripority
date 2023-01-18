@@ -1,5 +1,5 @@
 import client from '~~/server/microCMS'
-import { isNotEmptyString } from '~~/utils/util'
+import { isNotEmptyString } from '~~/utils/validator'
 
 import { Api, ArticleRef } from '~~/types/articles'
 
