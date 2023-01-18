@@ -2,7 +2,7 @@
   <div class="layout-blog flex flex-col items-center min-h-screen">
     <AppHeader />
     <div class="flex flex-col items-center w-full">
-      <PageTitle />
+      <PageTop />
       <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row">
         <main class="flex flex-col items-center w-full max-w-full bg-transparent md:max-w-3xl ">
           <suspense>

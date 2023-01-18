@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-works">
-    <PageTitle />
+    <PageTop />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
         <AppHeading2 class="mb-2">

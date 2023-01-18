@@ -6,17 +6,7 @@
       </p>
       <div v-for="c,i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper" :isShow="sliderPage===i">
         <div class="relative w-full h-full top-slider-content">
-          <div
-            class="absolute flex items-center justify-center w-full h-full mb-6 overflow-hidden firstview bg-darkblue"
-          >
-            <PictureBox
-              :source="c.pic.source"
-              :alt="c.pic.alt"
-              :title="c.pic.title"
-              :webp="c.pic.webp"
-              :jpg="c.pic.jpg"
-            />
-          </div>
+          <TopImgBlock :img="c.pic" />
           <div class="static w-full h-full slider-text md:absolute ">
             <div class="relative w-full h-full">
               <div class="absolute w-full p-4 ml-5 md:w-auto top-1/2 md:ml-16 lg:ml-20 bg-green/75">
