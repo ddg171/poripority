@@ -3,8 +3,8 @@
     <AppHeader />
     <div class="flex flex-col items-center w-full">
       <PageTop />
-      <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row">
-        <main class="flex flex-col items-center w-full max-w-full bg-transparent md:max-w-3xl ">
+      <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row max-w-screen-xl">
+        <main class="flex flex-col items-center w-full  bg-transparent ">
           <suspense>
             <template #default>
               <slot />
@@ -16,9 +16,11 @@
             </template>
           </suspense>
         </main>
-        <div class="sticky top-0 w-full mx-0 md:max-w-3xl lg:w-80  lg:mx-1">
-          <aside class="w-full p-4 text-white md:max-w-3xl lg:w-72 min-h-96 bg-darkblue md:p-6 ">
-            <CategoryList />
+        <div class="sticky top-0 w-full mx-0  lg:w-80  lg:mx-1 shrink-0">
+          <aside class="w-full grid gap-2">
+            <div class="w-full p-4 text-white  min-h-96 bg-darkblue md:p-6 ">
+              <CategoryList />
+            </div>
           </aside>
         </div>
       </div>

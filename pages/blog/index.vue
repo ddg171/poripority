@@ -2,7 +2,7 @@
   <div
     class="page-blog flex flex-col items-center justify-center w-full max-w-full text-white"
   >
-    <ContentSection class="h-full ">
+    <ContentSection class="h-full w-full">
       <div v-if="pending" class="flex items-center justify-center w-full h-48">
         <p>
           Loading...
