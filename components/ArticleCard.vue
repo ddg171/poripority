@@ -46,9 +46,9 @@
 </template>
 
 <script setup lang="ts">
-import { parseISO, format, isValid } from 'date-fns'
+import { parseISO } from 'date-fns'
 import { cropSquare } from '../utils/imageAPIHelpre'
-import { publishedAtFormat } from '~~/utils/formatter'
+import { articleDate } from '~~/utils/formatter'
 import { Article } from '~~/types/articles'
 
 interface Props{
@@ -76,7 +76,7 @@ const to = computed<string>(
 
 const publishedAt = computed(() => {
   const d = parseISO(props.article?.publishedAt)
-  return isValid(d) ? format(d, publishedAtFormat) : 'n/a'
+  return articleDate(d)
 })
 
 const cropEyecatch = cropSquare
