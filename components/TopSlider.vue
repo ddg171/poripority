@@ -24,28 +24,13 @@
           </div>
         </div>
       </div>
-      <div class="absolute inset-x-0 bottom-0 z-10 flex justify-center w-full my-2 md:my-5">
-        <button
-          v-for="c in contentNum"
-          :key="c"
-          class="w-6 h-6 mx-2 duration-75 ease-in border-solid shadow-2xl slider-page-btn bg-lightgray"
-          :isCurrent="c===sliderPage+1"
-          aria-label="スライダーのページ移動"
-          title="スライダーのページ移動"
-          tabindex="0"
-          @click="jump(c-1)"
-        />
-        <button
-          class="relative w-6 h-6 mx-4 shadow-2xl slider-toggle-btn bg-lightgray"
-          aria-label="スライダーの停止・再生切替"
-          title="スライダーの停止・再生切替"
-          :isStopped="timerId === 0"
-          tabindex="0"
-          @click="toggle"
-        >
-          <span class="absolute border-solid border-gray" />
-        </button>
-      </div>
+      <TopSliderBtnList
+        v-model="sliderPage"
+        :content-num="contentNum"
+        :is-stopped="isStopped"
+        @jump="jump"
+        @toggle="toggle"
+      />
     </div>
   </TopConteinerBlock>
 </template>
@@ -66,6 +51,10 @@ const props = withDefaults(defineProps<Props>(), { sliderContents: () => [], dur
 const contentNum = computed<number>(() => {
   return props.sliderContents.length
 })
+const isStopped = computed<boolean>(() => {
+  return !timerId.value
+})
+
 const nextPage = () => {
   if (sliderPage.value >= contentNum.value - 1) {
     sliderPage.value = 0
@@ -100,8 +89,8 @@ const start = () => {
   timerId.value = window.setInterval(nextPage, props.duration)
 }
 
-const toggle = () => {
-  if (timerId.value) { return stop() }
+const toggle = (isStopped:boolean) => {
+  if (!isStopped) { return stop() }
   start()
 }
 
@@ -124,30 +113,6 @@ h2[data-is-tight=true]{
 .top-slider-content-wrapper[isShow="true"]{
   opacity: 1;
   z-index: 1;
-}
-
-.slider-page-btn[isCurrent="true"]{
-    background-color: #019585;
-}
-
-.slider-toggle-btn span{
-    height: 60%;
-    width: 50%;
-    top:20%;
-    left:25%;
-    border-left-width: 3px;
-    border-right-width: 3px;
-}
-
-.slider-toggle-btn[isStopped="true"] span{
-    width: 60%;
-    left:11%;
-    border-left-width: 0 !important;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    transform: rotate(-45deg);
-    transform-origin: 50% 50%;
-
 }
 
 </style>

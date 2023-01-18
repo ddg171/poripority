@@ -1,5 +1,5 @@
 <template>
-  <TopConteinerBlock>
+  <TopConteinerBlock class="h-1/4h">
     <div :data-show="isShow" class="title-content-box relative  h-full page-title transition-all  duration-500 opacity-0">
       <TopImgBlock :img="state.topImg" />
       <div v-if="state.title" class="absolute w-full h-full  title-box backdrop-blur-sm">
