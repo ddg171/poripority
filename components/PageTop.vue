@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-1/4h mb-4 overflow-hidden top-slider-wrapper">
+  <TopConteinerBlock>
     <div :data-show="isShow" class="title-content-box relative  h-full page-title transition-all  duration-500 opacity-0">
       <TopImgBlock :img="state.topImg" />
       <div v-if="state.title" class="absolute w-full h-full  title-box backdrop-blur-sm">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </TopConteinerBlock>
 </template>
 
 <script setup lang="ts">

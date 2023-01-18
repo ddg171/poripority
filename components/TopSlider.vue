@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full mb-4 overflow-hidden top-slider-wrapper">
-    <div class="relative flex items-center justify-center w-full h-3/4h lg:h-1/2h top-slider">
+  <TopConteinerBlock class="h-3/4h lg:h-1/2h">
+    <div class="relative flex items-center justify-center w-full h-full top-slider">
       <p v-if="sliderPage===-1" class="text-3xl text-white">
         loading...
       </p>
@@ -47,7 +47,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </TopConteinerBlock>
 </template>
 
 <script setup lang="ts">
