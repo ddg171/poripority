@@ -1,8 +1,6 @@
 <template>
   <a :href="props.to" class="block w-full h-full hover:underline focus:underline" target="_blank" tabindex="0">
-    <span>
-      <slot />
-    </span>
+    <slot />
   </a>
 </template>
 

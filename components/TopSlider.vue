@@ -11,9 +11,9 @@
             <div class="relative w-full h-full">
               <div class="absolute w-full p-4 ml-5 md:w-auto top-1/2 md:ml-16 lg:ml-20 bg-green/75">
                 <AppHeading2 class="flex items-center pl-2 text-3xl font-medium border-l-8 border-solid md:text-6xl border-l-lightgray" :data-is-tight="!!c.text.isTight">
-                  <NuxtLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
+                  <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                     {{ c.text.title }}
-                  </NuxtLink>
+                  </CommonAppLink>
                   <span v-else>{{ c.text.title }}</span>
                 </AppHeading2>
                 <p v-for="p , t in c.text.para" :key="t" class="text-lg md:text-2xl">

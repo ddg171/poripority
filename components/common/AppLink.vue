@@ -1,8 +1,6 @@
 <template>
   <NuxtLink :to="props.to" class="block w-full h-full hover:underline focus:underline" tabindex="0">
-    <span>
-      <slot />
-    </span>
+    <slot />
   </NuxtLink>
 </template>
 
