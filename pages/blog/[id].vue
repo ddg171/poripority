@@ -17,7 +17,9 @@
 </template>
 
 <script setup lang="ts">
-import { Article, Eyecatch, PageTitleProp, PictureBoxProp } from '../../types'
+import { ContentSection, ArticleNavigation } from '~~/.nuxt/components'
+import { Article } from '~~/types/articles'
+import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { convertContent } from '~~/utils/contentParser'
 import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'

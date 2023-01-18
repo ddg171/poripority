@@ -17,7 +17,7 @@
 
 <script lang="ts" setup>
 import { NuxtApp } from '#app'
-import { LinkParams, PageTitleProp } from '~~/types'
+import { LinkParams, PageTitleProp } from '~~/types/components'
 
 const centerNav = ref<LinkParams>({ name: 'TOPへ戻る。', path: '/' })
 defineProps<{ error: NuxtApp['payload']['error'] }>()

@@ -1,4 +1,4 @@
-import { Eyecatch } from '~~/types'
+import { Eyecatch } from '~~/types/components'
 
 export function resizeWithTargetWidth (eyecatch:Eyecatch, targetWidth:number, webp:boolean = true):Eyecatch {
   if (!eyecatch) { return eyecatch }

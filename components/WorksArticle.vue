@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { LinkParams } from '~~/types'
+import { LinkParams } from '~~/types/components'
 
 interface Props{
     id:string

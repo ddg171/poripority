@@ -49,7 +49,7 @@
 import { parseISO, format, isValid } from 'date-fns'
 import { cropSquare } from '../utils/imageAPIHelpre'
 import { publishedAtFormat } from '~~/utils/util'
-import { Article } from '~~/types'
+import { Article } from '~~/types/articles'
 
 interface Props{
     article:Article

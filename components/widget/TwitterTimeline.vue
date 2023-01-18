@@ -14,9 +14,9 @@
     </ClientOnly>
   </div>
 </template>
-<script setup lang="ts">
-import { WindowWithEmbed } from '~~/types'
 
+<script setup lang="ts">
+import '~~/types/window'
 useHead({
   script: [
     {
@@ -30,7 +30,7 @@ useHead({
 
 onMounted(() => {
   nextTick(() => {
-    (window as WindowWithEmbed).twttr?.widgets.load()
+    window.twttr?.widgets.load()
   })
 })
 

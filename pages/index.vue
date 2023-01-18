@@ -81,7 +81,9 @@
 </template>
 
 <script setup lang="ts">
-import { Article, Eyecatch, SliderContent } from '~~/types'
+import { TopSlider, ContentSection, AppHeading2, ArticleCard, NuxtLink, PictureBox, WidgetDiscordStatus } from '~~/.nuxt/components'
+import { Article } from '~~/types/articles'
+import { SliderContent, Eyecatch } from '~~/types/components'
 import { resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 
 const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })

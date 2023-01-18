@@ -1,7 +1,7 @@
 
 import { useState } from '#app'
 import { Ref } from 'nuxt/dist/app/compat/capi'
-import { Category } from '~~/types'
+import { Category } from '~~/types/articles'
 
 export const useCategoryStore = () => {
   const state = useState<Category[]>(

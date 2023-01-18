@@ -32,8 +32,10 @@
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
+import { ContentSection, ArticleCard, BottomNavigation } from '~~/.nuxt/components'
+import { Article } from '~~/types/articles'
+import { LinkParams, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
-import { Article, LinkParams, PageTitleProp, PictureBoxProp } from '~~/types'
 
 definePageMeta({
   layout: 'blog'
