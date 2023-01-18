@@ -134,7 +134,6 @@
 </template>
 
 <script setup lang="ts">
-import { PageTitle, ContentSection, AppHeading2, IntersectionWrapper, WorksArticle } from '~~/.nuxt/components'
 import { PictureBoxProp, LinkParams } from '~~/types/components'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 

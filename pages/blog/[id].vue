@@ -17,7 +17,6 @@
 </template>
 
 <script setup lang="ts">
-import { ContentSection, ArticleNavigation } from '~~/.nuxt/components'
 import { Article } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { convertContent } from '~~/utils/contentParser'
