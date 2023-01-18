@@ -3,6 +3,7 @@ export interface LinkParams {
     name:string
     path:string
     disabled?:boolean
+    isExternal?:boolean
 }
 export interface PictureBoxProp {
     source: string[]

@@ -1,27 +1,34 @@
 <template>
   <div>
     <AppHeading3>カテゴリ</AppHeading3>
-    <ul>
-      <li class="w-full p-2 text-lg font-medium hover:bg-green focus-within:bg-green md:my-1">
-        <NuxtLink :to="`/blog`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
-          全て
-        </NuxtLink>
-      </li>
-      <li v-for="c ,i in state" :key="i" class="w-full p-2 text-lg font-medium  hover:bg-green focus-within:bg-green md:my-1">
-        <NuxtLink :to="`/blog?category=${c.id}`" class="block w-full h-full hover:underline focus:underline" tabindex="0">
-          {{ c.name }}
-        </NuxtLink>
-      </li>
-    </ul>
+    <CommonLinkList :links="categories" class="text-lg">
+      <template #first>
+        <CommonLinkListElem>
+          <CommonAppLink to="/blog">
+            全て
+          </CommonAppLink>
+        </CommonLinkListElem>
+      </template>
+    </CommonLinkList>
   </div>
 </template>
 
 <script setup lang="ts">
+import { LinkParams } from '~~/types/components'
 
 const { state, set } = useCategoryStore()
 
 const { data } = await useFetch('/api/category')
 
 set(data.value?.contents || [])
+
+const categories = computed<LinkParams[]>(() => {
+  return state.value.map((c) => {
+    return {
+      name: c.name,
+      path: `/blog?category=${c.id}`
+    }
+  })
+})
 
 </script>
