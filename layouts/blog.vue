@@ -1,9 +1,9 @@
 <template>
   <CommonLayoutBox>
     <AppHeader />
-    <div class="flex flex-col items-center w-full">
+    <div class="flex flex-col items-center w-full min-h-screen">
       <PageTop />
-      <div class="flex flex-col items-center w-full h-full min-h-screen lg:justify-center lg:items-start lg:flex-row max-w-screen-xl">
+      <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row  min-h-screen">
         <main class="flex flex-col items-center w-full  bg-transparent ">
           <suspense>
             <template #default>
@@ -23,7 +23,7 @@
             </div>
           </aside>
         </div>
-      </div>
+      </CommonContentWidthBox>
       <AppFooter />
     </div>
   </CommonLayoutBox>

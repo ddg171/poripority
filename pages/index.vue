@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-index">
     <TopSlider :slider-contents="sliderContents" :duration="5000" />
-    <div class="flex flex-col items-center w-full max-w-screen-xl ">
+    <CommonContentWidthBox class="flex flex-col items-center ">
       <ContentSection>
         <AppHeading2 class="mb-2">
           最新投稿
@@ -75,7 +75,7 @@
           </div>
         </div>
       </ContentSection>
-    </div>
+    </CommonContentWidthBox>
   </div>
 </template>
 

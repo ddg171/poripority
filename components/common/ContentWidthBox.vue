@@ -1,9 +1,7 @@
 <template>
   <div
-    class="w-full h-full min-h-screen"
+    class="w-full h-full max-w-screen-xl  "
   >
-    <div>
-      <slot />
-    </div>
+    <slot />
   </div>
 </template>
