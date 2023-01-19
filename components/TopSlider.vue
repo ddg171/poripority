@@ -7,10 +7,10 @@
       <div v-for="c,i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper" :isShow="sliderPage===i">
         <div class="relative w-full h-full top-slider-content">
           <TopImgBlock :img="c.pic" />
-          <div class="static w-full h-full slider-text md:absolute ">
-            <div class="relative w-full h-full">
-              <div class="absolute w-full p-4 ml-5 md:w-auto top-1/2 md:ml-16 lg:ml-20 bg-green/75">
-                <AppHeading2 class="flex items-center pl-2 text-3xl font-medium border-l-8 border-solid md:text-6xl border-l-lightgray" :data-is-tight="!!c.text.isTight">
+          <div class=" absolute w-full h-full flex justify-center items-center">
+            <CommonContentWidthBox class="flex items-end justify-start">
+              <div class="flex flex-col px-4 md:px-12 py-2  md:py-6 bg-green/75 w-full md:w-auto mb-1/5h  md:mb-1/8h">
+                <AppHeading2 :data-is-tight="!!c.text.isTight">
                   <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                     {{ c.text.title }}
                   </CommonAppLink>
@@ -20,7 +20,7 @@
                   {{ p }}
                 </p>
               </div>
-            </div>
+            </CommonContentWidthBox>
           </div>
         </div>
       </div>
