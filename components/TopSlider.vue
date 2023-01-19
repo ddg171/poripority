@@ -9,7 +9,7 @@
           <TopImgBlock :img="c.pic" />
           <div class=" absolute w-full h-full flex justify-center items-center">
             <CommonContentWidthBox class="flex items-end justify-start">
-              <div class="flex flex-col px-4 md:px-12 py-2  md:py-6 bg-green/75 w-full md:w-auto mb-1/5h  md:mb-1/8h">
+              <div class="flex flex-col px-4 md:px-12 py-2  md:py-6 bg-green/75 w-full md:w-auto mb-1/5h  md:mb-1/7h">
                 <AppHeading2 :data-is-tight="!!c.text.isTight">
                   <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                     {{ c.text.title }}
