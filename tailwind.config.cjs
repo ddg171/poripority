@@ -1,5 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 const defaultTheme = require('tailwindcss/defaultTheme')
+
+const vh = {
+  '1/8h': '12.5vh',
+  '1/7h': '14.3vh',
+  '1/6h': '16.67vh',
+  '1/5h': '20vh',
+  '1/4h': '25vh',
+  '1/3h': '33vh',
+  '1/2h': '50vh',
+  '3/4h': '75vh'
+}
+
 module.exports = {
   // mode: "jit",
   content: [
@@ -23,18 +35,13 @@ module.exports = {
     },
     extend: {
       height: {
-        '1/5h': '20vh',
-        '1/4h': '25vh',
-        '1/3h': '33vh',
-        '1/2h': '50vh',
-        '3/4h': '75vh'
+        ...vh
       },
       'min-height': {
-        '1/5h': '20vh',
-        '1/4h': '25vh',
-        '1/3h': '33vh',
-        '1/2h': '50vh',
-        '3/4h': '75vh'
+        ...vh
+      },
+      margin: {
+        ...vh
       },
       maxWidth: {
         'screen-3xl': '1792px',

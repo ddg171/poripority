@@ -1,11 +1,20 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <ClientContentSection>
+  <ContentSection class="grid gap-6">
+    <div class="w-full flex flex-col items-end">
+      <p>{{ info }}</p>
+      <p>
+        category:
+        <CommonAppLink v-if="article?.category?.name" class="inline" :to="`/blog?category=${article.category.id}`">
+          {{ article?.category?.name }}
+        </CommonAppLink>
+        <span v-else>n/a</span>
+      </p>
+    </div>
     <article v-if="content" class="flex flex-col gap-4 text-white cms-content" v-html="content" />
-    <hr class="my-4">
     <suspense>
       <template #default>
-        <client-article-Navigation :published-at="publishedAt" :category="category" />
+        <ArticleNavigation :published-at="publishedAt" :category="category" />
       </template>
       <template #fallback>
         <div class="flex items-center justify-center w-full text-lg text-white">
@@ -13,14 +22,16 @@
         </div>
       </template>
     </suspense>
-  </ClientContentSection>
+  </ContentSection>
 </template>
 
 <script setup lang="ts">
-import { Article, Eyecatch, PageTitleProp, PictureBoxProp } from '../../types'
-import { convertContent } from '~~/components/contentParser'
-import { cropSquare, resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
-import { makeDynamicMeta } from '~~/components/useHeadHelper'
+import parseISO from 'date-fns/esm/fp/parseISO/index.js'
+import { Article } from '~~/types/articles'
+import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
+import { convertContent } from '~~/utils/contentParser'
+import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
+import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 definePageMeta({
   layout: 'blog'
@@ -45,6 +56,8 @@ const dynamicMeta = makeDynamicMeta(headTitle, description, 'all', 'article', im
 useHead(dynamicMeta)
 
 const publishedAt = computed<string|null>(() => { return value.publishedAt || null })
+
+const info = ref<string>(`公開時刻:${articleDate(parseISO(value.publishedAt))}`)
 
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch

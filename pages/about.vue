@@ -1,16 +1,16 @@
 <template>
   <div class="page-about flex flex-col items-center w-full max-w-screen-xl ">
-    <ClientContentSection>
-      <ClientHeader1>
+    <ContentSection>
+      <AppHeading1>
         ABOUT ME
-      </ClientHeader1>
+      </AppHeading1>
       <p>WIP</p>
-    </ClientContentSection>
+    </ContentSection>
   </div>
 </template>
 
 <script setup lang="ts">
-import { makeDynamicMeta } from '~~/components/useHeadHelper'
+import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 const config = useRuntimeConfig()
 const title = 'About|' + config.public.siteName

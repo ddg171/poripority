@@ -1,28 +1,28 @@
 <template>
   <article class="flex flex-col items-start md:flex-row bg-darkblue ">
-    <div class="flex items-center justify-center w-full h-60 overflow-hidden md:w-48 md:h-48 shrink-0 bg-darkblue">
-      <NuxtLink class="w-full" :to="to">
+    <div class=" w-full h-60 overflow-hidden md:w-48 md:h-48 shrink-0 bg-darkblue">
+      <CommonAppLink :to="to" class="flex items-center justify-start md:justify-center">
         <picture v-if="props.article.eyecatch">
           <source :srcset="cropEyecatch(props.article.eyecatch,true,500).url" type="image/webp">
           <img class="w-full" :src=" cropEyecatch(props.article.eyecatch,false,500).url " height="400" width="400" alt="">
         </picture>
-      </NuxtLink>
+      </CommonAppLink>
     </div>
-    <div class="flex flex-col justify-between h-full p-0 m-0 md:px-2">
+    <div class="flex flex-col justify-between  md:h-48 p-0 m-0 md:px-2 py-2 grow">
       <div class="w-full mb-2 md:mb-0">
         <div class="mb-0 text-2xl font-medium md:mb-1">
           <h2 v-if="props.heading===2">
-            <NuxtLink :to="to" class="w-full hover:underline" tabindex="0">
+            <CommonAppLink :to="to">
               {{ props.article.title }}
-            </NuxtLink>
+            </CommonAppLink>
           </h2>
           <h3 v-else>
-            <NuxtLink :to="to" class="w-full hover:underline" tabindex="0">
+            <CommonAppLink :to="to">
               {{ props.article.title }}
-            </NuxtLink>
+            </CommonAppLink>
           </h3>
         </div>
-        <p class="text-md">
+        <p class="text-md ">
           {{ props.article.subtitle }}
         </p>
       </div>
@@ -32,9 +32,9 @@
         </p>
         <p class="text-sm">
           Category:
-          <NuxtLink v-if="props.article.category" :to="`/blog?category=${props.article.category.id}`" class="hover:underline focus:underline">
+          <CommonAppLink v-if="props.article.category" :to="`/blog?category=${props.article.category.id}`" class="inline">
             {{ props.article.category.name }}
-          </NuxtLink>
+          </CommonAppLink>
           <span v-else>n/a</span>
         </p>
         <blockquote>
@@ -46,10 +46,10 @@
 </template>
 
 <script setup lang="ts">
-import { parseISO, format, isValid } from 'date-fns'
-import { cropSquare } from '../imageAPIHelpre'
-import { publishedAtFormat } from '~~/utils/util'
-import { Article } from '~~/types'
+import { parseISO } from 'date-fns'
+import { cropSquare } from '../utils/imageAPIHelpre'
+import { articleDate } from '~~/utils/formatter'
+import { Article } from '~~/types/articles'
 
 interface Props{
     article:Article
@@ -76,7 +76,7 @@ const to = computed<string>(
 
 const publishedAt = computed(() => {
   const d = parseISO(props.article?.publishedAt)
-  return isValid(d) ? format(d, publishedAtFormat) : 'n/a'
+  return articleDate(d)
 })
 
 const cropEyecatch = cropSquare

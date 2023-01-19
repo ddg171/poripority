@@ -13,10 +13,21 @@
             SNS
           </h3>
           <ul class="flex gap-2">
-            <li><a href="https://twitter.com/hata_kaze" target="_blank" class="hover:underline">Twitter</a></li>
-            <li><a href="https://github.com/ddg171" target="_blank" class="hover:underline">Github</a></li>
-
-            <li><a href="https://qiita.com/ddg171" target="_blank" class="hover:underline">Qiita</a></li>
+            <li>
+              <CommonExternalLink to="https://twitter.com/hata_kaze">
+                Twitter
+              </CommonExternalLink>
+            </li>
+            <li>
+              <CommonExternalLink to="https://github.com/ddg171">
+                Github
+              </CommonExternalLink>
+            </li>
+            <li>
+              <CommonExternalLink to="https://qiita.com/ddg171">
+                Qiita
+              </CommonExternalLink>
+            </li>
           </ul>
         </div>
       </div>

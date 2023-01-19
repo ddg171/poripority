@@ -2,38 +2,29 @@
   <div
     class="page-blog flex flex-col items-center justify-center w-full max-w-full text-white"
   >
-    <ClientContentSection class="h-full ">
-      <div class="relative grid w-full grid-cols-1 gap-4">
-        <div v-if="pending" class="flex items-center justify-center w-full h-48">
+    <ContentSection class="h-full w-full">
+      <div v-if="pending" class="flex items-center justify-center w-full h-48">
+        <p>
+          Loading...
+        </p>
+      </div>
+      <ArticleList v-else :articles="articles" :offset="offset" :category="category" class="grid-cols-1">
+        <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
           <p>
-            Loading...
+            記事が見つかりませんでした。
           </p>
         </div>
-        <template v-else>
-          <ClientArticleCard
-            v-for="a,i in articles"
-            :key="a.id"
-            :article="a"
-            :offset="i+offset"
-            :category="category"
-            :heading="2"
-          />
-          <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
-            <p>
-              記事が見つかりませんでした。
-            </p>
-          </div>
-        </template>
-      </div>
-      <ClientBottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
-    </clientcontentsection>
+      </ArticleList>
+      <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
+    </contentsection>
   </div>
 </template>
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
-import { makeDynamicMeta } from '~~/components/useHeadHelper'
-import { Article, LinkParams, PageTitleProp, PictureBoxProp } from '~~/types'
+import { Article } from '~~/types/articles'
+import { LinkParams, PictureBoxProp, PageTitleProp } from '~~/types/components'
+import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 definePageMeta({
   layout: 'blog'

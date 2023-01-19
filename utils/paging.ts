@@ -1,4 +1,4 @@
-import { LinkParams } from '~~/types'
+import { LinkParams } from '~~/types/components'
 
 export function prev (offset:number = 0, articleNum:number = 0, totalCount:number = 0, limit:number = 0, category:string = ''):LinkParams|null {
   const currentPosition = offset + articleNum

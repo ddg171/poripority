@@ -1,5 +1,5 @@
-import client from '~~/components/server/microCMS'
-import { Category } from '~~/types'
+import client from '~~/server/microCMS'
+import { Category } from '~~/types/articles'
 
 export default defineEventHandler(async (event):Promise<Category> => {
   const contentId = event.context.params.id

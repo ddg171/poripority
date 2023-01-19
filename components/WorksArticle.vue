@@ -1,8 +1,8 @@
 <template>
-  <article :id="props.id" class="flex flex-col items-start mx-0 my-8 md:my-2 md:mx-2 md:h-92 ">
-    <ClientHeader3 class="">
+  <article :id="props.id" class="flex flex-col items-start  md:h-92 ">
+    <AppHeading3 class="mb-2">
       <slot name="name" />
-    </ClientHeader3>
+    </AppHeading3>
 
     <div class="flex flex-col items-center ">
       <div class="flex items-center justify-center w-full h-auto p-2 lg:w-96 lg:h-96 bg-green">
@@ -14,22 +14,18 @@
           <slot name="status" />
         </p>
         <div class="h-auto mb-4 lg:h-64">
-          <slot name="introduction" />
+          <WorksParaBox>
+            <slot name="introduction" />
+          </WorksParaBox>
         </div>
-        <ul v-if="links.length!==0" class="">
-          <li v-for="l , i in links" :key="i" class="my-2">
-            <NuxtLink :to="l.path" class="w-full p-1 font-semibold text-md hover:underline focus:underline hover:bg-lightgreen focus:bg-lightgreen" target="_blank" rel="noopener noreferrer">
-              {{ l.name }}
-            </NuxtLink>
-          </li>
-        </ul>
+        <CommonLinkList v-if="links.length!==0" :links="links" class="font-semibold text-md" />
       </div>
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { LinkParams } from '~~/types'
+import { LinkParams } from '~~/types/components'
 
 interface Props{
     id:string

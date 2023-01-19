@@ -1,7 +1,7 @@
 
 import { useState } from '#app'
 import { Ref } from 'nuxt/dist/app/compat/capi'
-import { PageTitleProp } from '~~/types'
+import { PageTitleProp } from '~~/types/components'
 
 export const usePageTitleStore = () => {
   const state = useState<PageTitleProp>(

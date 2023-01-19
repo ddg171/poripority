@@ -1,32 +1,21 @@
 <template>
-  <div class="w-full h-1/4h mb-4 overflow-hidden top-slider-wrapper">
+  <TopConteinerBlock class="h-1/5h md:h-1/3h">
     <div :data-show="isShow" class="title-content-box relative  h-full page-title transition-all  duration-500 opacity-0">
-      <div
-        v-if="state.topImg"
-        class="absolute flex items-center justify-center w-full h-full overflow-hidden firstview "
-      >
-        <ClientPictureBox
-          :source="state.topImg.source"
-          :alt="state.topImg.alt"
-          :title="state.topImg.title"
-          :webp="state.topImg.webp"
-          :jpg="state.topImg.jpg"
-        />
-      </div>
-      <div v-if="state.title" class="absolute w-full h-full  title-box backdrop-blur-sm">
-        <div class="flex items-center justify-center w-full h-full ">
-          <div class="flex flex-col p-4 bg-green/75">
-            <ClientHeader1>
+      <TopImgBlock :img="state.topImg" />
+      <div v-if="state.title" class="absolute w-full h-full flex justify-center items-center title-box backdrop-blur-sm">
+        <CommonContentWidthBox class="flex items-center justify-start">
+          <div class="flex flex-col px-4 md:px-12 py-2  md:py-6 bg-green/75 w-full md:w-auto my-2">
+            <AppHeading1>
               <span>{{ state.title }}</span>
-            </ClientHeader1>
+            </AppHeading1>
             <p v-for="t , i in state.subtitles" :key="i" class="text-white text-md md:text-xl">
               {{ t }}
             </p>
           </div>
-        </div>
+        </CommonContentWidthBox>
       </div>
     </div>
-  </div>
+  </TopConteinerBlock>
 </template>
 
 <script setup lang="ts">

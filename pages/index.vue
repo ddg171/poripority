@@ -1,36 +1,35 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-index">
-    <ClientTopSlider :slider-contents="sliderContents" :duration="5000" />
-    <div class="flex flex-col items-center w-full max-w-screen-xl ">
-      <ClientContentSection>
-        <ClientHeader2 class="mb-2">
+    <TopSlider :slider-contents="sliderContents" :duration="5000" />
+    <CommonContentWidthBox class="flex flex-col items-center ">
+      <ContentSection>
+        <AppHeading2 class="mb-2">
           最新投稿
-        </ClientHeader2>
-        <div class="grid w-full grid-cols-1 xl:grid-cols-2 gap-4">
-          <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
-            <p class="text-2xl">
-              Loading...
-            </p>
-          </div>
-          <template v-else>
-            <ClientArticleCard v-for="a in latest" :key="a.id" :article="a" />
-            <div v-if="latest.length!==3" />
-            <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
-              <NuxtLink to="/blog" class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
-                記事一覧へ
-              </NuxtLink>
-            </div>
-          </template>
+        </AppHeading2>
+        <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
+          <p class="text-2xl">
+            Loading...
+          </p>
         </div>
-      </ClientContentSection>
-      <ClientContentSection>
-        <ClientHeader2 class="mb-2">
+        <ArticleList v-else :articles="latest" class="grid-cols-1 xl:grid-cols-2">
+          <div v-if="latest.length!==3" />
+          <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
+            <div class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
+              <CommonAppLink to="/blog" class="w-full h-full text-center">
+                記事一覧へ
+              </CommonAppLink>
+            </div>
+          </div>
+        </ArticleList>
+      </ContentSection>
+      <ContentSection>
+        <AppHeading2 class="mb-2">
           About this site
-        </ClientHeader2>
-        <div class="flex flex-col-reverse lg:flex-row my-2">
+        </AppHeading2>
+        <div class="flex flex-col-reverse lg:flex-row gap-4">
           <div class="flex flex-col justify-center items-center">
-            <ClientPictureBox
-              class="w-48 h-48"
+            <PictureBox
+              class="w-60 h-60"
               webp="/images/webp/shrimp.webp"
               jpg="/images/shrimp.jpg"
               alt="管理人近影。アノマロカリス"
@@ -40,49 +39,50 @@
               管理人の写真
             </p>
           </div>
-          <div class="md:px-2">
-            <p class="indent-4 mb-4">
+          <div class="grid gap-2">
+            <CommonAppApra>
               このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
               以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
-            </p>
-            <p class="indent-4 mb-4">
+            </CommonAppApra>
+            <CommonAppApra>
               フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。
               ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。
-            </p>
-            <p class="indent-4 mb-4">
+            </CommonAppApra>
+            <CommonAppApra>
               世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。
-            </p>
-            <p class="mb-4">
+            </CommonAppApra>
+            <CommonAppApra>
               製作者のNuxtのSSRモードについての経験不足のため、このサイトは不思議な挙動をすることがありますがご容赦ください。
-            </p>
+            </CommonAppApra>
           </div>
         </div>
-      </ClientContentSection>
-      <ClientContentSection>
-        <ClientHeader2 class="mb-2">
+      </ContentSection>
+      <ContentSection>
+        <AppHeading2 class="mb-2">
           Discordサーバー/居酒屋「ハルキゲニア」
-        </ClientHeader2>
+        </AppHeading2>
         <div class="flex flex-col justify-start md:flex-row">
-          <ClientDiscordWidget class="flex justify-center mx-0 my-4 md:my-2" />
+          <WidgetDiscordStatus class="flex justify-center mx-0 my-4 md:my-2" />
           <div class="mx-0 my-4 md:my-2 md:mx-4">
-            <div class="w-full md:w-90 xl:w-3/5">
-              <p class="mb-2 indent-4">
+            <div class="w-full grid gap-2">
+              <CommonAppApra>
                 Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。他にも流行りのゲームを遊んだり色々やってるので、気になる方はぜひご参加ください。
-              </p>
-              <p class="mb-2 indent-4">
+              </CommonAppApra>
+              <CommonAppApra>
                 おそらくWargame: RDで対人戦をもっとも積極的にやっている日本人鯖の一つです。CPU相手の戦闘に飽きてきた方や「俺より強いやつに会いたい」という方にもおすすめ。
-              </p>
+              </CommonAppApra>
             </div>
           </div>
         </div>
-      </ClientContentSection>
-    </div>
+      </ContentSection>
+    </CommonContentWidthBox>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Article, Eyecatch, SliderContent } from '~~/types'
-import { resizeWithTargetWidth } from '~~/components/imageAPIHelpre'
+import { Article } from '~~/types/articles'
+import { SliderContent, Eyecatch } from '~~/types/components'
+import { resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 
 const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })
 
