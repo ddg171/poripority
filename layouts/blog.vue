@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-blog flex flex-col items-center min-h-screen">
+  <CommonLayoutBox>
     <AppHeader />
     <div class="flex flex-col items-center w-full">
       <PageTop />
@@ -26,7 +26,7 @@
       </div>
       <AppFooter />
     </div>
-  </div>
+  </CommonLayoutBox>
 </template>
 
 <script lang="ts" setup>
