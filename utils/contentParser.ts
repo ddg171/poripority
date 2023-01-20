@@ -12,7 +12,7 @@ function changeImgParams (doc:Document):Document {
     const height = Number(getURLParams(img.src, 'h'))
     const width = Number(getURLParams(img.src, 'w'))
     if (isNaN(height) || isNaN(width)) {
-      img.src = img.src + '?q=40&fm=webp'
+      img.src = removeURLParams(img.src) + '?q=40&fm=webp'
       img.setAttribute('data-src-url', img.src)
       return
     }
