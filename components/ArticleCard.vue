@@ -26,21 +26,7 @@
           {{ props.article.subtitle }}
         </p>
       </div>
-      <div class="mt-1 md:mt-0">
-        <p class="text-sm">
-          {{ publishedAt }}
-        </p>
-        <p class="text-sm">
-          Category:
-          <CommonAppLink v-if="props.article.category" :to="`/blog?category=${props.article.category.id}`" class="inline">
-            {{ props.article.category.name }}
-          </CommonAppLink>
-          <span v-else>n/a</span>
-        </p>
-        <blockquote>
-          <p />
-        </blockquote>
-      </div>
+      <ArticleInfoBox :category="props.article.category" :published-date="props.article.publishedAt" class="mt-1 md:mt-0" />
     </div>
   </article>
 </template>
