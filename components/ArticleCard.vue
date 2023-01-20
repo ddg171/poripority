@@ -32,9 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { parseISO } from 'date-fns'
 import { cropSquare } from '../utils/imageAPIHelpre'
-import { articleDate } from '~~/utils/formatter'
 import { Article } from '~~/types/articles'
 
 interface Props{
@@ -59,11 +57,6 @@ const to = computed<string>(
 
     return params.length ? path + '?' + params.join('&') : path
   })
-
-const publishedAt = computed(() => {
-  const d = parseISO(props.article?.publishedAt)
-  return articleDate(d)
-})
 
 const cropEyecatch = cropSquare
 </script>
