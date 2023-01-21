@@ -26,29 +26,13 @@
           {{ props.article.subtitle }}
         </p>
       </div>
-      <div class="mt-1 md:mt-0">
-        <p class="text-sm">
-          {{ publishedAt }}
-        </p>
-        <p class="text-sm">
-          Category:
-          <CommonAppLink v-if="props.article.category" :to="`/blog?category=${props.article.category.id}`" class="inline">
-            {{ props.article.category.name }}
-          </CommonAppLink>
-          <span v-else>n/a</span>
-        </p>
-        <blockquote>
-          <p />
-        </blockquote>
-      </div>
+      <ArticleInfoBox :category="props.article.category" :published-date="props.article.publishedAt" class="mt-1 md:mt-0" />
     </div>
   </article>
 </template>
 
 <script setup lang="ts">
-import { parseISO } from 'date-fns'
 import { cropSquare } from '../utils/imageAPIHelpre'
-import { articleDate } from '~~/utils/formatter'
 import { Article } from '~~/types/articles'
 
 interface Props{
@@ -73,11 +57,6 @@ const to = computed<string>(
 
     return params.length ? path + '?' + params.join('&') : path
   })
-
-const publishedAt = computed(() => {
-  const d = parseISO(props.article?.publishedAt)
-  return articleDate(d)
-})
 
 const cropEyecatch = cropSquare
 </script>
