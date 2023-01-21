@@ -24,11 +24,11 @@ const toggle = (val:boolean) => {
 </script>
 
 <style scoped>
-AppHeader{
+header{
     height: 64px;
 }
 
-AppHeader[is-sticky="true"]{
+header[is-sticky="true"]{
   position: sticky;
   top:0;
   z-index: 11;
