@@ -47,6 +47,11 @@ module.exports = {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px'
       },
+      maxHeight: {
+        '1080p': '1080px',
+        '960p': '960px',
+        '720p': '720px'
+      },
       fontFamily: {
         sans: ['Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', 'sans-serif', ...defaultTheme.fontFamily.sans]
       }
