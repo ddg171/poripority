@@ -48,7 +48,7 @@ jobs:
             --build-arg _MICROCMS_API=$MICROCMS_API \
             --build-arg _MICROCMS_SERVEICE_ID=$MICROCMS_SERVEICE_ID \
             --build-arg _BASE_URL=$BASE_URL \
-            --build-arg GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID \
+            --build-arg _GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID \
             ./ \
 
       - name: Push Docker Image
