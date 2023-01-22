@@ -6,7 +6,7 @@ on:
 name: Build and Deploy to Cloud Run and Firebase hosting
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
-  SERVICE_NAME: my-blog
+  SERVICE_NAME: ${{secrets.SERVICE_NAME}}
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   MICROCMS_SERVEICE_ID: ${{ secrets.MICROCMS_SERVEICE_ID }}
   MICROCMS_API: ${{ secrets.MICROCMS_API }}
@@ -33,7 +33,7 @@ jobs:
         uses: 'google-github-actions/auth@v0.4.0'
         with:
           workload_identity_provider: ${{ secrets.PROVIDER_NAME }}
-          service_account: github-actions@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
+          service_account: ${{secrets.SERVICE_ACCOUNT_NAME }}@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v0
