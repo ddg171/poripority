@@ -60,7 +60,7 @@ jobs:
             --project=$PROJECT_ID \
             --image=asia.gcr.io/${{ secrets.PROJECT_ID }}/${{ secrets.SERVICE_NAME }}:${{ github.sha }} \
             --region="asia-northeast2" \
-            --service-account=github-actions@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com \
+            --service-account=${{secrets.SERVICE_ACCOUNT_NAME }}@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com \
             --allow-unauthenticated
   hosting: 
     runs-on: node:18-slim
