@@ -8,14 +8,27 @@ on:
 name: Deploy to Firebase Hosting on merge
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
+  MICROCMS_API: ${{ secrets.MICROCMS_API }}
+  HOST: 0.0.0.0
+  PORT: 8080
+  BASE_URL: https://poripority.com
+  GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
+
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_PORIPORITY_44C2B }}'
-          channelId: live
-          projectId: ${{secrets.PROJECT_ID}}
+          node-version: ${{ matrix.node-version }}
+      - run: npm ci
+      - run: npm i -g firebase-tools
+      - run: npm run build
+      - run: firebase deploy --token $FIREBASE_TOKEN
