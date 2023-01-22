@@ -45,7 +45,7 @@ jobs:
         run: |-
            docker build -t asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} \
             --build-arg _NODE_ENV=pruduction \
-            --build-arg _MICROCMS_API=d5c40509fb9c4d2c93ac098a1df710d5d96e \
+            --build-arg _MICROCMS_API=$MICROCMS_API \
             --build-arg _MICROCMS_SERVEICE_ID=$MICROCMS_SERVEICE_ID \
             --build-arg _BASE_URL=$BASE_URL \
             --build-arg GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID \
