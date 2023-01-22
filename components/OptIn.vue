@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isShow" class="optin ml-auto py-6 px-4 md:px-12 md:max-w-2xl  sticky w-full border-solid border-white bottom-0 z-10 opacity-100 bg-gray grid gap-2 transition-all delay-500" :is-visible="isVisible">
+  <div v-if="isShow" class="optin py-6 px-4 md:px-12 md:max-w-2xl absolute w-full border-solid border-white bottom-0 ml-0 shadow-xl shadow-gray  opacity-100 bg-gray grid gap-2 transition-opacity  delay-600" :is-visible="isVisible">
     <div class="w-full">
       <AppHeading2>Cookie/解析ツール等の使用について</AppHeading2>
       <div class="text-white ">
