@@ -74,10 +74,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install packages
-        run: npm ci
-      - name: build app
-        run: npm run build
-      - name: deploy to firebase hosting
-        run: firebase deploy --token $FIREBASE_TOKEN
+      - run: npm ci
+      - run: npm run build
+      - run: firebase deploy --token $FIREBASE_TOKEN
 
