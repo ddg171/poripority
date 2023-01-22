@@ -54,3 +54,16 @@ gcloud iam workload-identity-pools providers describe "${PROVIDER_NAME}" \
   --location="global" \
   --workload-identity-pool="${POOL_NAME}" \
   --format='value(name)'
+
+ # サービスアカウントのロール設定
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+--member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+--role="roles/run.admin"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+--member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+--role="roles/storage.admin"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+--member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+--role="roles/iam.serviceAccountUser"
