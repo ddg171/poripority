@@ -8,3 +8,4 @@ node_modules
 dist
 .firebaserc
 .firebase/*
+.env-ci
