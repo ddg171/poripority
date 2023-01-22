@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: Build and Deploy to Cloud Run and Firebase hosting
+name: Build and Deploy to Cloud Run
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   SERVICE_NAME: ${{secrets.SERVICE_NAME}}
