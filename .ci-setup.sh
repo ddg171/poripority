@@ -3,6 +3,9 @@
 # 環境変数の設定
 source ./.env
 
+# APIを有効にする
+gcloud services enable iamcredentials.googleapis.com run.googleapis.com
+
 # IAM Service Accountを作成する
 gcloud iam service-accounts create ${SERVICE_ACCOUNT_NAME} \
   --project="${PROJECT_ID}" \
