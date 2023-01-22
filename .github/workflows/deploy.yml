@@ -67,7 +67,7 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-      steps:
+    steps:
       - name: install packages
         run: npm i
 
