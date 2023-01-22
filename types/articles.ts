@@ -1,22 +1,12 @@
 import { MicroCMSQueries } from 'microcms-js-sdk'
-export interface Reference{
-    url:string
-    title?:string
-}
-
-export interface Eyecatch{
-    url:string
-    height:number|null
-    width:number|null
-
-}
+import { Eyecatch, Reference } from './components'
 
 interface Commonschema{
     id:string
-    createdAt:Date
-    updatedAt:Date
-    publishedAt:Date
-    revisedAt:Date
+    createdAt:string
+    updatedAt:string
+    publishedAt:string
+    revisedAt:string
 }
 
 export interface Category extends Commonschema{
@@ -32,11 +22,13 @@ export interface Article extends Commonschema {
     references:Reference[]|null
 }
 
+export type ArticleRef = Omit<Article, 'createdAt'|'updatedAt'|'revisedAt'|'subtitle'|'content'|'eyecatch'|'references'>
+
 export type ArticleList = Omit<Article, |'content'|'references'>
 
 export namespace Api {
-    export type IndexResponsePayload ={
-        contents:Article[]
+    export type IndexResponsePayload<T=Article|Category|ArticleRef> ={
+        contents:T[]
         totalCount: number
         offset?: number
         limit?:number
@@ -45,6 +37,8 @@ export namespace Api {
         limit?:number
         offset?:number
         orders:string
-        fields:'id,title,subtitle,eyecatch,updatedAt,createdAt'
+        filters?:string
+        fields:'id,title,category' |string
       }
+
 }

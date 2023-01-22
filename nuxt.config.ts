@@ -1,46 +1,52 @@
-import { defineNuxtConfig } from 'nuxt'
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
+import { defineNuxtConfig } from 'nuxt/config'
 
+const SITE_NAME = 'The hut of Poripority'
+const DESCRIPTION = 'Hata_kazeが趣味で作ったWebサイト'
 export default defineNuxtConfig({
-  env: {
-    NODE_ENV: process.env.NODE_ENV
-  },
   app: {
     head: {
+      title: SITE_NAME,
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      meta: [{ name: 'robots', content: 'noindex,nofollow' }],
-      link: [{ rel: 'icon', href: '/favicon.ico', id: 'favicon' }],
+      meta: [
+        { name: 'robots', content: 'all' },
+        { name: 'description', content: DESCRIPTION },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:site_name', content: SITE_NAME },
+        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' }
+      ],
+      link: [
+        { rel: 'icon', href: '/favicon.ico', id: 'favicon' }
+      ],
       style: [],
-      script: []
+      script: [],
+      htmlAttrs: {
+        lang: 'ja',
+        prefix: 'og: https://ogp.me/ns#'
+      }
     }
   },
-  server: {
-    port: Number(process.env.PORT) || 3000,
-    host: process.env.HOST || '0.0.0.0',
-    timing: false
-  },
-  privateRuntimeConfig: {
-    private: process.env.PRIVATE_KEY,
+  runtimeConfig: {
+    public: {
+      siteName: SITE_NAME,
+      baseURL: process.env.BASE_URL,
+      gaMeasurementId: process.env.GA_MEASUREMENT_ID
+    },
     microCMSAPI: process.env.MICROCMS_API,
     microCMSServiceID: process.env.MICROCMS_SERVEICE_ID
-  },
-  autoImports: {
-    dirs: ['/types']
   },
   typescript: {
     shim: false
   },
   css: ['~/assets/css/tailwind.scss'],
-  build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {}
-        }
-      }
+  modules: ['@nuxtjs/tailwindcss'],
+  nitro: {
+    prerender: {
+      routes: ['/works', '/about']
     }
+  },
+  build: {
+
   }
 })

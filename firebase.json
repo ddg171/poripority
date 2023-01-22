@@ -5,6 +5,15 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "run": {
+          "serviceId": "my-blog",
+          "region": "asia-northeast2"
+        }
+      }
     ]
   }
 }
