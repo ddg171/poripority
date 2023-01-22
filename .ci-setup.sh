@@ -67,3 +67,7 @@ gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 gcloud projects add-iam-policy-binding ${PROJECT_ID} \
 --member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
 --role="roles/iam.serviceAccountUser"
+
+# WORKLOAD_IDENTITY_PROVIDER
+
+echo $(gcloud iam workload-identity-pools providers describe ${PROVIDER_NAME} --location=global --workload-identity-pool=${POOL_NAME} --format="value(name)")
