@@ -8,12 +8,12 @@ env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   SERVICE_NAME: ${{secrets.SERVICE_NAME }}
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-  MICROCMS_SERVEICE_ID: ${{ MICROCMS_SERVEICE_ID }}
-  MICROCMS_API: ${{ MICROCMS_API }}
+  MICROCMS_SERVEICE_ID: ${{ secrets.MICROCMS_SERVEICE_ID }}
+  MICROCMS_API: ${{ secrets.MICROCMS_API }}
   HOST: 0.0.0.0
   PORT: 8080
   BASE_URL: https://poripority.com
-  GA_MEASUREMENT_ID: ${{ GA_MEASUREMENT_ID }}
+  GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
   
 
 jobs:
@@ -42,7 +42,14 @@ jobs:
         run: gcloud auth configure-docker
 
       - name: Build Docker image
-        run: docker build -t asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} .
+        run: |-
+           docker build -t asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} \
+            --build-arg _NODE_ENV=pruduction \
+            --build-arg _MICROCMS_API=d5c40509fb9c4d2c93ac098a1df710d5d96e \
+            --build-arg _MICROCMS_SERVEICE_ID=$MICROCMS_SERVEICE_ID \
+            --build-arg _BASE_URL=$BASE_URL \
+            --build-arg GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID \
+            ./ \
 
       - name: Push Docker Image
         run: docker push asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }}
@@ -51,7 +58,7 @@ jobs:
         run: |-
           gcloud run deploy $SERVICE_NAME \
             --project=$PROJECT_ID \
-            --image=asia.gcr.io/$PROJECT_ID/${{secrets.SERVICE_NAME}}:${{ github.sha }} \
+            --image=asia.gcr.io/$PROJECT_ID/$SERVICE_NAME:${{ github.sha }} \
             --region="asia-northeast2" \
             --service-account=github-actions@$PROJECT_ID.iam.gserviceaccount.com \
             --allow-unauthenticated
