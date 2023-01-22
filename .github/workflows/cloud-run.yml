@@ -62,5 +62,18 @@ jobs:
             --region="asia-northeast2" \
             --service-account=github-actions@$PROJECT_ID.iam.gserviceaccount.com \
             --allow-unauthenticated
+  hosting: 
+    runs-on: node:18-slim
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      steps:
+      - name: install packages
+        run: npm i
 
+      - name: build
+        run: npm run dev
+
+      - name: deploy to firebase hosting
+        run: firebase deploy --token $FIREBASE_TOKEN
 
