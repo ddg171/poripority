@@ -63,17 +63,21 @@ jobs:
             --service-account=${{secrets.SERVICE_ACCOUNT_NAME }}@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com \
             --allow-unauthenticated
   hosting: 
-    runs-on: node:18-slim
-    permissions:
-      contents: 'read'
-      id-token: 'write'
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
     steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: install packages
-        run: npm i
-
-      - name: build
-        run: npm run dev
-
+        run: npm ci
+      - name: build app
+        run: npm run build
       - name: deploy to firebase hosting
         run: firebase deploy --token $FIREBASE_TOKEN
 
