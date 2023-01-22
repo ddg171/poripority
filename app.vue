@@ -1,8 +1,9 @@
 <template>
-  <div id="app" class="min-h-screen bg-gray">
+  <div id="app" class="w-full h-screen overflow-y-scroll">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
+    <OptIn />
   </div>
 </template>
 
