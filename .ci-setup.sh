@@ -3,6 +3,9 @@
 # 環境変数の設定
 source ./.env
 
+# APIを有効にする
+gcloud services enable iamcredentials.googleapis.com run.googleapis.com
+
 # IAM Service Accountを作成する
 gcloud iam service-accounts create ${SERVICE_ACCOUNT_NAME} \
   --project="${PROJECT_ID}" \
@@ -51,3 +54,20 @@ gcloud iam workload-identity-pools providers describe "${PROVIDER_NAME}" \
   --location="global" \
   --workload-identity-pool="${POOL_NAME}" \
   --format='value(name)'
+
+ # サービスアカウントのロール設定
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+--member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+--role="roles/run.admin"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+--member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+--role="roles/storage.admin"
+
+gcloud projects add-iam-policy-binding ${PROJECT_ID} \
+--member="serviceAccount:${SERVICE_ACCOUNT_NAME}@${PROJECT_ID}.iam.gserviceaccount.com" \
+--role="roles/iam.serviceAccountUser"
+
+# WORKLOAD_IDENTITY_PROVIDER
+
+echo $(gcloud iam workload-identity-pools providers describe ${PROVIDER_NAME} --location=global --workload-identity-pool=${POOL_NAME} --format="value(name)")
