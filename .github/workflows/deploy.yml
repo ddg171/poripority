@@ -62,19 +62,5 @@ jobs:
             --region="asia-northeast2" \
             --service-account=${{secrets.SERVICE_ACCOUNT_NAME }}@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com \
             --allow-unauthenticated
-  hosting: 
-    runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run build
-      - run: firebase deploy --token $FIREBASE_TOKEN
 
