@@ -17,8 +17,7 @@ env:
 
 jobs:
   build_and_deploy:
-    runs-on: ubuntu-latest
-
+  runs-on: ubuntu-latest
   steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -26,7 +25,11 @@ jobs:
       with:
         node-version: 18.x
         registry-url: "https://registry.npmjs.org"
-    - run: npm ci
-    - run: npm i -g firebase-tools
-    - run: npm run build
-    - run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+    - name: install packages
+      run: npm ci
+    - name: install Firebase CLI
+      run: npm i -g firebase-tools
+    - name: build app
+      run: npm run build
+    - name: deploy to Firebase
+      run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
