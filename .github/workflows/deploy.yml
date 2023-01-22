@@ -43,12 +43,12 @@ jobs:
 
       - name: Build Docker image
         run: |-
-           docker build -t asia.gcr.io/{{ $PROJECT_ID/$SERVICE_NAME:${{ github.sha }} \
+           docker build -t asia.gcr.io/${{ secrets.PROJECT_ID}}/${{ secrets.SERVICE_NAME }}:${{ github.sha }} \
             --build-arg _NODE_ENV=pruduction \
-            --build-arg _MICROCMS_API=$MICROCMS_API \
-            --build-arg _MICROCMS_SERVEICE_ID=$MICROCMS_SERVEICE_ID \
+            --build-arg _MICROCMS_API=${{ secrets.MICROCMS_API}} \
+            --build-arg _MICROCMS_SERVEICE_ID=${{ secrets.MICROCMS_SERVEICE_ID}} \
             --build-arg _BASE_URL=$BASE_URL \
-            --build-arg _GA_MEASUREMENT_ID=$GA_MEASUREMENT_ID \
+            --build-arg _GA_MEASUREMENT_ID=${{ secrets.GA_MEASUREMENT_ID}} \
             ./ \
 
       - name: Push Docker Image
