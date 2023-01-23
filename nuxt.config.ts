@@ -42,7 +42,13 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.scss'],
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge'],
   image: {
-    dir: 'assets/images'
+    dir: 'assets/images',
+    presets: {
+      common: {
+        'legacy-format': 'jpeg',
+        'img-attrs': { class: 'img-inside-picture', height: 400, width: 400, decoding: 'async' }
+      }
+    }
   },
   nitro: {
     prerender: {
