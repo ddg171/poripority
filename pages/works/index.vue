@@ -31,10 +31,11 @@
                 運用中
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-01w640.webp" type="image/webp">
-                  <img src="/images/works-img02-01w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="/webp/works-img02-01w640.webp"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -57,10 +58,7 @@
                 運用中
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-02w640.webp" type="image/webp">
-                  <img src="/images/works-img02-02w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture src="/webp/works-img02-02w640.webp" legacy-format="jpg" />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -192,9 +190,3 @@ onBeforeUnmount(() => {
 })
 
 </script>
-
-<style>
-.works-indent{
-  text-indent: 1em;
-}
-</style>
