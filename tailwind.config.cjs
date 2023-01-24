@@ -16,7 +16,9 @@ const px = {
   '1080p': '1080px',
   '960p': '960px',
   '720p': '720px',
-  '480p': '480px'
+  '480p': '480px',
+  '360p': '360px',
+  '240p': '240px'
 }
 
 module.exports = {
@@ -54,9 +56,7 @@ module.exports = {
         'screen-1920p': '1920px'
       },
       maxHeight: {
-        '1080p': '1080px',
-        '960p': '960px',
-        '720p': '720px'
+        ...px
       },
       fontFamily: {
         sans: ['Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', 'sans-serif', ...defaultTheme.fontFamily.sans]

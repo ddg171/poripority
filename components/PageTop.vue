@@ -1,5 +1,5 @@
 <template>
-  <TopConteinerBlock class="h-1/5h md:h-1/3h">
+  <TopConteinerBlock class="h-1/3h max-h-720p min-h-360p">
     <div :data-show="isShow" class="title-content-box relative  h-full page-title transition-all  duration-500 opacity-0">
       <TopImgBlock :img="state.topImg" />
       <div v-if="state.title" class="absolute w-full h-full flex justify-center items-center title-box backdrop-blur-sm">
