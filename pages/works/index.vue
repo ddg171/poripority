@@ -34,7 +34,7 @@
                 <NuxtPicture
                   class="picture-box"
                   preset="common"
-                  src="/webp/works-img02-01w640.webp"
+                  src="images/webp/works-img02-01w640.webp"
                 />
               </template>
               <template #introduction>
@@ -58,7 +58,12 @@
                 運用中
               </template>
               <template #pic>
-                <NuxtPicture src="/webp/works-img02-02w640.webp" legacy-format="jpg" />
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="images/webp/works-img02-02w640.webp"
+                  legacy-format="jpg"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -81,10 +86,12 @@
                 運用中
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-03w640.webp" type="image/webp">
-                  <img src="/images/works-img02-03w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="images/webp/works-img02-03w640.webp"
+                  legacy-format="jpg"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -107,10 +114,12 @@
                 制作中断
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-04w640.webp" type="image/webp">
-                  <img src="/images/works-img02-04w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="images/webp/works-img02-04w640.webp"
+                  legacy-format="jpg"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>

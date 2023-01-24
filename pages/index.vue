@@ -28,7 +28,7 @@
         </AppHeading2>
         <div class="flex flex-col-reverse lg:flex-row gap-4">
           <div class="flex flex-col justify-center items-center">
-            <NuxtPicture src="/webp/shrimp.webp" legacy-format="jpg" class="w-60 h-60" />
+            <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-60 h-60" />
             <p class="w-full text-center text-sm">
               管理人の写真
             </p>
