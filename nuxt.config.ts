@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.scss'],
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge'],
   image: {
-    dir: 'assets/images',
+
     presets: {
       common: {
         'legacy-format': 'jpeg',

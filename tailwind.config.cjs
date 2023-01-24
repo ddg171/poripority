@@ -12,6 +12,13 @@ const vh = {
   '3/4h': '75vh'
 }
 
+const px = {
+  '1080p': '1080px',
+  '960p': '960px',
+  '720p': '720px',
+  '480p': '480px'
+}
+
 module.exports = {
   // mode: "jit",
   content: [
@@ -37,12 +44,11 @@ module.exports = {
       height: {
         ...vh
       },
-      'min-height': {
-        ...vh
+      minHeight: {
+        ...vh,
+        ...px
       },
-      margin: {
-        ...vh
-      },
+      margin: vh,
       maxWidth: {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px'
