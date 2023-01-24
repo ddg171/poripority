@@ -34,7 +34,7 @@
                 <NuxtPicture
                   class="picture-box"
                   preset="common"
-                  src="images/webp/works-img02-01w640.webp"
+                  src="/images/webp/works-img02-01w2000.webp"
                 />
               </template>
               <template #introduction>
