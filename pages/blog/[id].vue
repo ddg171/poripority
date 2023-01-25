@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <ContentSection class="grid gap-6">
+  <ContentSection class="grid">
     <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
-    <article v-if="content" class="flex flex-col gap-4 text-white cms-content cms-content-width" v-html="content" />
+    <article v-if="content" class="flex flex-col gap-4 text-white cms-content cms-content-width mb-6" v-html="content" />
     <suspense>
       <template #default>
         <ArticleNavigation :published-at="publishedAt" :category="category" />
