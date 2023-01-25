@@ -152,7 +152,8 @@ const topImg = ref<PictureBoxProp>({
   source: ['/images/webp/works-img01w640.webp 640w,/images/webp/works-img01w1270.webp 1024w,'],
   jpg: '/images/webp/works-img01w640.jpg',
   alt: '',
-  title: 'TOP画像'
+  title: 'TOP画像',
+  fromCMS: true
 })
 
 const subtitles = ref<string[]>([

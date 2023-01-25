@@ -4,11 +4,9 @@
   >
     <PictureBox
       v-if="props.img"
-      :source="props.img.source"
       :alt="props.img.alt"
       :title="props.img.title"
       :webp="props.img.webp"
-      :jpg="props.img.jpg"
     />
   </div>
 </template>
