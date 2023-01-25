@@ -90,6 +90,12 @@ onBeforeUnmount(() => {
   height: fit-content;
 }
 
+@media screen and (max-width:532px) {
+  .cms-content img{
+  max-width: 100%;
+}
+}
+
 .cms-content ul{
   margin-left: 1rem;
 }
