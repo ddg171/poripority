@@ -83,6 +83,13 @@ onBeforeUnmount(() => {
 
 }
 
+.cms-content img{
+  max-width: 500px;
+  margin: 1rem 0;
+  width: fit-content;
+  height: fit-content;
+}
+
 .cms-content ul{
   margin-left: 1rem;
 }
@@ -132,9 +139,4 @@ onBeforeUnmount(() => {
 }
 }
 
-.cms-content img{
-  margin: 1rem 0;
-  width: fit-content;
-  height: fit-content;
-}
 </style>
