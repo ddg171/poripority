@@ -110,8 +110,17 @@ onBeforeUnmount(() => {
   width: 0.5em;
   height: 0.5em;
   margin-right: 0.25em;
-  margin-bottom: 0.25em;
+  margin-bottom: 0.125em;
   content: "";
+}
+
+.cms-content h1,
+.cms-content h2,
+.cms-content h3{
+  padding-left: 0.5rem;
+  border-left-style: solid;
+  border-color: white;
+  border-left-width: 4px;
 }
 
 .cms-content h1{
