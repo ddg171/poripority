@@ -32,9 +32,22 @@ function formatDocToString (doc:Document):string {
   return doc.body.innerHTML
 }
 
+function wrapImgs (doc:Document):Document {
+  const imgs = doc.querySelectorAll('img')
+  imgs.forEach((img) => {
+    const clonedImg = img.cloneNode(true)
+    const d = doc.createElement('div')
+    d.setAttribute('class', 'img-wrapper')
+    d.appendChild(clonedImg)
+    img.parentNode?.insertBefore(d, img)
+    img.parentNode?.removeChild(img)
+  })
+  return doc
+}
+
 export function convertContent (contentRaw:string|null|undefined):string {
   if (!contentRaw || typeof contentRaw !== 'string') { return '' }
   const doc = convertStrToDocument(contentRaw)
-  const resizedDoc = changeImgParams(doc)
+  const resizedDoc = wrapImgs(changeImgParams(doc))
   return formatDocToString(resizedDoc)
 }
