@@ -19,7 +19,7 @@
 import { NuxtApp } from '#app'
 import { LinkParams, PageTitleProp } from '~~/types/components'
 
-const centerNav = ref<LinkParams>({ name: 'TOPへ戻る。', path: '/' })
+const centerNav = ref<LinkParams>({ name: 'TOPへ', path: '/' })
 defineProps<{ error: NuxtApp['payload']['error'] }>()
 // const handleError = () => clearError({ redirect: '/' })
 const pageTitleStore = usePageTitleStore()
