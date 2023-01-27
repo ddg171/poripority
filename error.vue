@@ -32,6 +32,7 @@ const pageTitle:PageTitleProp = {
 pageTitleStore.set(pageTitle)
 onBeforeUnmount(() => {
   pageTitleStore.init()
+  clearError()
 })
 
 </script>

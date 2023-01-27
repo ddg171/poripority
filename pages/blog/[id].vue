@@ -31,10 +31,10 @@ const route = useRoute()
 const pageTitleStore = usePageTitleStore()
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
-const { data: article } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
+const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const value = article.value
-if (!value) {
-  throw createError({ statusCode: 404, statusMessage: '記事が見つかりませんでした。' })
+if (!value || err?.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
 }
 
 const config = useRuntimeConfig()

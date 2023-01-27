@@ -1,5 +1,6 @@
 <template>
   <ul>
+    <slot name="first" />
     <CommonLinkListElem v-for="l,i in props.links" :key="i">
       <CommonAppLink v-if="!l.isExternal" :to="l.path">
         {{ l.name }}
@@ -8,6 +9,7 @@
         {{ l.name }}
       </CommonExternalLink>
     </CommonLinkListElem>
+    <slot name="last" />
   </ul>
 </template>
 

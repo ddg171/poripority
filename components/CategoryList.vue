@@ -1,26 +1,24 @@
 <template>
-  <div>
+  <div class="min-h-240p">
     <AppHeading3>カテゴリ</AppHeading3>
-    <CommonLinkList :links="categories" class="text-lg">
-      <template #first>
-        <CommonLinkListElem>
-          <CommonAppLink to="/blog">
-            全て
-          </CommonAppLink>
-        </CommonLinkListElem>
-      </template>
-    </CommonLinkList>
+    <ClientOnly>
+      <CommonLinkList :links="categories" class="text-lg">
+        <template #first>
+          <CommonLinkListElem>
+            <CommonAppLink to="/blog">
+              全て
+            </CommonAppLink>
+          </CommonLinkListElem>
+        </template>
+      </CommonLinkList>
+    </ClientOnly>
   </div>
 </template>
 
 <script setup lang="ts">
 import { LinkParams } from '~~/types/components'
 
-const { state, set } = useCategoryStore()
-
-const { data } = await useFetch('/api/category')
-
-set(data.value?.contents || [])
+const { state } = useCategoryStore()
 
 const categories = computed<LinkParams[]>(() => {
   return state.value.map((c) => {
