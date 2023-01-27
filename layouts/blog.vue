@@ -30,11 +30,4 @@
 </template>
 
 <script lang="ts" setup>
-
-const { set } = useCategoryStore()
-
-const { data } = await useFetch('/api/category')
-
-set(data.value?.contents || [])
-
 </script>
