@@ -11,7 +11,7 @@
             Loading...
           </p>
         </div>
-        <ArticleList v-else :articles="latest" class="grid-cols-1 xl:grid-cols-2">
+        <ArticleList v-else :articles="latest" class="grid-cols-1 lg:grid-cols-2">
           <div v-if="latest.length!==3" />
           <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
             <div class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
@@ -28,13 +28,7 @@
         </AppHeading2>
         <div class="flex flex-col-reverse lg:flex-row gap-4">
           <div class="flex flex-col justify-center items-center">
-            <PictureBox
-              class="w-60 h-60"
-              webp="/images/webp/shrimp.webp"
-              jpg="/images/shrimp.jpg"
-              alt="管理人近影。アノマロカリス"
-              title="管理人近影"
-            />
+            <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-60 h-60" />
             <p class="w-full text-center text-sm">
               管理人の写真
             </p>

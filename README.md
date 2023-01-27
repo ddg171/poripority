@@ -40,3 +40,24 @@ npm run preview
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+
+## enviroment variables
+Please write enviroment variables (secrets,tokens,baseURL...) in .env file.
+Requred variables are here.
+
+- MICROCMS_SERVEICE_ID
+- MICROCMS_API
+- PORT
+- HOST
+- BASE_URL
+- GA_MEASUREMENT_ID
+- PROJECT_ID
+- SERVICE_NAME
+- FIREBAE_TOKEN
+- POOL_NAME
+- POOL_DISPLAY_NAME
+- PROVIDER_NAME
+- PROVIDER_DISPLAY_NAME
+- SERVICE_ACCOUNT_NAME
+- SERVICE_ACCOUNT_DISPLAY_NAME
+- GITHUB_REPO

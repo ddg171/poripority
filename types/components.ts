@@ -6,11 +6,12 @@ export interface LinkParams {
     isExternal?:boolean
 }
 export interface PictureBoxProp {
-    source: string[]
+    source?: string[]
     webp: string
-    jpg: string
+    jpg?: string
     alt: string
     title: string
+    fromCMS?:boolean
 }
 
 export interface SliderContent {
