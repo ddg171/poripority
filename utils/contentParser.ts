@@ -12,7 +12,7 @@ function changeImgParams (doc:Document):Document {
     const height = Number(getURLParams(img.src, 'h'))
     const width = Number(getURLParams(img.src, 'w'))
     if (isNaN(height) || isNaN(width)) {
-      img.src = removeURLParams(img.src) + '?q=40&fm=webp'
+      img.src = removeURLParams(img.src) + '?q=30'
       img.setAttribute('data-src-url', img.src)
       return
     }
@@ -32,6 +32,14 @@ function formatDocToString (doc:Document):string {
   return doc.body.innerHTML
 }
 
+function elementHandler (doc:Document, query:string, fnc:(e:Element)=>void):Document {
+  const elems = doc.querySelectorAll(query)
+  elems.forEach((e) => {
+    fnc(e)
+  })
+  return doc
+}
+
 function wrapImgs (doc:Document):Document {
   const imgs = doc.querySelectorAll('img')
   imgs.forEach((img) => {
@@ -43,6 +51,10 @@ function wrapImgs (doc:Document):Document {
     img.parentNode?.removeChild(img)
   })
   return doc
+}
+
+function convertImgToPicture (doc:Document):Document {
+
 }
 
 export function convertContent (contentRaw:string|null|undefined):string {
