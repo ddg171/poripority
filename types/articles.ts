@@ -20,6 +20,8 @@ export interface Article extends Commonschema {
     eyecatch:Eyecatch
     category:Category
     references:Reference[]|null
+    imageRefs?:{[T:string]:string}
+    index?:{level:number, id:string, text:string}[]
 }
 
 export type ArticleRef = Omit<Article, 'createdAt'|'updatedAt'|'revisedAt'|'subtitle'|'content'|'eyecatch'|'references'>
