@@ -1,8 +1,8 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <ContentSection class="grid gap-6">
-    <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="w-full flex flex-col items-end" />
-    <article v-if="content" class="flex flex-col gap-4 text-white cms-content" v-html="content" />
+  <ContentSection class="grid">
+    <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
+    <article v-if="content" class="flex flex-col gap-4 text-white cms-content cms-content-width mb-6" v-html="content" />
     <suspense>
       <template #default>
         <ArticleNavigation :published-at="publishedAt" :category="category" />
@@ -31,10 +31,10 @@ const route = useRoute()
 const pageTitleStore = usePageTitleStore()
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
-const { data: article } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
+const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
 const value = article.value
-if (!value) {
-  throw createError({ statusCode: 404, statusMessage: '記事が見つかりませんでした。' })
+if (!value || err?.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
 }
 
 const config = useRuntimeConfig()
@@ -54,7 +54,8 @@ const topImg:PictureBoxProp|null = eyecatch
       source: [`${resizeWithTargetWidth(eyecatch, 640).url} 640w`, `${resizeWithTargetWidth(eyecatch, 1270).url} 1024w`],
       jpg: resizeWithTargetWidth(eyecatch, 640, false).url,
       alt: '',
-      title: ''
+      title: '',
+      fromCMS: true
     }
   : null
 onMounted(() => {
@@ -76,15 +77,31 @@ onBeforeUnmount(() => {
 </script>
 
 <style>
+
 .cms-content{
   display: flex;
   flex-direction: column;
 
 }
 
-.cms-content>img{
-  margin-bottom: 1rem;
+.cms-content .img-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.cms-content img{
+  max-width: 500px;
+  margin: 1rem 0;
+}
+
+@media screen and (max-width:532px) {
+  .cms-content img{
+  max-width: 100%;
+}
+}
+
 .cms-content ul{
   margin-left: 1rem;
 }
@@ -101,12 +118,21 @@ onBeforeUnmount(() => {
 }
 .cms-content li::before{
   display: block;
-  background-color: #292929;
-  width: 0.5rem;
-  height: 0.5rem;
-  margin-right: 0.75rem;
-  margin-bottom: 0.25rem;
+  background-color: white;
+  width: 0.5em;
+  height: 0.5em;
+  margin-right: 0.25em;
+  margin-bottom: 0.125em;
   content: "";
+}
+
+.cms-content h1,
+.cms-content h2,
+.cms-content h3{
+  padding-left: 0.5rem;
+  border-left-style: solid;
+  border-color: white;
+  border-left-width: 4px;
 }
 
 .cms-content h1{
@@ -120,10 +146,18 @@ onBeforeUnmount(() => {
 .cms-content h3{
   font-size: 1.5rem !important;
 }
-
-.cms-content img{
-  max-height:500px;
-  width: fit-content;
-  height: fit-content;
+@media screen and (max-width:767px) {
+ .cms-content h1{
+  font-size: 2rem !important;
 }
+
+.cms-content h2{
+  font-size: 1.5rem !important;
+}
+
+.cms-content h3{
+  font-size: 1.25rem !important;
+}
+}
+
 </style>

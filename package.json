@@ -10,6 +10,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@nuxt/image-edge": "^1.0.0-27907872.f4dd19d",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@nuxtjs/tailwindcss": "^6.2.0",
     "@typescript-eslint/eslint-plugin": "^5.29.0",

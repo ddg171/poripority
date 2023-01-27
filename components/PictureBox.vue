@@ -1,6 +1,13 @@
 
 <template>
-  <picture class="picture-box w-full h-full flex justify-center items-center">
+  <NuxtPicture
+    v-if="!props.fromCMS"
+    :src="props.webp"
+    class="picture-box"
+    legacy-format="jpeg"
+    :img-attrs="imgAttr"
+  />
+  <picture v-else class="picture-box ">
     <!-- 最大サイズ以外のWebp -->
     <source
       v-for="s,i in props.source"
@@ -13,7 +20,7 @@
     <!-- 一番大きいWebp -->
     <source type="image/webp" :srcset="webp">
     <img
-      class="min-h-full min-w-full object-cover "
+      class="img-inside-picture"
       :src="props.jpg"
       :alt="props.alt"
       :title="props.title"
@@ -26,8 +33,19 @@
 
 <script setup lang="ts">
 
-interface Props {source?:string[]
-    webp:string, jpg:string, alt:string, title:string}
+interface Props {
+    webp:string, alt?:string, title?:string, fromCMS?:boolean}
 
-const props = withDefaults(defineProps<Props>(), { source: () => [], webp: '', jpg: '', alt: '', title: '' })
+const imgAttr = computed(() => {
+  return {
+    class: 'img-inside-picture',
+    height: 400,
+    width: 400,
+    decoding: 'async',
+    alt: props.alt || '',
+    title: props.title || ''
+  }
+})
+
+const props = withDefaults(defineProps<Props>(), { source: () => [], webp: '', jpg: '', alt: '', title: '', fromCMS: false })
 </script>

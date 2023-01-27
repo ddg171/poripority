@@ -40,7 +40,16 @@ export default defineNuxtConfig({
     shim: false
   },
   css: ['~/assets/css/tailwind.scss'],
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge'],
+  image: {
+
+    presets: {
+      common: {
+        'legacy-format': 'jpeg',
+        'img-attrs': { class: 'img-inside-picture', height: 400, width: 400, decoding: 'async' }
+      }
+    }
+  },
   nitro: {
     prerender: {
       routes: ['/works', '/about']
