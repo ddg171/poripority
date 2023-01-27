@@ -1,7 +1,8 @@
 
 import DOMParser from 'universal-dom-parser'
+import { ImageList } from '~~/types/articles'
 
-function convertStrToDocument (contentRaw:string):Document {
+export function convertStrToDocument (contentRaw:string):Document {
   const parser = new DOMParser()
   return parser.parseFromString(contentRaw, 'text/html')
 }
@@ -34,9 +35,10 @@ function wrapImgs (doc:Document):Document {
 
 function replaceImgToPicture (doc:Document):Document {
   const imgs = doc.querySelectorAll('img')
-  imgs.forEach((img) => {
+  imgs.forEach((img, i) => {
     const clonedImg = img.cloneNode(true)
     const p = doc.createElement('picture')
+    p.setAttribute('id', `image-${i}`)
     const s = doc.createElement('source')
     s.setAttribute('type', 'image/webp')
     s.setAttribute('srcset', img.src + '&fm=webp')
@@ -53,4 +55,19 @@ export function convertContent (contentRaw:string|null|undefined):string {
   const doc = convertStrToDocument(contentRaw)
   const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)))
   return formatDocToString(resizedDoc)
+}
+
+export function getImgList (doc:Document):ImageList {
+  const imgs = doc.querySelectorAll('img')
+  const result:ImageList = []
+  imgs.forEach((i) => {
+    const id = i.parentElement?.getAttribute('id')
+    const url = removeURLParams(i.src)
+    if (!id || !url) { return }
+    result.push({
+      id,
+      url
+    })
+  })
+  return result
 }

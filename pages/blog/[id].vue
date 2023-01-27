@@ -13,13 +13,20 @@
         </div>
       </template>
     </suspense>
+    <div>
+      <ul>
+        <li v-for="i in imgList" :key="i.id">
+          {{ i.id }}
+        </li>
+      </ul>
+    </div>
   </ContentSection>
 </template>
 
 <script setup lang="ts">
-import { Article } from '~~/types/articles'
+import { Article, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { convertContent } from '~~/utils/contentParser'
+import { convertContent, convertStrToDocument, getImgList } from '~~/utils/contentParser'
 import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
@@ -69,6 +76,12 @@ onMounted(() => {
 
 const content = computed(() => {
   return convertContent(value.content) || null
+})
+
+const imgList = computed<ImageList>(() => {
+  if (!content.value) { return [] }
+  const doc = convertStrToDocument(content.value)
+  return getImgList(doc)
 })
 
 onBeforeUnmount(() => {

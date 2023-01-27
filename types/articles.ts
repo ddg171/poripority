@@ -28,6 +28,9 @@ export type ArticleRef = Omit<Article, 'createdAt'|'updatedAt'|'revisedAt'|'subt
 
 export type ArticleList = Omit<Article, |'content'|'references'>
 
+export interface Image {id:string, url:string}
+export type ImageList = Image[]
+
 export namespace Api {
     export type IndexResponsePayload<T=Article|Category|ArticleRef> ={
         contents:T[]
