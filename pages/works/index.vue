@@ -31,10 +31,11 @@
                 運用中
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-01w640.webp" type="image/webp">
-                  <img src="/images/works-img02-01w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="/images/webp/works-img02-01w2000.webp"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -57,10 +58,12 @@
                 運用中
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-02w640.webp" type="image/webp">
-                  <img src="/images/works-img02-02w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="images/webp/works-img02-02w640.webp"
+                  legacy-format="jpg"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -83,10 +86,12 @@
                 運用中
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-03w640.webp" type="image/webp">
-                  <img src="/images/works-img02-03w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="images/webp/works-img02-03w640.webp"
+                  legacy-format="jpg"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -109,10 +114,12 @@
                 制作中断
               </template>
               <template #pic>
-                <picture class="">
-                  <source srcset="/images/webp/works-img02-04w640.webp" type="image/webp">
-                  <img src="/images/works-img02-04w640.jpg" height="400" width="400" alt="">
-                </picture>
+                <NuxtPicture
+                  class="picture-box"
+                  preset="common"
+                  src="images/webp/works-img02-04w640.webp"
+                  legacy-format="jpg"
+                />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -145,7 +152,8 @@ const topImg = ref<PictureBoxProp>({
   source: ['/images/webp/works-img01w640.webp 640w,/images/webp/works-img01w1270.webp 1024w,'],
   jpg: '/images/webp/works-img01w640.jpg',
   alt: '',
-  title: 'TOP画像'
+  title: 'TOP画像',
+  fromCMS: true
 })
 
 const subtitles = ref<string[]>([
@@ -192,9 +200,3 @@ onBeforeUnmount(() => {
 })
 
 </script>
-
-<style>
-.works-indent{
-  text-indent: 1em;
-}
-</style>

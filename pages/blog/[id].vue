@@ -54,7 +54,8 @@ const topImg:PictureBoxProp|null = eyecatch
       source: [`${resizeWithTargetWidth(eyecatch, 640).url} 640w`, `${resizeWithTargetWidth(eyecatch, 1270).url} 1024w`],
       jpg: resizeWithTargetWidth(eyecatch, 640, false).url,
       alt: '',
-      title: ''
+      title: '',
+      fromCMS: true
     }
   : null
 onMounted(() => {

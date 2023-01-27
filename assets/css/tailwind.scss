@@ -1,3 +1,13 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+@layer components {
+    .img-inside-picture {
+      @apply min-h-full min-w-full object-cover ;
+    }
+    .picture-box{
+      @apply w-full h-full flex justify-center items-center
+    }
+  }
