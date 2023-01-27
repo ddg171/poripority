@@ -83,11 +83,16 @@ onBeforeUnmount(() => {
 
 }
 
+.cms-content .img-wrapper{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .cms-content img{
   max-width: 500px;
   margin: 1rem 0;
-  width: fit-content;
-  height: fit-content;
 }
 
 @media screen and (max-width:532px) {
