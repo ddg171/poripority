@@ -2,7 +2,7 @@
 <template>
   <ContentSection class="grid">
     <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
-    <article v-if="content" class="flex flex-col gap-4 text-white cms-content cms-content-width mb-6" v-html="content" />
+    <ArticleBodyBlock :content="article?.content" @img-list="setImgList" />
     <suspense>
       <template #default>
         <ArticleNavigation :published-at="publishedAt" :category="category" />
@@ -13,20 +13,26 @@
         </div>
       </template>
     </suspense>
-    <div>
-      <ul>
-        <li v-for="i in imgList" :key="i.id">
-          {{ i.id }}
-        </li>
-      </ul>
-    </div>
-  </ContentSection>
+    <teleport to="#side">
+      <ClientOnly>
+        <ContentSection v-if="imgList.length>0" class="mb-2">
+          <ul>
+            <li v-for="i in imgList" :key="i.id" @click="selectedId=i.id">
+              {{ i.id }}
+            </li>
+          </ul>
+        </contentsection>
+      </ClientOnly>
+    </teleport>
+    <OverlayBox :is-show="!!selectedId" @click="selectedId=undefined">
+      <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
+    </OverlayBox>
+  </contentsection>
 </template>
 
 <script setup lang="ts">
 import { Article, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { convertContent, convertStrToDocument, getImgList } from '~~/utils/contentParser'
 import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
@@ -43,6 +49,7 @@ const value = article.value
 if (!value || err?.value) {
   throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
 }
+const selectedId = ref<string|undefined>(undefined)
 
 const config = useRuntimeConfig()
 const headTitle = value.title + '|' + config.public.siteName
@@ -67,22 +74,16 @@ const topImg:PictureBoxProp|null = eyecatch
   : null
 onMounted(() => {
   const pageTitle:PageTitleProp = {
-    title: value?.title || '記事が見つかりませんでした',
+    title: article.value?.title || '記事が見つかりませんでした',
     topImg,
     subtitles: article.value?.subtitle ? [article.value.subtitle] : []
   }
   pageTitleStore.set(pageTitle)
 })
-
-const content = computed(() => {
-  return convertContent(value.content) || null
-})
-
-const imgList = computed<ImageList>(() => {
-  if (!content.value) { return [] }
-  const doc = convertStrToDocument(content.value)
-  return getImgList(doc)
-})
+const setImgList = (l:ImageList) => {
+  imgList.value = l
+}
+const imgList = ref<ImageList>([])
 
 onBeforeUnmount(() => {
   pageTitleStore.init()
