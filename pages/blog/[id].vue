@@ -20,6 +20,15 @@
           <ArticleImgList :img-list="imgList" />
         </div>
       </ClientOnly>
+      <ClientOnly>
+        <div class="w-full p-4 text-white  min-h-96 bg-darkblue md:p-6 ">
+          <AppHeading3>目次</AppHeading3>
+          <ul>
+            <li>aaa</li>
+            <li>xxxx</li>
+          </ul>
+        </div>
+      </ClientOnly>
     </teleport>
     <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
       <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
@@ -85,6 +94,8 @@ const imgList = ref<ImageList>([])
 const imgClickHandler = (id:string|undefined = undefined) => {
   selectedId.value = id
 }
+
+const index = ref([])
 
 onBeforeUnmount(() => {
   pageTitleStore.init()
