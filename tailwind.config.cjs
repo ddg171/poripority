@@ -11,7 +11,16 @@ const vh = {
   '1/2h': '50vh',
   '3/4h': '75vh'
 }
-
+const vw = {
+  '1/8w': '12.5vw',
+  '1/7w': '14.3vw',
+  '1/6w': '16.67vw',
+  '1/5w': '20vw',
+  '1/4w': '25vw',
+  '1/3w': '33vw',
+  '1/2w': '50vw',
+  '3/4w': '75vw'
+}
 const px = {
   '1080p': '1080px',
   '960p': '960px',
@@ -51,9 +60,14 @@ module.exports = {
         ...px
       },
       margin: vh,
+      width: {
+        ...vw
+      },
       maxWidth: {
         'screen-3xl': '1792px',
-        'screen-1920p': '1920px'
+        'screen-1920p': '1920px',
+        ...vh
+
       },
       maxHeight: {
         ...px
