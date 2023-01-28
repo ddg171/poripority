@@ -1,6 +1,6 @@
 <template>
-  <teleport v-if="props.isShow" to="#layout">
-    <div class="fixed flex justify-center items-center top-0 w-screen h-screen bg-gray/75 transition-all z-50" @click="$emit(`click`)">
+  <teleport v-if="props.isShow" to="#app">
+    <div id="overlay" class="fixed flex justify-center items-center top-0 w-full h-screen bg-gray/90 transition-all z-50" @click="$emit(`click`)">
       <slot />
     </div>
   </teleport>
@@ -11,6 +11,6 @@
 interface Props{
     isShow:boolean
 }
-
+defineEmits<{(e:'click'):void}>()
 const props = withDefaults(defineProps<Props>(), { isShow: false })
 </script>
