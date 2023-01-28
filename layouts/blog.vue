@@ -1,5 +1,5 @@
 <template>
-  <CommonLayoutBox>
+  <CommonLayoutBox id="layout" class="relative">
     <AppHeader />
     <div class="flex flex-col items-center w-full min-h-screen">
       <PageTop />
@@ -16,8 +16,8 @@
             </template>
           </suspense>
         </main>
-        <div class="sticky top-0 w-full mx-0  lg:w-80  lg:mx-1 shrink-0">
-          <aside class="w-full grid gap-2">
+        <div id="side" class="sticky top-0 w-full mx-0  lg:w-80  lg:mx-1 shrink-0">
+          <aside class="w-full grid gap-2 mb-2">
             <div class="w-full p-4 text-white  min-h-96 bg-darkblue md:p-6 ">
               <CategoryList />
             </div>
