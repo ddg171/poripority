@@ -2,7 +2,7 @@
 <template>
   <ContentSection class="grid">
     <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
-    <ArticleBodyBlock :content="article?.content" @img-list="setImgList" />
+    <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" />
     <suspense>
       <template #default>
         <ArticleNavigation :published-at="publishedAt" :category="category" />
@@ -15,16 +15,13 @@
     </suspense>
     <teleport to="#side">
       <ClientOnly>
-        <ContentSection v-if="imgList.length>0" class="mb-2">
-          <ul>
-            <li v-for="i in imgList" :key="i.id" @click="selectedId=i.id">
-              {{ i.id }}
-            </li>
-          </ul>
-        </contentsection>
+        <div v-if="imgList.length>0" class="w-full p-4 text-white  min-h-96 bg-darkblue md:p-6 ">
+          <AppHeading3>画像</AppHeading3>
+          <ArticleImgList :img-list="imgList" />
+        </div>
       </ClientOnly>
     </teleport>
-    <OverlayBox :is-show="!!selectedId" @click="selectedId=undefined">
+    <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
       <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
     </OverlayBox>
   </contentsection>
@@ -85,93 +82,11 @@ const setImgList = (l:ImageList) => {
 }
 const imgList = ref<ImageList>([])
 
+const imgClickHandler = (id:string|undefined = undefined) => {
+  selectedId.value = id
+}
+
 onBeforeUnmount(() => {
   pageTitleStore.init()
 })
 </script>
-
-<style>
-
-.cms-content{
-  display: flex;
-  flex-direction: column;
-
-}
-
-.cms-content .img-wrapper{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cms-content img{
-  max-width: 500px;
-  margin: 1rem 0;
-}
-
-@media screen and (max-width:532px) {
-  .cms-content img{
-  max-width: 100%;
-}
-}
-
-.cms-content ul{
-  margin-left: 1rem;
-}
-.cms-content li{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.cms-content a:hover,
-.cms-content a:focus{
-  text-decoration: underline;
-  font-weight: 500;
-}
-.cms-content li::before{
-  display: block;
-  background-color: white;
-  width: 0.5em;
-  height: 0.5em;
-  margin-right: 0.25em;
-  margin-bottom: 0.125em;
-  content: "";
-}
-
-.cms-content h1,
-.cms-content h2,
-.cms-content h3{
-  padding-left: 0.5rem;
-  border-left-style: solid;
-  border-color: white;
-  border-left-width: 4px;
-}
-
-.cms-content h1{
-  font-size: 2.5rem !important;
-}
-
-.cms-content h2{
-  font-size: 2rem !important;
-}
-
-.cms-content h3{
-  font-size: 1.5rem !important;
-}
-@media screen and (max-width:767px) {
- .cms-content h1{
-  font-size: 2rem !important;
-}
-
-.cms-content h2{
-  font-size: 1.5rem !important;
-}
-
-.cms-content h3{
-  font-size: 1.25rem !important;
-}
-}
-
-</style>

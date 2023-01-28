@@ -27,8 +27,8 @@ function wrapImgs (doc:Document):Document {
     const d = doc.createElement('div')
     d.setAttribute('class', 'img-wrapper')
     d.appendChild(clonedImg)
-    img.parentNode?.insertBefore(d, img)
-    img.parentNode?.removeChild(img)
+    img?.parentNode?.insertBefore(d, img)
+    img?.parentNode?.removeChild(img)
   })
   return doc
 }
@@ -44,8 +44,8 @@ function replaceImgToPicture (doc:Document):Document {
     s.setAttribute('srcset', img.src + '&fm=webp')
     p.appendChild(s)
     p.appendChild(clonedImg)
-    img.parentNode?.insertBefore(p, img)
-    img.parentNode?.removeChild(img)
+    img?.parentNode?.insertBefore(p, img)
+    img?.parentNode?.removeChild(img)
   })
   return doc
 }
