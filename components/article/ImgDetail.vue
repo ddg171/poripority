@@ -1,6 +1,9 @@
 <template>
-  <div v-if="img" class="w-3/4w h-3/4h">
-    <PictureBox :webp="img.webp" :jpg="img.jpg" :from-c-m-s="img.fromCMS" :alt="img.alt" />
+  <div v-if="img" class="w-4/5 h-4/5">
+    <picture class="object-contain">
+      <source :srcset="img.webp" type="image/webp">
+      <img src="img.jpg" alt="拡大表示" class="w-full h-full object-contain" height="400" width="400">
+    </picture>
   </div>
 </template>
 
