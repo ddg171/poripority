@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-v-html -->
 <template>
   <ContentSection class="grid">
     <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
@@ -13,27 +12,25 @@
         </div>
       </template>
     </suspense>
-    <teleport to="#side">
-      <ClientOnly>
-        <div v-if="imgList.length>0" class="w-full p-4 text-white  min-h-96 bg-darkblue md:p-6 ">
-          <AppHeading3>画像</AppHeading3>
-          <ArticleImgList :img-list="imgList" />
-        </div>
-      </ClientOnly>
-      <ClientOnly>
-        <div class="w-full p-4 text-white  min-h-96 bg-darkblue md:p-6 ">
-          <AppHeading3>目次</AppHeading3>
-          <ClientOnly>
-            <ul>
-              <li v-for="h,i in headings" :key="i" :level="h.level">
-                <a v-smooth-scroll :href="`#${h.id}`">
-                  {{ h.title }}
-                </a>
-              </li>
-            </ul>
-          </ClientOnly>
-        </div>
-      </ClientOnly>
+    <teleport to="#side-contents">
+      <AsideContentsBox>
+        <AppHeading3>目次</AppHeading3>
+        <ClientOnly>
+          <ul>
+            <li v-for="h,i in headings" :key="i" :level="h.level">
+              <a v-smooth-scroll :href="`#${h.id}`">
+                {{ h.title }}
+              </a>
+            </li>
+          </ul>
+        </ClientOnly>
+      </AsideContentsBox>
+      <AsideContentsBox v-if="imgList.length>0">
+        <AppHeading3>画像</AppHeading3>
+        <ClientOnly>
+          <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
+        </ClientOnly>
+      </AsideContentsBox>
     </teleport>
     <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
       <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
