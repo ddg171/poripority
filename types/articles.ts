@@ -31,6 +31,12 @@ export type ArticleList = Omit<Article, |'content'|'references'>
 export interface Image {id:string, url:string}
 export type ImageList = Image[]
 
+export interface Heading {
+    level:number
+    title:string|null
+    id:string|null
+}
+
 export namespace Api {
     export type IndexResponsePayload<T=Article|Category|ArticleRef> ={
         contents:T[]

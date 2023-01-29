@@ -2,7 +2,7 @@
 <template>
   <ContentSection class="grid">
     <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
-    <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" />
+    <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
     <suspense>
       <template #default>
         <ArticleNavigation :published-at="publishedAt" :category="category" />
@@ -23,10 +23,15 @@
       <ClientOnly>
         <div class="w-full p-4 text-white  min-h-96 bg-darkblue md:p-6 ">
           <AppHeading3>目次</AppHeading3>
-          <ul>
-            <li>aaa</li>
-            <li>xxxx</li>
-          </ul>
+          <ClientOnly>
+            <ul>
+              <li v-for="h,i in headings" :key="i" :level="h.level">
+                <CommonAppLink :to="`#${h.id}`">
+                  {{ h.title }}
+                </CommonAppLink>
+              </li>
+            </ul>
+          </ClientOnly>
         </div>
       </ClientOnly>
     </teleport>
@@ -37,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { Article, ImageList } from '~~/types/articles'
+import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
@@ -95,7 +100,11 @@ const imgClickHandler = (id:string|undefined = undefined) => {
   selectedId.value = id
 }
 
-const index = ref([])
+const headingListHandler = (h:Heading[]) => {
+  headings.value = h
+}
+
+const headings = ref<Heading[]>([])
 
 onBeforeUnmount(() => {
   pageTitleStore.init()

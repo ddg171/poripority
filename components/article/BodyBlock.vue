@@ -3,7 +3,7 @@
   <article class="flex flex-col gap-4 text-white cms-content cms-content-width mb-6" v-html="content" />
 </template>
 <script setup lang="ts">
-import { ImageList } from '~~/types/articles'
+import { Heading, ImageList } from '~~/types/articles'
 
 interface Props{
     content:string|undefined
@@ -11,7 +11,7 @@ interface Props{
 
 const props = defineProps<Props>()
 
-const emits = defineEmits<{(e:'img-list', v:ImageList):void, (e:'img-click', v:string):void}>()
+const emits = defineEmits<{(e:'img-list', v:ImageList):void, (e:'img-click', v:string):void, (e:'heading-list', v:Heading[]):void}>()
 
 const content = ref<string>(convertContent(props.content))
 
@@ -29,7 +29,9 @@ onMounted(() => {
   nextTick(() => {
     const doc = convertStrToDocument(content.value)
     const imageList = getImgList(doc)
+    const headings = getHeadingList(doc)
     emits('img-list', imageList)
+    emits('heading-list', headings)
     const imgs = document.querySelectorAll('article picture')
     imgs.forEach((img) => {
       img.addEventListener('click', imageClickHandler)

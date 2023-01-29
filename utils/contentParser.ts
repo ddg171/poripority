@@ -1,6 +1,6 @@
 
 import DOMParser from 'universal-dom-parser'
-import { ImageList } from '~~/types/articles'
+import { Heading, ImageList } from '~~/types/articles'
 
 export function convertStrToDocument (contentRaw:string):Document {
   const parser = new DOMParser()
@@ -68,6 +68,23 @@ export function getImgList (doc:Document):ImageList {
       id,
       url
     })
+  })
+  return result
+}
+
+export function getHeadingList (doc:Document):Heading[] {
+  const headings = doc.querySelectorAll('h2,h3,h4')
+  const result:Heading[] = []
+  headings.forEach((h) => {
+    const level = Number(h.tagName.replace('h', ''))
+    const title = h.textContent
+    const id = h.id
+    const i:Heading = {
+      level,
+      title,
+      id
+    }
+    result.push(i)
   })
   return result
 }
