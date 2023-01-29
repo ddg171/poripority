@@ -2,9 +2,7 @@
   <ContentSection class="grid">
     <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
     <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
-    <ClientOnly>
-      <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
-    </ClientOnly>
+    <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
     <ClientOnly>
       <teleport to="#side-contents">
         <AsideContentsBox v-if="headings.length>0">
