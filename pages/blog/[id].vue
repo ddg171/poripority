@@ -26,9 +26,9 @@
           <ClientOnly>
             <ul>
               <li v-for="h,i in headings" :key="i" :level="h.level">
-                <CommonAppLink :to="`#${h.id}`">
+                <a v-smooth-scroll :href="`#${h.id}`">
                   {{ h.title }}
-                </CommonAppLink>
+                </a>
               </li>
             </ul>
           </ClientOnly>
@@ -50,6 +50,11 @@ import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 definePageMeta({
   layout: 'blog'
 })
+
+// カテゴリの取得
+const { data: categoryList } = await useFetch('/api/category')
+const categoryStore = useCategoryStore()
+categoryStore.set(categoryList.value?.contents || [])
 
 const route = useRoute()
 const pageTitleStore = usePageTitleStore()
