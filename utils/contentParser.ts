@@ -76,7 +76,7 @@ export function getHeadingList (doc:Document):Heading[] {
   const headings = doc.querySelectorAll('h2,h3,h4')
   const result:Heading[] = []
   headings.forEach((h) => {
-    const level = Number(h.tagName.replace('h', ''))
+    const level = Number(h.tagName.replace('h', '').replace('H', ''))
     const title = h.textContent
     const id = h.id
     const i:Heading = {
