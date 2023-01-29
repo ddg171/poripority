@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="w-full h-screen overflow-y-scroll">
+  <div id="app" class="w-full">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
