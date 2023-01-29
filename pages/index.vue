@@ -105,15 +105,15 @@ const defaultContents:SliderContent[] = [
       source: ['/images/webp/top-img02w640.webp 640w,/images/webp/top-img02w1270.webp 1024w,'],
       webp: '/images/webp/top-img02w2000.webp',
       jpg: '/images/webp/top-img02w640.jpg',
-      alt: 'TOP画像2:Wg:RD',
-      title: 'TOP画像2:Wg:RD'
+      alt: 'TOP画像2',
+      title: 'TOP画像2'
     },
     text: {
-      title: 'Wargame: Red dragon',
+      title: 'Blog',
       para: [
-        '冷戦時代を舞台としたRTS'
+        '投稿記事はこちら'
       ],
-      to: '/blog?category=z_oug044yh'
+      to: '/blog'
     }
   },
   {

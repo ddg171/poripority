@@ -21,7 +21,7 @@ import { parseISO } from 'date-fns'
 import { Category } from '~~/types/articles'
 
 interface Props{
-    publishedDate?:string
+    publishedDate?:string|null
     category?:Category
 }
 

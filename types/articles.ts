@@ -20,11 +20,22 @@ export interface Article extends Commonschema {
     eyecatch:Eyecatch
     category:Category
     references:Reference[]|null
+    imageRefs?:{[T:string]:string}
+    index?:{level:number, id:string, text:string}[]
 }
 
 export type ArticleRef = Omit<Article, 'createdAt'|'updatedAt'|'revisedAt'|'subtitle'|'content'|'eyecatch'|'references'>
 
 export type ArticleList = Omit<Article, |'content'|'references'>
+
+export interface Image {id:string, url:string}
+export type ImageList = Image[]
+
+export interface Heading {
+    level:number
+    title:string|null
+    id:string|null
+}
 
 export namespace Api {
     export type IndexResponsePayload<T=Article|Category|ArticleRef> ={

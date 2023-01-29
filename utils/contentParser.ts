@@ -1,7 +1,8 @@
 
 import DOMParser from 'universal-dom-parser'
+import { Heading, ImageList } from '~~/types/articles'
 
-function convertStrToDocument (contentRaw:string):Document {
+export function convertStrToDocument (contentRaw:string):Document {
   const parser = new DOMParser()
   return parser.parseFromString(contentRaw, 'text/html')
 }
@@ -26,24 +27,25 @@ function wrapImgs (doc:Document):Document {
     const d = doc.createElement('div')
     d.setAttribute('class', 'img-wrapper')
     d.appendChild(clonedImg)
-    img.parentNode?.insertBefore(d, img)
-    img.parentNode?.removeChild(img)
+    img?.parentNode?.insertBefore(d, img)
+    img?.parentNode?.removeChild(img)
   })
   return doc
 }
 
 function replaceImgToPicture (doc:Document):Document {
   const imgs = doc.querySelectorAll('img')
-  imgs.forEach((img) => {
+  imgs.forEach((img, i) => {
     const clonedImg = img.cloneNode(true)
     const p = doc.createElement('picture')
+    p.setAttribute('id', `image-${i}`)
     const s = doc.createElement('source')
     s.setAttribute('type', 'image/webp')
     s.setAttribute('srcset', img.src + '&fm=webp')
     p.appendChild(s)
     p.appendChild(clonedImg)
-    img.parentNode?.insertBefore(p, img)
-    img.parentNode?.removeChild(img)
+    img?.parentNode?.insertBefore(p, img)
+    img?.parentNode?.removeChild(img)
   })
   return doc
 }
@@ -53,4 +55,36 @@ export function convertContent (contentRaw:string|null|undefined):string {
   const doc = convertStrToDocument(contentRaw)
   const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)))
   return formatDocToString(resizedDoc)
+}
+
+export function getImgList (doc:Document):ImageList {
+  const imgs = doc.querySelectorAll('img')
+  const result:ImageList = []
+  imgs.forEach((i) => {
+    const id = i.parentElement?.getAttribute('id')
+    const url = removeURLParams(i.src)
+    if (!id || !url) { return }
+    result.push({
+      id,
+      url
+    })
+  })
+  return result
+}
+
+export function getHeadingList (doc:Document):Heading[] {
+  const headings = doc.querySelectorAll('h2,h3,h4')
+  const result:Heading[] = []
+  headings.forEach((h) => {
+    const level = Number(h.tagName.replace('h', '').replace('H', ''))
+    const title = h.textContent
+    const id = h.id
+    const i:Heading = {
+      level,
+      title,
+      id
+    }
+    result.push(i)
+  })
+  return result
 }
