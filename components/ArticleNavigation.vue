@@ -1,10 +1,16 @@
 
 <template>
-  <BottomNavigation
-    :left="left"
-    :center="center"
-    :right="right"
-  />
+  <ClientOnly>
+    <BottomNavigation
+      v-if="!isLoading"
+      :left="left"
+      :center="center"
+      :right="right"
+    />
+    <div v-else class="flex items-center justify-center w-full text-lg text-white">
+      Loading...
+    </div>
+  </ClientOnly>
 </template>
 
 <script setup lang="ts">
@@ -23,6 +29,7 @@ type Params ={
 const props = withDefaults(defineProps<Props>(), { publishedAt: null, category: null })
 const next = ref<string|null>(null)
 const prev = ref<string|null>(null)
+const isLoading = ref<boolean>(true)
 const getNext = async (publishedAt:string|null, category:string|null = null) => {
   if (!publishedAt) {
     next.value = ''
@@ -71,5 +78,7 @@ const right = computed<LinkParams|null>(() => {
     path: props.category ? p + `&categpry=${props.category}` : p
   }
 })
+
+isLoading.value = false
 
 </script>
