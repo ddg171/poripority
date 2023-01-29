@@ -1,5 +1,5 @@
 <template>
-  <div class="sticky md:hidden  bottom-0 left-full m-2">
+  <div class="sticky lg:hidden  bottom-0 left-full m-2">
     <CommonAppBtn @app-click="scrollToTop">
       TOPへ
     </CommonAppBtn>
@@ -13,7 +13,6 @@ const scrollToTop = () => {
     top: 0,
     behavior: 'smooth'
   })
-  console.log('to')
 }
 
 </script>
