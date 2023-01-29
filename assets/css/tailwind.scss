@@ -2,7 +2,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
+html {
+  scroll-behavior: smooth;
+}
+p{
+  overflow-wrap: anywhere !important;
+}
 @layer components {
     .img-inside-picture {
       @apply min-h-full min-w-full object-cover ;

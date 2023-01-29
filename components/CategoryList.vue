@@ -1,18 +1,13 @@
 <template>
-  <div class="min-h-240p">
-    <AppHeading3>カテゴリ</AppHeading3>
-    <ClientOnly>
-      <CommonLinkList :links="categories" class="text-lg">
-        <template #first>
-          <CommonLinkListElem>
-            <CommonAppLink to="/blog">
-              全て
-            </CommonAppLink>
-          </CommonLinkListElem>
-        </template>
-      </CommonLinkList>
-    </ClientOnly>
-  </div>
+  <CommonLinkList :links="categories" class="text-lg min-h-240p">
+    <template #first>
+      <CommonLinkListElem>
+        <CommonAppLink to="/blog">
+          全て
+        </CommonAppLink>
+      </CommonLinkListElem>
+    </template>
+  </CommonLinkList>
 </template>
 
 <script setup lang="ts">

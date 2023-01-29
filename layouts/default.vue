@@ -1,5 +1,5 @@
 <template>
-  <CommonLayoutBox>
+  <CommonLayoutBox id="layout" class="relative">
     <AppHeader />
     <div class="w-full min-h-screen flex  flex-col   items-center">
       <main class="w-full min-h-screen flex flex-col items-center">
@@ -15,6 +15,8 @@
         </suspense>
       </main>
     </div>
+    <SpBottom />
+
     <AppFooter />
   </CommonLayoutBox>
 </template>
