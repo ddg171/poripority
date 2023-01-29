@@ -1,9 +1,9 @@
 <template>
-  <CommonLayoutBox id="layout" class="relative">
+  <CommonLayoutBox id="layout" class="">
     <AppHeader />
     <div class="flex flex-col items-center w-full min-h-screen">
       <PageTop />
-      <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row  min-h-screen mb-12">
+      <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row  min-h-screen">
         <main class="flex flex-col items-center w-full  bg-transparent">
           <suspense>
             <template #default>
@@ -28,6 +28,8 @@
           </aside>
         </div>
       </CommonContentWidthBox>
+
+      <SpBottom />
       <AppFooter />
     </div>
   </CommonLayoutBox>
@@ -35,3 +37,7 @@
 
 <script lang="ts" setup>
 </script>
+
+<style>
+
+</style>
