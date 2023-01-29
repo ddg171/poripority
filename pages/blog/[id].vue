@@ -2,36 +2,25 @@
   <ContentSection class="grid">
     <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
     <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
-    <suspense>
-      <template #default>
-        <ArticleNavigation :published-at="publishedAt" :category="category" />
-      </template>
-      <template #fallback>
-        <div class="flex items-center justify-center w-full text-lg text-white">
-          Loading...
-        </div>
-      </template>
-    </suspense>
-    <teleport to="#side-contents">
-      <AsideContentsBox>
-        <AppHeading3>目次</AppHeading3>
-        <ClientOnly>
-          <ul>
-            <li v-for="h,i in headings" :key="i" :level="h.level">
-              <a v-smooth-scroll :href="`#${h.id}`">
-                {{ h.title }}
-              </a>
-            </li>
-          </ul>
-        </ClientOnly>
-      </AsideContentsBox>
-      <AsideContentsBox v-if="imgList.length>0">
-        <AppHeading3>画像</AppHeading3>
-        <ClientOnly>
-          <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
-        </ClientOnly>
-      </AsideContentsBox>
-    </teleport>
+    <ClientOnly>
+      <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
+    </ClientOnly>
+    <ClientOnly>
+      <teleport to="#side-contents">
+        <AsideContentsBox v-if="headings.length>0">
+          <AppHeading3>目次</AppHeading3>
+          <ClientOnly>
+            <ArticleHeadingList :headings="headings" />
+          </ClientOnly>
+        </AsideContentsBox>
+        <AsideContentsBox v-if="imgList.length>0">
+          <AppHeading3>画像</AppHeading3>
+          <ClientOnly>
+            <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
+          </ClientOnly>
+        </AsideContentsBox>
+      </teleport>
+    </ClientOnly>
     <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
       <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
     </OverlayBox>
@@ -71,8 +60,6 @@ const image:string|undefined = value.eyecatch ? cropSquare(value.eyecatch).url :
 
 const dynamicMeta = makeDynamicMeta(headTitle, description, 'all', 'article', image)
 useHead(dynamicMeta)
-
-const publishedAt = computed<string|null>(() => { return value.publishedAt || null })
 
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
