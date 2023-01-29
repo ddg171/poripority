@@ -11,7 +11,5 @@
 </script>
 
 <style>
-p{
-    overflow-wrap: anywhere !important;
-}
+
 </style>
