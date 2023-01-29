@@ -2,7 +2,7 @@
   <div v-if="img" class="w-4/5 h-4/5">
     <picture class="object-contain">
       <source :srcset="img.webp" type="image/webp">
-      <img src="img.jpg" alt="拡大表示" class="w-full h-full object-contain" height="400" width="400">
+      <img :src="img.webp" alt="拡大表示" class="w-full h-full object-contain" height="400" width="400">
     </picture>
   </div>
 </template>
