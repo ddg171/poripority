@@ -12,10 +12,10 @@
       </div>
     </div>
     <div class="w-full flex justify-around">
-      <CommonAppBtn @click="setOptIn(false)">
+      <CommonAppBtn @app-click="setOptIn(false)">
         DENIED/拒否
       </CommonAppBtn>
-      <CommonAppBtn variant="denied" @click="setOptIn(true)">
+      <CommonAppBtn variant="denied" @app-click="setOptIn(true)">
         ACCEPT/許可
       </CommonAppBtn>
     </div>
