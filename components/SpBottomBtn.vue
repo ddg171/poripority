@@ -1,11 +1,11 @@
 <template>
-  <Transition name="slide-in">
-    <div v-show="props.isShow" class="flex justify-end w-full sticky lg:hidden  bottom-0 left-full p-3 overflow-y-hidden">
-      <CommonAppBtn id="to-top-btn" @app-click="scrollToTop">
+  <div class="flex justify-end w-full sticky  h-16  bottom-0 left-full px-3 pb-2 pt-0 overflow-y-hidden">
+    <Transition name="slide-in">
+      <CommonAppBtn v-show="props.isShow" id="to-top-btn" class="lg:hidden" @app-click="scrollToTop">
         TOPへ
       </CommonAppBtn>
-    </div>
-  </Transition>
+    </Transition>
+  </div>
 </template>
 
 <script setup lang="ts">
