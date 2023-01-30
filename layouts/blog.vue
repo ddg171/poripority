@@ -17,14 +17,14 @@
           </suspense>
         </main>
         <div id="side" class="sticky top-0 w-full mx-0  lg:w-96  lg:mx-1 shrink-0">
-          <aside class="w-full grid gap-2 mb-2">
-            <div id="side-contents" class="grid gap-2" />
-            <AsideContentsBox>
+          <aside class="w-full flex flex-col-reverse mb-2">
+            <AsideContentsBox class="mb-2">
               <AppHeading3>カテゴリ</AppHeading3>
               <ClientOnly>
                 <CategoryList />
               </ClientOnly>
             </AsideContentsBox>
+            <div id="side-contents" class="grid gap-2 mb-2" />
           </aside>
         </div>
       </CommonContentWidthBox>
