@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isShow" class="optin py-6 px-4 md:px-12 md:max-w-2xl absolute w-full border-solid border-white bottom-0 ml-0 shadow-xl shadow-gray  opacity-100 bg-gray grid gap-2 transition-opacity  delay-600 z-40" :is-visible="isVisible">
+  <div v-if="isShow" class="optin py-6 px-4 md:px-12 md:max-w-2xl absolute w-full border-solid border-white bottom-0 ml-0 shadow-xl shadow-gray  opacity-100 bg-gray grid gap-2 transition-opacity  delay-600 z-40">
     <div class="w-full">
       <AppHeading2>Cookie/解析ツール等の使用について</AppHeading2>
       <div class="text-white ">
@@ -38,8 +38,6 @@ const removeGaCookie = () => {
   gaWithID.value = undefined
 }
 
-const isVisible = ref<boolean>(false)
-
 const isShow = computed<boolean>(() => {
   return !optIn.value
 })
@@ -61,7 +59,6 @@ const setOptIn = (v:boolean) => {
 }
 
 onMounted(() => {
-  isVisible.value = true
   if (optIn.value !== 'ACCEPT') {
     removeGaCookie()
     return
@@ -70,9 +67,3 @@ onMounted(() => {
 })
 
 </script>
-
-<style scoped>
-.optin[is-visible=false]{
-  opacity: 0;
-}
-</style>
