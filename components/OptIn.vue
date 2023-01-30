@@ -25,8 +25,18 @@
 <script lang="ts" setup>
 import { useState } from 'vue-gtag-next'
 
+const config = useRuntimeConfig()
+const gaMeasurementID = config.public.gaMeasurementId
+
 const gtag = useState()
 const optIn = useCookie<'ACCEPT'|'DENIED'|undefined>('optin')
+const ga = useCookie<string|undefined>('_ga')
+const gaWithID = useCookie<string|undefined>(gaMeasurementID.replace('G-', '_ga_'))
+
+const removeGaCookie = () => {
+  ga.value = undefined
+  gaWithID.value = undefined
+}
 
 const isVisible = ref<boolean>(false)
 
@@ -45,12 +55,17 @@ const setOptIn = (v:boolean) => {
   optIn.value = v ? 'ACCEPT' : 'DENIED'
   if (v) {
     start()
+    return
   }
+  removeGaCookie()
 }
 
 onMounted(() => {
   isVisible.value = true
-  if (optIn.value !== 'ACCEPT') { return }
+  if (optIn.value !== 'ACCEPT') {
+    removeGaCookie()
+    return
+  }
   start()
 })
 
