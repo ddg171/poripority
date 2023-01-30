@@ -13,7 +13,8 @@ export const useRootRectStore = () => {
         width: 0,
         x: 0,
         y: 0,
-        toJSON: () => {}
+        // TODO とりあえず空文字を返す関数にしているので直す
+        toJSON: () => ''
       }
     })
   return {
