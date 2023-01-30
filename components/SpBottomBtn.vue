@@ -1,6 +1,6 @@
 <template>
   <Transition name="slide-in">
-    <div v-show="props.isShow" class="sticky lg:hidden  bottom-0 left-full m-2 overflow-y-hidden">
+    <div v-show="props.isShow" class="flex justify-end w-full sticky lg:hidden  bottom-0 left-full p-3 overflow-y-hidden">
       <CommonAppBtn id="to-top-btn" @app-click="scrollToTop">
         TOPへ
       </CommonAppBtn>
