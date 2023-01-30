@@ -10,9 +10,9 @@
               <slot />
             </template>
             <template #fallback>
-              <div class="flex flex-col w-full h-full p-6 text-white">
+              <ContentSection class="flex flex-col w-full h-full p-6 text-white">
                 Loading...
-              </div>
+              </ContentSection>
             </template>
           </suspense>
         </main>
@@ -24,7 +24,7 @@
                 <CategoryList />
               </ClientOnly>
             </AsideContentsBox>
-            <div id="side-contents" class="grid gap-2 mb-2" />
+            <div id="side-contents" class="grid" />
           </aside>
         </div>
       </CommonContentWidthBox>

@@ -5,13 +5,13 @@
     <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
     <ClientOnly>
       <teleport to="#side-contents">
-        <AsideContentsBox v-if="headings.length>0">
+        <AsideContentsBox v-if="headings.length>0" class="mb-2">
           <AppHeading3>目次</AppHeading3>
           <ClientOnly>
             <ArticleHeadingList :headings="headings" />
           </ClientOnly>
         </AsideContentsBox>
-        <AsideContentsBox v-if="imgList.length>0">
+        <AsideContentsBox v-if="imgList.length>0" class="mb-2">
           <AppHeading3>画像</AppHeading3>
           <ClientOnly>
             <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
