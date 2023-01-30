@@ -29,13 +29,21 @@
         </div>
       </CommonContentWidthBox>
 
-      <SpBottom />
+      <SpBottomBtn :is-show="isBottomBtnShow" />
       <AppFooter />
     </div>
   </CommonLayoutBox>
 </template>
 
 <script lang="ts" setup>
+const isBottomBtnShow = ref<boolean>(false)
+const { state } = useRootRectStore()
+
+watch(state, (b) => {
+  const top = b.top
+  const isShow = !!(top < -80)
+  isBottomBtnShow.value = isShow
+})
 </script>
 
 <style>
