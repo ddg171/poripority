@@ -1,9 +1,11 @@
 <template>
-  <div v-show="props.isShow" class="sticky lg:hidden  bottom-0 left-full m-2">
-    <CommonAppBtn @app-click="scrollToTop">
-      TOPへ
-    </CommonAppBtn>
-  </div>
+  <Transition name="slide-in">
+    <div v-show="props.isShow" class="sticky lg:hidden  bottom-0 left-full m-2 overflow-y-hidden">
+      <CommonAppBtn id="to-top-btn" @app-click="scrollToTop">
+        TOPへ
+      </CommonAppBtn>
+    </div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -22,3 +24,18 @@ const scrollToTop = () => {
 }
 
 </script>
+
+<style scoped>
+.slide-in-enter-active{
+  transition: all 0.25s ease-out;
+}
+
+.slide-in-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-in-enter-from,
+.slide-in-leave-to {
+  transform: translateY(80px);
+}
+</style>
