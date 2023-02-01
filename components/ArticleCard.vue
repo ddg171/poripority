@@ -8,9 +8,9 @@
         </picture>
       </CommonAppLink>
     </div>
-    <div class="flex flex-col justify-between  md:h-48 p-0 m-0 md:px-2 py-2 grow">
-      <div class="w-full mb-2 md:mb-0">
-        <div class="mb-0 text-3xl font-medium md:mb-1">
+    <div class="flex flex-col justify-between  md:h-48 p-0 m-0 md:px-1  md:py-4 grow">
+      <div class="w-full ">
+        <div class="mb-0 text-3xl font-medium">
           <h2 v-if="props.heading===2">
             <CommonAppLink :to="to">
               {{ props.article.title }}
@@ -27,7 +27,7 @@
         </p>
       </div>
 
-      <ArticleInfoBox :category="props.article.category" :published-date="props.article.publishedAt" class="mt-1 md:mt-0" />
+      <ArticleInfoBox :category="props.article.category" :published-date="props.article.publishedAt" class="" />
     </div>
   </article>
 </template>
