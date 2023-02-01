@@ -1,23 +1,19 @@
 <template>
-  <div
-    class="page-blog flex flex-col items-center justify-center w-full max-w-full text-white"
-  >
-    <ContentSection class="h-full w-full">
-      <div v-if="pending" class="flex items-center justify-center w-full h-48">
+  <ContentSection class="h-full w-full">
+    <div v-if="pending" class="flex items-center justify-center w-full h-48">
+      <p>
+        Loading...
+      </p>
+    </div>
+    <ArticleList v-else :articles="articles" :offset="offset" :category="category" class="grid-cols-1">
+      <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
         <p>
-          Loading...
+          記事が見つかりませんでした。
         </p>
       </div>
-      <ArticleList v-else :articles="articles" :offset="offset" :category="category" class="grid-cols-1">
-        <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
-          <p>
-            記事が見つかりませんでした。
-          </p>
-        </div>
-      </ArticleList>
-      <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
-    </contentsection>
-  </div>
+    </ArticleList>
+    <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
+  </contentsection>
 </template>
 
 <script setup lang="ts">
