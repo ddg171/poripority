@@ -1,5 +1,5 @@
 <template>
-  <button class="btn flex items-center justify-center p-1 mx-1 text-base text-white w-28 h-11 sm:mx-4 bg-green hover:bg-lightgreen focus:bg-lightgreen " :variant="props.variant" @click="$emit('app-click',$event)">
+  <button class="btn flex items-center justify-center p-1 mx-1 text-base text-white w-28 h-11 sm:mx-4 bg-green hover:bg-lightgreen focus:bg-lightgreen " :variant="props.variant">
     <slot />
   </button>
 </template>

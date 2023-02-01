@@ -1,5 +1,5 @@
 <template>
-  <ul class="grid w-full gap-4">
+  <ul class="grid w-full gap-8 md:gap-2">
     <li v-for="(a,i) in props.articles" :key="a.id">
       <ArticleCard
         :article="a"
