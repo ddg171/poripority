@@ -3,7 +3,7 @@
     <AppHeader />
     <div class="flex flex-col items-center w-full min-h-screen">
       <PageTop />
-      <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row  min-h-screen">
+      <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full  bg-transparent">
           <div class="w-full">
             <slot />
