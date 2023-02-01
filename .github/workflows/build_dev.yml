@@ -6,6 +6,7 @@ on:
       - dev
 
 name: Build to Testing
+env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   MICROCMS_API: ${{ secrets.MICROCMS_API }}
   HOST: 0.0.0.0
