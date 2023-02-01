@@ -5,16 +5,16 @@
       <PageTop />
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row  min-h-screen">
         <main class="flex flex-col items-center w-full  bg-transparent">
-          <suspense>
-            <template #default>
-              <slot />
-            </template>
-            <template #fallback>
-              <ContentSection class="flex flex-col w-full h-full p-6 text-white">
-                Loading...
-              </ContentSection>
-            </template>
-          </suspense>
+          <div class="w-full">
+            <slot />
+            <ContentSection v-if="loading.isLoading" class="text-white text-2lg">
+              <div class="flex items-center justify-center w-full h-48">
+                <p>
+                  Loading...
+                </p>
+              </div>
+            </ContentSection>
+          </div>
         </main>
         <div id="side" class="sticky top-0 w-full mx-0  lg:w-96  lg:mx-1 shrink-0">
           <aside class="w-full flex flex-col-reverse mb-2">
@@ -37,9 +37,10 @@
 
 <script lang="ts" setup>
 const isBottomBtnShow = ref<boolean>(false)
-const { state } = useRootRectStore()
+const { state: rootRect } = useRootRectStore()
+const { state: loading } = useLoadingStore()
 
-watch(state, (b) => {
+watch(rootRect, (b) => {
   const top = b.top
   const isShow = !!(top < -80)
   isBottomBtnShow.value = isShow

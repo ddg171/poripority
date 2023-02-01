@@ -28,6 +28,8 @@ definePageMeta({
 
 const route = useRoute()
 const pageTitleStore = usePageTitleStore()
+const isLoading = useLoadingStore()
+isLoading.set(true)
 const config = useRuntimeConfig()
 
 const limit = ref<number>(5)
@@ -112,6 +114,7 @@ setTitle(categoryName.value)
 
 onMounted(() => {
   setPageTitle(categoryName.value, true)
+  isLoading.set(false)
 })
 
 onBeforeUnmount(() => {

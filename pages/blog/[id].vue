@@ -22,7 +22,7 @@
     <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
       <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
     </OverlayBox>
-  </contentsection>
+  </Contentsection>
 </template>
 
 <script setup lang="ts">
