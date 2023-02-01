@@ -5,7 +5,7 @@ on:
     branches:
       - main
 
-name: Deploy to Firebase Hosting on merge
+name: Build and Deploy to Firebase
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   MICROCMS_API: ${{ secrets.MICROCMS_API }}
