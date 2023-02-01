@@ -1,8 +1,10 @@
 import { useState } from '#app'
 import { Ref } from 'nuxt/dist/app/compat/capi'
 
+type RoofRect = Omit<DOMRect, 'toJSON'>
+
 export const useRootRectStore = () => {
-  const state = useState<DOMRect>(
+  const state = useState<RoofRect>(
     () => {
       return {
         top: 0,
@@ -12,9 +14,7 @@ export const useRootRectStore = () => {
         height: 0,
         width: 0,
         x: 0,
-        y: 0,
-        // TODO とりあえず空文字を返す関数にしているので直す
-        toJSON: () => ''
+        y: 0
       }
     })
   return {
@@ -23,4 +23,7 @@ export const useRootRectStore = () => {
   }
 }
 
-const set = (state:Ref<DOMRect>) => (t:DOMRect) => { state.value = t }
+const set = (state:Ref<RoofRect>) => (t:DOMRect|RoofRect) => {
+  const { top, bottom, left, right, height, width, x, y } = t
+  state.value = { top, bottom, left, right, height, width, x, y }
+}
