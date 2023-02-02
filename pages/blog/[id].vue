@@ -42,6 +42,7 @@ categoryStore.set(categoryList.value?.contents || [])
 
 const route = useRoute()
 const pageTitleStore = usePageTitleStore()
+const isLoading = useLoadingStore()
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
@@ -92,6 +93,10 @@ const headingListHandler = (h:Heading[]) => {
 }
 
 const headings = ref<Heading[]>([])
+
+onMounted(() => {
+  isLoading.set(false)
+})
 
 onBeforeUnmount(() => {
   pageTitleStore.init()

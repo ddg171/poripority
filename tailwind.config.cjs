@@ -49,7 +49,11 @@ module.exports = {
       red: '#C40026',
       white: '#ffffff',
       orange: '#FF7347',
-      transparent: 'transparent'
+      transparent: 'transparent',
+      twttr: '#1DA1F2',
+      discord: '#5865F2',
+      qiita: '#55C500'
+
     },
     extend: {
       height: {

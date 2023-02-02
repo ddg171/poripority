@@ -18,14 +18,15 @@
       class="flex justify-start items-center mx-4"
     >
       <button
-        class="relative w-6 h-6  shadow-2xl slider-toggle-btn bg-lightgray"
+        class="relative w-6 h-6  shadow-2xl slider-toggle-btn bg-lightgray text-gray flex justify-center items-center"
         aria-label="スライダーの停止・再生切替"
         title="スライダーの停止・再生切替"
         :isStopped="props.isStopped"
         tabindex="0"
         @click="$emit('toggle',props.isStopped)"
       >
-        <span class="absolute border-solid border-gray" />
+        <Icon v-if="props.isStopped" name="material-symbols:play-arrow" class="w-full h-full" />
+        <Icon v-else name="material-symbols:stop" class="w-full h-full" />
       </button>
     </li>
   </ul>
@@ -48,26 +49,6 @@ const sliderPage = computed<number>({ get: () => { return props.modelValue }, se
 <style scoped>
 .slider-page-btn[isCurrent="true"]{
     background-color: #019585;
-}
-
-.slider-toggle-btn span{
-    height: 60%;
-    width: 50%;
-    top:20%;
-    left:25%;
-    border-left-width: 3px;
-    border-right-width: 3px;
-}
-
-.slider-toggle-btn[isStopped="true"] span{
-    width: 60%;
-    left:11%;
-    border-left-width: 0 !important;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    transform: rotate(-45deg);
-    transform-origin: 50% 50%;
-
 }
 
 </style>
