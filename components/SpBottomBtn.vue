@@ -2,6 +2,7 @@
   <div class="flex justify-end items-end w-full sticky  h-16  bottom-0 left-full px-3 pb-2 overflow-y-hidden">
     <Transition name="slide-in">
       <CommonAppBtn v-show="props.isShow" id="to-top-btn" class="lg:hidden border border-darkblue" @click="scrollToTop">
+        <Icon name="material-symbols:vertical-align-top" />
         一番上へ
       </CommonAppBtn>
     </Transition>
