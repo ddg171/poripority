@@ -38,9 +38,7 @@ const removeGaCookie = () => {
   gaWithID.value = undefined
 }
 
-const isShow = computed<boolean>(() => {
-  return !optIn.value
-})
+const isShow = ref<boolean>(false)
 
 const start = () => {
   if (gtag.isEnabled === undefined) {
@@ -50,6 +48,7 @@ const start = () => {
 }
 
 const setOptIn = (v:boolean) => {
+  isShow.value = false
   optIn.value = v ? 'ACCEPT' : 'DENIED'
   if (v) {
     start()
@@ -59,11 +58,17 @@ const setOptIn = (v:boolean) => {
 }
 
 onMounted(() => {
-  if (optIn.value !== 'ACCEPT') {
-    removeGaCookie()
-    return
-  }
-  start()
+  nextTick(() => {
+    if (!optIn.value) {
+      isShow.value = true
+      return
+    }
+    if (optIn.value !== 'ACCEPT') {
+      removeGaCookie()
+      return
+    }
+    start()
+  })
 })
 
 </script>
