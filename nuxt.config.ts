@@ -40,7 +40,7 @@ export default defineNuxtConfig({
     shim: false
   },
   css: ['~/assets/css/tailwind.scss'],
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', 'nuxt-icon'],
   image: {
 
     presets: {
