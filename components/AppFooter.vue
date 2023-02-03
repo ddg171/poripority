@@ -2,24 +2,37 @@
   <footer class="border-t-solid border-t-4 border-red w-full h-60 bg-lightgray text-gray">
     <div class="w-full h-full p-2  md:p-4 flex flex-col justify-start items-center md:flex-row md:h-full md:w-auto">
       <div class="w-full flex flex-col items-start mb-2 md:h-full">
-        <h2 class="text-2xl">
-          The hut of Proporpty(WIP)
-        </h2>
-        <p class="text-xl mb-1">
+        <div class="flex flex-wrap mb-2 md:mb-0">
+          <h2 class="text-2xl mr-2">
+            The hut of Proporpty(WIP)
+          </h2>
+          <ShareBtnBox title="The hut of Poripority" class="" />
+        </div>
+        <p class="text-xl ">
           Author: Hata_kaze
         </p>
         <div class="flex gap-3 items-baseline">
           <h3 class="text-xl">
             SNS
           </h3>
-          <ul class="flex gap-2">
+          <ul class="flex gap-2 flex-wrap">
             <li>
               <CommonExternalLink to="https://twitter.com/hata_kaze">
+                <Icon name="mdi:twitter" class="bg-twttr text-white p-1" />
                 Twitter
               </CommonExternalLink>
             </li>
             <li>
               <CommonExternalLink to="https://github.com/ddg171">
+                <Icon name="mdi:instagram" class="h-4 w-4" />
+
+                Instagram
+              </CommonExternalLink>
+            </li>
+            <li>
+              <CommonExternalLink to="https://www.instagram.com/hata_kaze/">
+                <Icon name="mdi:github" class="h-4 w-4" />
+
                 Github
               </CommonExternalLink>
             </li>
