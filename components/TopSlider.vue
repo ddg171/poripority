@@ -6,7 +6,7 @@
       </p>
       <div v-for="c,i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper" :isShow="sliderPage===i">
         <div class="relative w-full h-full top-slider-content">
-          <TopImgBlock :img="c.pic" />
+          <TopImgBlock :img="c.pic" class="top-img-block" />
           <div class=" absolute w-full h-full flex justify-center items-center">
             <CommonContentWidthBox class="flex items-end justify-start">
               <div class="flex flex-col px-4 md:px-16 py-2  md:py-6 bg-green/75 w-full md:w-auto mb-1/5h  md:mb-1/7h">
@@ -113,6 +113,17 @@ h2[data-is-tight=true]{
 .top-slider-content-wrapper[isShow="true"]{
   opacity: 1;
   z-index: 1;
+}
+
+.top-slider-content-wrapper[isShow="true"] .top-img-block{
+  transition: transform 5s linear;
+  transform: scale(106%);
+
+}
+
+.top-slider-content-wrapper .top-img-block{
+  transition: transform 5s linear;
+  transform: scale(103%);
 }
 
 </style>

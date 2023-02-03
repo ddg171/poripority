@@ -60,11 +60,15 @@
           <div class="mx-0 my-4 md:my-2 md:mx-4">
             <div class="w-full grid gap-2">
               <CommonAppApra>
-                Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。他にも流行りのゲームを遊んだり色々やってるので、気になる方はぜひご参加ください。
+                Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。気がつけば開設からもう5年以上経過したが元気に運営中。流石に8年前のゲームがメインなので他のゲームも遊ぶ事が多いが、今でも呼びかけてみると対戦相手が見つかる程度には活発。
               </CommonAppApra>
               <CommonAppApra>
-                おそらくWargame: RDで対人戦をもっとも積極的にやっている日本人鯖の一つです。CPU相手の戦闘に飽きてきた方や「俺より強いやつに会いたい」という方にもおすすめ。
+                なんだかんだ言いつつWargame: RDで対人戦をもっとも積極的にやっている日本人鯖の一つ。CPU相手の戦闘に飽きてきた方や「俺より強いやつに会いたい」という方にもおすすめ。最近は日本以外からもお客さんが来て賑やかになった。
               </CommonAppApra>
+              <CommonAppApra>
+                Wargameを含めて主に遊ばれているゲームは以下の通り。他にも色々なゲームを遊ぶことがあり、管理人が触ってないものもそこそこあったりする。
+              </CommonAppApra>
+              <CommonLinkList :links="games" />
             </div>
           </div>
         </div>
@@ -75,7 +79,7 @@
 
 <script setup lang="ts">
 import { Article } from '~~/types/articles'
-import { SliderContent, Eyecatch } from '~~/types/components'
+import { SliderContent, Eyecatch, LinkParams } from '~~/types/components'
 import { resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 
 const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })
@@ -161,6 +165,15 @@ if (contents.length) {
 
 const sliderContents = ref<Array<SliderContent>>(
   defaultContents.concat(sliderContentsTemp)
+)
+
+const games = ref<LinkParams[]>(
+  [
+    { name: 'Wargame: Red Dragon', path: 'https://store.steampowered.com/app/251060/Wargame_Red_Dragon', isExternal: true },
+    { name: 'Escape from Tarkov', path: 'https://www.escapefromtarkov.com/', isExternal: true },
+    { name: 'MechWarrior Online™', path: 'https://mwomercs.com/', isExternal: true },
+    { name: 'Ready or Not', path: 'https://store.steampowered.com/agecheck/app/1144200/?l=japanese', isExternal: true }
+  ]
 )
 
 </script>

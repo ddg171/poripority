@@ -1,5 +1,5 @@
 <template>
-  <a :href="props.to" class="block w-full h-full hover:underline focus:underline" target="_blank" tabindex="0">
+  <a :href="props.to" class="flex items-center w-full h-full hover:underline focus:underline" target="_blank" tabindex="0">
     <slot />
     <Icon name="mdi:open-in-new" />
   </a>
