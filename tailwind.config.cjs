@@ -48,8 +48,14 @@ module.exports = {
       lightgray: '#E6E6E6',
       red: '#C40026',
       white: '#ffffff',
+      black: '#000000',
       orange: '#FF7347',
-      transparent: 'transparent'
+      transparent: 'transparent',
+      twttr: '#1DA1F2',
+      discord: '#5865F2',
+      qiita: '#55C500',
+      reddit: '#FF5700'
+
     },
     extend: {
       height: {

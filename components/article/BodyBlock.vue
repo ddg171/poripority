@@ -91,7 +91,13 @@ onBeforeUnmount(() => {
   margin-bottom: 0.125em;
   content: "";
 }
-
+.cms-content a::after{
+  vertical-align: bottom;
+  content: url("/assets/svg/open-in-new.svg");
+  color: white;
+  height: 0.5em;
+  width: 0.5em;
+}
 .cms-content a:hover,
 .cms-content a:focus{
   text-decoration: underline;

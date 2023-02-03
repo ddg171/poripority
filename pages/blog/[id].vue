@@ -1,6 +1,9 @@
 <template>
   <ContentSection class="grid">
-    <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class=" w-full flex flex-col items-end" />
+    <div class="flex justify-between mb-2">
+      <ShareBtnBox :title="headTitle" />
+      <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+    </div>
     <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
     <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
     <ClientOnly>
@@ -42,6 +45,7 @@ categoryStore.set(categoryList.value?.contents || [])
 
 const route = useRoute()
 const pageTitleStore = usePageTitleStore()
+const isLoading = useLoadingStore()
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
@@ -52,11 +56,11 @@ if (!value || err?.value) {
 const selectedId = ref<string|undefined>(undefined)
 
 const config = useRuntimeConfig()
-const headTitle = value.title + '|' + config.public.siteName
+const headTitle = ref<string>(value.title + '|' + config.public.siteName)
 const description = value.subtitle || ''
 const image:string|undefined = value.eyecatch ? cropSquare(value.eyecatch).url : undefined
 
-const dynamicMeta = makeDynamicMeta(headTitle, description, 'all', 'article', image)
+const dynamicMeta = makeDynamicMeta(headTitle.value, description, 'all', 'article', image)
 useHead(dynamicMeta)
 
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
@@ -92,6 +96,10 @@ const headingListHandler = (h:Heading[]) => {
 }
 
 const headings = ref<Heading[]>([])
+
+onMounted(() => {
+  isLoading.set(false)
+})
 
 onBeforeUnmount(() => {
   pageTitleStore.init()

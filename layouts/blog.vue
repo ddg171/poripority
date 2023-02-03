@@ -40,6 +40,11 @@ const isBottomBtnShow = ref<boolean>(false)
 const { state: rootRect } = useRootRectStore()
 const { state: loading } = useLoadingStore()
 
+const loadingStore = useLoadingStore()
+onMounted(() => {
+  loadingStore.set(true)
+})
+
 watch(rootRect, (b) => {
   const top = b.top
   const isShow = !!(top < -80)

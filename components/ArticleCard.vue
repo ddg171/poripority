@@ -38,7 +38,6 @@ import { Article } from '~~/types/articles'
 
 interface Props{
     article:Article
-    offset?:number
     category?:string
     heading?:2|3
 }
@@ -49,9 +48,6 @@ const to = computed<string>(
   () => {
     const path = `/blog/${props.article.id}`
     const params:string[] = []
-    if (props.offset) {
-      params.push(`offset=${props.offset}`)
-    }
     if (props.category) {
       params.push(`category=${props.category}`)
     }
