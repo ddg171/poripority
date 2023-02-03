@@ -5,7 +5,7 @@
         Loading...
       </p>
     </div>
-    <ArticleList v-else :articles="articles" :offset="offset" :category="category" class="grid-cols-1">
+    <ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
       <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
         <p>
           記事が見つかりませんでした。
