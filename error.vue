@@ -1,15 +1,18 @@
 <template>
   <div class="min-h-screen bg-gray">
-    <NuxtLayout name="blog">
+    <NuxtLayout name="default">
+      <pageTop />
       <div
         class="flex flex-col items-center justify-center w-full max-w-full text-white"
       >
-        <ContentSection class="h-full ">
-          <p>
-            {{ error?.message||"エラーが発生しました。" }}
-          </p>
-          <BottomNavigation :left="null" :center="centerNav" :right="null" />
-        </Contentsection>
+        <CommonContentWidthBox>
+          <ContentSection class="h-full w-full">
+            <p>
+              {{ error?.message||"エラーが発生しました。" }}
+            </p>
+            <BottomNavigation :left="null" :center="centerNav" :right="null" />
+          </Contentsection>
+        </CommonContentWidthBox>
       </div>
     </NuxtLayout>
   </div>
@@ -30,6 +33,14 @@ const pageTitle:PageTitleProp = {
 }
 
 pageTitleStore.set(pageTitle)
+
+const loadingStore = useLoadingStore()
+onMounted(() => {
+  nextTick(() => {
+    loadingStore.set(true)
+  })
+})
+
 onBeforeUnmount(() => {
   pageTitleStore.init()
   clearError()
