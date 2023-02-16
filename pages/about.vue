@@ -52,11 +52,49 @@
     </div>
     <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="profileIn=true">
       <section id="profile" class="w-full py-16 min-h-screen relative bg-darkblue">
-        <div class="flex flex-col justify-center items-start h-full w-full absolute">
+        <div class="flex flex-col items-center h-full w-full absolute">
           <CommonContentWidthBox>
-            <AppHeading2>Profile</AppHeading2>
-            <div class="w-full text-white">
-              hoge
+            <AppHeading2 class="sticky top-12">
+              Profile
+            </AppHeading2>
+            <div class="w-full  md:h-full text-white flex justify-center items-center flex-wrap">
+              <div class="flex justify-center items-center  flex-grow">
+                <div class="flex flex-col justify-center items-center">
+                  <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-60 h-60" />
+                  <p class="w-full text-center text-sm">
+                    管理人の写真
+                  </p>
+                </div>
+              </div>
+              <div class="flex justify-center items-center flex-grow">
+                <table>
+                  <thead>
+                    <tr>
+                      <th colspan="2">
+                        Data
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>name</td>
+                      <td>Tomhiro Yamamoto</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Year of birth
+                      </td>
+                      <td>1991</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        Hometown
+                      </td>
+                      <td>Hiroshima,Japan</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </CommonContentWidthBox>
         </div>
@@ -66,10 +104,10 @@
       <section id="skill" class="w-full py-16 min-h-screen relative bg-darkblue">
         <div class="flex flex-col justify-center h-full w-full absolute">
           <CommonContentWidthBox>
-            <AppHeading2>Skill</AppHeading2>
-            <div class="w-full text-white">
-              hoge
-            </div>
+            <AppHeading2 class="sticky top-12">
+              Skill
+            </AppHeading2>
+            <div class="w-full text-white flex" />
           </CommonContentWidthBox>
         </div>
       </section>
@@ -78,7 +116,9 @@
       <section id="programming" class="w-full py-16 min-h-screen relative bg-darkblue">
         <div class="flex flex-col justify-center h-full w-full absolute">
           <CommonContentWidthBox>
-            <AppHeading3>Programming</AppHeading3>
+            <AppHeading3 class="sticky top-12">
+              Programming
+            </AppHeading3>
           </CommonContentWidthBox>
         </div>
       </section>
@@ -87,7 +127,9 @@
       <section id="loadmap" class="w-full py-16 min-h-screen relative bg-darkblue">
         <div class="flex flex-col justify-center h-full w-full absolute">
           <CommonContentWidthBox>
-            <AppHeading2>loadmap</AppHeading2>
+            <AppHeading2 class="sticky top-12">
+              loadmap
+            </AppHeading2>
           </CommonContentWidthBox>
         </div>
       </section>
@@ -119,7 +161,7 @@ const loadmapIn = ref<boolean>(false)
 }
 
 #scroll{
-  animation-duration: 1s;
+  animation-duration: 1.5s;
   animation-name: shaking;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
