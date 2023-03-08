@@ -1,5 +1,5 @@
 <template>
-  <ShareSnsLink :link="link" class="text-white bg-reddit border-reddit" target="_blank" tabindex="0">
+  <ShareSnsLink :link="link" class="text-white bg-reddit border-reddit" target="_blank" tabindex="0" title="Reddit">
     <Icon
       class="w-full h-full text-white"
       name="ph:reddit-logo-fill"

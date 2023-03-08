@@ -1,5 +1,5 @@
 <template>
-  <ShareSnsLink :link="link" class="text-white bg-twttr border-twttr" target="_blank" tabindex="0">
+  <ShareSnsLink :link="link" class="text-white bg-twttr border-twttr" target="_blank" tabindex="0" title="Twitter">
     <Icon
       class="w-full h-full"
       name="mdi:twitter"
