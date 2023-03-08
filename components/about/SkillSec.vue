@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="flex flex-col h-full justify-center items-center w-full md:w-1/2 pb-96 flex-grow shrink-0">
-          <div class="h-72 ">
+          <div class="md:h-72 ">
             <table class=" w-full">
               <thead class="text-2xl h-9">
                 <tr>
