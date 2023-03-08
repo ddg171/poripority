@@ -1,33 +1,6 @@
 <template>
-  <div class="page-about flex flex-col items-center w-full">
-    <section id="hero" class="hero w-full max-h-1080p min-h-480p bg-darkblue relative">
-      <Transition name="hero">
-        <div v-show="heroShow" class="h-full w-full">
-          <div class="h-full w-full bg-green/25 absolute overflow-hidden flex justify-center items-center">
-            <NuxtPicture src="/images/webp/about01.webp" legacy-format="jpeg" class="w-full h-full" :img-attrs="{class:'img-inside-picture' }" />
-          </div>
-          <div class="flex justify-center h-full w-full absolute">
-            <CommonContentWidthBox class="flex items-center">
-              <AppHeading1>
-                About
-              </AppHeading1>
-            </CommonContentWidthBox>
-          </div>
-          <div class="w-full py-4 bottom-0 absolute flex items-center justify-center text-white">
-            <div>
-              <CommonAppLink to="#profile" class="text-4xl">
-                <Icon
-                  id="scroll"
-                  class="h-full"
-                  name="material-symbols:arrow-downward"
-                />
-                next
-              </CommonAppLink>
-            </div>
-          </div>
-        </div>
-      </Transition>
-    </section>
+  <div class="page-about flex flex-col items-center w-full bg-darkblue">
+    <AboutHeroSec ref="hero" />
     <div class="sticky top-0 w-full z-30">
       <ul class="h-12 w-full flex justify-center items-center gap-4 bg-lightgray text-black">
         <li>
@@ -52,70 +25,9 @@
         </li>
       </ul>
     </div>
-    <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="profileIn=true">
-      <section id="profile" class="w-full py-16 min-h-screen relative bg-darkblue">
-        <div class="flex flex-col items-center h-full w-full absolute">
-          <CommonContentWidthBox>
-            <AppHeading2 class="sticky top-12">
-              <EffectShuffleSpan :trriger="profileIn" text="Profile" />
-            </AppHeading2>
-            <div class="w-full  md:h-full text-white flex justify-center items-center flex-wrap">
-              <div class="flex justify-center items-center  flex-grow">
-                <div class="flex flex-col justify-center items-center">
-                  <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-60 h-60" />
-                  <p class="w-full text-center text-sm">
-                    管理人の写真
-                  </p>
-                </div>
-              </div>
-              <div class="flex justify-center items-center flex-grow">
-                <table class=" w-full md:w-60">
-                  <thead class="text-xl">
-                    <tr>
-                      <th colspan="2">
-                        Data
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>name</td>
-                      <td>
-                        <EffectShuffleSpan text="yamamoto tomohiro" :trriger="profileIn" />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Year of birth
-                      </td>
-                      <td><EffectShuffleSpan text="1991" :trriger="profileIn" :delay="500" /></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        Hometown
-                      </td>
-                      <td><EffectShuffleSpan text="Hiroshima,Japan" :trriger="profileIn" :delay="1000" /></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </CommonContentWidthBox>
-        </div>
-      </section>
-    </IntersectionWrapper>
-    <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="skillIn=true">
-      <section id="skill" class="w-full py-16 min-h-screen relative bg-darkblue">
-        <div class="flex flex-col justify-center h-full w-full absolute">
-          <CommonContentWidthBox>
-            <AppHeading2 class="sticky top-12">
-              Skill
-            </AppHeading2>
-            <div class="w-full text-white flex" />
-          </CommonContentWidthBox>
-        </div>
-      </section>
-    </IntersectionWrapper>
+    <AboutProfileSec />
+
+    <AboutSkillSec class="mt-86" />
     <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="programIn=true">
       <section id="programming" class="w-full py-16 min-h-screen relative bg-darkblue">
         <div class="flex flex-col justify-center h-full w-full absolute">
@@ -150,15 +62,14 @@ const description = 'WIP'
 
 const dynamicMeta = makeDynamicMeta(title, description, 'none')
 useHead(dynamicMeta)
-const heroShow = ref<boolean>(false)
-const profileIn = ref<boolean>(false)
-const skillIn = ref<boolean>(false)
+const hero = ref<any>(null)
+
 const programIn = ref<boolean>(false)
 const loadmapIn = ref<boolean>(false)
 
 onMounted(() => {
   nextTick(() => {
-    heroShow.value = true
+    hero?.value?.show()
   })
 })
 
