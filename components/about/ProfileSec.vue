@@ -1,21 +1,21 @@
 <template>
-  <AboutContentSection class="mb-60 relative" @in="isShown=true">
+  <AboutContentSection id="profile" class="relative" @in="isShown=true">
     <template #heading>
       Profile
     </template>
     <template #default>
-      <div class="w-full  md:h-full text-white flex justify-center items-start flex-wrap">
-        <div class="pb-2 flex justify-center items-center bg-darkblue w-full  md:w-1/2 sticky top-28">
-          <div class="flex flex-col justify-start items-center ">
+      <div class="flex items-start justify-center w-full text-white h-2/1">
+        <div class="sticky flex items-center justify-center w-full pb-2 profile-pic bg-darkblue md:w-1/2 top-36">
+          <div class="flex flex-col items-center justify-start ">
             <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-60 h-60" />
-            <p class="w-full text-center text-sm">
+            <p class="w-full text-sm text-center">
               管理人の写真
             </p>
           </div>
         </div>
-        <div class="flex flex-col h-full justify-center items-center w-full md:w-1/2 pb-96 flex-grow shrink-0">
-          <div class="h-72 ">
-            <table class=" w-full">
+        <div class="flex flex-col items-center justify-center flex-grow w-full profile-data md:w-1/2 shrink-0">
+          <div class="h-full ">
+            <table class="w-full ">
               <thead class="text-2xl h-9">
                 <tr>
                   <th colspan="2">
@@ -52,7 +52,7 @@
 
           <div class="">
             <h3>来歴</h3>
-            <ul class="text-white flex flex-col gap-4 font-extrabold">
+            <ul class="flex flex-col gap-4 font-extrabold text-white">
               <li>1991年、広島に生まれる。</li>
               <li>2010年、島流しになり四国で大学生活を過ごす。</li>
               <li>2014年、フーリエ変換がわからず留年したため法文学部に3年次編入。</li>
