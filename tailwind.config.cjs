@@ -61,7 +61,8 @@ module.exports = {
     },
     extend: {
       height: {
-        ...vh
+        ...vh,
+        '2/1': '200%'
       },
       minHeight: {
         ...vh,
