@@ -15,7 +15,7 @@
     <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
     <ClientOnly>
       <teleport to="#top-box">
-        <PageTop />
+        <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
       </teleport>
     </ClientOnly>
   </contentsection>
@@ -32,9 +32,19 @@ definePageMeta({
 })
 
 const route = useRoute()
-const pageTitleStore = usePageTitleStore()
+
 const isLoading = useLoadingStore()
 const config = useRuntimeConfig()
+const pageTitle = ref<PageTitleProp>({
+  title: '記事一覧',
+  subtitles: [],
+  topImg: {
+    webp: '/images/webp/blanktitle01w2000.webp',
+    alt: '',
+    title: ''
+
+  }
+})
 
 const limit = ref<number>(5)
 const articles = computed<Article[]>(() => {
@@ -79,7 +89,7 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
     topImg,
     subtitles: hasSubtitles ? [subtitle] : []
   }
-  pageTitleStore.set(t)
+  pageTitle.value = t
 }
 
 const setTitle = (category:string|null) => {
@@ -119,10 +129,6 @@ setTitle(categoryName.value)
 onMounted(() => {
   setPageTitle(categoryName.value, true)
   isLoading.set(false)
-})
-
-onBeforeUnmount(() => {
-  pageTitleStore.init()
 })
 
 </script>

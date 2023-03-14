@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-works">
-    <PageTop />
+    <PageTop :title="title" :top-img="topImg" :subtitles="subtitles" />
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
         <AppHeading2 class="mb-2">
@@ -144,8 +144,6 @@
 import { PictureBoxProp, LinkParams } from '~~/types/components'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
-const { set, init } = usePageTitleStore()
-
 const title = ref<string>('制作物')
 const topImg = ref<PictureBoxProp>({
   webp: '/images/webp/works-img01w2000.webp',
@@ -184,19 +182,5 @@ const description = subtitles.value[0] || ''
 
 const dynamicMeta = makeDynamicMeta(headTitle, description, 'all', 'website')
 useHead(dynamicMeta)
-
-onMounted(() => {
-  nextTick(() => {
-    set({
-      title: title.value,
-      topImg: topImg.value,
-      subtitles: subtitles.value
-    })
-  })
-})
-
-onBeforeUnmount(() => {
-  init()
-})
 
 </script>
