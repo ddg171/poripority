@@ -5,9 +5,11 @@
       <PageTop />
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full  bg-transparent">
-          <div class="w-full">
+          <div v-show="!loading.isLoading" class="w-full">
             <slot />
-            <ContentSection v-if="loading.isLoading" class="text-white text-2lg">
+          </div>
+          <div v-if="loading.isLoading" class="w-full">
+            <ContentSection class="text-white text-2lg">
               <div class="flex items-center justify-center w-full h-48">
                 <p>
                   Loading...
@@ -41,9 +43,7 @@ const { state: rootRect } = useRootRectStore()
 const { state: loading } = useLoadingStore()
 
 const loadingStore = useLoadingStore()
-onMounted(() => {
-  loadingStore.set(true)
-})
+loadingStore.set(true)
 
 watch(rootRect, (b) => {
   const top = b.top

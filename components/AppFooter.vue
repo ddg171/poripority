@@ -6,7 +6,7 @@
           <h2 class="text-2xl mr-2">
             The hut of Proporpty(WIP)
           </h2>
-          <ShareBtnBox title="The hut of Poripority" class="" />
+          <ShareBtnBox title="The hut of Poripority" :url="baseURL" />
         </div>
         <p class="text-xl ">
           Author: Hata_kaze
@@ -51,3 +51,8 @@
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+const config = useRuntimeConfig()
+const baseURL = config.public.baseURL
+</script>
