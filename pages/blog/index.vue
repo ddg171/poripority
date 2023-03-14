@@ -13,6 +13,11 @@
       </div>
     </ArticleList>
     <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
+    <ClientOnly>
+      <teleport to="#top-box">
+        <PageTop />
+      </teleport>
+    </ClientOnly>
   </contentsection>
 </template>
 

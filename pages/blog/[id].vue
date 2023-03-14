@@ -7,6 +7,9 @@
     <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
     <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
     <ClientOnly>
+      <teleport to="#top-box">
+        <PageTop />
+      </teleport>
       <teleport to="#side-contents">
         <AsideContentsBox v-if="headings.length>0" class="mb-2">
           <AppHeading3>目次</AppHeading3>
