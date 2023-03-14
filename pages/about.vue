@@ -1,8 +1,8 @@
 <template>
-  <div class="page-about flex flex-col items-center w-full bg-darkblue">
+  <div class="flex flex-col items-center w-full page-about bg-darkblue">
     <AboutHeroSec ref="hero" />
-    <div class="sticky top-0 w-full z-30">
-      <ul class="h-12 w-full flex justify-center items-center gap-4 bg-lightgray text-black">
+    <div class="sticky top-0 z-50 w-full">
+      <ul class="flex items-center justify-center w-full h-12 gap-4 text-black bg-lightgray">
         <li>
           <NuxtLink to="#profile">
             Profile
@@ -29,8 +29,8 @@
 
     <AboutSkillSec class="mt-96" />
     <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="programIn=true">
-      <section id="programming" class="w-full py-16 min-h-screen relative bg-darkblue">
-        <div class="flex flex-col justify-center h-full w-full absolute">
+      <section id="programming" class="relative w-full min-h-screen py-16 bg-darkblue">
+        <div class="absolute flex flex-col justify-center w-full h-full">
           <CommonContentWidthBox>
             <AppHeading3 class="sticky top-12">
               Programming
@@ -40,8 +40,8 @@
       </section>
     </IntersectionWrapper>
     <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="loadmapIn=true">
-      <section id="loadmap" class="w-full py-16 min-h-screen relative bg-darkblue">
-        <div class="flex flex-col justify-center h-full w-full absolute">
+      <section id="loadmap" class="relative w-full min-h-screen py-16 bg-darkblue">
+        <div class="absolute flex flex-col justify-center w-full h-full">
           <CommonContentWidthBox>
             <AppHeading2 class="sticky top-12">
               loadmap

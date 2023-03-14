@@ -1,28 +1,16 @@
 <template>
-  <section id="hero" class="hero w-full max-h-1080p min-h-480p bg-darkblue relative">
+  <section id="hero" class="relative w-full hero max-h-1080p min-h-480p bg-darkblue">
     <Transition name="hero">
-      <div v-show="isShown" class="h-full w-full">
-        <div class="h-full w-full bg-green/25 absolute overflow-hidden flex justify-center items-center">
+      <div v-show="isShown" class="w-full h-full">
+        <div class="absolute flex items-center justify-center w-full h-full overflow-hidden bg-green/25">
           <NuxtPicture src="/images/webp/about01.webp" legacy-format="jpeg" class="w-full h-full" :img-attrs="{class:'img-inside-picture' }" />
         </div>
-        <div class="flex justify-center h-full w-full absolute">
+        <div class="absolute flex justify-center w-full h-full">
           <CommonContentWidthBox class="flex items-center">
             <AppHeading1>
               About
             </AppHeading1>
           </CommonContentWidthBox>
-        </div>
-        <div class="w-full py-4 bottom-0 absolute flex items-center justify-center text-white">
-          <div>
-            <CommonAppLink to="#profile" class="text-4xl">
-              <Icon
-                id="scroll"
-                class="h-full"
-                name="material-symbols:arrow-downward"
-              />
-              next
-            </CommonAppLink>
-          </div>
         </div>
       </div>
     </Transition>
