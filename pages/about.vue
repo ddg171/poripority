@@ -27,7 +27,7 @@
     </div>
     <AboutProfileSec />
 
-    <AboutSkillSec class="mt-96" />
+    <AboutSkillSec />
     <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="programIn=true">
       <section id="programming" class="relative w-full min-h-screen py-16 bg-darkblue">
         <div class="absolute flex flex-col justify-center w-full h-full">
