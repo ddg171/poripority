@@ -1,15 +1,18 @@
 <template>
   <div class="min-h-screen bg-gray">
-    <NuxtLayout name="blog">
-      <div
-        class="flex flex-col items-center justify-center w-full max-w-full text-white"
-      >
-        <ContentSection class="h-full ">
-          <p>
-            {{ error?.message||"エラーが発生しました。" }}
-          </p>
-          <BottomNavigation :left="null" :center="centerNav" :right="null" />
-        </Contentsection>
+    <NuxtLayout name="default">
+      <div class="flex flex-col items-center justify-center w-full h-full">
+        <PageTop />
+        <div
+          class="flex flex-col items-center justify-center w-full h-full max-w-screen-xl text-white"
+        >
+          <ContentSection class="h-full ">
+            <p>
+              {{ error?.message||"エラーが発生しました。" }}
+            </p>
+            <BottomNavigation :left="null" :center="centerNav" :right="null" />
+          </Contentsection>
+        </div>
       </div>
     </NuxtLayout>
   </div>
@@ -23,6 +26,7 @@ const centerNav = ref<LinkParams>({ name: 'TOPへ', path: '/' })
 defineProps<{ error: NuxtApp['payload']['error'] }>()
 // const handleError = () => clearError({ redirect: '/' })
 const pageTitleStore = usePageTitleStore()
+
 const pageTitle:PageTitleProp = {
   title: 'ページを表示できませんでした。',
   subtitles: [],
@@ -30,6 +34,7 @@ const pageTitle:PageTitleProp = {
 }
 
 pageTitleStore.set(pageTitle)
+
 onBeforeUnmount(() => {
   pageTitleStore.init()
   clearError()
