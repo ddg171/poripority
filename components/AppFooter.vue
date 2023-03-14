@@ -6,7 +6,7 @@
           <h2 class="text-2xl mr-2">
             The hut of Proporpty(WIP)
           </h2>
-          <ShareBtnBox title="The hut of Poripority" class="" />
+          <ShareBtnBox title="The hut of Poripority" :url="baseURL" />
         </div>
         <p class="text-xl ">
           Author: Hata_kaze
@@ -17,27 +17,27 @@
           </h3>
           <ul class="flex gap-2 flex-wrap">
             <li>
-              <CommonExternalLink to="https://twitter.com/hata_kaze">
+              <CommonExternalLink to="https://twitter.com/hata_kaze" title="Twitter">
                 <Icon name="mdi:twitter" class="bg-twttr text-white p-1" />
                 Twitter
               </CommonExternalLink>
             </li>
             <li>
-              <CommonExternalLink to="https://github.com/ddg171">
+              <CommonExternalLink to="https://www.instagram.com/hata_kaze" title="Instagram">
                 <Icon name="mdi:instagram" class="h-4 w-4" />
 
                 Instagram
               </CommonExternalLink>
             </li>
             <li>
-              <CommonExternalLink to="https://www.instagram.com/hata_kaze/">
+              <CommonExternalLink to="https://github.com/ddg171" title="Github">
                 <Icon name="mdi:github" class="h-4 w-4" />
 
                 Github
               </CommonExternalLink>
             </li>
             <li>
-              <CommonExternalLink to="https://qiita.com/ddg171">
+              <CommonExternalLink to="https://qiita.com/ddg171" title="Qiita">
                 Qiita
               </CommonExternalLink>
             </li>
@@ -51,3 +51,8 @@
     </div>
   </footer>
 </template>
+
+<script setup lang="ts">
+const config = useRuntimeConfig()
+const baseURL = config.public.baseURL
+</script>
