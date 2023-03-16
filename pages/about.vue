@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center w-full page-about bg-darkblue">
+  <div class="flex flex-col items-center w-full page-about">
     <AboutHeroSec ref="hero" />
     <div class="sticky top-0 z-50 w-full">
       <ul class="flex items-center justify-center w-full h-12 gap-4 text-black bg-lightgray">
@@ -13,11 +13,7 @@
             Skill
           </NuxtLink>
         </li>
-        <li>
-          <NuxtLink to="#programming">
-            Programming
-          </NuxtLink>
-        </li>
+
         <li>
           <NuxtLink to="#loadmap">
             Loadmap
@@ -25,31 +21,9 @@
         </li>
       </ul>
     </div>
-    <AboutProfileSec />
-
+    <AboutProfileSec class="bg-darkblue" />
     <AboutSkillSec />
-    <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="programIn=true">
-      <section id="programming" class="relative w-full min-h-screen py-16 bg-darkblue">
-        <div class="absolute flex flex-col justify-center w-full h-full">
-          <CommonContentWidthBox>
-            <AppHeading3 class="sticky top-12">
-              Programming
-            </AppHeading3>
-          </CommonContentWidthBox>
-        </div>
-      </section>
-    </IntersectionWrapper>
-    <IntersectionWrapper :threshold="0.9" trantision="none" class="w-full" @in="loadmapIn=true">
-      <section id="loadmap" class="relative w-full min-h-screen py-16 bg-darkblue">
-        <div class="absolute flex flex-col justify-center w-full h-full">
-          <CommonContentWidthBox>
-            <AppHeading2 class="sticky top-12">
-              loadmap
-            </AppHeading2>
-          </CommonContentWidthBox>
-        </div>
-      </section>
-    </IntersectionWrapper>
+    <AboutLoadmapSec />
   </div>
 </template>
 
@@ -63,9 +37,6 @@ const description = 'WIP'
 const dynamicMeta = makeDynamicMeta(title, description, 'none')
 useHead(dynamicMeta)
 const hero = ref<any>(null)
-
-const programIn = ref<boolean>(false)
-const loadmapIn = ref<boolean>(false)
 
 onMounted(() => {
   nextTick(() => {

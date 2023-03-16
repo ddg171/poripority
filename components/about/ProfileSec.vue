@@ -1,7 +1,9 @@
 <template>
-  <AboutContentSection id="profile" class="sticky top-0" @in="isShown=true">
+  <AboutContentSection id="profile" class="sticky top-0 bg-darkblue" @in="isShown=true">
     <template #heading>
-      Profile
+      <AppHeading2>
+        Profile
+      </AppHeading2>
     </template>
     <template #default>
       <div class="flex items-start justify-center w-full text-white h-3/4h">
@@ -14,7 +16,7 @@
           </div>
         </div>
         <div class="flex flex-col items-center justify-center flex-grow w-full profile-data md:w-1/2 shrink-0">
-          <div class="h-1/2h flex  items-center justify-center">
+          <div class="h-1/2h flex w-full items-center justify-center">
             <table class="w-full ">
               <thead class="text-2xl h-9">
                 <tr>
@@ -44,7 +46,14 @@
                   <td class="font-bold">
                     Hometown
                   </td>
-                  <td><EffectShuffleSpan text="Hiroshima,Japan" :trriger="isShown" :delay="1000" /></td>
+                  <td><EffectShuffleSpan text="Hiroshima,Japan" :trriger="isShown" :delay="750" /></td>
+                </tr>
+
+                <tr class="h-16 text-xl">
+                  <td class="font-bold">
+                    Hobby
+                  </td>
+                  <td><EffectShuffleSpan text="Photograph,PC game,etc..." :trriger="isShown" :delay="1000" /></td>
                 </tr>
               </tbody>
             </table>
