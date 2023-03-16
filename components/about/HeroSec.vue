@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class="relative w-full hero max-h-1080p min-h-480p bg-darkblue">
+  <section id="hero" class="relative w-full hero max-h-1080p min-h-480p bg-darkblue snap-start">
     <Transition name="hero">
       <div v-show="isShown" class="w-full h-full">
         <div class="absolute flex items-center justify-center w-full h-full overflow-hidden bg-green/25">
