@@ -7,6 +7,9 @@
     <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
     <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
     <ClientOnly>
+      <teleport to="#top-box">
+        <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
+      </teleport>
       <teleport to="#side-contents">
         <AsideContentsBox v-if="headings.length>0" class="mb-2">
           <AppHeading3>目次</AppHeading3>
@@ -44,8 +47,17 @@ const categoryStore = useCategoryStore()
 categoryStore.set(categoryList.value?.contents || [])
 
 const route = useRoute()
-const pageTitleStore = usePageTitleStore()
 const isLoading = useLoadingStore()
+const pageTitle = ref<PageTitleProp>({
+  title: '記事',
+  subtitles: [],
+  topImg: {
+    webp: '/images/webp/blanktitle01w2000.webp',
+    alt: '',
+    title: ''
+
+  }
+})
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
@@ -75,12 +87,12 @@ const topImg:PictureBoxProp|null = eyecatch
     }
   : null
 onMounted(() => {
-  const pageTitle:PageTitleProp = {
+  const t:PageTitleProp = {
     title: article.value?.title || '記事が見つかりませんでした',
     topImg,
     subtitles: article.value?.subtitle ? [article.value.subtitle] : []
   }
-  pageTitleStore.set(pageTitle)
+  pageTitle.value = t
 })
 const setImgList = (l:ImageList) => {
   imgList.value = l
@@ -101,7 +113,4 @@ onMounted(() => {
   isLoading.set(false)
 })
 
-onBeforeUnmount(() => {
-  pageTitleStore.init()
-})
 </script>

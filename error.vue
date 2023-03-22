@@ -1,15 +1,18 @@
 <template>
   <div class="min-h-screen bg-gray">
-    <NuxtLayout name="blog">
-      <div
-        class="flex flex-col items-center justify-center w-full max-w-full text-white"
-      >
-        <ContentSection class="h-full ">
-          <p>
-            {{ error?.message||"エラーが発生しました。" }}
-          </p>
-          <BottomNavigation :left="null" :center="centerNav" :right="null" />
-        </Contentsection>
+    <NuxtLayout name="default">
+      <div class="flex flex-col items-center justify-center w-full h-full">
+        <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
+        <div
+          class="flex flex-col items-center justify-center w-full h-full max-w-screen-xl text-white"
+        >
+          <ContentSection class="h-full ">
+            <p>
+              {{ error?.message||"エラーが発生しました。" }}
+            </p>
+            <BottomNavigation :left="null" :center="centerNav" :right="null" />
+          </Contentsection>
+        </div>
       </div>
     </NuxtLayout>
   </div>
@@ -21,17 +24,19 @@ import { LinkParams, PageTitleProp } from '~~/types/components'
 
 const centerNav = ref<LinkParams>({ name: 'TOPへ', path: '/' })
 defineProps<{ error: NuxtApp['payload']['error'] }>()
-// const handleError = () => clearError({ redirect: '/' })
-const pageTitleStore = usePageTitleStore()
-const pageTitle:PageTitleProp = {
+
+const pageTitle = ref<PageTitleProp>({
   title: 'ページを表示できませんでした。',
   subtitles: [],
-  topImg: null
-}
+  topImg: {
+    webp: '/images/webp/blanktitle01w2000.webp',
+    alt: '',
+    title: ''
 
-pageTitleStore.set(pageTitle)
+  }
+})
+
 onBeforeUnmount(() => {
-  pageTitleStore.init()
   clearError()
 })
 

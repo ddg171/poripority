@@ -1,5 +1,5 @@
 <template>
-  <header class="w-full  bg-green text-white" :is-sticky="isSticky">
+  <header class="w-full  bg-green text-white z-100 top-0" :is-sticky="isSticky">
     <div id="AppHeader-container" class="AppHeader-container h-full flex flex-row justify-between">
       <SiteName />
       <NavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
@@ -30,8 +30,6 @@ header{
 
 header[is-sticky="true"]{
   position: sticky;
-  top:0;
-  z-index: 11;
 }
 
 </style>

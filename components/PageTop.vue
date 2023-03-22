@@ -1,14 +1,14 @@
 <template>
   <TopConteinerBlock class="h-1/4h lg:h-1/2h max-h-960p min-h-480p">
     <div :data-show="isShow" class="title-content-box relative  h-full page-title transition-all  duration-500 opacity-0">
-      <TopImgBlock :img="state.topImg" />
-      <div v-if="state.title" class="absolute w-full h-full flex justify-center items-center title-box backdrop-blur-sm">
+      <TopImgBlock :img="props.topImg" />
+      <div v-if="props.title" class="absolute w-full h-full flex justify-center items-center title-box backdrop-blur-sm">
         <CommonContentWidthBox class="flex items-end justify-start">
           <div class="flex flex-col px-4 md:px-16 py-2  md:py-6 mb-1/5h  md:mb-1/7h bg-green/75 w-full md:w-auto my-2">
             <AppHeading1>
-              <span>{{ state.title }}</span>
+              <span>{{ props.title }}</span>
             </AppHeading1>
-            <p v-for="t , i in state.subtitles" :key="i" class="text-white text-md md:text-xl">
+            <p v-for="t , i in props.subtitles" :key="i" class="text-white text-md md:text-xl">
               {{ t }}
             </p>
           </div>
@@ -19,8 +19,18 @@
 </template>
 
 <script setup lang="ts">
-const pageTitleStore = usePageTitleStore()
-const { state } = pageTitleStore
+import { PictureBoxProp } from '~~/types/components'
+
+interface Props {
+  topImg: PictureBoxProp | null
+  title: string
+  subtitles: string[]
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  topImg: null,
+  subtitles: () => []
+})
 
 const isShow = ref<boolean>(false)
 

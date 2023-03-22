@@ -10,6 +10,7 @@
 <script setup lang="ts">
 interface Props {
     text?:string
+    url?:string
 }
 
 const props = defineProps<Props>()
