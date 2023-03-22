@@ -172,7 +172,7 @@ left: 24px;
   height: calc(100vh - 64px);
   margin: 0;
   padding: 0;
-  z-index: 10;
+  z-index: 100;
   backdrop-filter: blur(5px);
 }
 
