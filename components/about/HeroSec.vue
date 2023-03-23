@@ -3,30 +3,77 @@
     <Transition name="hero">
       <div v-show="isShown" class="w-full h-full">
         <div class="absolute flex items-center justify-center w-full h-full overflow-hidden bg-green/25">
-          <NuxtPicture src="/images/webp/about01.webp" legacy-format="jpeg" class="w-full h-full" :img-attrs="{class:'img-inside-picture' }" />
+          <div class="w-full h-full grid grid-rows-4 grid-cols-4">
+            <div v-for="p,i in photos" :key="i" class="photo-box h-full w-full border-white">
+              <div v-show="p.isShow" class=" h-full w-full bg-green border  text-white">
+                {{ i }}/{{ p.isShow }}
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="absolute flex justify-center w-full h-full">
+        <!-- <div class="absolute flex justify-center w-full h-full">
           <CommonContentWidthBox class="flex items-center">
             <AppHeading1>
               About
             </AppHeading1>
           </CommonContentWidthBox>
-        </div>
+        </div> -->
       </div>
     </Transition>
   </section>
 </template>
 
 <script setup lang="ts">
+interface Photo {
+  isShow:boolean
+}
+const photos = ref<Photo[]>(
+  [
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false },
+    { isShow: false }
+  ]
+)
+
+const shuffleIndex = ():number[] => {
+  const index = photos.value.map((_, i) => i)
+  return shuffleArray<number>(index)
+}
 
 const isShown = ref<boolean>(false)
 const show = () => {
   isShown.value = true
 }
 
+watch(isShown, (isShown) => {
+  if (isShown) {
+    const index = shuffleIndex()
+    index.forEach((i, j) => {
+      setTimeout(() => {
+        photos.value[i].isShow = true
+      }, j * 100 + 500)
+    })
+  }
+}
+)
+
 defineExpose({
   show
 })
+
 </script>
 
 <style scoped>
