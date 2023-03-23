@@ -6,11 +6,73 @@
       </AppHeading2>
     </template>
     <template #default>
-      <div class="overflow-x-hidden">
-        <div ref="content" :style="style" class=" w-full z-30 md:h-screen bg-lightgreen text-white flex justify-center items-start flex-wrap">
-          <p class="text-white text-2xl">
-            kokoni iroiro kaku!
-          </p>
+      <div class="">
+        <div ref="content" :style="style" class=" w-full z-30 md:h-screen text-white flex flex-col gap-4">
+          <div>
+            <AppHeading3 class="mb-2">
+              Web Development
+            </AppHeading3>
+            <ul class="w-full flex gap-16">
+              <li class="text-center">
+                <div class="h-36 w-36 bg-darkblue" />
+                HTML/CSS
+              </li>
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                JavaScript<br>/Typescript
+              </li>
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                Vue.js
+              </li>
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                Nuxt.js
+              </li>
+            </ul>
+          </div>
+          <div>
+            <AppHeading3 class="mb-2">
+              Platform/Infrastructure
+            </AppHeading3>
+            <ul class="w-full flex gap-16">
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                GCP
+              </li>
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                Firebase
+              </li>
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                Docker
+              </li>
+            </ul>
+          </div>
+          <div>
+            <AppHeading3 class="mb-2">
+              Others
+            </AppHeading3>
+            <ul class="w-full flex gap-16">
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                Photography
+              </li>
+              <li>
+                <div class="h-36 w-36 bg-darkblue" />
+
+                Drone
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </template>
@@ -30,7 +92,7 @@ const ScrollHandler = () => {
   const innerHeight = window.innerHeight
   const bottom = rect.bottom
   const height = rect.height
-  const r = Math.round(((bottom - innerHeight) / height) * 1000) / 1000 - 0.3
+  const r = Math.round(((bottom - innerHeight) / height) * 1000) / 1000 - 0.5
   translateXrate.value = (r > 1 ? 1 : r) < 0 ? 0 : r
 }
 
