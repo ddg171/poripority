@@ -15,11 +15,14 @@
           <div v-show="headingTransitionTrrigger" class=" absolute flex justify-center w-full h-full backdrop-blur-sm">
             <CommonContentWidthBox class="flex items-end justify-start">
               <div class="flex flex-col px-4 md:px-16 py-6 bg-green/75 w-full md:w-auto mb-1/5h  md:mb-1/7h">
-                <AppHeading1 class="">
+                <AppHeading1 class="pl-2  font-semibold text-white border-l-4 border-white border-solid text-6xl">
                   <span>
                     Portfolio
                   </span>
                 </AppHeading1>
+                <p class="text-white text-2lg md:text-4xl">
+                  Now is better than never!
+                </p>
               </div>
             </commoncontentwidthbox>
           </div>
