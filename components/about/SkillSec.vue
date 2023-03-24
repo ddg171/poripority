@@ -1,5 +1,5 @@
 <template>
-  <AboutContentSection id="skill" class=" bg-green z-30" @in="isShown=true">
+  <AboutContentSection id="skill" class=" bg-green sticky top-0" @in="isShown=true">
     <template #heading>
       <AppHeading2 class="z-40">
         Skill
