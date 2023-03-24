@@ -7,83 +7,61 @@
     </template>
     <template #default>
       <div class="">
-        <div ref="content" :style="style" class=" w-full z-30 md:h-screen text-white flex flex-col gap-4">
-          <div>
-            <AppHeading3 class="mb-2">
-              Web Development
-            </AppHeading3>
-            <ul class="w-full flex gap-16">
-              <li class="text-center">
-                <div class="h-40 w-40 bg-darkblue">
-                  <Icon name="vscode-icons:file-type-html" class="h-40 w-40 " />
-                </div>
+        <div class=" w-full z-30 md:h-screen text-white flex flex-col gap-4">
+          <AboutSkillList>
+            <template #title>
+              Language
+            </template>
+            <template #default>
+              <AboutSkillListElem name="vscode-icons:file-type-html">
                 HTML5
-              </li>
-              <li class="text-center">
-                <div class="h-40 w-40 bg-darkblue">
-                  <Icon name="vscode-icons:file-type-css" class="h-40 w-40 " />
-                </div>
+              </AboutSkillListElem>
+              <AboutSkillListElem name="vscode-icons:file-type-css">
                 CSS3
-              </li>
-
-              <li class="text-center">
-                <div class="h-40 w-40  bg-darkblue">
-                  <Icon name="vscode-icons:file-type-typescript-official" class="h-40 w-40 " />
-                </div>
-
-                JavaScript<br>/Typescript
-              </li>
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
-
-                Vue.js
-              </li>
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
-
-                Nuxt.js
-              </li>
-            </ul>
-          </div>
-          <div>
-            <AppHeading3 class="mb-2">
-              Platform/Infrastructure
-            </AppHeading3>
-            <ul class="w-full flex gap-16">
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
-
+              </AboutSkillListElem>
+              <AboutSkillListElem name="vscode-icons:file-type-typescript-official">
+                JavaScript<br>/TypeScript
+              </AboutSkillListElem>
+              <AboutSkillListElem name="vscode-icons:file-type-python">
+                Python
+              </AboutSkillListElem>
+            </template>
+          </AboutSkillList>
+          <AboutSkillList>
+            <template #title>
+              Framework/Detabase
+            </template>
+            <template #default>
+              <AboutSkillListElem name="vscode-icons:file-type-vue">
+                Vue3
+              </AboutSkillListElem>
+              <AboutSkillListElem name="vscode-icons:file-type-nuxt">
+                Nuxt
+              </AboutSkillListElem>
+              <AboutSkillListElem name="skill-icons:fastapi">
+                FastAPI
+              </AboutSkillListElem>
+              <AboutSkillListElem name="vscode-icons:file-type-firestore">
+                Firestore
+              </Aboutskilllistelem>
+            </template>
+          </aboutskilllist>
+          <AboutSkillList>
+            <template #title>
+              Platform
+            </template>
+            <template #default>
+              <AboutSkillListElem name="skill-icons:gcp-light">
                 GCP
-              </li>
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
-
+              </AboutSkillListElem>
+              <AboutSkillListElem name="vscode-icons:file-type-firebase">
                 Firebase
-              </li>
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
-
+              </AboutSkillListElem>
+              <AboutSkillListElem name="vscode-icons:file-type-docker">
                 Docker
-              </li>
-            </ul>
-          </div>
-          <div>
-            <AppHeading3 class="mb-2">
-              Others
-            </AppHeading3>
-            <ul class="w-full flex gap-16">
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
-
-                Photography
-              </li>
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
-
-                Drone
-              </li>
-            </ul>
-          </div>
+              </AboutSkillListElem>
+            </template>
+          </aboutskilllist>
         </div>
       </div>
     </template>
@@ -93,30 +71,4 @@
 <script setup lang="ts">
 const isShown = ref<boolean>(false)
 
-const content = ref<HTMLElement|null>(null)
-const translateXrate = ref<number>(1)
-const ScrollHandler = () => {
-  if (!content.value) { return }
-  const rects = content.value.getClientRects()
-  if (rects.length === 0) { return }
-  const rect = rects[0]
-  const innerHeight = window.innerHeight
-  const bottom = rect.bottom
-  const height = rect.height
-  const r = Math.round(((bottom - innerHeight) / height) * 1000) / 1000 - 0.5
-  translateXrate.value = (r > 1 ? 1 : r) < 0 ? 0 : r
-}
-
-const style = computed(() => {
-  return {
-    transform: `translateX(${translateXrate.value * 100}%)`
-  }
-})
-onMounted(() => {
-  window.addEventListener('scroll', ScrollHandler)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', ScrollHandler)
-})
 </script>
