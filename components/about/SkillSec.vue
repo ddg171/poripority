@@ -14,11 +14,22 @@
             </AppHeading3>
             <ul class="w-full flex gap-16">
               <li class="text-center">
-                <div class="h-36 w-36 bg-darkblue" />
-                HTML/CSS
+                <div class="h-40 w-40 bg-darkblue">
+                  <Icon name="vscode-icons:file-type-html" class="h-40 w-40 " />
+                </div>
+                HTML5
               </li>
-              <li>
-                <div class="h-36 w-36 bg-darkblue" />
+              <li class="text-center">
+                <div class="h-40 w-40 bg-darkblue">
+                  <Icon name="vscode-icons:file-type-css" class="h-40 w-40 " />
+                </div>
+                CSS3
+              </li>
+
+              <li class="text-center">
+                <div class="h-40 w-40  bg-darkblue">
+                  <Icon name="vscode-icons:file-type-typescript-official" class="h-40 w-40 " />
+                </div>
 
                 JavaScript<br>/Typescript
               </li>
