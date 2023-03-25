@@ -83,11 +83,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', 'sans-serif', ...defaultTheme.fontFamily.sans]
-      },
-      'z-index': {
-        100: '100',
-        200: '200',
-        300: '300'
       }
     },
     variants: {

@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <Transition name="optin">
-      <div v-if="isShow" class="optin py-6 px-4 md:px-12 md:max-w-2xl fixed w-full border-solid border-white bottom-0 ml-0 shadow-xl shadow-gray  opacity-100 bg-gray grid gap-2 transition-opacity  delay-600 z-100">
+      <div v-if="isShow" class="optin py-6 px-4 md:px-12 md:max-w-2xl fixed w-full border-solid border-white bottom-0 ml-0 shadow-xl shadow-gray  opacity-100 bg-gray grid gap-2 transition-opacity  delay-600 z-50">
         <div class="w-full">
           <AppHeading2>Cookie/解析ツール等の使用について</AppHeading2>
           <div class="text-white ">
