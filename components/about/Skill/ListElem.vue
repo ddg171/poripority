@@ -1,7 +1,7 @@
 <template>
-  <li class="text-center">
-    <div class="h-40 w-40 bg-darkblue">
-      <Icon :name="props.name" class="h-40 w-40" />
+  <li class="text-center md:p-2 hover:bg-lightgreen">
+    <div class="h-20 w-20 ">
+      <Icon :name="props.name" class="h-20 w-20" />
     </div>
     <span>
       <slot />

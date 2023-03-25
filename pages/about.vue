@@ -1,8 +1,8 @@
 <template>
   <div class="flex flex-col items-center w-full page-about">
     <AboutHeroSec ref="hero" />
-    <div class="sticky top-0 z-50 w-full">
-      <ul class="flex items-center justify-center w-full h-12 gap-4 text-black bg-lightgray">
+    <div class="sticky top-0 z-40 w-full">
+      <ul class="flex items-center justify-center w-full h-8 gap-4 text-black bg-lightgray">
         <li>
           <NuxtLink to="#profile">
             Profile
@@ -49,7 +49,7 @@ onMounted(() => {
 <style scoped>
 
 .hero{
-  height: calc(100vh - 64px - 3rem);
+  height: calc(100vh - 48px - 3rem);
 }
 
 .hero-enter-active{
