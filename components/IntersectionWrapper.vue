@@ -10,7 +10,7 @@ const observer = ref<IntersectionObserver|null>(null)
 
 const wrapper = ref<null | Element>(null)
 
-const emits = defineEmits<{(e:'in'):void}>()
+const emits = defineEmits<{(e:'in'):void, (e:'out'):void }>()
 interface Props {
     threshold?:number
     trantision?:'vertical'|'none'
@@ -20,7 +20,10 @@ const props = withDefaults(defineProps<Props>(), { threshold: 0.4, trantision: '
 
 const intersectionHandler = (e:IntersectionObserverEntry[]) => {
   if (e.length === 0) { return }
-  if (!e[0].isIntersecting) { return }
+  if (!e[0].isIntersecting) {
+    emits('out')
+    return
+  }
   emits('in')
 
   trigger.value = true
@@ -48,8 +51,11 @@ onMounted(() => {
 })
 
 watch(() => trigger.value, (val:boolean) => {
-  if (!val) { return }
-  disable()
+  if (!val) {
+    emits('out')
+    return
+  }
+  emits('in')
 })
 
 onUnmounted(() => {
