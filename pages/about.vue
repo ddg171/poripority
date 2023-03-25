@@ -13,7 +13,11 @@
             Skill
           </NuxtLink>
         </li>
-
+        <li>
+          <NuxtLink to="#photograpy">
+            Photograpy
+          </NuxtLink>
+        </li>
         <li>
           <NuxtLink to="#loadmap">
             Loadmap
@@ -23,6 +27,7 @@
     </div>
     <AboutProfileSec class="bg-darkblue" />
     <AboutSkillSec />
+    <AboutPhotoSec />
     <AboutLoadmapSec />
   </div>
 </template>
