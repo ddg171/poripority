@@ -1,5 +1,5 @@
 <template>
-  <section id="hero" class=" w-full hero max-h-1080p min-h-480p bg-darkblue snap-start">
+  <section id="hero" class=" w-full hero max-h-1080p min-h-480p bg-darkblue snap-start" @click="show">
     <div v-show="isShown" class="relative w-full h-full">
       <div class="absolute flex items-center justify-center w-full h-full overflow-hidden ">
         <div class="w-full h-full grid grid-rows-4 grid-cols-4">
@@ -19,7 +19,7 @@
                   Portfolio
                 </span>
               </AppHeading1>
-              <p class="text-white text-2lg md:text-4xl">
+              <p class="text-white text-2xl md:text-4xl">
                 Now is better than never!
               </p>
             </div>
