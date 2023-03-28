@@ -1,5 +1,5 @@
 <template>
-  <AboutContentSection id="loadmap" class="sticky top-0 bg-darkblue" @in="isShown=true">
+  <AboutContentSection id="loadmap" class="sticky top-0 bg-gray  z-30" @in="isShown=true">
     <template #heading>
       <AppHeading2>
         Profile
