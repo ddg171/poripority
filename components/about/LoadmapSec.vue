@@ -1,8 +1,8 @@
 <template>
-  <AboutContentSection id="loadmap" class="sticky top-0 bg-gray  z-30" @in="isShown=true">
+  <AboutContentSection id="loadmap" class="sticky top-0 bg-darkblue py-20 md:py-28  z-30" @in="isShown=true">
     <template #heading>
       <AppHeading2>
-        Profile
+        Loadmap
       </AppHeading2>
     </template>
     <template #default>
