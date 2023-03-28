@@ -1,18 +1,15 @@
 <template>
-  <AboutContentSection id="photograhy" class=" bg-darkblue pt-20 md:pt-28 z-20" @in="isShown=true">
+  <AboutContentSection id="photography" class="min-h-screen sticky top-0 bg-darkblue pt-10 md:pt-16 z-20" @in="isShown=true">
     <template #heading>
       <AppHeading2>
-        Profile
+        Photography
       </AppHeading2>
     </template>
     <template #default>
-      <div class="flex items-start justify-center w-full flex-col md:flex-row text-white h-3/4h">
+      <div class="flex items-start justify-center w-full flex-col md:flex-row-reverse text-white ">
         <div class="md:h-1/2h  flex items-center justify-center w-full pb-2 profile-pic bg-darkblue md:w-1/2">
           <div class="flex flex-col items-center justify-start ">
             <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-28 h-28 md:w-60 md:h-60" />
-            <p class="w-full text-sm text-center">
-              管理人の写真
-            </p>
           </div>
         </div>
         <div class="md:h-1/2h flex flex-col items-center md:justify-center flex-grow w-full profile-data md:w-1/2 md:shrink-0">
