@@ -9,26 +9,42 @@
           </NuxtLink>
         </li>
         <li>
+          <NuxtLink to="#photography">
+            Photography
+          </NuxtLink>
+        </li>
+        <li>
           <NuxtLink to="#skill">
             Skill
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="#photograpy">
-            Photograpy
-          </NuxtLink>
-        </li>
-        <li>
-          <NuxtLink to="#loadmap">
-            Loadmap
+          <NuxtLink to="#contact">
+            Contact
           </NuxtLink>
         </li>
       </ul>
     </div>
     <AboutProfileSec class="bg-darkblue" />
-    <AboutSkillSec />
     <AboutPhotoSec />
-    <AboutLoadmapSec />
+    <AboutSkillSec />
+    <!-- <AboutLoadmapSec /> -->
+    <AboutContentSection id="contact" class=" bg-gray py-20 md:py-28 z-30">
+      <template #heading>
+        <AppHeading2 class="z-40">
+          Contact
+        </AppHeading2>
+      </template>
+      <template #default>
+        <div class="w-full z-30  text-2xl text-white flex flex-col  justify-center items-center mb-4">
+          If you have any questions, please contact me.
+        </div>
+
+        <div class="flex flex-col items-center justify-center gap-4 text-2xl text-white">
+          <ContactBox />
+        </div>
+      </template>
+    </AboutContentSection>
   </div>
 </template>
 
