@@ -1,13 +1,13 @@
 <template>
-  <AboutContentSection id="skill" class=" bg-green sticky top-0" @in="isShown=true">
+  <AboutContentSection id="skill" class=" bg-green pt-20 md:pt-28 z-20" @in="isShown=true">
     <template #heading>
       <AppHeading2 class="z-40">
         Skill set
       </AppHeading2>
     </template>
     <template #default>
-      <div class="w-full">
-        <div class=" w-full z-30  text-white flex flex-col gap-1 md:gap-4 mb-4">
+      <div class="w-full z-30  text-white flex flex-col md:flex-row justify-center items-center">
+        <div class=" w-full  text-white flex flex-col gap-1 md:gap-4 mb-4">
           <AboutSkillList>
             <template #title>
               Languages
@@ -79,6 +79,7 @@
             </template>
           </AboutSkillList>
         </div>
+        <div class="w-1/3 h-64 bg-lightgreen" />
       </div>
     </template>
   </AboutContentSection>
