@@ -1,12 +1,12 @@
 <template>
-  <AboutContentSection id="profile" class="sticky top-0 bg-darkblue" @in="isShown=true">
+  <AboutContentSection id="profile" class="sticky top-0 bg-darkblue pt-10 md:pt-16 z-10" @in="isShown=true">
     <template #heading>
       <AppHeading2>
         Profile
       </AppHeading2>
     </template>
     <template #default>
-      <div class="flex items-start justify-center w-full flex-col md:flex-row text-white h-3/4h">
+      <div class="flex items-start justify-center w-full flex-col md:flex-row text-white ">
         <div class="md:h-1/2h  flex items-center justify-center w-full pb-2 profile-pic bg-darkblue md:w-1/2">
           <div class="flex flex-col items-center justify-start ">
             <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-28 h-28 md:w-60 md:h-60" />
