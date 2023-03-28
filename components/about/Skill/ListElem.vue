@@ -1,9 +1,9 @@
 <template>
-  <li class="text-center md:p-2 hover:bg-lightgreen">
-    <div class="h-20 w-20 ">
-      <Icon :name="props.name" class="h-20 w-20" />
+  <li class="flex flex-col items-center md:p-1 hover:bg-lightgreen">
+    <div class="h-20 w-20">
+      <Icon :name="props.name" class="h-20 w-20 " />
     </div>
-    <span>
+    <span class="block">
       <slot />
     </span>
   </li>
