@@ -1,5 +1,5 @@
 <template>
-  <div ref="wrapper" class="intersection-wrapper" :trigger="trigger" transition="vertical">
+  <div ref="wrapper" class="intersection-wrapper" :trigger="trigger" :transition="props.trantision">
     <slot />
   </div>
 </template>
@@ -10,16 +10,20 @@ const observer = ref<IntersectionObserver|null>(null)
 
 const wrapper = ref<null | Element>(null)
 
-const emits = defineEmits<{(e:'in'):void}>()
+const emits = defineEmits<{(e:'in'):void, (e:'out'):void }>()
 interface Props {
     threshold?:number
+    trantision?:'vertical'|'none'
 }
 
-const props = withDefaults(defineProps<Props>(), { threshold: 0.4 })
+const props = withDefaults(defineProps<Props>(), { threshold: 0.4, trantision: 'vertical' })
 
 const intersectionHandler = (e:IntersectionObserverEntry[]) => {
   if (e.length === 0) { return }
-  if (!e[0].isIntersecting) { return }
+  if (!e[0].isIntersecting) {
+    emits('out')
+    return
+  }
   emits('in')
 
   trigger.value = true
@@ -47,8 +51,11 @@ onMounted(() => {
 })
 
 watch(() => trigger.value, (val:boolean) => {
-  if (!val) { return }
-  disable()
+  if (!val) {
+    emits('out')
+    return
+  }
+  emits('in')
 })
 
 onUnmounted(() => {
@@ -67,6 +74,12 @@ onUnmounted(() => {
     transition: all 0.5s;
 }
 
+.intersection-wrapper[trigger=false][transition="none"]>*{
+    opacity: 1 !important;
+    transform: none !important;
+    transition:none !important;
+
+}
 .intersection-wrapper[transition="vertical"][trigger=false] >*{
   transform: translateY(20%);
 }

@@ -1,11 +1,50 @@
 <template>
-  <div class="page-about flex flex-col items-center w-full max-w-screen-xl ">
-    <ContentSection>
-      <AppHeading1>
-        ABOUT ME
-      </AppHeading1>
-      <p>WIP</p>
-    </ContentSection>
+  <div class="flex flex-col items-center w-full page-about">
+    <AboutHeroSec ref="hero" />
+    <div class="sticky top-0 z-40 w-full">
+      <ul class="flex items-center justify-center w-full h-8 gap-4 text-black bg-lightgray">
+        <li>
+          <NuxtLink to="#profile">
+            Profile
+          </NuxtLink>
+        </li>
+        <!-- <li>
+          <NuxtLink to="#photography">
+            Photography
+          </NuxtLink>
+        </li> -->
+        <li>
+          <NuxtLink to="#skill">
+            Skill
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="#contact">
+            Contact
+          </NuxtLink>
+        </li>
+      </ul>
+    </div>
+    <AboutProfileSec class="bg-darkblue" />
+    <!-- <AboutPhotoSec /> -->
+    <AboutSkillSec />
+    <!-- <AboutLoadmapSec /> -->
+    <AboutContentSection id="contact" class=" bg-gray py-20 md:py-28 z-30">
+      <template #heading>
+        <AppHeading2 class="z-40">
+          Contact
+        </AppHeading2>
+      </template>
+      <template #default>
+        <div class="w-full z-30  text-2xl text-white flex flex-col  justify-center items-center mb-4">
+          If you have any questions, please contact me.
+        </div>
+
+        <div class="flex flex-col items-center justify-center gap-4 text-2xl text-white">
+          <ContactBox />
+        </div>
+      </template>
+    </AboutContentSection>
   </div>
 </template>
 
@@ -18,5 +57,52 @@ const description = 'WIP'
 
 const dynamicMeta = makeDynamicMeta(title, description, 'none')
 useHead(dynamicMeta)
+const hero = ref<any>(null)
+
+onMounted(() => {
+  nextTick(() => {
+    hero?.value?.show()
+  })
+})
 
 </script>
+
+<style scoped>
+
+.hero{
+  height: calc(100vh - 48px - 3rem);
+}
+
+.hero-enter-active{
+  opacity: 1;
+  transition: opacity 0.25s linear;
+  transition-delay: 0.5s;
+}
+
+.hero-enter-from,
+.hero-leave-to {
+  opacity: 0;
+}
+
+#scroll{
+  animation-duration: 1.5s;
+  animation-name: shaking;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes shaking {
+  from {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(0.25rem);
+
+  }
+  to {
+    transform: translateY(0);
+
+  }
+}
+
+</style>

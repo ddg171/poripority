@@ -31,7 +31,3 @@ onBeforeUnmount(() => {
 })
 
 </script>
-
-<style>
-
-</style>
