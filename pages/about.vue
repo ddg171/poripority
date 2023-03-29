@@ -8,11 +8,11 @@
             Profile
           </NuxtLink>
         </li>
-        <li>
+        <!-- <li>
           <NuxtLink to="#photography">
             Photography
           </NuxtLink>
-        </li>
+        </li> -->
         <li>
           <NuxtLink to="#skill">
             Skill
@@ -26,7 +26,7 @@
       </ul>
     </div>
     <AboutProfileSec class="bg-darkblue" />
-    <AboutPhotoSec />
+    <!-- <AboutPhotoSec /> -->
     <AboutSkillSec />
     <!-- <AboutLoadmapSec /> -->
     <AboutContentSection id="contact" class=" bg-gray py-20 md:py-28 z-30">
