@@ -41,7 +41,7 @@
                 </tr>
                 <tr class="h-16 text-xl">
                   <td class="font-bold">
-                    Hometown
+                    Place of birth
                   </td>
                   <td><EffectShuffleSpan text="Hiroshima,Japan" :trriger="isShown" :delay="750" /></td>
                 </tr>
@@ -50,7 +50,7 @@
                   <td class="font-bold">
                     Hobby
                   </td>
-                  <td><EffectShuffleSpan text="Photograph,PC game,etc..." :trriger="isShown" :delay="1000" /></td>
+                  <td><EffectShuffleSpan text="Photography ,PC game,etc..." :trriger="isShown" :delay="1000" /></td>
                 </tr>
               </tbody>
             </table>
