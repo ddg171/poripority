@@ -38,7 +38,7 @@ import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 definePageMeta({
-  layout: 'blog'
+  layout: 'preview'
 })
 // カテゴリの取得
 
