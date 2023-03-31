@@ -38,13 +38,12 @@ import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 definePageMeta({
-  layout: 'blog'
+  layout: 'preview'
 })
-
 // カテゴリの取得
-const { data: categoryList } = await useFetch('/api/category')
+
 const categoryStore = useCategoryStore()
-categoryStore.set(categoryList.value?.contents || [])
+categoryStore.set([])
 
 const route = useRoute()
 const isLoading = useLoadingStore()
@@ -60,7 +59,7 @@ const pageTitle = ref<PageTitleProp>({
 })
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
-const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
+const { data: article, error: err } = await useFetch<Article>(`/api/blogs/preview/${route.params.id}`, { query: { key: route.query?.key } })
 const value = article.value
 if (!value || err?.value) {
   throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })

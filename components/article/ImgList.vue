@@ -1,7 +1,9 @@
 <template>
-  <ul class="flex  items-center">
-    <li v-for="i in props.imgList" :key="i.id" class="p-2" @click="$emit('click',i.id)">
-      <img :src="crop(i.url)" alt="画像を表示">
+  <ul class="flex  items-center flex-wrap gap-1">
+    <li v-for="i in props.imgList" :key="i.id" class="h-16 w-16 border border-transparent hover:border-white focus:border-white">
+      <button class="w-full h-full" @click="$emit('click',i.id)">
+        <img :src="crop(i.url)" alt="画像を表示">
+      </button>
     </li>
   </ul>
 </template>

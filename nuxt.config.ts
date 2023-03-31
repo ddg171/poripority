@@ -42,7 +42,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/tailwind.scss'],
   modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', 'nuxt-icon'],
   image: {
-
+    imgix: {
+      baseURL: ''
+    },
     presets: {
       common: {
         'legacy-format': 'jpeg',

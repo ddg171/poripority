@@ -5,7 +5,12 @@
         <div class="w-full h-full grid grid-rows-4 grid-cols-4">
           <div v-for="p,i in photos" :key="i" class="photo-box h-full w-full border-white">
             <div v-show="p.isShow" class=" h-full w-full  border  text-white">
-              <NuxtImg :src="p.src" class="h-full w-full object-cover" />
+              <NuxtPicture
+                :src="p.src"
+                class="h-full w-full object-cover"
+                legacy-format="jpeg"
+                :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
+              />
             </div>
           </div>
         </div>
