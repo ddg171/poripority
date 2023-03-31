@@ -78,7 +78,7 @@ useHead(dynamicMeta)
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
-      webp: resizeWithTargetWidth(eyecatch, 2000).url,
+      webp: eyecatch.url,
       source: [`${resizeWithTargetWidth(eyecatch, 640).url} 640w`, `${resizeWithTargetWidth(eyecatch, 1270).url} 1024w`],
       jpg: resizeWithTargetWidth(eyecatch, 640, false).url,
       alt: '',
