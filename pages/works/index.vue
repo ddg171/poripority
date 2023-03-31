@@ -62,7 +62,7 @@
                   class="picture-box"
                   preset="common"
                   src="images/webp/works-img02-02w640.webp"
-                  legacy-format="jpg"
+                  legacy-format="jpeg"
                 />
               </template>
               <template #introduction>
@@ -90,7 +90,7 @@
                   class="picture-box"
                   preset="common"
                   src="images/webp/works-img02-03w640.webp"
-                  legacy-format="jpg"
+                  legacy-format="jpeg"
                 />
               </template>
               <template #introduction>
@@ -118,7 +118,7 @@
                   class="picture-box"
                   preset="common"
                   src="images/webp/works-img02-04w640.webp"
-                  legacy-format="jpg"
+                  legacy-format="jpeg"
                 />
               </template>
               <template #introduction>
