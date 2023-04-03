@@ -98,7 +98,8 @@ const defaultContents:SliderContent[] = [
       webp: '/images/webp/top-img01w2000.webp',
       jpg: '/images/webp/top-img01w640.jpg',
       alt: 'TOP画像1:鳩',
-      title: 'TOP画像1:鳩'
+      title: 'TOP画像1:鳩',
+      fromCMS: false
 
     },
     text: {
@@ -115,7 +116,8 @@ const defaultContents:SliderContent[] = [
       webp: '/images/webp/top-img02w2000.webp',
       jpg: '/images/webp/top-img02w640.jpg',
       alt: 'TOP画像2',
-      title: 'TOP画像2'
+      title: 'TOP画像2',
+      fromCMS: false
     },
     text: {
       title: 'Blog',
@@ -131,7 +133,8 @@ const defaultContents:SliderContent[] = [
       webp: '/images/webp/top-img03w2000.webp',
       jpg: '/images/webp/top-img03w640.jpg',
       alt: 'TOP画像3:GREEN MOVER',
-      title: 'TOP画像3:GREEN MOVER'
+      title: 'TOP画像3:GREEN MOVER',
+      fromCMS: false
     },
     text: {
       title: 'ABOUT',
@@ -157,7 +160,8 @@ if (contents.length) {
       webp,
       jpg,
       alt: 'TOP画像。最新投稿',
-      title: 'TOP画像。最新投稿'
+      title: 'TOP画像。最新投稿',
+      fromCMS: true
     },
     text: {
       title: a.title,
