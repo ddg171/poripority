@@ -115,15 +115,4 @@ h2[data-is-tight=true]{
   z-index: 1;
 }
 
-.top-slider-content-wrapper[isShow="true"] .top-img-block{
-  transition: transform 5s linear;
-  transform: scale(106%);
-
-}
-
-.top-slider-content-wrapper .top-img-block{
-  transition: transform 5s linear;
-  transform: scale(103%);
-}
-
 </style>
