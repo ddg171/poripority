@@ -33,8 +33,9 @@
               <template #pic>
                 <NuxtPicture
                   class="picture-box"
-                  preset="common"
                   src="/images/webp/works-img02-01w2000.webp"
+                  legacy-format="jpeg"
+                  :img-attrs="imgAttr"
                 />
               </template>
               <template #introduction>
@@ -60,9 +61,9 @@
               <template #pic>
                 <NuxtPicture
                   class="picture-box"
-                  preset="common"
                   src="images/webp/works-img02-02w640.webp"
                   legacy-format="jpeg"
+                  :img-attrs="imgAttr"
                 />
               </template>
               <template #introduction>
@@ -88,9 +89,9 @@
               <template #pic>
                 <NuxtPicture
                   class="picture-box"
-                  preset="common"
                   src="images/webp/works-img02-03w640.webp"
                   legacy-format="jpeg"
+                  :img-attrs="imgAttr"
                 />
               </template>
               <template #introduction>
@@ -116,9 +117,9 @@
               <template #pic>
                 <NuxtPicture
                   class="picture-box"
-                  preset="common"
                   src="images/webp/works-img02-04w640.webp"
                   legacy-format="jpeg"
+                  :img-attrs="imgAttr"
                 />
               </template>
               <template #introduction>
@@ -175,6 +176,12 @@ const linksYbb = ref<LinkParams[]>([{
   name: 'Qiitaでの説明記事',
   path: 'https://qiita.com/ddg171/items/bbc445ef427af5addefb'
 }])
+
+const imgAttr = ref(
+  {
+    decoding: 'async'
+  }
+)
 
 const config = useRuntimeConfig()
 const headTitle = title.value + '|' + config.public.siteName
