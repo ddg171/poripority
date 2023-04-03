@@ -3,7 +3,7 @@
     <NuxtPicture
       class="object-contain"
       :src="selectedImg"
-      :img-attrs="{ class:'w-full h-full object-contain', alt:'拡大表示',height:'400',width:'400' }"
+      :img-attrs="{ class:'w-full h-full object-contain', alt:'拡大表示',height:'400',width:'400' , decoding: 'async'}"
       :modifiers="{ format: 'webp',q:'70' }"
     />
   </div>

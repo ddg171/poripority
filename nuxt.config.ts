@@ -44,12 +44,6 @@ export default defineNuxtConfig({
   image: {
     imgix: {
       baseURL: ''
-    },
-    presets: {
-      common: {
-        'legacy-format': 'jpeg',
-        'img-attrs': { class: 'img-inside-picture', height: 400, width: 400, decoding: 'async' }
-      }
     }
   },
   nitro: {

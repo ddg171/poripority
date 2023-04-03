@@ -36,7 +36,9 @@ const provider = computed(() => {
 const modifiers = computed(() => {
   return props.fromCMS
     ? {
-        fm: 'webp'
+        fm: 'webp',
+        decoding: 'async'
+
       }
     : {}
 })
