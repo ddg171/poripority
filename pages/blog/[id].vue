@@ -79,7 +79,7 @@ useHead(dynamicMeta)
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
-      webp: eyecatch.url + '?fm=webp',
+      webp: eyecatch.url,
       alt: '',
       title: '',
       fromCMS: true
