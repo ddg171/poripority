@@ -7,7 +7,7 @@
       :alt="props.img.alt"
       :title="props.img.title"
       :webp="props.img.webp"
-      :from-c-m-s="props.img.fromCMS"
+      :from-cms="props.img.fromCMS"
     />
   </div>
 </template>
