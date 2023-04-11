@@ -1,10 +1,6 @@
 <template>
   <ContentSection class="h-full w-full">
-    <div v-if="pending" class="flex items-center justify-center w-full h-48">
-      <p>
-        Loading...
-      </p>
-    </div>
+    <PlaceHolder v-if="pending" />
     <ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
       <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
         <p>
@@ -103,10 +99,12 @@ watch(() => route.query.category, async () => {
   const { data } = await useFetch(`/api/category/${category.value}`)
   categoryName.value = data.value?.name || null
   setPageTitle(categoryName.value)
+  setPageTitle(categoryName.value, true)
   window.scroll(0, 0)
 })
 watch(() => route.query.offset, async () => {
   await articleAPI?.refresh()
+  setPageTitle(categoryName.value, true)
   window.scroll(0, 0)
 })
 
