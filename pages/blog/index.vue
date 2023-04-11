@@ -81,7 +81,6 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
     webp: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: ''
-
   }
   const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
   const t:PageTitleProp = {
@@ -122,8 +121,10 @@ const articleAPI = await useFetch('/api/blogs', {
 })
 // カテゴリの取得
 const { data } = await useFetch('/api/category')
+
 const categoryStore = useCategoryStore()
 categoryStore.set(data.value?.contents || [])
+categoryName.value = data.value?.contents?.find(c => c.id === category.value)?.name || null
 setTitle(categoryName.value)
 
 onMounted(() => {
