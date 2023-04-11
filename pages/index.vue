@@ -11,7 +11,7 @@
             Loading...
           </p>
         </div>
-        <ArticleList v-else :articles="latest" class="grid-cols-1 lg:grid-cols-2">
+        <ArticleList :articles="latest" class="grid-cols-1 lg:grid-cols-2">
           <div v-if="latest.length!==3" />
           <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
             <div class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">

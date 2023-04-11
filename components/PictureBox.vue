@@ -14,7 +14,7 @@
 <script setup lang="ts">
 
 interface Props {
-    webp:string, alt?:string, title?:string, fromCMS?:boolean}
+    webp:string, alt?:string, title?:string, fromCms?:boolean}
 
 const imgAttr = computed(() => {
   return {
@@ -30,7 +30,7 @@ const imgAttr = computed(() => {
 const props = withDefaults(defineProps<Props>(), { source: () => [], webp: '', jpg: '', alt: '', title: '', fromCMS: false })
 
 const provider = computed(() => {
-  return props.fromCMS ? 'imgix' : 'ipx'
+  return props.fromCms ? 'imgix' : 'ipx'
 })
 
 const modifiers = computed(() => {
