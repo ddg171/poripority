@@ -13,7 +13,7 @@
               src="/images/webp/shrimp.webp"
               legacy-format="jpeg"
               class="w-28 h-28 md:w-60 md:h-60"
-              :img-attrs="{ alt:'管理人の写真', height:240,width:240}"
+              :img-attrs="{ alt:'管理人の写真', height:240,width:240, decoding: 'async'}"
             />
           </div>
         </div>

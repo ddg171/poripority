@@ -4,9 +4,16 @@
       <p v-if="sliderPage===-1" class="text-3xl text-white">
         loading...
       </p>
-      <div v-for="c,i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper" :isShow="sliderPage===i">
+      <div
+        v-for="c,i in props.sliderContents"
+        :key="i"
+        class="absolute w-full h-full top-slider-content-wrapper"
+        :isShow="sliderPage===i"
+        :next="i===next"
+        :prev="i===prev"
+      >
         <div class="relative w-full h-full top-slider-content">
-          <TopImgBlock :img="c.pic" class="top-img-block" />
+          <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
           <div class=" absolute w-full h-full flex justify-center items-center">
             <CommonContentWidthBox class="flex items-end justify-start">
               <div class="flex flex-col px-4 md:px-16 py-2  md:py-6 bg-green/75 w-full md:w-auto mb-1/5h  md:mb-1/7h">
@@ -94,6 +101,16 @@ const toggle = (isStopped:boolean) => {
   start()
 }
 
+const prev = computed<number>(() => {
+  if (sliderPage.value === 0) { return contentNum.value - 1 }
+  return sliderPage.value - 1
+})
+
+const next = computed<number>(() => {
+  if (sliderPage.value === contentNum.value - 1) { return 0 }
+  return sliderPage.value + 1
+})
+
 onMounted(async () => {
   if (timerId.value) { return }
   await initialTransition()
@@ -106,24 +123,33 @@ h2[data-is-tight=true]{
   letter-spacing: -0.125rem;
 }
 .top-slider-content-wrapper{
-  opacity: 0;
-  transition: opacity 0.5s ;
+  display: none;
+  transition: transform 0.5s ;
+  z-index: -10;
 
 }
+
 .top-slider-content-wrapper[isShow="true"]{
-  opacity: 1;
+  display: block;
+  opacity: 1 ;
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.top-slider-content-wrapper[next="true"]{
+  display: block;
+
+  opacity: 1 ;
+  transform: translateX(100vw);
   z-index: 1;
 }
 
-.top-slider-content-wrapper[isShow="true"] .top-img-block{
-  transition: transform 5s linear;
-  transform: scale(106%);
+.top-slider-content-wrapper[prev="true"]{
+  display: block;
 
-}
-
-.top-slider-content-wrapper .top-img-block{
-  transition: transform 5s linear;
-  transform: scale(103%);
+  opacity: 1 ;
+  transform: translateX(-100vw);
+  z-index: 1;
 }
 
 </style>

@@ -10,11 +10,7 @@
           </div>
           <div v-if="loading.isLoading" class="w-full">
             <ContentSection class="text-white text-2lg">
-              <div class="flex items-center justify-center w-full h-48">
-                <p>
-                  Loading...
-                </p>
-              </div>
+              <PlaceHolder />
             </ContentSection>
           </div>
         </main>

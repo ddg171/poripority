@@ -11,7 +11,7 @@
             Loading...
           </p>
         </div>
-        <ArticleList v-else :articles="latest" class="grid-cols-1 lg:grid-cols-2">
+        <ArticleList :articles="latest" class="grid-cols-1 lg:grid-cols-2">
           <div v-if="latest.length!==3" />
           <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
             <div class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline">
@@ -32,7 +32,7 @@
               src="/images/webp/shrimp.webp"
               legacy-format="jpeg"
               class="w-60 h-60"
-              :img-attrs="{ alt:'管理人の写真', height:240,width:240}"
+              :img-attrs="{ alt:'管理人の写真', height:240,width:240, decoding: 'async'}"
             />
             <p class="w-full text-center text-sm">
               管理人の写真
@@ -98,7 +98,8 @@ const defaultContents:SliderContent[] = [
       webp: '/images/webp/top-img01w2000.webp',
       jpg: '/images/webp/top-img01w640.jpg',
       alt: 'TOP画像1:鳩',
-      title: 'TOP画像1:鳩'
+      title: 'TOP画像1:鳩',
+      fromCMS: false
 
     },
     text: {
@@ -115,7 +116,8 @@ const defaultContents:SliderContent[] = [
       webp: '/images/webp/top-img02w2000.webp',
       jpg: '/images/webp/top-img02w640.jpg',
       alt: 'TOP画像2',
-      title: 'TOP画像2'
+      title: 'TOP画像2',
+      fromCMS: false
     },
     text: {
       title: 'Blog',
@@ -131,7 +133,8 @@ const defaultContents:SliderContent[] = [
       webp: '/images/webp/top-img03w2000.webp',
       jpg: '/images/webp/top-img03w640.jpg',
       alt: 'TOP画像3:GREEN MOVER',
-      title: 'TOP画像3:GREEN MOVER'
+      title: 'TOP画像3:GREEN MOVER',
+      fromCMS: false
     },
     text: {
       title: 'ABOUT',
@@ -157,7 +160,8 @@ if (contents.length) {
       webp,
       jpg,
       alt: 'TOP画像。最新投稿',
-      title: 'TOP画像。最新投稿'
+      title: 'TOP画像。最新投稿',
+      fromCMS: true
     },
     text: {
       title: a.title,

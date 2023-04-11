@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
+import { cropSquare } from '~~/utils/imageAPIHelpre'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 definePageMeta({
@@ -54,7 +54,8 @@ const pageTitle = ref<PageTitleProp>({
   topImg: {
     webp: '/images/webp/blanktitle01w2000.webp',
     alt: '',
-    title: ''
+    title: '',
+    fromCMS: true
 
   }
 })
@@ -79,8 +80,6 @@ const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
       webp: eyecatch.url,
-      source: [`${resizeWithTargetWidth(eyecatch, 640).url} 640w`, `${resizeWithTargetWidth(eyecatch, 1270).url} 1024w`],
-      jpg: resizeWithTargetWidth(eyecatch, 640, false).url,
       alt: '',
       title: '',
       fromCMS: true

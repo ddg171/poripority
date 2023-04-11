@@ -9,7 +9,7 @@
       <div class="flex items-start justify-center w-full flex-col md:flex-row-reverse text-white ">
         <div class="md:h-1/2h  flex items-center justify-center w-full pb-2 profile-pic bg-darkblue md:w-1/2">
           <div class="flex flex-col items-center justify-start ">
-            <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpeg" class="w-28 h-28 md:w-60 md:h-60" />
+            <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpeg" class="w-28 h-28 md:w-60 md:h-60" :img-attrs="{ decoding: 'async'}" />
           </div>
         </div>
         <div class="md:h-1/2h flex flex-col items-center md:justify-center flex-grow w-full profile-data md:w-1/2 md:shrink-0">
