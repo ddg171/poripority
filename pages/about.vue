@@ -74,9 +74,7 @@ onMounted(() => {
 }
 
 .hero-enter-active{
-  opacity: 1;
-  transition: opacity 0.25s linear;
-  transition-delay: 0.5s;
+  @apply opacity-100 transition-opacity duration-200 delay-500;
 }
 
 .hero-enter-from,
