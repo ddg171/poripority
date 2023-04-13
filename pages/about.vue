@@ -67,7 +67,7 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
 .hero{
   height: calc(100vh - 48px - 3rem);
@@ -81,28 +81,6 @@ onMounted(() => {
 
 .hero-enter-from,
 .hero-leave-to {
-  opacity: 0;
+  @apply opacity-0;
 }
-
-#scroll{
-  animation-duration: 1.5s;
-  animation-name: shaking;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes shaking {
-  from {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(0.25rem);
-
-  }
-  to {
-    transform: translateY(0);
-
-  }
-}
-
 </style>
