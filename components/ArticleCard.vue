@@ -1,7 +1,7 @@
 <template>
   <article class="flex flex-col items-start md:flex-row bg-darkblue">
-    <div class=" w-full h-60 overflow-hidden md:w-48 md:h-48 shrink-0 bg-darkblue">
-      <CommonAppLink :to="to" class="flex items-center justify-start md:justify-center border border-transparent hover:border-white focus:border-white" :title="props.article.title ">
+    <div class="w-full overflow-hidden h-60 md:w-48 md:h-48 shrink-0 bg-darkblue">
+      <CommonAppLink :to="to" class="flex items-center justify-start border border-transparent md:justify-center hover:border-white focus:border-white" :title="props.article.title ">
         <NuxtPicture
           class="w-full"
           provider="imgix"
@@ -15,7 +15,7 @@
         />
       </CommonAppLink>
     </div>
-    <div class="flex flex-col justify-between  md:h-48 p-0 m-0 md:px-1  md:py-4 grow">
+    <div class="flex flex-col justify-between p-0 m-0 md:h-48 md:px-1 md:py-4 grow">
       <div class="w-full ">
         <div class="mb-0 text-3xl font-medium">
           <h2 v-if="props.heading===2">

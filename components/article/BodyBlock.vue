@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article class="flex flex-col gap-4 text-white cms-content cms-content-width mb-6" v-html="content" />
+  <article class="flex flex-col gap-4 mb-6 text-white cms-content cms-content-width" v-html="content" />
 </template>
 <script setup lang="ts">
 import { Heading, ImageList } from '~~/types/articles'

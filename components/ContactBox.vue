@@ -1,21 +1,21 @@
 <template>
-  <ul class="flex gap-2 flex-wrap">
+  <ul class="flex flex-wrap gap-2">
     <li>
       <CommonExternalLink to="https://twitter.com/hata_kaze" title="Twitter">
-        <Icon name="mdi:twitter" class="bg-twttr text-white p-1" />
+        <Icon name="mdi:twitter" class="p-1 text-white bg-twttr" />
         Twitter
       </CommonExternalLink>
     </li>
     <li>
       <CommonExternalLink to="https://www.instagram.com/hata_kaze" title="Instagram">
-        <Icon name="mdi:instagram" class="h-4 w-4" />
+        <Icon name="mdi:instagram" class="w-4 h-4" />
 
         Instagram
       </CommonExternalLink>
     </li>
     <li>
       <CommonExternalLink to="https://github.com/ddg171" title="Github">
-        <Icon name="mdi:github" class="h-4 w-4" />
+        <Icon name="mdi:github" class="w-4 h-4" />
 
         Github
       </CommonExternalLink>

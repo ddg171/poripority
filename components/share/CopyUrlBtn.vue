@@ -1,12 +1,12 @@
 <template>
   <div class="relative overflow-hidden ">
-    <button :disabled="disabled" class="h-8 w-16 p-2 flex items-center justify-center border border-green bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-gray" title="クリックするとURLをクリップボードにコピーします。" @click="copy">
+    <button :disabled="disabled" class="flex items-center justify-center w-16 h-8 p-2 border border-green bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-gray" title="クリックするとURLをクリップボードにコピーします。" @click="copy">
       <Icon name="mdi:content-copy" class="text-white" />
     </button>
     <transition>
       <div
         v-if="resultShow"
-        class="h-8 w-16 absolute inset-0 flex items-center justify-center border border-green bg-lightgray text-black p-2 text-sm"
+        class="absolute inset-0 flex items-center justify-center w-16 h-8 p-2 text-sm text-black border border-green bg-lightgray"
       >
         Copied.
       </div>

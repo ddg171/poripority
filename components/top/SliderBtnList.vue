@@ -3,10 +3,10 @@
     <li
       v-for="c in props.contentNum"
       :key="c"
-      class="flex justify-start items-center mx-2"
+      class="flex items-center justify-start mx-2"
     >
       <button
-        class="w-6 h-6  duration-75 ease-in shadow-2xl slider-page-btn bg-lightgray"
+        class="w-6 h-6 duration-75 ease-in shadow-2xl slider-page-btn bg-lightgray"
         :isCurrent="c===sliderPage+1"
         aria-label="スライダーのページ移動"
         title="スライダーのページ移動"
@@ -15,10 +15,10 @@
       />
     </li>
     <li
-      class="flex justify-start items-center mx-4"
+      class="flex items-center justify-start mx-4"
     >
       <button
-        class="relative w-6 h-6  shadow-2xl slider-toggle-btn bg-lightgray text-gray flex justify-center items-center"
+        class="relative flex items-center justify-center w-6 h-6 shadow-2xl slider-toggle-btn bg-lightgray text-gray"
         aria-label="スライダーの停止・再生切替"
         title="スライダーの停止・再生切替"
         :isStopped="props.isStopped"
