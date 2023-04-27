@@ -1,6 +1,6 @@
 <template>
-  <ul class="flex  items-center flex-wrap gap-1">
-    <li v-for="i in props.imgList" :key="i.id" class="h-16 w-16 border border-transparent hover:border-white focus:border-white">
+  <ul class="flex flex-wrap items-center gap-1">
+    <li v-for="i in props.imgList" :key="i.id" class="w-16 h-16 border border-transparent hover:border-white focus:border-white">
       <button class="w-full h-full" @click="$emit('click',i.id)">
         <img :src="crop(i.url)" alt="画像を表示">
       </button>

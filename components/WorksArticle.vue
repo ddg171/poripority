@@ -1,5 +1,5 @@
 <template>
-  <article :id="props.id" class="flex flex-col items-start  md:h-92 ">
+  <article :id="props.id" class="flex flex-col items-start md:h-92 ">
     <AppHeading3 class="mb-2">
       <slot name="name" />
     </AppHeading3>

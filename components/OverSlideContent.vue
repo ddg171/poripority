@@ -1,11 +1,11 @@
 <template>
   <div class="w-full min-h-screen ">
-    <div class="under w-full   sticky top-0">
-      <div class="w-full bg-green h-1/3h top-0 ">
+    <div class="sticky top-0 w-full under">
+      <div class="top-0 w-full bg-green h-1/3h ">
         a
       </div>
     </div>
-    <div class="w-full h-screen bg-darkblue z-50 relative">
+    <div class="relative z-50 w-full h-screen bg-darkblue">
       b
     </div>
   </div>

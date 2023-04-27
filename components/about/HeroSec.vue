@@ -1,13 +1,13 @@
 <template>
-  <section id="hero" class=" w-full hero max-h-1080p min-h-480p bg-darkblue snap-start" @click="show">
+  <section id="hero" class="w-full hero max-h-1080p min-h-480p bg-darkblue snap-start" @click="show">
     <div v-show="isShown" class="relative w-full h-full">
       <div class="absolute flex items-center justify-center w-full h-full overflow-hidden ">
-        <div class="w-full h-full grid grid-rows-4 grid-cols-4">
-          <div v-for="p,i in photos" :key="i" class="photo-box h-full w-full border-white">
-            <div v-show="p.isShow" class=" h-full w-full  border  text-white">
+        <div class="grid w-full h-full grid-cols-4 grid-rows-4">
+          <div v-for="p,i in photos" :key="i" class="w-full h-full border-white photo-box">
+            <div v-show="p.isShow" class="w-full h-full text-white border ">
               <NuxtPicture
                 :src="p.src"
-                class="h-full w-full object-cover"
+                class="object-cover w-full h-full"
                 legacy-format="jpeg"
                 :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
               />
@@ -16,15 +16,15 @@
         </div>
       </div>
       <transition name="hero">
-        <div v-show="headingTransitionTrrigger" class=" absolute flex justify-center w-full h-full backdrop-blur-sm">
+        <div v-show="headingTransitionTrrigger" class="absolute flex justify-center w-full h-full backdrop-blur-sm">
           <CommonContentWidthBox class="flex items-end justify-start">
-            <div class="flex flex-col px-4 md:px-16 py-6 bg-green/75 w-full md:w-auto mb-1/5h  md:mb-1/7h">
-              <AppHeading1 class="pl-2  font-semibold text-white border-l-4 border-white border-solid text-6xl">
+            <div class="flex flex-col w-full px-4 py-6 md:px-16 bg-green/75 md:w-auto mb-1/5h md:mb-1/7h">
+              <AppHeading1 class="pl-2 text-6xl font-semibold text-white border-l-4 border-white border-solid">
                 <span>
                   ABOUT ME
                 </span>
               </AppHeading1>
-              <p class="text-white text-2xl md:text-4xl">
+              <p class="text-2xl text-white md:text-4xl">
                 Now is better than never!
               </p>
             </div>

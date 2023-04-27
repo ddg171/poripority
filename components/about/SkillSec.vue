@@ -1,13 +1,13 @@
 <template>
-  <AboutContentSection id="skill" :threshold="0.25" class=" bg-green py-20 md:py-28 z-20" @in="isShown=true">
+  <AboutContentSection id="skill" :threshold="0.25" class="z-20 py-20 bg-green md:py-28" @in="isShown=true">
     <template #heading>
       <AppHeading2 class="z-40">
         Skill
       </AppHeading2>
     </template>
     <template #default>
-      <div class="w-full z-30  text-white flex flex-col  justify-center items-center">
-        <div class=" w-full  text-white  grid grid-cols-1 lg:grid-cols-2 gap-1 md:gap-4 mb-8">
+      <div class="z-30 flex flex-col items-center justify-center w-full text-white">
+        <div class="grid w-full grid-cols-1 gap-1 mb-8 text-white lg:grid-cols-2 md:gap-4">
           <AboutSkillList>
             <template #title>
               Languages
@@ -87,7 +87,7 @@
           <AppHeading3 class="mb-1 md:mb-2">
             Examples
           </AppHeading3>
-          <ul class="w-full flex flex-col md:flex-row gap-1 md:gap-2 justify-around lg:justify-start">
+          <ul class="flex flex-col justify-around w-full gap-1 md:flex-row md:gap-2 lg:justify-start">
             <AboutSkillExampleElem
               name="メール自動送信システム"
               :techs="['Vue.js/Nuxt.js(フロントエンド)','Firestore(DB)','Cloud Functions(バックエンド)','Cloud Scheduler','Sendgrid(メール送信サービス)']"

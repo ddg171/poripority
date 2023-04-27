@@ -1,6 +1,6 @@
 <template>
   <teleport v-if="props.isShow" to="#app">
-    <div id="overlay" class="fixed flex justify-center items-center top-0 w-full h-screen bg-gray/90 transition-all z-50" @click="$emit(`click`)">
+    <div id="overlay" class="fixed top-0 z-50 flex items-center justify-center w-full h-screen transition-all bg-gray/90" @click="$emit(`click`)">
       <slot />
     </div>
   </teleport>

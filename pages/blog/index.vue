@@ -1,5 +1,5 @@
 <template>
-  <ContentSection class="h-full w-full">
+  <ContentSection class="w-full h-full">
     <PlaceHolder v-if="pending" />
     <ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
       <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
