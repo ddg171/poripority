@@ -21,7 +21,7 @@
       </ContentSection>
 
       <ContentSection>
-        <div class="w-full h-full grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        <div class="grid w-full h-full grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
           <IntersectionWrapper>
             <WorksArticle id="this-site" :links="linksPrprty">
               <template #name>

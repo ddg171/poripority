@@ -6,7 +6,7 @@
         <AppHeading2 class="mb-2">
           最新投稿
         </AppHeading2>
-        <div v-if="pending" class="xl:col-span-2 flex items-center justify-center w-full h-48 overflow-hidden  shrink-0">
+        <div v-if="pending" class="flex items-center justify-center w-full h-48 overflow-hidden xl:col-span-2 shrink-0">
           <p class="text-2xl">
             Loading...
           </p>
@@ -26,15 +26,15 @@
         <AppHeading2 class="mb-2">
           About this site
         </AppHeading2>
-        <div class="flex flex-col-reverse lg:flex-row gap-4">
-          <div class="flex flex-col justify-center items-center">
+        <div class="flex flex-col-reverse gap-4 lg:flex-row">
+          <div class="flex flex-col items-center justify-center">
             <NuxtPicture
               src="/images/webp/shrimp.webp"
               legacy-format="jpeg"
               class="w-60 h-60"
               :img-attrs="{ alt:'管理人の写真', height:240,width:240, decoding: 'async'}"
             />
-            <p class="w-full text-center text-sm">
+            <p class="w-full text-sm text-center">
               管理人の写真
             </p>
           </div>
@@ -63,7 +63,7 @@
         <div class="flex flex-col justify-start md:flex-row">
           <WidgetDiscordStatus class="flex justify-center mx-0 my-4 md:my-2" />
           <div class="mx-0 my-4 md:my-2 md:mx-4">
-            <div class="w-full grid gap-2">
+            <div class="grid w-full gap-2">
               <CommonAppApra>
                 Wargame: Red dragonを遊ぶ人向けのDiscordサーバー。気がつけば開設からもう5年以上経過したが元気に運営中。流石に8年前のゲームがメインなので他のゲームも遊ぶ事が多いが、今でも呼びかけてみると対戦相手が見つかる程度には活発。
               </CommonAppApra>

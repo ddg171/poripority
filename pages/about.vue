@@ -29,14 +29,14 @@
     <!-- <AboutPhotoSec /> -->
     <AboutSkillSec />
     <!-- <AboutLoadmapSec /> -->
-    <AboutContentSection id="contact" class=" bg-gray py-20 md:py-28 z-30">
+    <AboutContentSection id="contact" class="z-30 py-20 bg-gray md:py-28">
       <template #heading>
         <AppHeading2 class="z-40">
           Contact
         </AppHeading2>
       </template>
       <template #default>
-        <div class="w-full z-30  text-2xl text-white flex flex-col  justify-center items-center mb-4">
+        <div class="z-30 flex flex-col items-center justify-center w-full mb-4 text-2xl text-white">
           If you have any questions, please contact me.
         </div>
 
@@ -67,42 +67,18 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 
 .hero{
   height: calc(100vh - 48px - 3rem);
 }
 
 .hero-enter-active{
-  opacity: 1;
-  transition: opacity 0.25s linear;
-  transition-delay: 0.5s;
+  @apply opacity-100 transition-opacity duration-200 delay-500;
 }
 
 .hero-enter-from,
 .hero-leave-to {
-  opacity: 0;
+  @apply opacity-0;
 }
-
-#scroll{
-  animation-duration: 1.5s;
-  animation-name: shaking;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes shaking {
-  from {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(0.25rem);
-
-  }
-  to {
-    transform: translateY(0);
-
-  }
-}
-
 </style>

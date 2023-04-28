@@ -1,8 +1,8 @@
 <template>
   <CommonLayoutBox id="layout" class="relative">
     <AppHeader ref="header" />
-    <div class="w-full min-h-screen flex  flex-col   items-center">
-      <main class="w-full min-h-screen flex flex-col items-center">
+    <div class="flex flex-col items-center w-full min-h-screen">
+      <main class="flex flex-col items-center w-full min-h-screen">
         <slot />
       </main>
     </div>

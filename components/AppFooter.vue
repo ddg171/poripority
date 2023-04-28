@@ -1,8 +1,8 @@
 <template>
-  <footer class="border-t-solid border-t-4 border-red w-full  bg-lightgray text-gray p-2">
-    <div class="w-full flex flex-col items-start mb-2 md:h-full">
+  <footer class="w-full p-2 border-t-4 border-t-solid border-red bg-lightgray text-gray">
+    <div class="flex flex-col items-start w-full mb-2 md:h-full">
       <div class="flex flex-wrap mb-2 md:mb-0">
-        <h2 class="text-2xl mr-2">
+        <h2 class="mr-2 text-2xl">
           The hut of Proporpty(WIP)
         </h2>
         <ShareBtnBox title="The hut of Poripority" :url="baseURL" />
@@ -10,14 +10,14 @@
       <p class="text-xl ">
         Author: Hata_kaze
       </p>
-      <div class="flex gap-3 items-baseline">
+      <div class="flex items-baseline gap-3">
         <h3 class="text-xl">
           SNS
         </h3>
         <ContactBox />
       </div>
     </div>
-    <div class="flex md:justify-end  md:h-full  shrink-0">
+    <div class="flex md:justify-end md:h-full shrink-0">
       <div class="text-sm">
         <p>このWebサイトはリンクフリーです。</p>
         <p>サイト内の情報を引用する際は出典元と閲覧日時を明記してください。</p>
