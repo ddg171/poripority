@@ -17,6 +17,11 @@
 
 <script setup lang="ts">
 useHead(
-  { link: [{ rel: 'stylesheet', href: 'https://cdn.discordapp.com' }] }
+  {
+    link: [
+      { rel: 'preconnect', href: 'https://cdn.discordapp.com' },
+      { rel: 'preconnect', href: 'https://discord.com' }
+    ]
+  }
 )
 </script>
