@@ -149,10 +149,10 @@ const sliderContentsTemp = []
 if (contents.length) {
   const a = contents[0]
   const eyecatch:Eyecatch = a.eyecatch
-  const webp = resizeWithTargetWidth(eyecatch, 2000, true).url
+  const webp = eyecatch.url
   const w1280 = resizeWithTargetWidth(eyecatch, 1280, true).url
   const w640 = resizeWithTargetWidth(eyecatch, 640, true).url
-  const jpg = resizeWithTargetWidth(eyecatch, 2000, false).url
+  const jpg = eyecatch.url
 
   const ArticleforSlider:SliderContent = {
     pic: {
