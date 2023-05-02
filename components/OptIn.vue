@@ -33,7 +33,7 @@ const config = useRuntimeConfig()
 const gaMeasurementID = config.public.gaMeasurementId
 
 const gtag = useState()
-const optIn = useCookie<'ACCEPT'|'DENIED'|undefined>('optin')
+const optIn = useCookie<'ACCEPT'|'DENIED'|undefined>('optin', { maxAge: 365 * 24 * 60 * 60 })
 const ga = useCookie<string|undefined>('_ga')
 const gaWithID = useCookie<string|undefined>(gaMeasurementID.replace('G-', '_ga_'))
 
@@ -54,6 +54,7 @@ const start = () => {
 const setOptIn = (v:boolean) => {
   isShow.value = false
   optIn.value = v ? 'ACCEPT' : 'DENIED'
+
   if (v) {
     start()
     return

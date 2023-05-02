@@ -10,8 +10,8 @@
           fit="crop"
           height="800"
           width="800"
-          :img-attrs="{ class:'w-full', alt:`${props.article.title}のサムネイル画像`, decoding: 'async'}"
-          :modifiers="{ fm: 'webp',q:50}"
+          :img-attrs="{ class:'w-full', alt:`${props.article.title}のサムネイル画像`,height:500,width:500, decoding: 'async',loading: 'lazy'}"
+          :modifiers="{fm:'webp', q:40}"
         />
       </CommonAppLink>
     </div>
