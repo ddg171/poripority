@@ -14,3 +14,8 @@
     </ClientOnly>
   </div>
 </template>
+
+<script setup lang="ts">
+useHead(
+  { link: [{ rel: 'stylesheet', href: 'https://cdn.discordapp.com' }] }
+)
