@@ -19,3 +19,4 @@
 useHead(
   { link: [{ rel: 'stylesheet', href: 'https://cdn.discordapp.com' }] }
 )
+</script>
