@@ -34,7 +34,7 @@
 <script setup lang="ts">
 import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { cropSquare } from '~~/utils/imageAPIHelpre'
+import { cropSquare } from '~~/utils/imageAPIHelper'
 import { makeDynamicMeta } from '~~/utils/useHeadHelper'
 
 definePageMeta({

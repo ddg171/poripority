@@ -85,7 +85,7 @@
 <script setup lang="ts">
 import { Article } from '~~/types/articles'
 import { SliderContent, Eyecatch, LinkParams } from '~~/types/components'
-import { resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
+import { resizeWithTargetWidth } from '~~/utils/imageAPIHelper'
 
 const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })
 
