@@ -1,4 +1,4 @@
-import client from '~~/server/microCMS'
+import client from '~~/lib/microCMS'
 import { Api, Category } from '~~/types/articles'
 
 export default defineEventHandler(async ():Promise<Api.IndexResponsePayload<Category>> => {
