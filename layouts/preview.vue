@@ -29,10 +29,6 @@
 <script lang="ts" setup>
 const isBottomBtnShow = ref<boolean>(false)
 const { state: rootRect } = useRootRectStore()
-const { state: loading } = useLoadingStore()
-
-const loadingStore = useLoadingStore()
-loadingStore.set(true)
 
 watch(rootRect, (b) => {
   const top = b.top

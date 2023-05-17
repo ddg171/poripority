@@ -11,14 +11,14 @@
 
 const app = ref<null|Element>(null)
 
-// Suspenseの状態を更新・保持する。
 const nuxtApp = useNuxtApp()
-const { set } = useLoadingStore()
+const isLoading = useLoadingStore()
 nuxtApp.hook('page:start', () => {
-  set(true)
+  isLoading.set(true)
 })
 nuxtApp.hook('page:finish', () => {
-  set(false)
+  console.log('finish')
+  isLoading.set(false)
 })
 
 const ScrollHandler = () => {

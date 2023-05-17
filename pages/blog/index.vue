@@ -14,7 +14,7 @@
         <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
       </teleport>
     </ClientOnly>
-  </contentsection>
+  </Contentsection>
 </template>
 
 <script setup lang="ts">
