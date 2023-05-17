@@ -1,33 +1,24 @@
 <template>
   <div id="app" ref="app" class="w-full">
     <NuxtLayout>
-      <div v-show="!isLoading">
-        <NuxtPage />
-      </div>
-      <div v-if="isLoading" class="w-full">
-        <ContentSection class="text-white text-2lg">
-          <PlaceHolder />
-        </ContentSection>
-      </div>
+      <NuxtPage />
     </NuxtLayout>
     <OptIn />
   </div>
 </template>
 
 <script lang="ts" setup>
-const isLoading = ref<boolean>(true)
+
 const app = ref<null|Element>(null)
 
+// Suspenseの状態を更新・保持する。
 const nuxtApp = useNuxtApp()
-
+const { set } = useLoadingStore()
 nuxtApp.hook('page:start', () => {
-  console.log('page:start')
-  isLoading.value = true
+  set(true)
 })
-
 nuxtApp.hook('page:finish', () => {
-  console.log('page:finish')
-  isLoading.value = false
+  set(false)
 })
 
 const ScrollHandler = () => {
