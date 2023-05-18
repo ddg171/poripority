@@ -49,14 +49,15 @@
 </template>
 
 <script setup lang="ts">
-import { makeDynamicMeta } from '~~/utils/useHeadHelper'
+import { setPageMetaData } from '~~/composables/helper/head'
 
 const config = useRuntimeConfig()
 const title = 'About|' + config.public.siteName
 const description = 'WIP'
-
-const dynamicMeta = makeDynamicMeta(title, description, 'none')
-useHead(dynamicMeta)
+setPageMetaData(
+  title,
+  description
+)
 const hero = ref<any>(null)
 
 onMounted(() => {

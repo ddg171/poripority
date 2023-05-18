@@ -5,18 +5,7 @@
       <div id="top-box" class="w-full mb-4 h-1/4h lg:h-1/2h max-h-960p min-h-480p" />
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full bg-transparent">
-          <div v-show="!loading.isLoading" class="w-full">
-            <slot />
-          </div>
-          <div v-if="loading.isLoading" class="w-full">
-            <ContentSection class="text-white text-2lg">
-              <div class="flex items-center justify-center w-full h-48">
-                <p>
-                  Loading...
-                </p>
-              </div>
-            </ContentSection>
-          </div>
+          <slot />
         </main>
         <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-1 shrink-0">
           <aside class="flex flex-col-reverse w-full mb-2">
@@ -40,10 +29,6 @@
 <script lang="ts" setup>
 const isBottomBtnShow = ref<boolean>(false)
 const { state: rootRect } = useRootRectStore()
-const { state: loading } = useLoadingStore()
-
-const loadingStore = useLoadingStore()
-loadingStore.set(true)
 
 watch(rootRect, (b) => {
   const top = b.top
