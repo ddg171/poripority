@@ -14,14 +14,14 @@
         <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
       </teleport>
     </ClientOnly>
-  </contentsection>
+  </Contentsection>
 </template>
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
 import { Article } from '~~/types/articles'
 import { LinkParams, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { makeDynamicMeta } from '~~/utils/useHeadHelper'
+import { setPageMetaData } from '~~/composables/helper/head'
 
 definePageMeta({
   layout: 'blog'
@@ -87,19 +87,14 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
   pageTitle.value = t
 }
 
-const setTitle = (category:string|null) => {
-  const title = (category ? `${category}の記事一覧` : '記事一覧') + '|' + config.public.siteName
-  const subtitle = '記事一覧'
-  const dynamicMeta = makeDynamicMeta(title, subtitle)
-  useHead(dynamicMeta)
-}
-
 watch(() => route.query.category, async () => {
   await articleAPI?.refresh()
   const { data } = await useFetch(`/api/category/${category.value}`)
   categoryName.value = data.value?.name || null
-  setPageTitle(categoryName.value)
   setPageTitle(categoryName.value, true)
+  const title = (categoryName.value ? `${categoryName.value}の記事一覧` : '記事一覧') + '|' + config.public.siteName
+  const subtitle = '記事一覧'
+  setPageMetaData(title, subtitle)
   window.scroll(0, 0)
 })
 watch(() => route.query.offset, async () => {
@@ -123,7 +118,9 @@ const { data } = await useFetch('/api/category')
 const categoryStore = useCategoryStore()
 categoryStore.set(data.value?.contents || [])
 categoryName.value = data.value?.contents?.find(c => c.id === category.value)?.name || null
-setTitle(categoryName.value)
+const title = (category.value ? `${category.value}の記事一覧` : '記事一覧') + '|' + config.public.siteName
+const subtitle = '記事一覧'
+setPageMetaData(title, subtitle)
 
 onMounted(() => {
   setPageTitle(categoryName.value, true)

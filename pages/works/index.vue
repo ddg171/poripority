@@ -143,7 +143,7 @@
 
 <script setup lang="ts">
 import { PictureBoxProp, LinkParams } from '~~/types/components'
-import { makeDynamicMeta } from '~~/utils/useHeadHelper'
+import { setPageMetaData } from '~~/composables/helper/head'
 
 const title = ref<string>('制作物')
 const topImg = ref<PictureBoxProp>({
@@ -187,7 +187,5 @@ const config = useRuntimeConfig()
 const headTitle = title.value + '|' + config.public.siteName
 const description = subtitles.value[0] || ''
 
-const dynamicMeta = makeDynamicMeta(headTitle, description, 'all', 'website')
-useHead(dynamicMeta)
-
+setPageMetaData(headTitle, description, 'all', 'website')
 </script>

@@ -32,10 +32,10 @@
 </template>
 
 <script setup lang="ts">
+import { setPageMetaData } from '~~/composables/helper/head'
 import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelpre'
-import { makeDynamicMeta } from '~~/utils/useHeadHelper'
+import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
   layout: 'preview'
@@ -70,9 +70,7 @@ const config = useRuntimeConfig()
 const headTitle = ref<string>(value.title + '|' + config.public.siteName)
 const description = value.subtitle || ''
 const image:string|undefined = value.eyecatch ? cropSquare(value.eyecatch).url : undefined
-
-const dynamicMeta = makeDynamicMeta(headTitle.value, description, 'all', 'article', image)
-useHead(dynamicMeta)
+setPageMetaData(headTitle.value, description, 'all', 'article', image)
 
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch

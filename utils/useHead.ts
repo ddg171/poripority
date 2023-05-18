@@ -1,4 +1,7 @@
-export function makeDynamicMeta (title:string, description:string, robots = 'all', type = 'website', image:string|undefined = undefined) {
+export type Robots ='all'|'index'|'noindex'|'follow'|'nofollow'
+export type PageType = 'website'|'article'|'profile'|'video'|'music'|'book'|'product'
+
+export function makeDynamicMeta (title:string, description:string, robots:Robots = 'all', type:PageType = 'website', image:string|undefined = undefined) {
   const head = {
     title,
     description,
