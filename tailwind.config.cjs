@@ -68,6 +68,9 @@ module.exports = {
         ...vh,
         ...px
       },
+      maxHeight: {
+        ...px
+      },
       margin: vh,
       width: {
         ...vw
@@ -76,10 +79,11 @@ module.exports = {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px',
         ...vh
-
       },
-      maxHeight: {
-        ...px
+      minWidth: {
+        'screen-3xl': '1792px',
+        'screen-1920p': '1920px',
+        ...vh
       },
       fontFamily: {
         sans: ['Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', 'sans-serif', ...defaultTheme.fontFamily.sans]

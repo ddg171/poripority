@@ -5,7 +5,6 @@
       tabindex="0"
       target="_blank"
       title="クリックすると新しいタブで画像を開きます。"
-      class="bg-green:75 "
       @click.stop="()=>{}"
     >
       <NuxtPicture
