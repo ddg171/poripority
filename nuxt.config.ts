@@ -25,7 +25,8 @@ export default defineNuxtConfig({
         lang: 'ja',
         prefix: 'og: https://ogp.me/ns#'
       }
-    }
+    },
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   },
   runtimeConfig: {
     public: {

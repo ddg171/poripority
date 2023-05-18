@@ -17,7 +17,6 @@ nuxtApp.hook('page:start', () => {
   isLoading.set(true)
 })
 nuxtApp.hook('page:finish', () => {
-  console.log('finish')
   isLoading.set(false)
 })
 
@@ -41,3 +40,15 @@ onBeforeUnmount(() => {
 })
 
 </script>
+
+<style lang="scss">
+.layout-enter-active,
+.layout-leave-active {
+  transition: all 0.1s;
+}
+.layout-enter-from,
+.layout-leave-to {
+  // opacity: 0.75;
+  filter: blur(0.25rem);
+}
+</style>
