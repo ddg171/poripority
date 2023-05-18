@@ -1,11 +1,20 @@
 <template>
   <div v-if="img" class="w-4/5 h-4/5">
-    <NuxtPicture
-      class="object-contain"
-      :src="selectedImg"
-      :img-attrs="{ class:'w-full h-full object-contain', alt:'拡大表示',height:'400',width:'400' , decoding: 'async'}"
-      :modifiers="{ format: 'webp',q:'70' }"
-    />
+    <a
+      :href="selectedImg"
+      tabindex="0"
+      target="_blank"
+      title="クリックすると新しいタブで画像を開きます。"
+      class="bg-green:75 "
+      @click.stop="()=>{}"
+    >
+      <NuxtPicture
+        class="object-contain"
+        :src="selectedImg"
+        :img-attrs="{ class:'w-full h-full object-contain', alt:'拡大表示',height:'400',width:'400' , decoding: 'async'}"
+        :modifiers="{ format: 'webp',q:'70' }"
+      />
+    </a>
   </div>
 </template>
 
