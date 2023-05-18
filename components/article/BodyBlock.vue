@@ -57,12 +57,16 @@ onBeforeUnmount(() => {
 }
 
 .cms-content .img-wrapper{
-  @apply max-w-full  flex justify-center items-center my-4;
+  @apply w-full  flex justify-center items-center my-4;
+}
+
+.img-wrapper picture{
+  @apply w-96 ;
 }
 
 .cms-content img{
-  @apply  max-w-full;
-}
+  @apply  object-scale-down hover:cursor-pointer;
+  }
 
 .cms-content ul{
   @apply ml-4 my-4;
