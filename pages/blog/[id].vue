@@ -37,7 +37,7 @@
 import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
-import { makeDynamicMeta } from '~~/utils/useHeadHelper'
+import { setPageMetaData } from '~~/composables/helper/head'
 
 definePageMeta({
   layout: 'blog'
@@ -74,9 +74,7 @@ const config = useRuntimeConfig()
 const headTitle = ref<string>(value.title + '|' + config.public.siteName)
 const description = value.subtitle || ''
 const image:string|undefined = value.eyecatch ? cropSquare(value.eyecatch).url : undefined
-
-const dynamicMeta = makeDynamicMeta(headTitle.value, description, 'all', 'article', image)
-useHead(dynamicMeta)
+setPageMetaData(headTitle.value, description, 'all', 'article', image)
 
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
