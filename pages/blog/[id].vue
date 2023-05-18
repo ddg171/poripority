@@ -110,8 +110,21 @@ const headingListHandler = (h:Heading[]) => {
 
 const headings = ref<Heading[]>([])
 
+const escapeKeyEventhandler = (e:KeyboardEvent) => {
+  const key = e.key
+  if (key !== 'Escape') { return }
+  if (!selectedId.value) {
+    return
+  }
+  selectedId.value = undefined
+}
+
 onMounted(() => {
   isLoading.set(false)
+  window.addEventListener('keyup', escapeKeyEventhandler)
+})
+onUnmounted(() => {
+  window.removeEventListener('keyup', escapeKeyEventhandler)
 })
 
 </script>
