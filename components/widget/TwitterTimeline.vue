@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import '~~/types/window'
+// import '~~/types/window'
 useHead({
   script: [
     {
