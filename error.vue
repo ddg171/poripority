@@ -19,6 +19,7 @@
 </template>
 
 <script lang="ts" setup>
+// eslint-disable-next-line import/named
 import { NuxtApp } from '#app'
 import { LinkParams, PageTitleProp } from '~~/types/components'
 

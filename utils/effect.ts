@@ -1,4 +1,3 @@
-
 function randomUTF16CharCode (): number {
   const startAt = 0xFF61
   const endAt = 0xFF9F

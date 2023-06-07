@@ -18,13 +18,13 @@ const props = defineProps<Props>()
 const route = useRoute()
 const config = useRuntimeConfig()
 
-const url = computed<string>(() => {
+const LinkUrl = computed<string>(() => {
   const baseUrl = config.public.baseURL
   return baseUrl + route.fullPath
 })
 const link = computed<string>(() => {
   const shareUrl = 'https://reddit.com/submit?'
-  const u = `url=${url.value}`
+  const u = `url=${LinkUrl.value}`
   const t = props.text ? `&title=${encodeURI(props.text)}` : undefined
   const params = t ? u + t : u
   return shareUrl + params

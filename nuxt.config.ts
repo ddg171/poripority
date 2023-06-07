@@ -1,4 +1,3 @@
-
 import { defineNuxtConfig } from 'nuxt/config'
 
 const SITE_NAME = 'The hut of Poripority'
@@ -41,7 +40,7 @@ export default defineNuxtConfig({
     shim: false
   },
   css: ['~/assets/css/tailwind.scss'],
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', 'nuxt-icon'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', 'nuxt-icon', ['@nuxtjs/robots', { Disallow: '/blog/preview/*', Sitemap: process.env.BASE_URL + '/sitemap.xml' }]],
   image: {
     imgix: {
       baseURL: ''
