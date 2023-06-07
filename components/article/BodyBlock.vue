@@ -51,6 +51,7 @@ onBeforeUnmount(() => {
 <style lang="postcss">
 /* MicroCMSから取得した内容に対するCSS */
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
+
 .cms-content{
   @apply flex flex-col  text-lg;
 
@@ -61,7 +62,7 @@ onBeforeUnmount(() => {
 }
 
 .img-wrapper picture{
-  @apply w-96 ;
+  @apply md:w-96 w-full ;
 }
 
 .cms-content img{

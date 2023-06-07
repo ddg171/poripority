@@ -4,7 +4,7 @@
       <TopImgBlock :img="props.topImg" />
       <div v-if="props.title" class="absolute flex items-center justify-center w-full h-full title-box backdrop-blur-sm">
         <CommonContentWidthBox class="flex items-center justify-start">
-          <div class="flex flex-col w-full py-2 pl-4 md:px-16 md:py-6 bg-green/75 md:w-auto">
+          <div class="flex flex-col w-full py-2 px-4 md:px-16 md:py-6 bg-green/75 md:w-auto">
             <AppHeading1>
               <span>{{ props.title }}</span>
             </AppHeading1>
