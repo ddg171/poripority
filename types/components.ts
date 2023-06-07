@@ -1,4 +1,3 @@
-
 export interface LinkParams {
     name:string
     path:string

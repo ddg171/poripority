@@ -2,7 +2,7 @@ import client from '~~/lib/microCMS'
 import { Article } from '~~/types/articles'
 
 export default defineEventHandler(async (event):Promise<Article> => {
-  const contentId = event.context.params.id
+  const contentId = event.context?.params?.id
   const k = getQuery(event).key
   const draftKey = typeof k === 'string' ? k.toString() : null
   if (!contentId || !draftKey) {

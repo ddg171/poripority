@@ -1,4 +1,3 @@
-
 import { defineNuxtConfig } from 'nuxt/config'
 
 const SITE_NAME = 'The hut of Poripority'
