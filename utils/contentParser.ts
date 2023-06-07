@@ -1,4 +1,3 @@
-
 import DOMParser from 'universal-dom-parser'
 import { Heading, ImageList } from '~~/types/articles'
 

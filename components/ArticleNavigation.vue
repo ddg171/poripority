@@ -1,4 +1,3 @@
-
 <template>
   <ClientOnly>
     <BottomNavigation
