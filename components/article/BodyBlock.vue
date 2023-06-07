@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content{
-  @apply flex flex-col  text-base;
+  @apply flex flex-col  text-lg;
 
 }
 
@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
 }
 
 .img-wrapper picture{
-  @apply md:w-96 w-64 ;
+  @apply md:w-96 w-full ;
 }
 
 .cms-content img{
@@ -107,6 +107,6 @@ onBeforeUnmount(() => {
 }
 
 .cms-content br{
-  @apply hidden sm:block;
+  @apply hidden;
 }
 </style>
