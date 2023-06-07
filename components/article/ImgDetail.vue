@@ -1,5 +1,5 @@
 <template>
-  <div v-if="img" class="w-4/5 h-4/5">
+  <div v-if="img" class="m-1">
     <a
       :href="selectedImg"
       tabindex="0"
