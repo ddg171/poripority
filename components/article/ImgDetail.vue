@@ -1,5 +1,5 @@
 <template>
-  <div v-if="img" class="m-1">
+  <div v-if="img" class="m-2 ">
     <a
       :href="selectedImg"
       tabindex="0"
@@ -10,7 +10,7 @@
       <NuxtPicture
         class="object-contain"
         :src="selectedImg"
-        :img-attrs="{ class:'w-full h-full object-contain', alt:'拡大表示',height:'400',width:'400' , decoding: 'async'}"
+        :img-attrs="{ class:'object-contain', alt:'拡大表示',height:'400',width:'400' , decoding: 'async'}"
         :modifiers="{ format: 'webp',q:'70' }"
       />
     </a>
