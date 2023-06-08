@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content{
-  @apply flex flex-col  text-base;
+  @apply flex flex-col  text-base leading-8;
 
 }
 
@@ -76,16 +76,19 @@ onBeforeUnmount(() => {
   @apply flex justify-start items-center;
 }
 .cms-content li::before{
-  content: "";
-  @apply block bg-white w-2 h-2 mr-1 mb-1;
+  content: "//";
+  @apply block text-white text-lg font-extrabold mr-2
+}
+.cms-content a{
+  @apply underline font-semibold
 }
 .cms-content a::after{
   content: url("/assets/svg/open-in-new.svg");
-  @apply h-2 w-2 text-white align-middle;
+  @apply  h-1 w-1 text-white align-middle;
 }
 .cms-content a:hover,
 .cms-content a:focus{
-  @apply underline font-semibold
+  @apply  bg-lightgreen/50
 }
 
 .cms-content h1,

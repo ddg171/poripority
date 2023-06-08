@@ -2,7 +2,7 @@
   <CommonLayoutBox id="layout" class="">
     <AppHeader />
     <div class="flex flex-col items-center w-full min-h-screen">
-      <div id="top-box" class="w-full mb-4 h-1/4h lg:h-1/2h max-h-960p min-h-240p" />
+      <div id="top-box" class="w-full mb-4 h-1/3h lg:h-3/4h max-h-960p min-h-240p" />
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full bg-transparent">
           <div v-show="!state.isLoading" class="w-full">
@@ -14,7 +14,7 @@
             </ContentSection>
           </div>
         </main>
-        <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-1 shrink-0">
+        <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-4 shrink-0">
           <aside class="flex flex-col-reverse w-full mb-2">
             <AsideContentsBox class="mb-2">
               <AppHeading3>カテゴリ</AppHeading3>

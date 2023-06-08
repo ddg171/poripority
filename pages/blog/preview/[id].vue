@@ -28,6 +28,7 @@
     <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
       <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
     </OverlayBox>
+    <ArticleCard v-if="article" :article="article" />
   </Contentsection>
 </template>
 
@@ -41,9 +42,6 @@ definePageMeta({
   layout: 'preview'
 })
 // カテゴリの取得
-
-const categoryStore = useCategoryStore()
-categoryStore.set([])
 
 const route = useRoute()
 const isLoading = useLoadingStore()
@@ -60,7 +58,7 @@ const pageTitle = ref<PageTitleProp>({
 
 const category = ref<string|null>(route.query?.category?.toString() || null)
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/preview/${route.params.id}`, { query: { key: route.query?.key } })
-const value = article.value
+const value = article?.value
 if (!value || err?.value) {
   throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
 }
