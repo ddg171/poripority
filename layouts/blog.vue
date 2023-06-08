@@ -2,7 +2,7 @@
   <CommonLayoutBox id="layout" class="">
     <AppHeader />
     <div class="flex flex-col items-center w-full min-h-screen">
-      <div id="top-box" class="w-full mb-4 h-1/4h lg:h-1/2h max-h-960p min-h-240p" />
+      <div id="top-box" class="w-full mb-4 h-1/3h lg:h-3/4h max-h-960p min-h-240p" />
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full bg-transparent">
           <div v-show="!state.isLoading" class="w-full">
