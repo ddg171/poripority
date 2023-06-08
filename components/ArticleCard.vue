@@ -30,7 +30,7 @@
             </CommonAppLink>
           </h3>
         </div>
-        <p class="text-lg ">
+        <p class="text-md ">
           {{ props.article.subtitle }}
         </p>
       </div>

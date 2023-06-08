@@ -1,7 +1,7 @@
 <template>
   <div class="w-full">
     <ContentSection class="grid ">
-      <div class="flex justify-between mb-2">
+      <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
         <ShareBtnBox :title="headTitle" />
         <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
       </div>
