@@ -1,7 +1,7 @@
 <template>
   <a
     v-if="img"
-    class="w-full  p-0 h-3/4h md:w-3/4w bg-green/25 md:p-2"
+    class="w-full  p-0  h-3/4 md:w-3/4w bg-green/25 md:p-2"
     :href="selectedImg"
     tabindex="0"
     target="_blank"
