@@ -1,6 +1,9 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-works">
-    <PageTop :title="title" :top-img="topImg" :subtitles="subtitles" />
+    <div id="top-box" class="w-full mb-4 h-1/3h lg:h-3/4h max-h-960p min-h-240p">
+      <PageTop :title="title" :top-img="topImg" :subtitles="subtitles" />
+    </div>
+
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
         <AppHeading2 class="mb-2">
@@ -21,7 +24,7 @@
       </ContentSection>
 
       <ContentSection>
-        <div class="grid w-full h-full grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3">
+        <div class="grid w-full h-full grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
           <IntersectionWrapper>
             <WorksArticle id="this-site" :links="linksPrprty">
               <template #name>
@@ -172,9 +175,6 @@ const linksWgm = ref<LinkParams[]>([{
 const linksYbb = ref<LinkParams[]>([{
   name: 'Webサイト',
   path: 'https://yubaba-7bad4.web.app/'
-}, {
-  name: 'Qiitaでの説明記事',
-  path: 'https://qiita.com/ddg171/items/bbc445ef427af5addefb'
 }])
 
 const imgAttr = ref(
