@@ -1,11 +1,12 @@
 <template>
   <article class="flex flex-col items-start md:flex-row bg-darkblue">
     <div class="w-full overflow-hidden h-36 md:w-36 md:h-36 shrink-0 bg-darkblue">
-      <CommonAppLink :to="to" class="flex items-center justify-start md:justify-center" :title="props.article.title ">
+      <CommonAppLink :to="to" class="w-full h-full flex items-center justify-start md:justify-center bg-green/50" :title="props.article.title ">
         <NuxtPicture
+          v-if="props.article.eyecatch?.url"
           class="w-full"
           provider="imgix"
-          :src="props.article.eyecatch.url"
+          :src="props.article.eyecatch?.url||``"
           legacy-format="jpeg"
           fit="crop"
           height="800"
@@ -17,7 +18,7 @@
     </div>
     <div class="flex flex-col justify-between py-1 m-0 md:h-36 md:px-2 grow">
       <div class="w-full ">
-        <div class="mb-0 text-3xl font-medium">
+        <div class="mb-0 text-2xl font-medium">
           <h2 v-if="props.heading===2">
             <CommonAppLink :to="to">
               {{ props.article.title }}
