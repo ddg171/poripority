@@ -14,7 +14,7 @@
             </ContentSection>
           </div>
         </main>
-        <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-1 shrink-0">
+        <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-4 shrink-0">
           <aside class="flex flex-col-reverse w-full mb-2">
             <AsideContentsBox class="mb-2">
               <AppHeading3>カテゴリ</AppHeading3>
