@@ -54,7 +54,6 @@ onBeforeUnmount(() => {
 
 .cms-content{
   @apply flex flex-col  text-base leading-8;
-
 }
 
 .cms-content .img-wrapper{
@@ -62,7 +61,7 @@ onBeforeUnmount(() => {
 }
 
 .img-wrapper picture{
-  @apply md:w-96 w-64 ;
+  @apply md:w-96 w-full ;
 }
 
 .cms-content img{
@@ -110,6 +109,6 @@ onBeforeUnmount(() => {
 }
 
 .cms-content br{
-  @apply hidden sm:block;
+  @apply hidden;
 }
 </style>
