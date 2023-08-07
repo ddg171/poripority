@@ -1,5 +1,5 @@
 <template>
-  <TopConteinerBlock class="h-3/4h lg:h-2/3h max-h-1080p min-h-480p">
+  <TopConteinerBlock class="h-3/4h lg:h-4/5h max-h-1080p min-h-480p">
     <div class="relative flex items-center justify-center w-full h-full top-slider">
       <p v-if="sliderPage===-1" class="text-3xl text-white">
         loading...
@@ -16,7 +16,7 @@
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
           <div class="absolute flex items-center justify-center w-full h-full ">
             <CommonContentWidthBox class="flex items-end justify-start">
-              <div class="flex flex-col w-full px-4 py-2 md:px-16 md:py-6 bg-green/75 md:w-auto mb-1/5h md:mb-1/7h">
+              <div class="flex flex-col w-full px-4 py-2 md:px-16 md:py-6 bg-green/75 md:w-auto mb-1/5h md:mb-1/6h">
                 <AppHeading2 :data-is-tight="!!c.text.isTight">
                   <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                     {{ c.text.title }}
