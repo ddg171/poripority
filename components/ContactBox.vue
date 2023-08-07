@@ -2,7 +2,7 @@
   <ul class="flex flex-wrap gap-2">
     <li>
       <CommonExternalLink to="https://twitter.com/hata_kaze" title="Twitter">
-        <Icon name="mdi:twitter" class="p-1 text-white bg-twttr" />
+        <Icon name="simple-icons:x" class="p-1 text-white bg-black" />
         Twitter
       </CommonExternalLink>
     </li>

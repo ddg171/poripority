@@ -109,7 +109,4 @@ onBeforeUnmount(() => {
   @apply md:text-2xl text-2xl mt-6 mb-1;
 }
 
-.cms-content br{
-  @apply hidden sm:block;
-}
 </style>
