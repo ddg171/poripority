@@ -56,6 +56,9 @@ onBeforeUnmount(() => {
   @apply flex flex-col  text-base;
 }
 
+.cms-content strong{
+  @apply contents;
+}
 .cms-content .img-wrapper{
   @apply w-full  flex justify-center items-center my-4;
 }
@@ -69,14 +72,14 @@ onBeforeUnmount(() => {
   }
 
 .cms-content ul{
-  @apply md:ml-4 ml-1 my-4;
+  @apply md:ml-4 ml-0 my-4;
 }
 .cms-content li{
   @apply flex justify-start items-center;
 }
 .cms-content li::before{
   content: "//";
-  @apply block text-white text-lg font-extrabold mr-2
+  @apply self-start text-white text-xl font-extrabold mr-2
 }
 .cms-content a{
   @apply underline font-bold
