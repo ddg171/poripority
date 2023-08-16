@@ -53,9 +53,12 @@ onBeforeUnmount(() => {
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content{
-  @apply flex flex-col  text-base leading-8;
+  @apply flex flex-col  text-base;
 }
 
+.cms-content strong{
+  @apply contents;
+}
 .cms-content .img-wrapper{
   @apply w-full  flex justify-center items-center my-4;
 }
@@ -69,17 +72,17 @@ onBeforeUnmount(() => {
   }
 
 .cms-content ul{
-  @apply ml-4 my-4;
+  @apply md:ml-4 ml-0 my-4;
 }
 .cms-content li{
   @apply flex justify-start items-center;
 }
 .cms-content li::before{
   content: "//";
-  @apply block text-white text-lg font-extrabold mr-2
+  @apply self-start text-white text-xl font-extrabold mr-2
 }
 .cms-content a{
-  @apply underline font-semibold
+  @apply underline font-bold
 }
 .cms-content a::after{
   content: url("/assets/svg/open-in-new.svg");
@@ -101,11 +104,11 @@ onBeforeUnmount(() => {
 
 .cms-content h1,
 .cms-content h2{
-  @apply md:text-4xl text-3xl mt-8 mb-1;
+  @apply md:text-3xl text-2xl mt-10 mb-1 font-bold;
 }
 
 .cms-content h3{
-  @apply md:text-2xl text-2xl mt-6 mb-1;
+  @apply md:text-2xl text-xl mt-6 mb-1 font-bold;
 }
 
 </style>

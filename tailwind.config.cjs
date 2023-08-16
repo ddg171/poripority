@@ -86,7 +86,7 @@ module.exports = {
         ...vh
       },
       fontFamily: {
-        sans: ['Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', 'sans-serif', ...defaultTheme.fontFamily.sans]
+        sans: ['Avenir', 'Open Sans', 'Helvetica Neue', 'Helvetica,Arial', 'Verdana,Roboto', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'YuGothic', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', 'sans-serif', ...defaultTheme.fontFamily.sans]
       }
     },
     variants: {
