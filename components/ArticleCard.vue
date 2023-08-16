@@ -18,7 +18,7 @@
     </div>
     <div class="flex flex-col justify-between py-1 m-0 md:h-36 md:px-2 grow">
       <div class="w-full ">
-        <div class="mb-0 text-2xl font-medium">
+        <div class="mb-0 text-xl font-semibold">
           <h2 v-if="props.heading===2">
             <CommonAppLink :to="to">
               {{ props.article.title }}
