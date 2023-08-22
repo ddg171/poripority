@@ -8,7 +8,7 @@
             <AppHeading1>
               <span>{{ props.title }}</span>
             </AppHeading1>
-            <p v-for="t , i in props.subtitles" :key="i" class="text-white text-md md:text-xl">
+            <p v-for="t , i in props.subtitles" :key="i" class="text-white text-md md:text-xl font-medium">
               {{ t }}
             </p>
           </div>

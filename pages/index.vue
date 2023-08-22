@@ -15,7 +15,7 @@
           <div v-if="latest.length !== 3" />
           <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
             <div
-              class="flex items-center justify-center w-full py-3 my-0 text-3xl readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline"
+              class="flex items-center justify-center w-full py-3 my-0 text-3xl font-medium readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline"
             >
               <CommonAppLink to="/blog" class="w-full h-full text-center">
                 記事一覧へ
