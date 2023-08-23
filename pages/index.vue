@@ -42,18 +42,11 @@
           </div>
           <div class="grid gap-2">
             <CommonAppApra>
-              このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
+              "The hut of Poripority"にようこそ。このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
               以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
             </CommonAppApra>
             <CommonAppApra>
-              フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。
-              ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。
-            </CommonAppApra>
-            <CommonAppApra>
-              世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。
-            </CommonAppApra>
-            <CommonAppApra>
-              製作者のNuxtのSSRモードについての経験不足のため、このサイトは不思議な挙動をすることがありますがご容赦ください。
+              技術的な内容はおそらくQitta等に投稿しますが、それ以外の雑多な話はこちらで更新予定です。
             </CommonAppApra>
           </div>
         </div>
@@ -63,13 +56,13 @@
           About this web site
         </AppHeading2>
         <div class="flex flex-col-reverse gap-4 lg:flex-row">
-          <div class="flex flex-col items-start justify-center">
+          <div class="flex flex-col items-center lg:items-start justify-center">
             <div class="flex flex-col items-center justify-center">
               <NuxtPicture
                 src="/images/webp/diagram.webp"
                 legacy-format="jpeg"
                 class="diagram"
-                :img-attrs="{ alt: '当Webサイトの構成図', height: 500, width: 500, decoding: 'async',class:'diagram-inner' }"
+                :img-attrs="{ alt: '当Webサイトの構成図', height: 540, width: 540, decoding: 'async' }"
               />
               <p class="w-full text-sm text-center">
                 当Webサイトの構成図
@@ -77,20 +70,19 @@
             </div>
           </div>
 
-          <div class="grid gap-2 w-1/2">
+          <div class="grid gap-2">
             <CommonAppApra>
-              このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
-              以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
+              フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作しています。
+              Nuxt3になってから開発サーバの起動、ビルドが非常に高速になり、非常に快適な開発環境になりました。
             </CommonAppApra>
             <CommonAppApra>
-              フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作し、Google Cloudrun上にデプロイしています。
-              ドメインの接続と静的コンテンツ配信はFirebase Hosting、動的コンテンツについてはMicro CMSを利用しています。
+              バックエンドについてはGCP上にデプロイされています。Firebase Hostingを使用しており、動的コンテンツのみGoogle Cloudrun上で動作しているNuxtにリダイレクトしています。
             </CommonAppApra>
             <CommonAppApra>
-              世の中的には全部静的コンテンツにしてしまうSSGが流行りのようですが、このサイトはSSRモードで動作しています。
+              ブログ部分のコンテンツについてはMicroCMSを使用しています。画像APIとNuxt/imgモジュールの連携も可能で非常に便利です。
             </CommonAppApra>
             <CommonAppApra>
-              製作者のNuxtのSSRモードについての経験不足のため、このサイトは不思議な挙動をすることがありますがご容赦ください。
+              CI/CD(Github Actions)を導入しており、Mainブランチに変更内容がPushされると自動でビルド・デプロイが行われます。
             </CommonAppApra>
           </div>
         </div>
@@ -222,7 +214,8 @@ const games = ref<LinkParams[]>(
     { name: 'Wargame: Red Dragon', path: 'https://store.steampowered.com/app/251060/Wargame_Red_Dragon', isExternal: true },
     { name: 'Escape from Tarkov', path: 'https://www.escapefromtarkov.com/', isExternal: true },
     { name: 'MechWarrior Online™', path: 'https://mwomercs.com/', isExternal: true },
-    { name: 'Ready or Not', path: 'https://store.steampowered.com/agecheck/app/1144200/?l=japanese', isExternal: true }
+    { name: 'Ready or Not', path: 'https://store.steampowered.com/agecheck/app/1144200/?l=japanese', isExternal: true },
+    { name: 'Project Zomboid', path: 'https://projectzomboid.com', isExternal: true }
   ]
 )
 
@@ -230,13 +223,15 @@ const games = ref<LinkParams[]>(
 
 <style scoped>
 .diagram{
-  width: 500px;
-  height: 500px;
+  width: 540px;
+  height: 540px;
 }
 
-.diagram-inner{
-  width: 100%;
-  height: 100%;
+@media (max-width: 767px){
+  .diagram{
+    width: 100%;
+    height:auto;
+  }
 }
 
 </style>
