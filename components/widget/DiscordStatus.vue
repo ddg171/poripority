@@ -14,3 +14,14 @@
     </ClientOnly>
   </div>
 </template>
+
+<script setup lang="ts">
+useHead(
+  {
+    link: [
+      { rel: 'preconnect', href: 'https://cdn.discordapp.com' },
+      { rel: 'preconnect', href: 'https://discord.com' }
+    ]
+  }
+)
+</script>

@@ -1,24 +1,26 @@
 <template>
-  <article :id="props.id" class="flex flex-col items-start  md:h-92 ">
+  <article :id="props.id" class="flex flex-col items-start justify-center  h-full">
     <AppHeading3 class="mb-2">
       <slot name="name" />
     </AppHeading3>
 
-    <div class="flex flex-col items-center ">
-      <div class="flex items-center justify-center w-full h-auto p-2 lg:w-96 lg:h-96 bg-green">
-        <slot name="pic" />
-      </div>
-      <div class="w-full">
+    <div class="flex items-center justify-center   p-1 lg:w-72 lg:h-72 bg-green/50">
+      <slot name="pic" />
+    </div>
+
+    <p class="w-full text-lg font-semibold text-left">
+      状況:
+      <slot name="status" />
+    </p>
+    <div class="h-full  flex flex-col justify-between">
+      <WorksParaBox>
+        <slot name="introduction" />
+      </WorksParaBox>
+      <div v-if="links.length!==0" class="mt-auto">
         <p class="w-full text-lg font-semibold">
-          状況:
-          <slot name="status" />
+          リンク・関連ページ
         </p>
-        <div class="h-auto mb-4 lg:h-64">
-          <WorksParaBox>
-            <slot name="introduction" />
-          </WorksParaBox>
-        </div>
-        <CommonLinkList v-if="links.length!==0" :links="links" class="font-semibold text-md" />
+        <CommonLinkList :links="links" class="font-semibold text-md" />
       </div>
     </div>
   </article>

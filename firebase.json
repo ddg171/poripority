@@ -8,11 +8,50 @@
     ],
     "rewrites": [
       {
+        "source": "/sitemap.xml",
+        "run": {
+          "serviceId": "my-blog",
+          "region": "asia-northeast2"
+        }
+      },
+      {
         "source": "**",
         "run": {
           "serviceId": "my-blog",
           "region": "asia-northeast2"
         }
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/sitemap",
+        "destination": "/sitemap.xml",
+        "type": 301
+      },
+      {
+        "source": "/sitemap/**",
+        "destination": "/sitemap.xml",
+        "type": 302
+      }
+    ],
+    "headers": [
+      {
+        "source": "**",
+        "headers": [
+          {
+            "key": "permissions-policy",
+            "value": "interest-cohort=()"
+          }
+        ]
+      },
+      {
+        "source": "**/*.@(webp|jpg|jpeg|gif|png|svg|woff|json|css)",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=259200"
+          }
+        ]
       }
     ]
   }

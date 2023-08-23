@@ -1,10 +1,24 @@
 <template>
-  <div v-if="img" class="w-4/5 h-4/5">
-    <picture class="object-contain">
-      <source :srcset="img.webp" type="image/webp">
-      <img :src="img.webp" alt="拡大表示" class="w-full h-full object-contain" height="400" width="400">
-    </picture>
-  </div>
+  <a
+    v-if="img"
+    class="w-full  p-0  h-3/4 md:w-3/4w bg-green/25 md:p-2"
+    :href="selectedImg"
+    tabindex="0"
+    target="_blank"
+    rel="noopener noreferrer"
+    title="クリックすると新しいタブで画像を開きます。"
+    @click.stop="()=>{}"
+  >
+    <NuxtImg
+      :src="selectedImg"
+      class="w-full h-full object-contain"
+      alt="拡大表示"
+      height="400"
+      width="400"
+      decoding="async"
+      :modifiers="{ format: 'jpg',q:'70' }"
+    />
+  </a>
 </template>
 
 <script setup lang="ts">
@@ -12,10 +26,10 @@ import { ImageList } from '~~/types/articles'
 import { PictureBoxProp } from '~~/types/components'
 
 interface Props {
-    imageList:ImageList
+    imageList?:ImageList
     selectedId:string|undefined
 }
-const props = withDefaults(defineProps<Props>(), { imageList: () => [], img: undefined })
+const props = withDefaults(defineProps<Props>(), { imageList: () => [] })
 
 const images = computed<{[T:string]:string}>(() => {
   const obj:{[T:string]:string} = {}
@@ -37,8 +51,7 @@ const img = computed<PictureBoxProp|undefined>(() => {
     jpg,
     alt,
     title,
-    source: [],
-    fromCMS: true
+    source: []
   }
 })
 

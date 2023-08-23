@@ -1,5 +1,5 @@
 <template>
-  <button class="btn flex items-center justify-center p-1 mx-1 text-base text-white w-28 h-11 sm:mx-4 bg-green hover:bg-lightgreen focus:bg-lightgreen  disabled:bg-darkblue" :variant="props.variant" :disabled="props.disabled">
+  <button class="flex items-center justify-center p-1 mx-1 text-base text-white btn w-28 h-11 sm:mx-4 bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-darkblue" :variant="props.variant" :disabled="props.disabled">
     <slot />
   </button>
 </template>

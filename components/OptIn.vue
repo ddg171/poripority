@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <Transition name="optin">
-      <div v-if="isShow" class="optin py-6 px-4 md:px-12 md:max-w-2xl fixed w-full border-solid border-white bottom-0 ml-0 shadow-xl shadow-gray  opacity-100 bg-gray grid gap-2 transition-opacity  delay-600 z-50">
+      <div v-if="isShow" class="fixed bottom-0 z-50 grid w-full gap-2 px-4 py-6 ml-0 transition-opacity border-white border-solid shadow-xl opacity-100 optin md:px-12 md:max-w-2xl shadow-gray bg-gray delay-600">
         <div class="w-full">
           <AppHeading2>Cookie/解析ツール等の使用について</AppHeading2>
           <div class="text-white ">
@@ -13,7 +13,7 @@
             </CommonAppApra>
           </div>
         </div>
-        <div class="w-full flex justify-around">
+        <div class="flex justify-around w-full">
           <CommonAppBtn @click="setOptIn(false)">
             DENIED/拒否
           </CommonAppBtn>
@@ -33,7 +33,7 @@ const config = useRuntimeConfig()
 const gaMeasurementID = config.public.gaMeasurementId
 
 const gtag = useState()
-const optIn = useCookie<'ACCEPT'|'DENIED'|undefined>('optin')
+const optIn = useCookie<'ACCEPT'|'DENIED'|undefined>('optin', { maxAge: 365 * 24 * 60 * 60 })
 const ga = useCookie<string|undefined>('_ga')
 const gaWithID = useCookie<string|undefined>(gaMeasurementID.replace('G-', '_ga_'))
 
@@ -54,6 +54,7 @@ const start = () => {
 const setOptIn = (v:boolean) => {
   isShow.value = false
   optIn.value = v ? 'ACCEPT' : 'DENIED'
+
   if (v) {
     start()
     return

@@ -1,7 +1,7 @@
 <template>
   <li class="flex flex-col items-center md:p-1 hover:bg-lightgreen">
-    <div class="h-20 w-20">
-      <Icon :name="props.name" class="h-20 w-20 " />
+    <div class="w-20 h-20">
+      <Icon :name="props.name" class="w-20 h-20 " />
     </div>
     <span class="block">
       <slot />

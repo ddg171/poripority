@@ -1,4 +1,3 @@
-
 import { defineNuxtConfig } from 'nuxt/config'
 
 const SITE_NAME = 'The hut of Poripority'
@@ -25,7 +24,8 @@ export default defineNuxtConfig({
         lang: 'ja',
         prefix: 'og: https://ogp.me/ns#'
       }
-    }
+    },
+    layoutTransition: { name: 'layout', mode: 'out-in' }
   },
   runtimeConfig: {
     public: {
@@ -40,17 +40,14 @@ export default defineNuxtConfig({
     shim: false
   },
   css: ['~/assets/css/tailwind.scss'],
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', 'nuxt-icon'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', 'nuxt-icon', ['@nuxtjs/robots', { Disallow: '/blog/preview/*', Sitemap: process.env.BASE_URL + '/sitemap.xml' }]],
   image: {
-
-    presets: {
-      common: {
-        'legacy-format': 'jpeg',
-        'img-attrs': { class: 'img-inside-picture', height: 400, width: 400, decoding: 'async' }
-      }
+    imgix: {
+      baseURL: ''
     }
   },
   nitro: {
+    compressPublicAssets: true,
     prerender: {
       routes: ['/works', '/about']
     }

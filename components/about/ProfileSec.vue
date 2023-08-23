@@ -1,19 +1,24 @@
 <template>
-  <AboutContentSection id="profile" class="min-h-screen sticky top-0 bg-gray pt-10 md:pt-16 z-10" @in="isShown=true">
+  <AboutContentSection id="profile" class="sticky top-0 z-10 min-h-screen pt-10 bg-gray md:pt-16" @in="isShown=true">
     <template #heading>
       <AppHeading2>
         Profile
       </AppHeading2>
     </template>
     <template #default>
-      <div class="flex items-start justify-center w-full flex-col md:flex-row text-white ">
-        <div class="md:h-1/2h  flex items-center justify-center w-full pb-2 profile-pic  md:w-1/2">
+      <div class="flex flex-col items-start justify-center w-full text-white md:flex-row ">
+        <div class="flex items-center justify-center w-full pb-2 md:h-1/2h profile-pic md:w-1/2">
           <div class="flex flex-col items-center justify-start ">
-            <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpg" class="w-28 h-28 md:w-60 md:h-60" />
+            <NuxtPicture
+              src="/images/webp/shrimp.webp"
+              legacy-format="jpeg"
+              class="w-28 h-28 md:w-60 md:h-60"
+              :img-attrs="{ alt:'管理人の写真', height:240,width:240, decoding: 'async'}"
+            />
           </div>
         </div>
-        <div class="md:h-1/2h flex flex-col items-center md:justify-center flex-grow w-full profile-data md:w-1/2 md:shrink-0">
-          <div class=" flex w-full items-center justify-center">
+        <div class="flex flex-col items-center flex-grow w-full md:h-1/2h md:justify-center profile-data md:w-1/2 md:shrink-0">
+          <div class="flex items-center justify-center w-full ">
             <table class="md:w-full ">
               <thead class="text-2xl h-9">
                 <tr>

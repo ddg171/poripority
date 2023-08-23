@@ -1,7 +1,7 @@
 <template>
-  <div class="flex justify-end items-end w-full sticky  h-16  bottom-0 left-full px-3 pb-2 overflow-y-hidden">
+  <div class="sticky bottom-0 flex items-end justify-end w-full h-0 mt-16 px-3 pb-2 overflow-y-visible left-full">
     <Transition name="slide-in">
-      <CommonAppBtn v-show="props.isShow" id="to-top-btn" class=" border border-darkblue" @click="scrollToTop">
+      <CommonAppBtn v-show="props.isShow" id="to-top-btn" class="border border-darkblue" @click="scrollToTop">
         <Icon name="material-symbols:vertical-align-top" />
         一番上へ
       </CommonAppBtn>

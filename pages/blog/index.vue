@@ -1,10 +1,6 @@
 <template>
-  <ContentSection class="h-full w-full">
-    <div v-if="pending" class="flex items-center justify-center w-full h-48">
-      <p>
-        Loading...
-      </p>
-    </div>
+  <ContentSection class="w-full h-full">
+    <PlaceHolder v-if="pending" />
     <ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
       <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
         <p>
@@ -18,14 +14,14 @@
         <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
       </teleport>
     </ClientOnly>
-  </contentsection>
+  </Contentsection>
 </template>
 
 <script setup lang="ts">
 import { FetchContext } from 'ohmyfetch'
 import { Article } from '~~/types/articles'
 import { LinkParams, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { makeDynamicMeta } from '~~/utils/useHeadHelper'
+import { setPageMetaData } from '~~/composables/helper/head'
 
 definePageMeta({
   layout: 'blog'
@@ -81,7 +77,6 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
     webp: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: ''
-
   }
   const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
   const t:PageTitleProp = {
@@ -92,22 +87,19 @@ const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true
   pageTitle.value = t
 }
 
-const setTitle = (category:string|null) => {
-  const title = (category ? `${category}の記事一覧` : '記事一覧') + '|' + config.public.siteName
-  const subtitle = '記事一覧'
-  const dynamicMeta = makeDynamicMeta(title, subtitle)
-  useHead(dynamicMeta)
-}
-
 watch(() => route.query.category, async () => {
   await articleAPI?.refresh()
   const { data } = await useFetch(`/api/category/${category.value}`)
   categoryName.value = data.value?.name || null
-  setPageTitle(categoryName.value)
+  setPageTitle(categoryName.value, true)
+  const title = (categoryName.value ? `${categoryName.value}の記事一覧` : '記事一覧') + '|' + config.public.siteName
+  const subtitle = '記事一覧'
+  setPageMetaData(title, subtitle)
   window.scroll(0, 0)
 })
 watch(() => route.query.offset, async () => {
   await articleAPI?.refresh()
+  setPageTitle(categoryName.value, true)
   window.scroll(0, 0)
 })
 
@@ -122,9 +114,13 @@ const articleAPI = await useFetch('/api/blogs', {
 })
 // カテゴリの取得
 const { data } = await useFetch('/api/category')
+
 const categoryStore = useCategoryStore()
 categoryStore.set(data.value?.contents || [])
-setTitle(categoryName.value)
+categoryName.value = data.value?.contents?.find(c => c.id === category.value)?.name || null
+const title = (category.value ? `${category.value}の記事一覧` : '記事一覧') + '|' + config.public.siteName
+const subtitle = '記事一覧'
+setPageMetaData(title, subtitle)
 
 onMounted(() => {
   setPageTitle(categoryName.value, true)

@@ -1,4 +1,3 @@
-
 import DOMParser from 'universal-dom-parser'
 import { Heading, ImageList } from '~~/types/articles'
 
@@ -73,7 +72,7 @@ export function getImgList (doc:Document):ImageList {
 }
 
 export function getHeadingList (doc:Document):Heading[] {
-  const headings = doc.querySelectorAll('h2,h3,h4')
+  const headings = doc.querySelectorAll('h1,h2,h3,h4')
   const result:Heading[] = []
   headings.forEach((h) => {
     const level = Number(h.tagName.replace('h', '').replace('H', ''))

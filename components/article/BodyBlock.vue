@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article class="flex flex-col gap-4 text-white cms-content cms-content-width mb-6" v-html="content" />
+  <article class="flex flex-col mb-6 text-white cms-content cms-content-width" v-html="content" />
 </template>
 <script setup lang="ts">
 import { Heading, ImageList } from '~~/types/articles'
@@ -48,94 +48,67 @@ onBeforeUnmount(() => {
 
 </script>
 
-<style>
+<style lang="postcss">
+/* MicroCMSから取得した内容に対するCSS */
+/* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content{
-  display: flex;
-  flex-direction: column;
-
+  @apply flex flex-col  text-base;
 }
 
+.cms-content strong{
+  @apply contents;
+}
 .cms-content .img-wrapper{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @apply w-full  flex justify-center items-center my-4;
+}
+
+.img-wrapper picture{
+  @apply md:w-96 w-full ;
 }
 
 .cms-content img{
-  max-width: 500px;
-  margin: 1rem 0;
-}
-
-@media screen and (max-width:532px) {
-  .cms-content img{
-  max-width: 100%;
-}
-}
+  @apply  object-scale-down hover:cursor-pointer;
+  }
 
 .cms-content ul{
-  margin-left: 1rem;
+  @apply md:ml-4 ml-0 my-4;
 }
 .cms-content li{
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  @apply flex justify-start items-center;
 }
 .cms-content li::before{
-  display: block;
-  background-color: white;
-  width: 0.5em;
-  height: 0.5em;
-  margin-right: 0.25em;
-  margin-bottom: 0.125em;
-  content: "";
+  content: "//";
+  @apply self-start text-white text-xl font-extrabold mr-2
+}
+.cms-content a{
+  @apply underline font-bold
 }
 .cms-content a::after{
-  vertical-align: bottom;
   content: url("/assets/svg/open-in-new.svg");
-  color: white;
-  height: 0.5em;
-  width: 0.5em;
+  @apply  h-1 w-1 text-white align-middle;
 }
 .cms-content a:hover,
 .cms-content a:focus{
-  text-decoration: underline;
-  font-weight: 500;
+  @apply  bg-lightgreen/50
 }
 
 .cms-content h1,
 .cms-content h2,
 .cms-content h3{
-  padding-left: 0.5rem;
-  border-left-style: solid;
-  border-color: white;
-  border-left-width: 4px;
+  @apply pl-2 border-solid border-white border-l-4;
+}
+.cms-content *:first-child{
+  @apply  mt-0;
 }
 
-.cms-content h1{
-  font-size: 2.5rem !important;
-}
-
+.cms-content h1,
 .cms-content h2{
-  font-size: 2rem !important;
+  @apply md:text-3xl text-2xl mt-10 mb-1 font-bold;
 }
 
 .cms-content h3{
-  font-size: 1.5rem !important;
-}
-@media screen and (max-width:767px) {
- .cms-content h1{
-  font-size: 2rem !important;
-}
-
-.cms-content h2{
-  font-size: 1.5rem !important;
-}
-
-.cms-content h3{
-  font-size: 1.25rem !important;
-}
+  @apply md:text-2xl text-xl mt-6 mb-1 font-bold;
 }
 
 </style>

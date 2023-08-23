@@ -1,14 +1,14 @@
 <template>
-  <TopConteinerBlock class="h-1/4h lg:h-1/2h max-h-960p min-h-480p">
-    <div :data-show="isShow" class="title-content-box relative  h-full page-title transition-all  duration-500 opacity-0">
+  <TopConteinerBlock class="w-full h-full">
+    <div :data-show="isShow" class="relative h-full transition-all duration-500 opacity-0 title-content-box page-title">
       <TopImgBlock :img="props.topImg" />
-      <div v-if="props.title" class="absolute w-full h-full flex justify-center items-center title-box backdrop-blur-sm">
+      <div v-if="props.title" class="absolute flex items-center justify-center w-full h-full title-box backdrop-blur-sm hover:backdrop-blur-none transition-all duration-500">
         <CommonContentWidthBox class="flex items-end justify-start">
-          <div class="flex flex-col px-4 md:px-16 py-2  md:py-6 mb-1/5h  md:mb-1/7h bg-green/75 w-full md:w-auto my-2">
+          <div class="flex flex-col w-full py-2 px-4 md:px-16 md:py-6 bg-green/75 md:w-auto mb-16 lg:mb-1/6h">
             <AppHeading1>
               <span>{{ props.title }}</span>
             </AppHeading1>
-            <p v-for="t , i in props.subtitles" :key="i" class="text-white text-md md:text-xl">
+            <p v-for="t , i in props.subtitles" :key="i" class="text-white text-lg md:text-xl font-medium">
               {{ t }}
             </p>
           </div>

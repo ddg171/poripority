@@ -1,6 +1,6 @@
 <template>
-  <header class="w-full  bg-green text-white z-50 top-0" :is-sticky="isSticky">
-    <div id="AppHeader-container" class="AppHeader-container h-full flex flex-row justify-between">
+  <header class="top-0 z-50 w-full text-white bg-green" :is-sticky="isSticky">
+    <div id="AppHeader-container" class="flex flex-row justify-between h-full AppHeader-container">
       <SiteName />
       <NavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
     </div>
