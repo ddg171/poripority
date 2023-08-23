@@ -40,7 +40,7 @@
               管理人の写真
             </p>
           </div>
-          <div class="grid gap-2">
+          <div class="flex flex-col items-start gap-2">
             <CommonAppApra>
               "The hut of Poripority"にようこそ。このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
               以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
@@ -70,13 +70,13 @@
             </div>
           </div>
 
-          <div class="grid gap-2">
+          <div class="flex flex-col items-start gap-2">
             <CommonAppApra>
               フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作しています。
               Nuxt3になってから開発サーバの起動、ビルドが非常に高速になり、非常に快適な開発環境になりました。
             </CommonAppApra>
             <CommonAppApra>
-              バックエンドについてはGCP上にデプロイされています。Firebase Hostingを使用しており、動的コンテンツのみGoogle Cloudrun上で動作しているNuxtにリダイレクトしています。
+              バックエンドについてはGCP上にデプロイされています。Firebase Hostingを使用しており、動的コンテンツのみGoogle Cloudrun上で動作しているNuxt(SSRモード)にリダイレクトしています。
             </CommonAppApra>
             <CommonAppApra>
               ブログ部分のコンテンツについてはMicroCMSを使用しています。画像APIとNuxt/imgモジュールの連携も可能で非常に便利です。
