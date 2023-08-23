@@ -3,7 +3,7 @@
     <div class="flex flex-col items-start w-full mb-2 md:h-full">
       <div class="flex flex-wrap mb-2 md:mb-0">
         <h2 class="mr-2 text-2xl">
-          The hut of Proporpty(WIP)
+          The hut of Proporpty
         </h2>
         <ShareBtnBox title="The hut of Poripority" :url="baseURL" />
       </div>
