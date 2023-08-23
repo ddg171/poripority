@@ -145,6 +145,23 @@ const defaultContents: SliderContent[] = [
   },
   {
     pic: {
+      source: ['/images/webp/top-img03w640.webp 640w,/images/webp/top-img03w1270.webp 1024w,'],
+      webp: '/images/webp/top-img03w2000.webp',
+      jpg: '/images/webp/top-img03w640.jpg',
+      alt: 'TOP画像3:GREEN MOVER',
+      title: 'TOP画像3:GREEN MOVER',
+      fromCMS: false
+    },
+    text: {
+      title: 'ABOUT',
+      para: [
+        'いわゆるポートフォリオ'
+      ],
+      to: '/about'
+    }
+  },
+  {
+    pic: {
       source: ['/images/webp/top-img02w640.webp 640w,/images/webp/top-img02w1270.webp 1024w,'],
       webp: '/images/webp/top-img02w2000.webp',
       jpg: '/images/webp/top-img02w640.jpg',
@@ -158,23 +175,6 @@ const defaultContents: SliderContent[] = [
         '投稿記事はこちら'
       ],
       to: '/blog'
-    }
-  },
-  {
-    pic: {
-      source: ['/images/webp/top-img03w640.webp 640w,/images/webp/top-img03w1270.webp 1024w,'],
-      webp: '/images/webp/top-img03w2000.webp',
-      jpg: '/images/webp/top-img03w640.jpg',
-      alt: 'TOP画像3:GREEN MOVER',
-      title: 'TOP画像3:GREEN MOVER',
-      fromCMS: false
-    },
-    text: {
-      title: 'ABOUT',
-      para: [
-        'このWebサイトと作者について'
-      ],
-      to: '/about'
     }
   }
 ]
