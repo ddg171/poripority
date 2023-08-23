@@ -53,7 +53,7 @@ import { setPageMetaData } from '~~/composables/helper/head'
 
 const config = useRuntimeConfig()
 const title = 'About|' + config.public.siteName
-const description = 'WIP'
+const description = 'profile, skill, contact'
 setPageMetaData(
   title,
   description
