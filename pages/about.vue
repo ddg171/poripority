@@ -26,9 +26,15 @@
       </ul>
     </div>
     <AboutProfileSec class="bg-darkblue" />
-    <!-- <AboutPhotoSec /> -->
     <AboutSkillSec />
-    <!-- <AboutLoadmapSec /> -->
+    <section class="w-full z-40 overflow-x-hidden bg-lightgray">
+      <div class="h-72 bg-lightgray py-4 flex  items-center justify-center" style="transform:translateX(0px);">
+        <div v-for="i in 5" :key="i" class="clip-img w-72 h-64 bg-green shrink-0 text-white text-2xl">
+          {{ i }}
+        </div>
+      </div>
+    </section>
+    <AboutPhotoSec />
     <AboutContentSection id="contact" class="z-30 py-20 bg-gray md:py-28">
       <template #heading>
         <AppHeading2 class="z-40">
@@ -82,4 +88,5 @@ onMounted(() => {
 .hero-leave-to {
   @apply opacity-0;
 }
+.clip-img { margin: 0 -0.75rem; clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); }
 </style>
