@@ -23,7 +23,7 @@
                   </CommonAppLink>
                   <span v-else>{{ c.text.title }}</span>
                 </AppHeading2>
-                <p v-for="p , t in c.text.para" :key="t" class="text-lg md:text-2xl font-medium">
+                <p v-for="p , t in c.text.para" :key="t" class="text-lg md:text-xl font-medium">
                   {{ p }}
                 </p>
               </div>
