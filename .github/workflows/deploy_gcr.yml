@@ -62,5 +62,6 @@ jobs:
             --region="asia-northeast2" \
             --service-account=${{secrets.SERVICE_ACCOUNT_NAME }}@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com \
             --allow-unauthenticated
+            --cpu-boost
 
 
