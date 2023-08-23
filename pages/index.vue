@@ -63,17 +63,20 @@
           About this web site
         </AppHeading2>
         <div class="flex flex-col-reverse gap-4 lg:flex-row">
-          <div class="flex flex-col items-center justify-center w-1/2">
-            <NuxtPicture
-              src="/images/webp/diagram.webp"
-              legacy-format="jpeg"
-              class="w-96 h-96"
-              :img-attrs="{ alt: '当Webサイトの構成図', height: 400, width: 400, decoding: 'async' }"
-            />
-            <p class="w-full text-sm text-center">
-              当Webサイトの構成図
-            </p>
+          <div class="flex flex-col items-start justify-center">
+            <div class="flex flex-col items-center justify-center">
+              <NuxtPicture
+                src="/images/webp/diagram.webp"
+                legacy-format="jpeg"
+                class="diagram"
+                :img-attrs="{ alt: '当Webサイトの構成図', height: 500, width: 500, decoding: 'async',class:'diagram-inner' }"
+              />
+              <p class="w-full text-sm text-center">
+                当Webサイトの構成図
+              </p>
+            </div>
           </div>
+
           <div class="grid gap-2 w-1/2">
             <CommonAppApra>
               このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
@@ -225,4 +228,15 @@ const games = ref<LinkParams[]>(
 
 </script>
 
-<style></style>
+<style scoped>
+.diagram{
+  width: 500px;
+  height: 500px;
+}
+
+.diagram-inner{
+  width: 100%;
+  height: 100%;
+}
+
+</style>
