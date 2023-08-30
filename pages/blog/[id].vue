@@ -34,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+import { useState, useGtag } from 'vue-gtag-next'
 import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
@@ -86,12 +87,23 @@ const topImg:PictureBoxProp|null = eyecatch
     }
   : null
 onMounted(() => {
+  isLoading.set(false)
+  window.addEventListener('keyup', escapeKeyEventhandler)
   const t:PageTitleProp = {
     title: article.value?.title || '記事が見つかりませんでした',
     topImg,
     subtitles: article.value?.subtitle ? [article.value.subtitle] : []
   }
   pageTitle.value = t
+  // Gtagのページビューイベント対応
+  const gtagState = useState()
+  if (!gtagState.isEnabled) { return }
+  const gtag = useGtag()
+
+  gtag.pageview({
+    page_title: headTitle.value,
+    page_path: window.location.pathname
+  })
 })
 const setImgList = (l:ImageList) => {
   imgList.value = l
@@ -117,10 +129,6 @@ const escapeKeyEventhandler = (e:KeyboardEvent) => {
   selectedId.value = undefined
 }
 
-onMounted(() => {
-  isLoading.set(false)
-  window.addEventListener('keyup', escapeKeyEventhandler)
-})
 onUnmounted(() => {
   window.removeEventListener('keyup', escapeKeyEventhandler)
 })
