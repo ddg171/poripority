@@ -43,3 +43,7 @@ export function removeURLParams (url:string):string|undefined {
     return undefined
   }
 }
+
+export function isWebp (filePath:string):boolean {
+  return filePath.toLocaleLowerCase().match(/\.webp$/i) !== null
+}
