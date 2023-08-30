@@ -44,6 +44,24 @@ export function removeURLParams (url:string):string|undefined {
   }
 }
 
-export function isWebp (filePath:string):boolean {
-  return filePath.toLocaleLowerCase().match(/\.webp$/i) !== null
+export function getImageExt (filePath:string):string|undefined {
+  try {
+    const urlArry = filePath.split('.')
+    return urlArry[urlArry.length - 1]
+  } catch {
+    return undefined
+  }
+}
+
+type ImageFormat ='webp'|'jpg'|'png'
+
+export function checkImageFormat (filePath:string):ImageFormat|undefined {
+  if (!filePath) { return undefined }
+  const ext = getImageExt(filePath)
+  if (!ext) { return undefined }
+  const extLower = ext.toLocaleLowerCase()
+  if (['jpg', 'jpeg'].includes(extLower)) { return 'jpg' }
+  if (['png'].includes(extLower)) { return 'png' }
+  if (['webp'].includes(extLower)) { return 'webp' }
+  return undefined
 }
