@@ -34,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+import { useState, useGtag } from 'vue-gtag-next'
 import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
@@ -54,7 +55,7 @@ const pageTitle = ref<PageTitleProp>({
   title: '記事',
   subtitles: [],
   topImg: {
-    webp: '/images/webp/blanktitle01w2000.webp',
+    src: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: '',
     fromCMS: true
@@ -79,19 +80,30 @@ setPageMetaData(headTitle.value, description, 'all', 'article', image)
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
-      webp: eyecatch.url,
+      src: eyecatch.url,
       alt: '',
       title: '',
       fromCMS: true
     }
   : null
 onMounted(() => {
+  isLoading.set(false)
+  window.addEventListener('keyup', escapeKeyEventhandler)
   const t:PageTitleProp = {
     title: article.value?.title || '記事が見つかりませんでした',
     topImg,
     subtitles: article.value?.subtitle ? [article.value.subtitle] : []
   }
   pageTitle.value = t
+  // Gtagのページビューイベント対応
+  const gtagState = useState()
+  if (!gtagState.isEnabled) { return }
+  const gtag = useGtag()
+
+  gtag.pageview({
+    page_title: headTitle.value,
+    page_path: window.location.pathname
+  })
 })
 const setImgList = (l:ImageList) => {
   imgList.value = l
@@ -117,10 +129,6 @@ const escapeKeyEventhandler = (e:KeyboardEvent) => {
   selectedId.value = undefined
 }
 
-onMounted(() => {
-  isLoading.set(false)
-  window.addEventListener('keyup', escapeKeyEventhandler)
-})
 onUnmounted(() => {
   window.removeEventListener('keyup', escapeKeyEventhandler)
 })

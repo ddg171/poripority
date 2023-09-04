@@ -5,9 +5,7 @@ export interface LinkParams {
     isExternal?:boolean
 }
 export interface PictureBoxProp {
-    source?: string[]
-    webp: string
-    jpg?: string
+    src: string
     alt: string
     title: string
     fromCMS?:boolean

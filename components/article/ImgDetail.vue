@@ -42,13 +42,12 @@ const images = computed<{[T:string]:string}>(() => {
 
 const img = computed<PictureBoxProp|undefined>(() => {
   if (!selectedImg.value) { return undefined }
-  const jpg = selectedImg.value + '?q=70'
-  const webp = jpg + '&fm=webp'
+  const src = selectedImg.value
   const alt = ''
   const title = ''
   return {
-    webp,
-    jpg,
+    src,
+    jpg: src,
     alt,
     title,
     source: []

@@ -118,7 +118,6 @@
 <script setup lang="ts">
 import { Article } from '~~/types/articles'
 import { SliderContent, Eyecatch, LinkParams } from '~~/types/components'
-import { resizeWithTargetWidth } from '~~/utils/imageAPIHelper'
 
 const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })
 
@@ -127,9 +126,7 @@ const latest = computed<Article[]>(() => data.value?.contents || [])
 const defaultContents: SliderContent[] = [
   {
     pic: {
-      source: ['/images/webp/top-img01w640.webp 640w,/images/webp/top-img01w1270.webp 1024w,'],
-      webp: '/images/webp/top-img01w2000.webp',
-      jpg: '/images/webp/top-img01w640.jpg',
+      src: '/images/webp/top-img01w2000.webp',
       alt: 'TOP画像1:鳩',
       title: 'TOP画像1:鳩',
       fromCMS: false
@@ -145,9 +142,7 @@ const defaultContents: SliderContent[] = [
   },
   {
     pic: {
-      source: ['/images/webp/top-img03w640.webp 640w,/images/webp/top-img03w1270.webp 1024w,'],
-      webp: '/images/webp/top-img03w2000.webp',
-      jpg: '/images/webp/top-img03w640.jpg',
+      src: '/images/webp/top-img03w2000.webp',
       alt: 'TOP画像3:GREEN MOVER',
       title: 'TOP画像3:GREEN MOVER',
       fromCMS: false
@@ -162,9 +157,7 @@ const defaultContents: SliderContent[] = [
   },
   {
     pic: {
-      source: ['/images/webp/top-img02w640.webp 640w,/images/webp/top-img02w1270.webp 1024w,'],
-      webp: '/images/webp/top-img02w2000.webp',
-      jpg: '/images/webp/top-img02w640.jpg',
+      src: '/images/webp/top-img02w2000.webp',
       alt: 'TOP画像2',
       title: 'TOP画像2',
       fromCMS: false
@@ -182,16 +175,11 @@ const sliderContentsTemp = []
 if (contents.length) {
   const a = contents[0]
   const eyecatch: Eyecatch = a.eyecatch
-  const webp = eyecatch.url
-  const w1280 = resizeWithTargetWidth(eyecatch, 1280, true).url
-  const w640 = resizeWithTargetWidth(eyecatch, 640, true).url
-  const jpg = eyecatch.url
+  const src = eyecatch.url
 
   const ArticleforSlider: SliderContent = {
     pic: {
-      source: [`${w640} 640w,${w1280} 1024w,`],
-      webp,
-      jpg,
+      src,
       alt: 'TOP画像。最新投稿',
       title: 'TOP画像。最新投稿',
       fromCMS: true
