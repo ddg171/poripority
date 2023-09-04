@@ -2,7 +2,7 @@
   <NuxtPicture
 
     :provider="provider"
-    :src="props.webp"
+    :src="props.src"
     class="picture-box"
     legacy-format="jpeg"
     :img-attrs="imgAttr"
@@ -13,7 +13,7 @@
 <script setup lang="ts">
 
 interface Props {
-    webp:string, alt?:string, title?:string, fromCms?:boolean}
+    src:string, alt?:string, title?:string, fromCms?:boolean}
 
 const imgAttr = computed(() => {
   return {

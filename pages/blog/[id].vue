@@ -54,7 +54,7 @@ const pageTitle = ref<PageTitleProp>({
   title: '記事',
   subtitles: [],
   topImg: {
-    webp: '/images/webp/blanktitle01w2000.webp',
+    src: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: '',
     fromCMS: true
@@ -79,7 +79,7 @@ setPageMetaData(headTitle.value, description, 'all', 'article', image)
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
-      webp: eyecatch.url,
+      src: eyecatch.url,
       alt: '',
       title: '',
       fromCMS: true

@@ -35,7 +35,7 @@ const pageTitle = ref<PageTitleProp>({
   title: '記事一覧',
   subtitles: [],
   topImg: {
-    webp: '/images/webp/blanktitle01w2000.webp',
+    src: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: ''
 
@@ -74,7 +74,7 @@ const leftNav = computed<LinkParams|null>(() => {
 const setPageTitle = (category:string|null|undefined = null, hasSubtitles = true) => {
   const title = category ? `${category}の記事一覧` : '記事一覧'
   const topImg:PictureBoxProp = {
-    webp: '/images/webp/blanktitle01w2000.webp',
+    src: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: ''
   }
