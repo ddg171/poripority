@@ -26,7 +26,7 @@ const imgAttr = computed(() => {
   }
 })
 
-const props = withDefaults(defineProps<Props>(), { source: () => [], webp: '', jpg: '', alt: '', title: '', fromCMS: false })
+const props = withDefaults(defineProps<Props>(), { source: () => [], src: '', alt: '', title: '', fromCMS: false })
 
 const provider = computed(() => {
   return props.fromCms ? 'imgix' : 'ipx'
