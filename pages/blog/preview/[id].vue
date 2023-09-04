@@ -44,7 +44,6 @@ definePageMeta({
 // カテゴリの取得
 
 const route = useRoute()
-const isLoading = useLoadingStore()
 const pageTitle = ref<PageTitleProp>({
   title: '記事',
   subtitles: [],
@@ -89,6 +88,7 @@ onMounted(() => {
   }
   pageTitle.value = t
 })
+
 const setImgList = (l:ImageList) => {
   imgList.value = l
 }
@@ -103,9 +103,5 @@ const headingListHandler = (h:Heading[]) => {
 }
 
 const headings = ref<Heading[]>([])
-
-onMounted(() => {
-  isLoading.set(false)
-})
 
 </script>
