@@ -6,7 +6,7 @@
       v-if="props.img"
       :alt="props.img.alt"
       :title="props.img.title"
-      :webp="props.img.webp"
+      :src="props.img.src"
       :from-cms="props.img.fromCMS"
     />
   </div>
