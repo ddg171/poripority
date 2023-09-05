@@ -21,7 +21,7 @@
                 記事一覧へ
               </CommonAppLink>
             </div>
-          </div>
+          </li>
         </ArticleList>
       </ContentSection>
       <ContentSection>
