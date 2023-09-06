@@ -1,5 +1,5 @@
 <template>
-  <AboutContentSection id="profile" class="sticky top-0 z-10 min-h-screen pt-10 bg-gray md:pt-16" @in="isShown=true">
+  <AboutContentSection id="profile" class="py-20 bg-gray md:pt-16 md:py-28" @in="isShown=true">
     <template #heading>
       <AppHeading2>
         Profile

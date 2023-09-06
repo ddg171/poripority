@@ -41,8 +41,9 @@ const photos = ref<Photo[]>(
 const section = ref<HTMLElement | null>(null)
 
 const translateX = computed<number>(() => {
+  if (window === undefined) { return 0 }
   const translateValue = 400
-  const clientHeight = window.innerHeight
+  const clientHeight = window?.innerHeight || 0
   if (sectionPosition.value === 'under') { return 0 }
   if (sectionPosition.value === 'over') { return translateValue }
   return sectionTop.value / clientHeight * (translateValue * 2) - translateValue
@@ -61,7 +62,7 @@ const onHandleScroll = () => {
 
 const sectionPosition = computed<'under'|'inside'|'over'>(
   () => {
-    const clientHeight = window.innerHeight
+    const clientHeight = window?.innerHeight || 0
     if (sectionTop.value > clientHeight) { return 'under' }
     if (sectionTop.value < sectionHeight.value * -1) { return 'over' }
     return 'inside'
