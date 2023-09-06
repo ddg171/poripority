@@ -1,5 +1,5 @@
 <template>
-  <section ref="section" class="w-full z-40 overflow-x-hidden bg-lightgray">
+  <section ref="section" class="w-full z-20 overflow-x-hidden bg-lightgray">
     <div class=" bg-lightgray py-4 flex  items-center justify-center" :style="`transform:translateX(${translateX}px);`">
       <div v-for="p,i in photos" :key="i" class="clip-img w-72 h-96 bg-green shrink-0 text-white text-2xl">
         <NuxtPicture

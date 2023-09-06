@@ -1,12 +1,12 @@
 <template>
-  <AboutContentSection id="profile" class="py-20 bg-gray md:pt-16 md:py-28" @in="isShown=true">
+  <AboutContentSection id="profile" class="py-16 bg-gray " @in="isShown=true">
     <template #heading>
       <AppHeading2>
         Profile
       </AppHeading2>
     </template>
     <template #default>
-      <div class="flex flex-col items-start justify-center w-full text-white md:flex-row ">
+      <div class="flex flex-col items-start justify-center w-full h-full text-white md:flex-row ">
         <div class="flex items-center justify-center w-full pb-2 md:h-1/2h profile-pic md:w-1/2">
           <div class="flex flex-col items-center justify-start ">
             <NuxtPicture
