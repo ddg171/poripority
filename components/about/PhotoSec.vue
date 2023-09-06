@@ -11,7 +11,17 @@
           ほげ
         </div>
         <div class="flex flex-col items-center flex-grow w-full md:h-1/2h md:justify-center profile-data md:w-1/2 md:shrink-0">
-          ふが
+          <div class="flex flex-col items-start gap-2">
+            <CommonAppApra>
+              カメラ販売店の店員時代にα6000を購入して以来、カメラでの撮影をそのまま趣味として続けている。
+            </CommonAppApra>
+            <CommonAppApra>
+              主な被写体は風景やスナップ写真。特に鳩を撮ることが多い。
+            </CommonAppApra>
+            <CommonAppApra>
+              最近は値下がりしていたDJI製のドローンを購入したため空撮もできるようになった。
+            </CommonAppApra>
+          </div>
         </div>
       </div>
     </template>
