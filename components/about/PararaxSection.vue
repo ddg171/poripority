@@ -1,9 +1,9 @@
 <template>
   <section ref="section" class="w-full z-20 overflow-x-hidden bg-lightgray">
     <div class=" bg-lightgray py-4 flex  items-center justify-center" :style="`transform:translateX(${translateX}px);`">
-      <div v-for="p,i in photos" :key="i" class="clip-img w-72 h-96 bg-green shrink-0 text-white text-2xl">
+      <div v-for="p,i in photos" :key="i" class="clip-img w-86 h-96 bg-green shrink-0">
         <NuxtPicture
-          :src="p.src"
+          :src="p"
           class="object-cover w-full h-full"
           legacy-format="jpeg"
           :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
@@ -14,27 +14,16 @@
 </template>
 
 <script setup lang="ts">
-import { Photo } from '~~/types/components'
 
-const photos = ref<Photo[]>(
+const photos = ref<string[]>(
   [
-    { isShow: false, src: '/images/webp/about/photo001.webp' },
-    { isShow: false, src: '/images/webp/about/photo002.webp' },
-    { isShow: false, src: '/images/webp/about/photo003.webp' },
-    { isShow: false, src: '/images/webp/about/photo004.webp' },
-    { isShow: false, src: '/images/webp/about/photo005.webp' },
-    { isShow: false, src: '/images/webp/about/photo006.webp' },
-    { isShow: false, src: '/images/webp/about/photo007.webp' },
-    { isShow: false, src: '/images/webp/about/photo008.webp' },
-    { isShow: false, src: '/images/webp/about/photo009.webp' },
-    { isShow: false, src: '/images/webp/about/photo010.webp' },
-    { isShow: false, src: '/images/webp/about/photo011.webp' },
-    { isShow: false, src: '/images/webp/about/photo012.webp' },
-    { isShow: false, src: '/images/webp/about/photo013.webp' },
-    { isShow: false, src: '/images/webp/about/photo014.webp' },
-    { isShow: false, src: '/images/webp/about/photo015.webp' },
-    { isShow: false, src: '/images/webp/about/photo016.webp' }
-
+    '/images/webp/about/hato/hato_001.webp',
+    '/images/webp/about/hato/hato_002.webp',
+    '/images/webp/about/hato/hato_003.webp',
+    '/images/webp/about/hato/hato_004.webp',
+    '/images/webp/about/hato/hato_008.webp',
+    '/images/webp/about/hato/hato_009.webp',
+    '/images/webp/about/hato/hato_010.webp'
   ]
 )
 
@@ -42,7 +31,7 @@ const section = ref<HTMLElement | null>(null)
 
 const translateX = computed<number>(() => {
   if (window === undefined) { return 0 }
-  const translateValue = 400
+  const translateValue = 200
   const clientHeight = window?.innerHeight || 0
   if (sectionPosition.value === 'under') { return 0 }
   if (sectionPosition.value === 'over') { return translateValue }
@@ -79,5 +68,5 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
- .clip-img { margin: 0 -0.75rem; clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); }
+ .clip-img { margin: 0 -1.5rem; clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); }
 </style>
