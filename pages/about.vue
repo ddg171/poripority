@@ -4,18 +4,18 @@
     <div class="sticky top-0 z-40 w-full">
       <ul class="flex items-center justify-center w-full h-8 gap-4 text-black bg-lightgray">
         <li>
-          <NuxtLink v-smooth-scroll to="#profile">
-            Profile
+          <NuxtLink v-smooth-scroll to="#hero">
+            Top
           </NuxtLink>
         </li>
-        <!-- <li>
-          <NuxtLink to="#photography">
-            Photography
-          </NuxtLink>
-        </li> -->
         <li>
           <NuxtLink v-smooth-scroll to="#skill">
             Skill
+          </NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="#photography">
+            Photography
           </NuxtLink>
         </li>
         <li>
