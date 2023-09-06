@@ -1,6 +1,6 @@
 <template>
-  <section class="w-full z-40 overflow-x-hidden bg-lightgray">
-    <div class=" bg-lightgray py-4 flex  items-center justify-center" style="transform:translateX(0px);">
+  <section ref="section" class="w-full z-40 overflow-x-hidden bg-lightgray">
+    <div class=" bg-lightgray py-4 flex  items-center justify-center" :style="`transform:translateX(${translateX}px);`">
       <div v-for="p,i in photos" :key="i" class="clip-img w-72 h-96 bg-green shrink-0 text-white text-2xl">
         <NuxtPicture
           :src="p.src"
@@ -14,10 +14,8 @@
 </template>
 
 <script setup lang="ts">
-interface Photo {
-  isShow:boolean
-  src:string
-}
+import { Photo } from '~~/types/components'
+
 const photos = ref<Photo[]>(
   [
     { isShow: false, src: '/images/webp/about/photo001.webp' },
@@ -39,6 +37,42 @@ const photos = ref<Photo[]>(
 
   ]
 )
+
+const section = ref<HTMLElement | null>(null)
+
+const translateX = computed<number>(() => {
+  const clientHeight = window.innerHeight
+  if (sectionPosition.value === 'under') { return 0 }
+  if (sectionPosition.value === 'over') { return 100 }
+  return sectionTop.value / clientHeight * 100
+})
+
+const sectionTop = ref<number>(0)
+
+const onHandleScroll = () => {
+  if (!section.value) { return }
+  const rect = section.value.getClientRects()
+  if (rect.length === 0) { return }
+  const target = rect[0]
+  sectionTop.value = target.top
+}
+
+const sectionPosition = computed<'under'|'inside'|'over'>(
+  () => {
+    const clientHeight = window.innerHeight
+    if (sectionTop.value > clientHeight) { return 'under' }
+    if (sectionTop.value < 0) { return 'over' }
+    return 'inside'
+  }
+)
+
+onMounted(() => {
+  window.addEventListener('scroll', onHandleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', onHandleScroll)
+})
 </script>
 
 <style scoped>
