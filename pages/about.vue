@@ -4,32 +4,39 @@
     <div class="sticky top-0 z-40 w-full">
       <ul class="flex items-center justify-center w-full h-8 gap-4 text-black bg-lightgray">
         <li>
-          <NuxtLink to="#profile">
+          <a v-smooth-scroll="scrollOption" href="#hero">
+            Top
+          </a>
+        </li>
+        <li>
+          <a v-smooth-scroll href="#profile">
             Profile
-          </NuxtLink>
+          </a>
         </li>
         <li>
-          <NuxtLink to="#skill">
+          <a v-smooth-scroll href="#skill">
             Skill
-          </NuxtLink>
+          </a>
         </li>
         <li>
-          <NuxtLink to="#photography">
+          <a v-smooth-scroll href="#photography">
             Photography
-          </NuxtLink>
+          </a>
         </li>
         <li>
-          <NuxtLink to="#contact">
+          <a v-smooth-scroll href="#contact">
             Contact
-          </NuxtLink>
+          </a>
         </li>
       </ul>
     </div>
     <AboutProfileSec class="bg-darkblue" />
     <AboutSkillSec />
-    <AboutPararaxSection />
+    <ClientOnly>
+      <AboutPararaxSection />
+    </ClientOnly>
     <AboutPhotoSec />
-    <AboutContentSection id="contact" class="z-30 py-20 bg-gray md:py-28">
+    <AboutContentSection id="contact" class="z-30 py-12 bg-gray">
       <template #heading>
         <AppHeading2 class="z-40">
           Contact
@@ -50,7 +57,7 @@
 
 <script setup lang="ts">
 import { setPageMetaData } from '~~/composables/helper/head'
-
+const scrollOption = ref({ updateHistory: false, offset: -64 })
 const config = useRuntimeConfig()
 const title = 'About|' + config.public.siteName
 const description = 'profile, skill, contact'
