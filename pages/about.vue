@@ -4,7 +4,7 @@
     <div class="sticky top-0 z-40 w-full">
       <ul class="flex items-center justify-center w-full h-8 gap-4 text-black bg-lightgray">
         <li>
-          <NuxtLink to="#profile">
+          <NuxtLink v-smooth-scroll to="#profile">
             Profile
           </NuxtLink>
         </li>
@@ -14,12 +14,12 @@
           </NuxtLink>
         </li> -->
         <li>
-          <NuxtLink to="#skill">
+          <NuxtLink v-smooth-scroll to="#skill">
             Skill
           </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="#contact">
+          <NuxtLink v-smooth-scroll to="#contact">
             Contact
           </NuxtLink>
         </li>
@@ -27,13 +27,7 @@
     </div>
     <AboutProfileSec class="bg-darkblue" />
     <AboutSkillSec />
-    <section class="w-full z-40 overflow-x-hidden bg-lightgray">
-      <div class="h-72 bg-lightgray py-4 flex  items-center justify-center" style="transform:translateX(0px);">
-        <div v-for="i in 5" :key="i" class="clip-img w-72 h-64 bg-green shrink-0 text-white text-2xl">
-          {{ i }}
-        </div>
-      </div>
-    </section>
+    <AboutPararaxSection />
     <AboutPhotoSec />
     <AboutContentSection id="contact" class="z-30 py-20 bg-gray md:py-28">
       <template #heading>
@@ -88,5 +82,4 @@ onMounted(() => {
 .hero-leave-to {
   @apply opacity-0;
 }
-.clip-img { margin: 0 -0.75rem; clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%); }
 </style>
