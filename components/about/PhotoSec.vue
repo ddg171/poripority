@@ -36,7 +36,7 @@
             :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
           />
         </div>
-        <div class="flex flex-row items-center w-full  justify-center lg:justify-start  md:w-1/2 md:grow-0">
+        <div class="flex flex-row items-center w-full  justify-center lg:justify-start  md:w-1/2 md:grow-0 px-2">
           <div class=" h-full flex flex-col items-start gap-2">
             <CommonAppApra>
               カメラ販売店の店員時代にα6000を購入して以来、カメラでの撮影をそのまま趣味として続けている。
