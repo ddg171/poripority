@@ -12,8 +12,8 @@
           </p>
         </div>
         <ArticleList :articles="latest" class="grid-cols-1 lg:grid-cols-2">
-          <div v-if="latest.length !== 3" />
-          <div class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
+          <li v-if="latest.length !== 3" />
+          <li class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
             <div
               class="flex items-center justify-center w-full py-3 my-0 text-3xl font-medium readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline"
             >
@@ -21,7 +21,7 @@
                 記事一覧へ
               </CommonAppLink>
             </div>
-          </div>
+          </li>
         </ArticleList>
       </ContentSection>
       <ContentSection>

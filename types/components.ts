@@ -10,6 +10,10 @@ export interface PictureBoxProp {
     title: string
     fromCMS?:boolean
 }
+export interface Photo {
+  isShow:boolean
+  src:string
+}
 
 export interface SliderContent {
     pic: PictureBoxProp,

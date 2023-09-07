@@ -1,5 +1,5 @@
 <template>
-  <AboutContentSection id="skill" :threshold="0.25" class="z-20 py-20 bg-green md:py-28" @in="isShown=true">
+  <AboutContentSection id="skill" :threshold="0.25" class="z-20 py-16 bg-green " @in="isShown=true">
     <template #heading>
       <AppHeading2 class="z-40">
         Skill

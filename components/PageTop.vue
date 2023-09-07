@@ -2,7 +2,7 @@
   <TopConteinerBlock class="w-full h-full">
     <div :data-show="isShow" class="relative h-full transition-all duration-500 opacity-0 title-content-box page-title">
       <TopImgBlock :img="props.topImg" />
-      <div v-if="props.title" class="absolute flex items-center justify-center w-full h-full title-box backdrop-blur-sm hover:backdrop-blur-none transition-all duration-500">
+      <div v-if="props.title" class="absolute flex items-center justify-center w-full h-full title-box transition-all duration-500">
         <CommonContentWidthBox class="flex items-end justify-start">
           <div class="flex flex-col w-full py-2 px-4 md:px-16 md:py-6 bg-green/75 md:w-auto mb-16 lg:mb-1/6h">
             <AppHeading1>
