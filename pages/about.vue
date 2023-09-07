@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center w-full page-about">
     <AboutHeroSec ref="hero" />
-    <div class="sticky top-0 z-40 w-full">
+    <div class="sticky top-0 z-50 w-full">
       <ul class="flex items-center justify-center w-full h-8 gap-4 text-black bg-lightgray">
         <li>
           <a v-smooth-scroll="scrollOption" href="#hero">
@@ -36,27 +36,26 @@
       <AboutPararaxSection />
     </ClientOnly>
     <AboutPhotoSec />
-    <section id="contact" class="w-full overflow-x-hidden z-30 bg-gray" >
-    <div class="clip w-full" :is-show="contactShow">
-    
-      <NuxtPicture
-        src="/images/webp/about/contact.webp"
-        class="object-cover w-full h-1/3h md:h-1/2h block"
-        legacy-format="jpeg"
-        :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
-      />
-      </div>
-      <IntersectionWrapper :threshold="0.8" trantision="none" class="w-full " @in="contactShow=true">
-        <div class="flex flex-col items-center w-full pt-6">
-          <CommonContentWidthBox class="flex flex-col px-2 ">
-            <div class="z-40 w-full mb-2 md:mb-8 ">
-              <AppHeading2 class="z-40">
-                Contact
-              </AppHeading2>
-            </div>
-          </CommonContentWidthBox>
+    <section id="contact" class="w-full overflow-x-hidden z-30 bg-gray">
+      <IntersectionWrapper :threshold="0.7" trantision="none" class="h-72 lg:h-64 w-full bg-green" @in="contactHeadingShow=true">
+        <TopRelativeBox class="block h-72 lg:h-64 ">
+          <TopImgBlock :img="{webp:'/images/webp/about/contact.webp',title:'',alt:''}" />
+          <div class="absolute flex items-center justify-center w-full h-full ">
+            <CommonContentWidthBox class="flex items-center justify-start">
+              <div class="flex flex-col  px-4 py-2 md:px-16 md:py-6 bg-green ">
+                <AppHeading2>
+                  Contact
+                </AppHeading2>
+              </div>
+            </CommonContentWidthBox>
+          </div>
+          <div class="absolute w-full h-full cliped-animation  bg-green" :trigger="contactHeadingShow" />
+        </TopRelativeBox>
+      </IntersectionWrapper>
+      <IntersectionWrapper :threshold="0.5" trantision="none" class="w-full " @in="contactShow=true">
+        <div class="flex flex-col items-center w-full my-16">
           <CommonContentWidthBox id="contact-info" class="flex flex-col px-2 " :is-show="contactShow">
-            <div class="z-30 flex flex-col items-center justify-center w-full mb-4">
+            <div class="z-30 flex flex-col items-center justify-center w-full">
               <div class="flex flex-col items-center justify-center w-full mb-4 text-2xl text-white">
                 If you have any questions, please contact me.
               </div>
@@ -78,7 +77,7 @@ const scrollOption = ref({ updateHistory: false, offset: -64 })
 const config = useRuntimeConfig()
 const title = 'About|' + config.public.siteName
 const description = 'profile, skill, contact'
-
+const contactHeadingShow = ref(false)
 const contactShow = ref(false)
 setPageMetaData(
   title,
@@ -116,12 +115,20 @@ onMounted(() => {
 #contact-info{
   @apply opacity-100 transition-opacity duration-200 delay-500;
 }
-.clip[is-show="false"]{
- clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 00% 0%);
+.cliped-animation[trigger="false"]{
+  clip-path: polygon(0% 0%, 100% 0%,100% 100%, 0% 100%);
 }
-.clip{
- clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 00% 100%);
- transition: all;
+.cliped-animation[trigger="true"]{
+  animation: 0.5s ease-out 0.25s 1 normal forwards wipe-in;
+}
 
+@keyframes wipe-in {
+  0% {
+    clip-path: polygon(0% 0%, 100% 0%,100% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(100% 0%, 100% 0%,100% 100%, 100% 100%);
+  }
 }
+
 </style>
