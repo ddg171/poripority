@@ -36,10 +36,7 @@
 </template>
 
 <script setup lang="ts">
-interface Photo {
-  isShow:boolean
-  src:string
-}
+import { Photo } from '~~/types/components'
 const photos = ref<Photo[]>(
   [
     { isShow: false, src: '/images/webp/about/photo001.webp' },
