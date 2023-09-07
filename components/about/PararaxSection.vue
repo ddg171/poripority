@@ -19,13 +19,13 @@
 
 const photos = ref<string[]>(
   [
-    '/images/webp/about/hato/hato_001.webp',
-    '/images/webp/about/hato/hato_002.webp',
-    '/images/webp/about/hato/hato_003.webp',
-    '/images/webp/about/hato/hato_004.webp',
-    '/images/webp/about/hato/hato_008.webp',
-    '/images/webp/about/hato/hato_009.webp',
-    '/images/webp/about/hato/hato_010.webp'
+    '/images/webp/about/hato_001.webp',
+    '/images/webp/about/hato_002.webp',
+    '/images/webp/about/hato_003.webp',
+    '/images/webp/about/hato_004.webp',
+    '/images/webp/about/hato_008.webp',
+    '/images/webp/about/hato_009.webp',
+    '/images/webp/about/hato_010.webp'
   ]
 )
 
