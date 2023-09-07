@@ -28,34 +28,38 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="h-16 text-xl">
-                  <td class="font-bold">
+                <tr class="h-16  text-xl">
+                  <td class="w-40 font-bold">
                     name
                   </td>
-                  <td class="w-30">
-                    <EffectShuffleSpan text="yamamoto tomohiro" :trriger="isShown" />
+                  <td class="text-left">
+                    <EffectShuffleSpan text="Yamamoto Tomohiro" :trriger="isShown" />
                   </td>
                 </tr>
                 <tr class="h-16 text-xl">
-                  <td class="font-bold">
+                  <td class="w-40 font-bold">
                     Year of birth
                   </td>
-                  <td>
+                  <td class=" text-left">
                     <EffectShuffleSpan text="1991" :trriger="isShown" :delay="500" />
                   </td>
                 </tr>
                 <tr class="h-16 text-xl">
-                  <td class="font-bold">
+                  <td class="w-40 font-bold">
                     Place of birth
                   </td>
-                  <td><EffectShuffleSpan text="Hiroshima,Japan" :trriger="isShown" :delay="750" /></td>
+                  <td class="text-left">
+                    <EffectShuffleSpan text="Hiroshima,Japan" :trriger="isShown" :delay="750" />
+                  </td>
                 </tr>
 
                 <tr class="h-16 text-xl">
-                  <td class="font-bold">
+                  <td class="w-40 font-bold">
                     Hobby
                   </td>
-                  <td><EffectShuffleSpan text="Photography ,PC game,etc..." :trriger="isShown" :delay="1000" /></td>
+                  <td class="text-left">
+                    <EffectShuffleSpan text="Photography ,PC game,etc..." :trriger="isShown" :delay="1000" />
+                  </td>
                 </tr>
               </tbody>
             </table>
