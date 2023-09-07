@@ -36,20 +36,23 @@
       <AboutPararaxSection />
     </ClientOnly>
     <AboutPhotoSec />
-    <AboutContentSection id="contact" class="z-30 py-12 bg-gray">
+    <AboutContentSection id="contact" class="z-30 py-20 min-h-3/4h bg-gray">
       <template #heading>
         <AppHeading2 class="z-40">
           Contact
         </AppHeading2>
       </template>
       <template #default>
-        <div class="z-30 flex flex-col items-center justify-center w-full mb-4 text-2xl text-white">
+      <div class="z-30 flex flex-col items-center justify-center w-full h-full mt-16">
+        <div class="flex flex-col items-center justify-center w-full mb-4 text-2xl text-white">
           If you have any questions, please contact me.
         </div>
 
         <div class="flex flex-col items-center justify-center gap-4 text-2xl text-white">
           <ContactBox />
         </div>
+              </div>
+
       </template>
     </AboutContentSection>
   </div>

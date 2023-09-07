@@ -31,7 +31,7 @@ const section = ref<HTMLElement | null>(null)
 
 const translateX = computed<number>(() => {
   if (window === undefined) { return 0 }
-  const translateValue = 200
+  const translateValue = -200
   const clientHeight = window?.innerHeight || 0
   if (sectionPosition.value === 'under') { return 0 }
   if (sectionPosition.value === 'over') { return translateValue }
