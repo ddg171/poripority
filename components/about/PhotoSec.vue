@@ -10,7 +10,7 @@
         <div class="relative pb-2  w-96 h-96 profile-pic bg-darkblue  overflow-hidden">
           <NuxtPicture
             :src="photo1"
-            class="absolute z-40  top-0 left-12 w-80 h-80 bg-green/50 hover:top-0 hover:left-0 hover:z-50  hover:w-96 hover:h-96 transition-all drop-shadow-lg"
+            class="absolute z-20  top-0 left-6 w-72 h-72 bg-green/50 hover:top-0 hover:left-0 hover:z-50  hover:w-96 hover:h-96 transition-all drop-shadow-lg"
             legacy-format="jpeg"
             height="320"
             width="320"
@@ -18,7 +18,7 @@
           />
           <NuxtPicture
             :src="photo2"
-            class="absolute z-20 bottom-0  left-0 w-64 h-64 hover:z-50 hover:w-96 hover:h-96 transition-all drop-shadow-lg"
+            class="absolute z-10 bottom-0  left-0 w-32 h-32 hover:z-50 hover:w-96 hover:h-96 transition-all drop-shadow-lg"
             legacy-format="jpeg"
             height="320"
             width="320"
@@ -27,7 +27,7 @@
           />
           <NuxtPicture
             :src="photo3"
-            class="absolute z-10 bottom-4  right-0 w-48 h-48 hover:bottom-0 hover:z-50  hover:w-96 hover:h-96 transition-all drop-shadow-lg"
+            class="absolute z-30 bottom-4  right-2 w-40 h-40 hover:bottom-0 hover:z-50  hover:w-96 hover:h-96 transition-all drop-shadow-lg"
 
             legacy-format="jpeg"
             height="320"
@@ -62,8 +62,8 @@
 <script setup lang="ts">
 const isShown = ref<boolean>(false)
 
-const photo1 = ref<string>('/images/webp/about/hato/hato_001.webp')
-const photo2 = ref<string>('/images/webp/about/hato/hato_002.webp')
-const photo3 = ref<string>('/images/webp/about/hato/hato_003.webp')
+const photo1 = ref<string>('/images/webp/about/photo/photo_001.webp')
+const photo2 = ref<string>('/images/webp/about/photo/photo_002.webp')
+const photo3 = ref<string>('/images/webp/about/photo/photo_003.webp')
 
 </script>
