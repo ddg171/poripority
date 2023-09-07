@@ -12,10 +12,10 @@
         :next="i===next"
         :prev="i===prev"
       >
-        <TopRelativeBox class="top-slider-content bg-green/75">
+        <TopRelativeBox class="top-slider-content">
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
           <TopTextBox>
-            <div class="flex flex-col w-full px-4 py-2 md:px-16 md:py-6  md:w-auto mb-1/5h md:mb-1/6h">
+            <div class="flex flex-col w-full px-4 py-2 md:px-16 md:py-6  bg-green/75 md:w-auto mb-1/5h md:mb-1/6h">
               <AppHeading2 :data-is-tight="!!c.text.isTight">
                 <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                   {{ c.text.title }}
