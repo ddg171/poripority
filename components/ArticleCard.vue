@@ -7,24 +7,20 @@
           class="w-full"
           provider="imgix"
           :src="props.article.eyecatch?.url||``"
+          format="webp"
           legacy-format="jpeg"
           fit="crop"
           height="800"
           width="800"
           :img-attrs="{ class:'w-full bg-lightgreen/25', alt:`${props.article.title}のサムネイル画像`,height:500,width:500, decoding: 'async',loading: 'lazy'}"
-          :modifiers="{fm:'webp', q:40}"
+          :modifiers="{q: 50}"
         />
       </CommonAppLink>
     </div>
     <div class="flex flex-col justify-between py-1 m-0 md:h-36 md:px-2 grow">
       <div class="w-full ">
         <div class="mb-0 text-xl font-semibold">
-          <h2 v-if="props.heading===2">
-            <CommonAppLink :to="to">
-              {{ props.article.title }}
-            </CommonAppLink>
-          </h2>
-          <h3 v-else>
+          <h3>
             <CommonAppLink :to="to">
               {{ props.article.title }}
             </CommonAppLink>
@@ -42,7 +38,6 @@
 
 <script setup lang="ts">
 import { Article } from '~~/types/articles'
-
 interface Props{
     article:Article
     category?:string

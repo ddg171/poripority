@@ -36,7 +36,7 @@
 import { setPageMetaData } from '~~/composables/helper/head'
 import { Article, Heading, ImageList } from '~~/types/articles'
 import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
-import { cropSquare, resizeWithTargetWidth } from '~~/utils/imageAPIHelper'
+import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
   layout: 'preview'
@@ -44,12 +44,11 @@ definePageMeta({
 // カテゴリの取得
 
 const route = useRoute()
-const isLoading = useLoadingStore()
 const pageTitle = ref<PageTitleProp>({
   title: '記事',
   subtitles: [],
   topImg: {
-    webp: '/images/webp/blanktitle01w2000.webp',
+    src: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: ''
 
@@ -73,9 +72,7 @@ setPageMetaData(headTitle.value, description, 'all', 'article', image)
 const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
 const topImg:PictureBoxProp|null = eyecatch
   ? {
-      webp: eyecatch.url,
-      source: [`${resizeWithTargetWidth(eyecatch, 640).url} 640w`, `${resizeWithTargetWidth(eyecatch, 1270).url} 1024w`],
-      jpg: resizeWithTargetWidth(eyecatch, 640, false).url,
+      src: eyecatch.url,
       alt: '',
       title: '',
       fromCMS: true
@@ -89,6 +86,7 @@ onMounted(() => {
   }
   pageTitle.value = t
 })
+
 const setImgList = (l:ImageList) => {
   imgList.value = l
 }
@@ -103,9 +101,5 @@ const headingListHandler = (h:Heading[]) => {
 }
 
 const headings = ref<Heading[]>([])
-
-onMounted(() => {
-  isLoading.set(false)
-})
 
 </script>

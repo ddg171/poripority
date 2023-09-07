@@ -70,6 +70,9 @@ onBeforeUnmount(() => {
 .cms-content img{
   @apply  object-scale-down hover:cursor-pointer;
   }
+.cms-content iframe{
+  max-width:100%;
+}
 
 .cms-content ul{
   @apply md:ml-4 ml-0 my-4;
