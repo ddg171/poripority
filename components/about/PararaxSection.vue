@@ -5,6 +5,8 @@
         <NuxtPicture
           :src="p"
           class="object-cover w-full h-full"
+          height="384px"
+          width="384px"
           legacy-format="jpeg"
           :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
         />

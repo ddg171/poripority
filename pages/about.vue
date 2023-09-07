@@ -36,14 +36,17 @@
       <AboutPararaxSection />
     </ClientOnly>
     <AboutPhotoSec />
-    <section id="contact" class="w-full overflow-x-hidden z-30 bg-gray">
+    <section id="contact" class="w-full overflow-x-hidden z-30 bg-gray" >
+    <div class="clip w-full" :is-show="contactShow">
+    
       <NuxtPicture
         src="/images/webp/about/contact.webp"
-        class="object-cover w-full h-96 lg:h-48"
+        class="object-cover w-full h-1/3h md:h-1/2h block"
         legacy-format="jpeg"
         :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
       />
-      <IntersectionWrapper :threshold="0.99" trantision="none" class="w-full " @in="contactShow=true">
+      </div>
+      <IntersectionWrapper :threshold="0.8" trantision="none" class="w-full " @in="contactShow=true">
         <div class="flex flex-col items-center w-full pt-6">
           <CommonContentWidthBox class="flex flex-col px-2 ">
             <div class="z-40 w-full mb-2 md:mb-8 ">
@@ -112,5 +115,13 @@ onMounted(() => {
 
 #contact-info{
   @apply opacity-100 transition-opacity duration-200 delay-500;
+}
+.clip[is-show="false"]{
+ clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 00% 0%);
+}
+.clip{
+ clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 00% 100%);
+ transition: all;
+
 }
 </style>
