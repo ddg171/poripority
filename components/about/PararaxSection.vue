@@ -1,7 +1,7 @@
 <template>
   <section ref="section" class="w-full z-20 overflow-x-hidden bg-lightgray">
     <div class=" bg-lightgray py-4 flex  items-center justify-center" :style="`transform:translateX(${translateX}px);`">
-      <div v-for="p,i in photos" :key="i" class="clip-img w-86 h-96 bg-green shrink-0">
+      <div v-for="p,i in photos" :key="i" class="clip-img  h-48 w-48 md:w-96 md:h-96 bg-green shrink-0">
         <NuxtPicture
           :src="p"
           class="object-cover w-full h-full"
@@ -31,7 +31,7 @@ const section = ref<HTMLElement | null>(null)
 
 const translateX = computed<number>(() => {
   if (window === undefined) { return 0 }
-  const translateValue = -200
+  const translateValue = -150
   const clientHeight = window?.innerHeight || 0
   if (sectionPosition.value === 'under') { return 0 }
   if (sectionPosition.value === 'over') { return translateValue }
