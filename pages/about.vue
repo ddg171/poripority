@@ -36,8 +36,8 @@
       <AboutPararaxSection />
     </ClientOnly>
     <AboutPhotoSec />
-    <section id="contact" class="w-full overflow-x-hidden z-30 bg-gray">
-      <IntersectionWrapper :threshold="0.7" trantision="none" class="h-72 lg:h-64 w-full bg-green" @in="contactHeadingShow=true">
+    <section id="contact" class="w-full overflow-x-hidden  bg-gray">
+      <IntersectionWrapper :threshold="0.7" trantision="none" class="h-72 lg:h-64 w-full " @in="contactHeadingShow=true">
         <TopRelativeBox class="block h-72 lg:h-64 ">
           <TopImgBlock :img="{webp:'/images/webp/about/contact.webp',title:'',alt:''}" />
           <div class="absolute flex items-center justify-center w-full h-full ">
