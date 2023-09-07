@@ -62,8 +62,8 @@
 <script setup lang="ts">
 const isShown = ref<boolean>(false)
 
-const photo1 = ref<string>('/images/webp/about/photo/photo_001.webp')
-const photo2 = ref<string>('/images/webp/about/photo/photo_002.webp')
-const photo3 = ref<string>('/images/webp/about/photo/photo_003.webp')
+const photo1 = ref<string>('/images/webp/about/photo101.webp')
+const photo2 = ref<string>('/images/webp/about/photo102.webp')
+const photo3 = ref<string>('/images/webp/about/photo103.webp')
 
 </script>

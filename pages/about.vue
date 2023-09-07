@@ -39,7 +39,7 @@
     <section id="contact" class="w-full overflow-x-hidden  bg-gray">
       <IntersectionWrapper :threshold="0.7" trantision="none" class="h-72 lg:h-64 w-full " @in="contactHeadingShow=true">
         <TopRelativeBox class="block h-72 lg:h-64 ">
-          <TopImgBlock :img="{webp:'/images/webp/about/contact.webp',title:'',alt:''}" />
+          <TopImgBlock :img="{src:'/images/webp/about/contactBg.webp',title:'',alt:''}" />
           <div class="absolute flex items-center justify-center w-full h-full ">
             <CommonContentWidthBox class="flex items-center justify-start">
               <div class="flex flex-col  px-4 py-2 md:px-16 md:py-6 bg-green ">
