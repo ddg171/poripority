@@ -5,8 +5,8 @@ export default defineEventHandler(async ():Promise<Api.IndexResponsePayload<Cate
   const res = await client
     .get({
       endpoint: 'categories',
-      query: {
-        limit:100
+      queries: {
+        limit: 100
       }
     })
   return res
