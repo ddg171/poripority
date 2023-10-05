@@ -4,6 +4,8 @@ import { Api, Article } from '~~/types/articles'
 
 export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<Article>> => {
   const params = getQuery(event)
+  setHeader(event, 'Cache-Control', 'public, max-age=600, s-maxage=600')
+
   const queries:Api.BlogQuery = {
     orders: '-publishedAt',
     fields: 'id,title,subtitle,eyecatch,updatedAt,createdAt,publishedAt,category'
