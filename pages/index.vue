@@ -200,9 +200,10 @@ const sliderContents = ref<Array<SliderContent>>(
 const games = ref<LinkParams[]>(
   [
     { name: 'Wargame: Red Dragon', path: 'https://store.steampowered.com/app/251060/Wargame_Red_Dragon', isExternal: true },
+    { name: 'WARNO', path: 'https://store.steampowered.com/app/1611600/WARNO', isExternal: true },
     { name: 'Escape from Tarkov', path: 'https://www.escapefromtarkov.com/', isExternal: true },
     { name: 'MechWarrior Online™', path: 'https://mwomercs.com/', isExternal: true },
-    { name: 'Ready or Not', path: 'https://store.steampowered.com/agecheck/app/1144200/?l=japanese', isExternal: true },
+    { name: 'Ready or Not', path: 'https://store.steampowered.com/agecheck/app/1144200/', isExternal: true },
     { name: 'Project Zomboid', path: 'https://projectzomboid.com', isExternal: true }
   ]
 )

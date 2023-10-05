@@ -11,6 +11,16 @@
           :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
         />
       </div>
+      <div v-for="p,i in photos" :key="i" class="clip-img  h-48 w-48 md:w-96 md:h-96 bg-green shrink-0">
+        <NuxtPicture
+          :src="p"
+          class="object-cover w-full h-full"
+          height="384px"
+          width="384px"
+          legacy-format="jpeg"
+          :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
+        />
+      </div>
     </div>
   </section>
 </template>

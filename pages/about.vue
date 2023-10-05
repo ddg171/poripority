@@ -37,8 +37,8 @@
     </ClientOnly>
     <AboutPhotoSec />
     <section id="contact" class="w-full overflow-x-hidden  bg-gray">
-      <IntersectionWrapper :threshold="0.7" trantision="none" class="h-72 lg:h-64 w-full " @in="contactHeadingShow=true">
-        <TopRelativeBox class="block h-72 lg:h-64 ">
+      <IntersectionWrapper :threshold="0.7" trantision="none" class=" h-64 lg:h-1/2h  w-full " @in="contactHeadingShow=true">
+        <TopRelativeBox class="block lg:h-1/2h  h-64 ">
           <TopImgBlock :img="{src:'/images/webp/about/contactBg.webp',title:'',alt:''}" />
           <div class="absolute flex items-center justify-center w-full h-full ">
             <CommonContentWidthBox class="flex items-center justify-start">
@@ -53,7 +53,7 @@
         </TopRelativeBox>
       </IntersectionWrapper>
       <IntersectionWrapper :threshold="0.5" trantision="none" class="w-full " @in="contactShow=true">
-        <div class="flex flex-col items-center w-full my-16">
+        <div class="flex flex-col items-center w-full mt-24 mb-12">
           <CommonContentWidthBox id="contact-info" class="flex flex-col px-2 " :is-show="contactShow">
             <div class="z-30 flex flex-col items-center justify-center w-full">
               <div class="flex flex-col items-center justify-center w-full mb-4 text-2xl text-white">

@@ -5,6 +5,7 @@ import { Api, ArticleRef } from '~~/types/articles'
 
 export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<ArticleRef>> => {
   const params = getQuery(event)
+  setHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')
   const publishedAt = params.publishedAt
   const category = params.category
   const limit = 1
