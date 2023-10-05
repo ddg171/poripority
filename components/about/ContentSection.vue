@@ -1,5 +1,5 @@
 <template>
-  <section class="w-full overflow-x-hidden ">
+  <section class="w-full overflow-hidden ">
     <IntersectionWrapper :threshold="props.threshold" trantision="vertical" class="w-full h-full " @in="$emit('in')">
       <div class="flex flex-col items-center w-full">
         <CommonContentWidthBox class="flex flex-col px-2 ">
