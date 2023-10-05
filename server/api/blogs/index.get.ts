@@ -10,7 +10,7 @@ export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload
   }
   const limit = Number(params.limit)
   if (!isNaN(limit)) {
-    queries.limit = limit
+    queries.limit = limit < 100 ? limit : 100
   }
   const offset = Number(params.offset)
   if (!isNaN(offset)) {
