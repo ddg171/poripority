@@ -9,7 +9,8 @@ export function makeDynamicMeta (title:string, description:string, robots:Robots
       { name: 'robots', content: robots },
       { property: 'og:site_name', content: title },
       { name: 'description', content: description },
-      { property: 'og:type', content: type }
+      { property: 'og:type', content: type },
+      { name: 'twitter:card', content: 'summary' }
     ]
   }
   if (image) {
