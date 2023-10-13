@@ -72,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-// import { setPageMetaData } from '~~/composables/helper/head'
+import { makeSeoMetaInput } from '~~/utils/useHead'
 const scrollOption = ref({ updateHistory: false, offset: -64 })
 const config = useRuntimeConfig()
 const title = 'About|' + config.public.siteName
@@ -80,10 +80,9 @@ const description = 'profile, skill, contact'
 const contactHeadingShow = ref(false)
 const contactShow = ref(false)
 
-useSeoMeta({
-  title,
-  description
-})
+const seoMeta = makeSeoMetaInput(title, description)
+
+useSeoMeta(seoMeta)
 
 // setPageMetaData(
 //   title,
