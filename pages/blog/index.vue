@@ -14,6 +14,11 @@
         <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
       </teleport>
     </ClientOnly>
+    <ClientOnly>
+      <teleport to="#category">
+        <CategoryList :categories="categories?.contents||[]" :selected="category" />
+      </teleport>
+    </ClientOnly>
   </Contentsection>
 </template>
 
@@ -86,19 +91,18 @@ const pageTitle = computed<PageTitleProp>(() => {
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return (category.value ? `${category.value}の記事一覧` : '記事一覧') + '|' + config.public.siteName
+  return (category.value ? `${categoryName.value}の記事一覧` : '記事一覧') + '|' + config.public.siteName
 })
 const description = computed<string>(() => {
-  return totalCount.value === 0 ? '全0件中0件を表示' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件目を表示`
+  return (`${categoryName.value ? categoryName.value + 'に関する' : '全'}記事一覧/`) + (totalCount.value === 0 ? '全0件中0件を表示' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件目を表示`)
 })
-
 useSeoMeta({
   title: () => `${title.value}`,
   ogTitle: () => `${title.value}`,
-  description: () => `${categoryName.value ? categoryName.value + 'に関する' : 'Blogの'}記事一覧/${description.value}`,
-  ogDescription: () => `${categoryName.value ? categoryName.value + 'に関する' : 'Blogの'}記事一覧/${description.value}`,
+  description: () => `${description.value}`,
+  ogDescription: () => `${description.value}`,
   robots: 'all',
-  ogType: 'website',
+  ogType: 'article',
   ogSiteName: config.public.siteName,
   twitterCard: 'summary_large_image'
 })
