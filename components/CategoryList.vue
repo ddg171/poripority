@@ -11,12 +11,15 @@
 </template>
 
 <script setup lang="ts">
+import { Category } from '~/types/articles'
 import { LinkParams } from '~~/types/components'
 
-const { state } = useCategoryStore()
+const props = withDefaults(defineProps<{categories?: Category[]}>(), {
+  categories: () => []
+})
 
 const categories = computed<LinkParams[]>(() => {
-  return state.value.map((c) => {
+  return props.categories.map((c) => {
     return {
       name: c.name,
       path: `/blog?category=${c.id}`
