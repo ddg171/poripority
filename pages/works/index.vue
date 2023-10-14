@@ -146,7 +146,7 @@
 
 <script setup lang="ts">
 import { PictureBoxProp, LinkParams } from '~~/types/components'
-import { setPageMetaData } from '~~/composables/helper/head'
+import { makeSeoMetaInput } from '~~/utils/useHead'
 
 const title = ref<string>('制作物')
 const topImg = ref<PictureBoxProp>({
@@ -185,5 +185,7 @@ const config = useRuntimeConfig()
 const headTitle = title.value + '|' + config.public.siteName
 const description = subtitles.value[0] || ''
 
-setPageMetaData(headTitle, description, 'all', 'website')
+useSeoMeta(makeSeoMetaInput(headTitle, description, 'all', 'website')
+)
+
 </script>

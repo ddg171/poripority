@@ -7,10 +7,14 @@
     legacy-format="jpeg"
     :img-attrs="imgAttr"
     :modifiers="modifiers"
+    :loaded="isLoaded"
+    @load="isLoaded = true"
   />
 </template>
 
 <script setup lang="ts">
+
+const isLoaded = ref(false)
 
 interface Props {
     src:string, alt?:string, title?:string, fromCms?:boolean}
@@ -42,3 +46,13 @@ const modifiers = computed(() => {
     : {}
 })
 </script>
+<style scoped lang="scss">
+.picture-box{
+  opacity: 0;
+}
+
+.picture-box[loaded="true"]{
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+</style>
