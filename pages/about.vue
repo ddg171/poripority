@@ -83,11 +83,6 @@ const contactShow = ref(false)
 const seoMeta = makeSeoMetaInput(title, description)
 
 useSeoMeta(seoMeta)
-
-// setPageMetaData(
-//   title,
-//   description
-// )
 const hero = ref<any>(null)
 
 onMounted(() => {
