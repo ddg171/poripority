@@ -1,4 +1,5 @@
 export interface LinkParams {
+    id?:string
     name:string
     path:string
     disabled?:boolean
