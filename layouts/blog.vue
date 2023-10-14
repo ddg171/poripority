@@ -16,11 +16,8 @@
         </main>
         <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-4 shrink-0">
           <aside class="flex flex-col-reverse w-full mb-2">
-            <AsideContentsBox class="mb-2">
+            <AsideContentsBox id="category" class="mb-2">
               <AppHeading3>カテゴリ</AppHeading3>
-              <ClientOnly>
-                <CategoryList />
-              </ClientOnly>
             </AsideContentsBox>
             <div id="side-contents" class="grid" />
           </aside>

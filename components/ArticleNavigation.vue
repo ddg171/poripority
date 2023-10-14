@@ -17,7 +17,7 @@ import { LinkParams } from '~~/types/components'
 
 interface Props {
   publishedAt:string|null,
-  category:string|null
+  category?:string|null
 }
 
 type Params ={

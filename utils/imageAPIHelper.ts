@@ -15,8 +15,8 @@ export function resizeWithTargetWidth (eyecatch:Eyecatch, targetWidth:number, we
   }
 }
 
-export function cropSquare (eyecatch:Eyecatch, webp:boolean = true, size = 400):Eyecatch {
-  if (!eyecatch) { return eyecatch }
+export function cropSquare (eyecatch?:Eyecatch, webp:boolean = true, size = 400):Eyecatch|null {
+  if (!eyecatch) { return null }
   const url = removeURLParams(eyecatch.url) + `?fit=crop&h=${size}&w=${size}&q=70` + (webp ? '&fm=webp' : '')
   return {
     url,
