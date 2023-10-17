@@ -1,15 +1,17 @@
 <template>
   <ul class="text-lg min-h-240p">
-    <CommonLinkListElem class="category-li" :selected="!selected">
-      <CommonAppLink to="/blog">
-        全て
-      </CommonAppLink>
-    </CommonLinkListElem>
-    <CommonLinkListElem v-for="c in categories" :key="c.id" class="category-li" :selected="props.selected===c.id">
-      <CommonAppLink :to="c.path">
-        {{ c.name }}
-      </CommonAppLink>
-    </CommonLinkListElem>
+    <ClientOnly>
+      <CommonLinkListElem class="category-li" :selected="!selected">
+        <CommonAppLink to="/blog">
+          全て
+        </CommonAppLink>
+      </CommonLinkListElem>
+      <CommonLinkListElem v-for="c in categories" :key="c.id" class="category-li" :selected="props.selected===c.id">
+        <CommonAppLink :to="c.path">
+          {{ c.name }}
+        </CommonAppLink>
+      </CommonLinkListElem>
+    </ClientOnly>
   </ul>
 </template>
 

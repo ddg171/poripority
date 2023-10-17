@@ -1,4 +1,3 @@
-import { Ref } from 'nuxt/dist/app/compat/capi'
 import { useState } from '#app'
 import { Category } from '~~/types/articles'
 
