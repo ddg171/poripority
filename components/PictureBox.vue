@@ -45,6 +45,12 @@ const modifiers = computed(() => {
       }
     : {}
 })
+// loadイベントが発火しないことがあるため、強制的にロード完了にする
+onMounted(() => {
+  setTimeout(() => {
+    isLoaded.value = true
+  }, 3000)
+})
 </script>
 <style scoped lang="scss">
 .picture-box{
