@@ -17,7 +17,7 @@
 import { Category } from '~/types/articles'
 import { LinkParams } from '~~/types/components'
 interface Props{
-  categories?: Category[], selected?:string
+  categories?: Category[], selected?:string|null
 }
 
 const props = withDefaults(defineProps<Props>(), {

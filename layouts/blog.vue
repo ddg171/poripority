@@ -18,6 +18,7 @@
           <aside class="flex flex-col-reverse w-full mb-2">
             <AsideContentsBox id="category" class="mb-2">
               <AppHeading3>カテゴリ</AppHeading3>
+              <CategoryList :categories="categories||[]" :selected="selected" />
             </AsideContentsBox>
             <div id="side-contents" class="grid" />
           </aside>
@@ -34,6 +35,8 @@
 const isBottomBtnShow = ref<boolean>(false)
 const { state: rootRect } = useRootRectStore()
 const { state } = useLoadingStore()
+
+const { state: categories, selected } = useCategoryStore()
 
 watch(rootRect, (b) => {
   const top = b.top

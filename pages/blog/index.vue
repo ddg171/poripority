@@ -14,11 +14,6 @@
         <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
       </teleport>
     </ClientOnly>
-    <ClientOnly>
-      <teleport to="#category">
-        <CategoryList :categories="categories?.contents||[]" :selected="category" />
-      </teleport>
-    </ClientOnly>
   </Contentsection>
 </template>
 
@@ -66,7 +61,10 @@ const pending = computed<boolean>(() => {
 })
 
 // カテゴリ一覧の取得
+const categoryStore = useCategoryStore()
 const { data: categories } = await useFetch('/api/category')
+categoryStore.set(categories?.value?.contents || [])
+categoryStore.select(category.value || null)
 
 // カテゴリ名
 const categoryName = computed<string>(() => {
@@ -118,6 +116,7 @@ const leftNav = computed<LinkParams|null>(() => {
 
 watch(() => route.query.category, async () => {
   await articleAPI?.refresh()
+  categoryStore.select(category.value || null)
   window.scroll(0, 0)
 })
 watch(() => route.query.offset, async () => {
