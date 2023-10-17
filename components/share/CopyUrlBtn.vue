@@ -32,7 +32,7 @@ const url = computed<string>(() => {
 const disabled = ref<boolean>(true)
 
 onMounted(() => {
-  disabled.value = typeof navigator.clipboard.writeText !== 'function'
+  disabled.value = typeof navigator.clipboard?.writeText !== 'function'
 })
 
 const copy = () => {
