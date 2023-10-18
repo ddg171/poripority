@@ -31,4 +31,6 @@ const get = (state:Ref<Category[]>) => (id:string):Category|null => {
   return obj[id] || null
 }
 
-const select = (selected:Ref<string|null>) => (id:string|null) => { selected.value = id }
+const select = (selected:Ref<string|null>) => (id:string|null) => {
+  selected.value = id
+}

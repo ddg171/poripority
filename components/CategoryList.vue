@@ -1,7 +1,7 @@
 <template>
   <ul class="text-lg min-h-240p">
     <ClientOnly>
-      <CommonLinkListElem class="category-li" :selected="!selected">
+      <CommonLinkListElem class="category-li" :selected="selected===''">
         <CommonAppLink to="/blog">
           全て
         </CommonAppLink>

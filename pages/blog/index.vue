@@ -9,11 +9,6 @@
       </div>
     </ArticleList>
     <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
-    <ClientOnly>
-      <teleport to="#top-box">
-        <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
-      </teleport>
-    </ClientOnly>
   </Contentsection>
 </template>
 
@@ -60,19 +55,19 @@ const pending = computed<boolean>(() => {
   return !!articleAPI?.pending.value
 })
 
-// カテゴリ一覧の取得
+// 選択カテゴリの取得
 const categoryStore = useCategoryStore()
-const { data: categories } = await useFetch('/api/category')
-categoryStore.set(categories?.value?.contents || [])
 categoryStore.select(category.value || null)
 
 // カテゴリ名
 const categoryName = computed<string>(() => {
   if (!category.value) { return '' }
-  if (!categories.value?.contents.length) { return '' }
-  return categories.value?.contents?.find(c => c.id === category.value)?.name || ''
+  if (!categoryStore.state.value.length) { return '' }
+  return categoryStore.state.value?.find(c => c.id === category.value)?.name || ''
 })
 
+// ページ上部
+const { set: setTitle } = usePageTopStore()
 const pageTitle = computed<PageTitleProp>(() => {
   const title = (category.value ? `${categoryName.value}の記事一覧` : '記事一覧')
   const subtitle = totalCount.value === 0 ? '全0件中0件を表示中' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件を表示中`
@@ -85,6 +80,11 @@ const pageTitle = computed<PageTitleProp>(() => {
       title: ''
     }
   }
+})
+setTitle(pageTitle.value)
+// 自動で更新
+watch(pageTitle, (v) => {
+  setTitle(v)
 })
 
 // metaタグ側で使う
@@ -116,7 +116,7 @@ const leftNav = computed<LinkParams|null>(() => {
 
 watch(() => route.query.category, async () => {
   await articleAPI?.refresh()
-  categoryStore.select(category.value || null)
+  categoryStore.select(category.value)
   window.scroll(0, 0)
 })
 watch(() => route.query.offset, async () => {
