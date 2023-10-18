@@ -49,7 +49,7 @@ const modifiers = computed(() => {
 onMounted(() => {
   setTimeout(() => {
     isLoaded.value = true
-  }, 3000)
+  }, 5000)
 })
 </script>
 <style scoped lang="scss">
