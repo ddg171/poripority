@@ -8,9 +8,16 @@ export function convertStrToDocument (contentRaw:string):Document {
 
 function changeImgParams (doc:Document):Document {
   const images = doc.querySelectorAll('img')
-  images.forEach((img:HTMLImageElement) => {
+  images.forEach((img:HTMLImageElement, i:number) => {
     img.src = removeURLParams(img.src) + '?w=700&q=70'
     img.setAttribute('data-src-url', img.src)
+    img.setAttribute('width', '700')
+    img.setAttribute('height', '700')
+    img.setAttribute('decording', 'async')
+    // ２枚め以降の画像はlazyloadを有効にする
+    if (i > 1) {
+      img.setAttribute('loading', 'lazy')
+    }
   })
   return doc
 }

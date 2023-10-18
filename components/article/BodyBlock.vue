@@ -64,7 +64,7 @@ onBeforeUnmount(() => {
 }
 
 .img-wrapper picture{
-  @apply md:w-96 w-full ;
+  @apply md:w-96 w-full flex justify-center items-center;
 }
 
 .cms-content img{
