@@ -4,7 +4,9 @@ import { Category } from '~~/types/articles'
 export const useCategoryStore = () => {
   const state = useState<Category[]>(
     () => { return [] })
-  const selected = ref<string|null>(null)
+  const selected = useState<string|null>(
+    () => { return null }
+  )
   return {
     state,
     selected,

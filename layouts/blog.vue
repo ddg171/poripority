@@ -45,10 +45,6 @@ const { state, set: setCategories, selected } = useCategoryStore()
 const { data: categories } = await useFetch('/api/category')
 setCategories(categories?.value?.contents || [])
 
-watch(selected, (s) => {
-  console.log('selected', s)
-})
-
 // ページ上部
 const { state: pageTitle } = usePageTopStore()
 
