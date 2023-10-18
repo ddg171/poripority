@@ -3,11 +3,11 @@
 
     :provider="provider"
     :src="props.src"
-    class="picture-box"
+    class="picture-box opacity-100 transition-opacity duration-500"
     legacy-format="jpeg"
     :img-attrs="imgAttr"
     :modifiers="modifiers"
-    :loaded="isLoaded"
+    :data-loaded="isLoaded"
     @load="isLoaded = true"
   />
 </template>
@@ -49,16 +49,11 @@ const modifiers = computed(() => {
 onMounted(() => {
   setTimeout(() => {
     isLoaded.value = true
-  }, 3000)
+  }, 5000)
 })
 </script>
 <style scoped lang="scss">
-.picture-box{
-  opacity: 0;
-}
-
-.picture-box[loaded="true"]{
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+.picture-box[data-loaded="false"]{
+  @apply opacity-0
 }
 </style>

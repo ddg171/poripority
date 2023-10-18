@@ -8,29 +8,26 @@
       <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
       <ArticleNavigation :published-at="article?.publishedAt" />
       <ClientOnly>
-        <teleport to="#top-box">
-          <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
-        </teleport>
         <teleport to="#side-contents">
           <AsideContentsBox v-if="headings.length>0" class="mb-2">
-            <AppHeading3>目次</AppHeading3>
+            <AppHeading3 class="mb-2">
+              目次
+            </AppHeading3>
             <ClientOnly>
               <ArticleHeadingList :headings="headings" />
             </ClientOnly>
           </AsideContentsBox>
           <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-            <AppHeading3>画像</AppHeading3>
+            <AppHeading3 class="mb-2">
+              画像
+            </AppHeading3>
             <ClientOnly>
               <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
             </ClientOnly>
           </AsideContentsBox>
         </teleport>
       </ClientOnly>
-      <ClientOnly>
-        <teleport to="#category">
-          <CategoryList :categories="categories?.contents||[]" :selected="article?.category?.id" />
-        </teleport>
-      </ClientOnly>
+
       <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
         <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
       </OverlayBox>
@@ -58,9 +55,11 @@ const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${rout
 if (!article.value || err?.value) {
   throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
 }
-// カテゴリ一覧の取得
-const { data: categories } = await useFetch('/api/category')
 
+// 選択カテゴリの取得
+const categoryStore = useCategoryStore()
+categoryStore.select(article.value.category.id || null)
+const { set: setTitle } = usePageTopStore()
 const pageTitle = computed<PageTitleProp>(() => {
   const title = article.value?.title || ''
   const subtitle = article.value?.subtitle || ''
@@ -74,6 +73,11 @@ const pageTitle = computed<PageTitleProp>(() => {
       title: ''
     }
   }
+})
+setTitle(pageTitle.value)
+// 自動で更新
+watch(pageTitle, (v) => {
+  setTitle(v)
 })
 
 // metaタグ側で使う

@@ -4,7 +4,7 @@
       <CommonAppLink :to="to" class="w-full h-full flex items-center justify-start md:justify-center bg-green/50" :title="props.article.title ">
         <NuxtPicture
           v-if="props.article.eyecatch?.url"
-          class="w-full"
+          class="article-thumb w-full opacity-100 transition-opacity duration-500"
           provider="imgix"
           :src="props.article.eyecatch?.url||``"
           format="webp"
@@ -14,6 +14,8 @@
           width="800"
           :img-attrs="{ class:'w-full bg-lightgreen/25', alt:`${props.article.title}のサムネイル画像`,height:500,width:500, decoding: 'async',loading: 'lazy'}"
           :modifiers="{q: 50}"
+          :data-loaded="isPictureLoaded"
+          @load="isPictureLoaded = true"
         />
       </CommonAppLink>
     </div>
@@ -46,6 +48,14 @@ interface Props{
 
 const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined, heading: () => 3 })
 
+const isPictureLoaded = ref<boolean>(false)
+
+onMounted(() => {
+  setTimeout(() => {
+    isPictureLoaded.value = true
+  }, 5000)
+})
+
 const to = computed<string>(
   () => {
     const path = `/blog/${props.article.id}`
@@ -58,3 +68,9 @@ const to = computed<string>(
   })
 
 </script>
+
+<style scoped lang="scss">
+.article-thumb[data-loaded="false"]{
+  @apply opacity-0
+}
+</style>
