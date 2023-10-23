@@ -27,7 +27,6 @@
           </AsideContentsBox>
         </teleport>
       </ClientOnly>
-
       <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
         <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
       </OverlayBox>
