@@ -10,7 +10,9 @@
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full bg-transparent">
           <div v-show="!isLoading.isLoading" class="w-full">
-            <slot />
+            <Suspense>
+              <slot />
+            </Suspense>
           </div>
           <div v-if="isLoading.isLoading" class="w-full">
             <ContentSection class="text-white text-2lg">
