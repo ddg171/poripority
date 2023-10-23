@@ -9,11 +9,14 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
+        { name: 'og:title', content: SITE_NAME },
         { name: 'robots', content: 'all' },
         { name: 'description', content: DESCRIPTION },
+        { name: 'og:description', content: DESCRIPTION },
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: SITE_NAME },
-        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' }
+        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' },
+        { property: 'twitter:card', content: 'summary_large_image' }
       ],
       link: [
         { rel: 'icon', href: '/favicon.ico', id: 'favicon' }

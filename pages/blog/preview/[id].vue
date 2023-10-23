@@ -1,92 +1,112 @@
 <template>
-  <ContentSection class="grid">
-    <div class="flex justify-between mb-2">
-      <ShareBtnBox :title="headTitle" />
-      <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
-    </div>
-    <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
-    <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
-    <ClientOnly>
-      <teleport to="#top-box">
-        <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
-      </teleport>
-      <teleport to="#side-contents">
-        <AsideContentsBox v-if="headings.length>0" class="mb-2">
-          <AppHeading3>目次</AppHeading3>
-          <ClientOnly>
-            <ArticleHeadingList :headings="headings" />
-          </ClientOnly>
-        </AsideContentsBox>
-        <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-          <AppHeading3>画像</AppHeading3>
-          <ClientOnly>
-            <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
-          </ClientOnly>
-        </AsideContentsBox>
-      </teleport>
-    </ClientOnly>
-    <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
-      <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
-    </OverlayBox>
-    <ArticleCard v-if="article" :article="article" />
-  </Contentsection>
+  <div class="w-full">
+    <ContentSection class="grid">
+      <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
+        <ShareBtnBox :title="title" />
+        <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+      </div>
+      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
+      <ArticleNavigation :published-at="article?.publishedAt" />
+      <ClientOnly>
+        <teleport to="#side-contents">
+          <AsideContentsBox v-if="headings.length>0" class="mb-2">
+            <AppHeading3 class="mb-2">
+              目次
+            </AppHeading3>
+            <ClientOnly>
+              <ArticleHeadingList :headings="headings" />
+            </ClientOnly>
+          </AsideContentsBox>
+          <AsideContentsBox v-if="imgList.length>0" class="mb-2">
+            <AppHeading3 class="mb-2">
+              画像
+            </AppHeading3>
+            <ClientOnly>
+              <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
+            </ClientOnly>
+          </AsideContentsBox>
+        </teleport>
+      </ClientOnly>
+      <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
+        <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
+      </OverlayBox>
+      <ArticleCard v-if="article" :article="article" />
+    </Contentsection>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { setPageMetaData } from '~~/composables/helper/head'
 import { Article, Heading, ImageList } from '~~/types/articles'
-import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
+import { PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
   layout: 'preview'
 })
-// カテゴリの取得
 
+const config = useRuntimeConfig()
 const route = useRoute()
-const pageTitle = ref<PageTitleProp>({
-  title: '記事',
-  subtitles: [],
-  topImg: {
-    src: '/images/webp/blanktitle01w2000.webp',
-    alt: '',
-    title: ''
+const isLoading = useLoadingStore()
 
-  }
-})
-
-const category = ref<string|null>(route.query?.category?.toString() || null)
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/preview/${route.params.id}`, { query: { key: route.query?.key } })
 const value = article?.value
 if (!value || err?.value) {
   throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
 }
-const selectedId = ref<string|undefined>(undefined)
+// 選択カテゴリの取得
+const categoryStore = useCategoryStore()
+categoryStore.set([])
 
-const config = useRuntimeConfig()
-const headTitle = ref<string>(value.title + '|' + config.public.siteName)
-const description = value.subtitle || ''
-const image:string|undefined = value.eyecatch ? cropSquare(value.eyecatch).url : undefined
-setPageMetaData(headTitle.value, description, 'all', 'article', image)
-
-const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
-const topImg:PictureBoxProp|null = eyecatch
-  ? {
-      src: eyecatch.url,
+const { set: setTitle } = usePageTopStore()
+const pageTitle = computed<PageTitleProp>(() => {
+  const title = article.value?.title || ''
+  const subtitle = article.value?.subtitle || ''
+  const src = article.value?.eyecatch?.url || '/images/webp/blanktitle01w2000.webp'
+  return {
+    title,
+    subtitles: [subtitle],
+    topImg: {
+      src,
       alt: '',
-      title: '',
-      fromCMS: true
+      title: ''
     }
-  : null
-onMounted(() => {
-  const t:PageTitleProp = {
-    title: article.value?.title || '記事が見つかりませんでした',
-    topImg,
-    subtitles: article.value?.subtitle ? [article.value.subtitle] : []
   }
-  pageTitle.value = t
+})
+setTitle(pageTitle.value)
+
+// metaタグ側で使う
+const title = computed<string>(() => {
+  return article?.value?.title + '|' + config.public.siteName
+})
+const description = computed<string>(() => {
+  return article?.value?.subtitle || ''
 })
 
+const seoMeta:{[T:string]:string|(()=>string)} = {
+  title: () => `${title.value}`,
+  ogTitle: () => `${title.value}`,
+  description: () => `${description.value}`,
+  ogDescription: () => `${description.value}`,
+  robots: 'all',
+  ogType: 'article',
+  ogSiteName: config.public.siteName,
+  twitterCard: 'summary_large_image'
+}
+
+const ogpImg = cropSquare(article?.value?.eyecatch, false, 1200)?.url
+if (ogpImg) {
+  seoMeta.ogImage = () => ogpImg
+}
+
+useSeoMeta(seoMeta)
+
+// 画像拡大表示用
+const selectedId = ref<string|undefined>(undefined)
+
+onMounted(() => {
+  isLoading.set(false)
+  window.addEventListener('keyup', escapeKeyEventhandler)
+})
 const setImgList = (l:ImageList) => {
   imgList.value = l
 }
@@ -102,4 +122,16 @@ const headingListHandler = (h:Heading[]) => {
 
 const headings = ref<Heading[]>([])
 
+const escapeKeyEventhandler = (e:KeyboardEvent) => {
+  const key = e.key
+  if (key !== 'Escape') { return }
+  if (!selectedId.value) {
+    return
+  }
+  selectedId.value = undefined
+}
+
+onUnmounted(() => {
+  window.removeEventListener('keyup', escapeKeyEventhandler)
+})
 </script>

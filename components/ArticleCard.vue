@@ -17,6 +17,9 @@
           :data-loaded="isPictureLoaded"
           @load="isPictureLoaded = true"
         />
+        <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
+          {{ msg }}
+        </div>
       </CommonAppLink>
     </div>
     <div class="flex flex-col justify-between py-1 m-0 md:h-36 md:px-2 grow">
@@ -49,6 +52,10 @@ interface Props{
 const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined, heading: () => 3 })
 
 const isPictureLoaded = ref<boolean>(false)
+
+const msg = computed<string>(() => {
+  return props.article?.eyecatch?.url ? 'loading...' : 'no image'
+})
 
 onMounted(() => {
   setTimeout(() => {
