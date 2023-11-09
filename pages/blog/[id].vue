@@ -5,6 +5,12 @@
         <ShareBtnBox :title="title" />
         <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
       </div>
+      <div class="mb-2 text-sm p-2 bg-gray">
+        <CommonAppLink class="text-orange" to="/disclaimer">
+          当webサイトの特記事項についてはこちらをご確認ください。
+        </CommonAppLink>
+      </div>
+
       <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
       <ArticleNavigation :published-at="article?.publishedAt" />
       <ClientOnly>
