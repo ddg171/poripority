@@ -3,19 +3,14 @@
 
     :provider="provider"
     :src="props.src"
-    class="picture-box opacity-100 transition-opacity duration-500"
+    class="picture-box"
     legacy-format="jpeg"
     :img-attrs="imgAttr"
     :modifiers="modifiers"
-    :data-loaded="isLoaded"
-    @load="isLoaded = true"
   />
 </template>
 
 <script setup lang="ts">
-
-const isLoaded = ref(false)
-
 interface Props {
     src:string, alt?:string, title?:string, fromCms?:boolean}
 
@@ -45,15 +40,7 @@ const modifiers = computed(() => {
       }
     : {}
 })
-// loadイベントが発火しないことがあるため、強制的にロード完了にする
-onMounted(() => {
-  setTimeout(() => {
-    isLoaded.value = true
-  }, 5000)
-})
+
 </script>
 <style scoped lang="scss">
-.picture-box[data-loaded="false"]{
-  @apply opacity-0
-}
 </style>
