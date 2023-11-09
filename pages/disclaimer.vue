@@ -54,7 +54,7 @@ const topImg = ref<PictureBoxProp>({
 
 const subtitles = ref<string[]>([
   '免責事項及び広告掲載ポリシー',
-  "2023/11/12更新"
+  '2023/11/12更新'
 ])
 
 const config = useRuntimeConfig()
