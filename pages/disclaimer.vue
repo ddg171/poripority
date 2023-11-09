@@ -5,36 +5,34 @@
     </div>
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
-        <AppHeading1 class="mb-2">
+        <AppHeading2 class="mb-2">
           免責事項
-        </AppHeading1>
+        </AppHeading2>
         <WorksParaBox>
           <CommonAppApra>
-            筆者が最初に学習したプログラミング言語はPythonだったのだが、色々あってFirebaseを触るようになり、同時にフロントエンドが必要ということでVuejsを触り、基本が大事と言ってバニラJSを触っているうちに気がつけばJavascriptメインになっていた。
-            途中で投げたものとかも結構あるが、こうやって並べてみるとなんかそれっぽくなったので安心している。
+            当Webサイト内に掲載されている内容については極力正確な内容になるように努めておりますが、その内容の正確性や安全性を保証するものではありません。当サイト内の情報の引用、ご利用により生じたいかなる損害についても、当サイトは一切の責任を負いかねます。
           </CommonAppApra>
           <CommonAppApra>
-            大体のアプリはJavascriptで開発している。フレームワークはVue/Nuxtが主。デプロイ先にはGCPのサービスを使っている。あとFirebaseは最初に触ったバックエンドということもあって結構好き。
+            当Webサイトは、予告なしに内容を変更または削除する場合があります。また、当Webサイトの構築・運用のために使用しているプログラム、ツール、ライブラリ、Webサービス等の障害及び脆弱性により生じたいかなる損害についても、当サイトは一切の責任を負いかねます。
           </CommonAppApra>
           <CommonAppApra>
-            世の中的にはクラウドはAWS、フロントエンドはReact/Nextという話なので、そのうちここにもAWS(の無料枠)とReactを使った制作物が並ぶかもしれない。
+            当Webサイトからリンクされている第三者のWebサイトの内容について、当サイトは一切の責任を負いかねます。
           </CommonAppApra>
         </WorksParaBox>
       </ContentSection>
       <ContentSection>
-        <AppHeading1 class="mb-2">
+        <AppHeading2 class="mb-2">
           広告掲載ポリシー
-        </AppHeading1>
+        </AppHeading2>
         <WorksParaBox>
           <CommonAppApra>
-            筆者が最初に学習したプログラミング言語はPythonだったのだが、色々あってFirebaseを触るようになり、同時にフロントエンドが必要ということでVuejsを触り、基本が大事と言ってバニラJSを触っているうちに気がつけばJavascriptメインになっていた。
-            途中で投げたものとかも結構あるが、こうやって並べてみるとなんかそれっぽくなったので安心している。
+            当Webサイトはアフィリエイト広告及びバナー広告を掲載しています。広告の掲載により、当ブログが収益を得ることがあります。またブログ記事内の商品名及びサービス名には、アフィリエイトリンクが含まれている場合があります。
           </CommonAppApra>
           <CommonAppApra>
-            大体のアプリはJavascriptで開発している。フレームワークはVue/Nuxtが主。デプロイ先にはGCPのサービスを使っている。あとFirebaseは最初に触ったバックエンドということもあって結構好き。
+            当Webサイト内に掲載されるバナー広告の内容について、当サイトは一切の責任を負いかねます。
           </CommonAppApra>
           <CommonAppApra>
-            世の中的にはクラウドはAWS、フロントエンドはReact/Nextという話なので、そのうちここにもAWS(の無料枠)とReactを使った制作物が並ぶかもしれない。
+            当ブログ内で金銭・機材等の授受・貸与を伴う商品の宣伝を行う場合については、該当記事内で明記します。
           </CommonAppApra>
         </WorksParaBox>
       </ContentSection>
@@ -55,7 +53,8 @@ const topImg = ref<PictureBoxProp>({
 })
 
 const subtitles = ref<string[]>([
-  '免責事項及び広告掲載ポリシー'
+  '免責事項及び広告掲載ポリシー',
+  "2023/11/12更新"
 ])
 
 const config = useRuntimeConfig()
