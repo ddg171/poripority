@@ -121,7 +121,7 @@ import { SliderContent, Eyecatch, LinkParams } from '~~/types/components'
 
 const latestArticles = ref<Article[]>([])
 const isArticleLoading = ref<boolean>(true)
-const loadingMsg = ref<'Loading...'|'記事がありません。'>('Loading...')
+const loadingMsg = ref<'Loading...'|'記事が見つかりません。'>('Loading...')
 const topContents = ref<SliderContent[]>([
   {
     pic: {
@@ -173,8 +173,8 @@ const topContents = ref<SliderContent[]>([
 
 onMounted(async () => {
   try {
-    const { data } = await useFetch('/api/blogs', { params: { limit: 3 } })
-    latestArticles.value = data.value?.contents || []
+    const data = await $fetch('/api/blogs', { params: { limit: 3 } })
+    latestArticles.value = data.contents || []
     if (latestArticles.value.length) {
       const a = latestArticles.value[0]
       const eyecatch: Eyecatch = a.eyecatch
@@ -200,7 +200,7 @@ onMounted(async () => {
     }
     isArticleLoading.value = false
   } catch (_) {
-    loadingMsg.value = '記事がありません。'
+    loadingMsg.value = '記事が見つかりません。'
   }
 })
 
