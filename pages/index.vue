@@ -196,8 +196,9 @@ onMounted(async () => {
       topContents.value.push(ArticleforSlider)
     }
     if (latestArticles.value.length === 0) {
-      isArticleLoading.value = false
+      throw new Error('記事がありません。')
     }
+    isArticleLoading.value = false
   } catch (_) {
     loadingMsg.value = '記事がありません。'
   }
