@@ -121,7 +121,7 @@ import { SliderContent, Eyecatch, LinkParams } from '~~/types/components'
 
 const latestArticles = ref<Article[]>([])
 const isArticleLoading = ref<boolean>(true)
-const loadingMsg = ref<'Loading...'|'記事の取得に失敗しました。'>('Loading...')
+const loadingMsg = ref<'Loading...'|'記事がありません。'>('Loading...')
 const topContents = ref<SliderContent[]>([
   {
     pic: {
@@ -195,10 +195,11 @@ onMounted(async () => {
       }
       topContents.value.push(ArticleforSlider)
     }
-
-    isArticleLoading.value = false
+    if (latestArticles.value.length === 0) {
+      isArticleLoading.value = false
+    }
   } catch (_) {
-    loadingMsg.value = '記事の取得に失敗しました。'
+    loadingMsg.value = '記事がありません。'
   }
 })
 
