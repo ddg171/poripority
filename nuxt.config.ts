@@ -52,7 +52,7 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
-      routes: ['/', '/works', '/about']
+      routes: ['/', '/works', '/about', '/disclaimer']
     }
   },
   build: {
