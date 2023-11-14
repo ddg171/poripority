@@ -1,18 +1,18 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-index">
-    <TopSlider :slider-contents="sliderContents" :duration="5000" />
+    <TopSlider :slider-contents="topContents" :duration="5000" />
     <CommonContentWidthBox class="flex flex-col items-center ">
       <ContentSection>
         <AppHeading2 class="mb-2">
           最新投稿
         </AppHeading2>
-        <div v-if="pending" class="flex items-center justify-center w-full h-48 overflow-hidden xl:col-span-2 shrink-0">
+        <div v-if="isArticleLoading" class="flex items-center justify-center w-full h-48 overflow-hidden xl:col-span-2 shrink-0">
           <p class="text-2xl">
-            Loading...
+            {{ loadingMsg }}
           </p>
         </div>
-        <ArticleList :articles="latest" class="grid-cols-1 lg:grid-cols-2">
-          <li v-if="latest.length !== 3" />
+        <ArticleList :articles="latestArticles" class="grid-cols-1 lg:grid-cols-2">
+          <li v-if="latestArticles.length !== 3" />
           <li class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
             <div
               class="flex items-center justify-center w-full py-3 my-0 text-3xl font-medium readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline"
@@ -119,11 +119,10 @@
 import { Article } from '~~/types/articles'
 import { SliderContent, Eyecatch, LinkParams } from '~~/types/components'
 
-const { data, pending } = await useFetch('/api/blogs', { params: { limit: 3 } })
-
-const contents = data.value?.contents || []
-const latest = computed<Article[]>(() => data.value?.contents || [])
-const defaultContents: SliderContent[] = [
+const latestArticles = ref<Article[]>([])
+const isArticleLoading = ref<boolean>(true)
+const loadingMsg = ref<'Loading...'|'記事がありません。'>('Loading...')
+const topContents = ref<SliderContent[]>([
   {
     pic: {
       src: '/images/webp/top-img01w2000.webp',
@@ -170,32 +169,40 @@ const defaultContents: SliderContent[] = [
       to: '/blog'
     }
   }
-]
-const sliderContentsTemp = []
-if (contents.length) {
-  const a = contents[0]
-  const eyecatch: Eyecatch = a.eyecatch
-  const src = eyecatch.url
+])
 
-  const ArticleforSlider: SliderContent = {
-    pic: {
-      src,
-      alt: 'TOP画像。最新投稿',
-      title: 'TOP画像。最新投稿',
-      fromCMS: true
-    },
-    text: {
-      title: a.title,
-      para: a.subtitle ? [a.subtitle] : [],
-      to: `/blog/${a.id}`
+onMounted(async () => {
+  try {
+    const { data } = await useFetch('/api/blogs', { params: { limit: 3 } })
+    latestArticles.value = data.value?.contents || []
+    if (latestArticles.value.length) {
+      const a = latestArticles.value[0]
+      const eyecatch: Eyecatch = a.eyecatch
+      const src = eyecatch.url
+
+      const ArticleforSlider: SliderContent = {
+        pic: {
+          src,
+          alt: 'TOP画像。最新投稿',
+          title: 'TOP画像。最新投稿',
+          fromCMS: true
+        },
+        text: {
+          title: a.title,
+          para: a.subtitle ? [a.subtitle] : [],
+          to: `/blog/${a.id}`
+        }
+      }
+      topContents.value.push(ArticleforSlider)
     }
+    if (latestArticles.value.length === 0) {
+      throw new Error('記事がありません。')
+    }
+    isArticleLoading.value = false
+  } catch (_) {
+    loadingMsg.value = '記事がありません。'
   }
-  sliderContentsTemp.push(ArticleforSlider)
-}
-
-const sliderContents = ref<Array<SliderContent>>(
-  defaultContents.concat(sliderContentsTemp)
-)
+})
 
 const games = ref<LinkParams[]>(
   [
