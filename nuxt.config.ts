@@ -52,7 +52,12 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
-      routes: ['/', '/works', '/about', '/disclaimer']
+      routes: ['/',
+               '/works',
+               '/about',
+               '/disclaimer',
+               '/_ipx/w_1536&f_webp/images/webp/blanktitle01w2000.webp'
+              ]
     }
   },
   build: {
