@@ -37,6 +37,12 @@
         <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
       </OverlayBox>
     </Contentsection>
+    <ContentSection>
+      <AppHeading2 class="mb-2">
+        広告欄
+      </AppHeading2>
+      <AdsenseBottomAd1 />
+    </ContentSection>
   </div>
 </template>
 
