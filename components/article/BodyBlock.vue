@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article class="flex flex-col mb-6 text-white cms-content cms-content-width" v-html="content" />
+  <article v-if="content" class="flex flex-col mb-6 text-white cms-content cms-content-width" v-html="content" />
 </template>
 <script setup lang="ts">
 import { Heading, ImageList } from '~~/types/articles'
@@ -13,7 +13,7 @@ const props = defineProps<Props>()
 
 const emits = defineEmits<{(e:'img-list', v:ImageList):void, (e:'img-click', v:string):void, (e:'heading-list', v:Heading[]):void}>()
 
-const content = ref<string>(convertContent(props.content))
+const content = computed<string>(() => convertContent(props.content))
 
 const imageClickHandler = (e:Event):void => {
   const img = e.target
