@@ -34,7 +34,10 @@ export default defineNuxtConfig({
     public: {
       siteName: SITE_NAME,
       baseURL: process.env.BASE_URL,
-      gaMeasurementId: process.env.GA_MEASUREMENT_ID
+      gaMeasurementId: process.env.GA_MEASUREMENT_ID,
+      googleAdsense: {
+        id: 'pub-1488365148309310'
+      }
     },
     microCMSAPI: process.env.MICROCMS_API,
     microCMSServiceID: process.env.MICROCMS_SERVEICE_ID
@@ -43,7 +46,12 @@ export default defineNuxtConfig({
     shim: false
   },
   css: ['~/assets/css/tailwind.scss'],
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', 'nuxt-icon', ['@nuxtjs/robots', { Disallow: '/blog/preview/*', Sitemap: process.env.BASE_URL + '/sitemap.xml' }]],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image',
+    'nuxt-icon',
+    ['@nuxtjs/robots', { Disallow: '/blog/preview/*', Sitemap: process.env.BASE_URL + '/sitemap.xml' }],
+    '@nuxtjs/google-adsense'],
   image: {
     imgix: {
       baseURL: ''

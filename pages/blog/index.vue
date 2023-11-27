@@ -1,15 +1,25 @@
 <template>
-  <ContentSection class="w-full h-full">
-    <PlaceHolder v-if="pending" />
-    <ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
-      <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
-        <p>
-          記事が見つかりませんでした。
-        </p>
+  <div class="w-full">
+    <ContentSection class="w-full h-full">
+      <PlaceHolder v-if="pending" />
+      <ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
+        <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
+          <p>
+            記事が見つかりませんでした。
+          </p>
+        </div>
+      </ArticleList>
+      <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
+    </Contentsection>
+    <ContentSection>
+      <AppHeading2 class="mb-2">
+        広告欄
+      </AppHeading2>
+      <div class="w-full h-full">
+        <Adsbygoogle ad-format="fluid" ad-slot="5859079761" ad-layout-key="-di+92-1z-c6+tf" />
       </div>
-    </ArticleList>
-    <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
-  </Contentsection>
+    </ContentSection>
+  </div>
 </template>
 
 <script setup lang="ts">

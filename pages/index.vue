@@ -111,6 +111,14 @@
           </div>
         </div>
       </ContentSection>
+      <ContentSection>
+        <AppHeading2 class="mb-2">
+          広告欄
+        </AppHeading2>
+        <div class="w-full h-full">
+          <Adsbygoogle ad-format="fluid" ad-slot="5859079761" ad-layout-key="-di+92-1z-c6+tf" />
+        </div>
+      </ContentSection>
     </CommonContentWidthBox>
   </div>
 </template>
