@@ -84,7 +84,7 @@ module.exports = {
       minWidth: {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px',
-        ...vh
+        ...px
       },
       fontFamily: {
         sans: ['Avenir', 'Open Sans', 'Helvetica Neue', 'Helvetica,Arial', 'Verdana,Roboto', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'YuGothic', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', 'sans-serif', ...defaultTheme.fontFamily.sans]

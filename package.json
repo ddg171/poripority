@@ -31,6 +31,7 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.0.0-rc.3",
+    "@nuxtjs/google-adsense": "^3.0.0",
     "@nuxtjs/robots": "^3.0.0",
     "date-fns": "^2.29.3",
     "microcms-js-sdk": "^2.0.0",

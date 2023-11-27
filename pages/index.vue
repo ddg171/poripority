@@ -111,6 +111,12 @@
           </div>
         </div>
       </ContentSection>
+      <ContentSection>
+        <AppHeading2 class="mb-2">
+          広告欄
+        </AppHeading2>
+        <AdsenseBottomAd1 />
+      </ContentSection>
     </CommonContentWidthBox>
   </div>
 </template>
