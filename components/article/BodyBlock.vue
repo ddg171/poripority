@@ -13,14 +13,14 @@ const props = defineProps<Props>()
 
 const emits = defineEmits<{(e:'img-list', v:ImageList):void, (e:'img-click', v:string):void, (e:'heading-list', v:Heading[]):void}>()
 
-const content = ref<string>(convertContent(props.content))
+const content = computed<string>(() => convertContent(props.content))
 
 const imageClickHandler = (e:Event):void => {
-  const img = e.target
+  const img = e?.target
   if (!img) { return }
-  const parent = img.parentNode
+  const parent = img?.parentNode
   if (!parent) { return }
-  const id = parent.id
+  const id = parent?.id
   if (!id) { return }
   emits('img-click', id)
 }
