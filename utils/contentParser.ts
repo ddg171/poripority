@@ -1,3 +1,4 @@
+import { th } from 'date-fns/locale'
 import DOMParser from 'universal-dom-parser'
 import { Heading, ImageList } from '~~/types/articles'
 
@@ -58,9 +59,13 @@ function replaceImgToPicture (doc:Document):Document {
 
 export function convertContent (contentRaw:string|null|undefined):string {
   if (!contentRaw || typeof contentRaw !== 'string') { return '' }
-  const doc = convertStrToDocument(contentRaw)
-  const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)))
-  return formatDocToString(resizedDoc)
+  try {
+    const doc = convertStrToDocument(contentRaw)
+    const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)))
+    return formatDocToString(resizedDoc)
+  } catch {
+    return contentRaw
+  }
 }
 
 export function getImgList (doc:Document):ImageList {
