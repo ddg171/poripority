@@ -1,5 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
+import { indexImages1, indexImages2, indexImages3, profileImages, diagramImages, blankImages } from './utils/prerenderImages'
+
 const SITE_NAME = 'The hut of Poripority'
 const DESCRIPTION = 'Hata_kazeが趣味で作ったWebサイト'
 export default defineNuxtConfig({
@@ -60,7 +62,17 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
-      routes: ['/works', '/about']
+      routes: [
+        '/works',
+        '/about',
+        '/disclaimer',
+        ...indexImages1,
+        ...indexImages2,
+        ...indexImages3,
+        ...profileImages,
+        ...diagramImages,
+        ...blankImages
+      ]
     }
   },
   build: {
