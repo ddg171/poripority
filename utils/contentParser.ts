@@ -1,4 +1,3 @@
-import { th } from 'date-fns/locale'
 import DOMParser from 'universal-dom-parser'
 import { Heading, ImageList } from '~~/types/articles'
 
