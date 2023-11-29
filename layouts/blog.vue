@@ -9,16 +9,14 @@
       </div>
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full bg-transparent">
-          <div v-show="!isLoading.isLoading" class="w-full">
-            <Suspense>
-              <slot />
-            </Suspense>
+          <div class="w-full">
+            <slot />
           </div>
-          <div v-if="isLoading.isLoading" class="w-full">
+          <!-- <div v-if="isLoading.isLoading" class="w-full">
             <ContentSection class="text-white text-2lg">
               <PlaceHolder />
             </ContentSection>
-          </div>
+          </div> -->
         </main>
         <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-4 shrink-0">
           <aside class="flex flex-col-reverse w-full mb-2">
@@ -40,7 +38,6 @@
 <script lang="ts" setup>
 const isBottomBtnShow = ref<boolean>(false)
 const { state: rootRect } = useRootRectStore()
-const { state: isLoading } = useLoadingStore()
 
 // カテゴリ一覧の取得
 const { state, set: setCategories, selected } = useCategoryStore()
