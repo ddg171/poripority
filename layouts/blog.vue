@@ -9,12 +9,10 @@
       </div>
       <CommonContentWidthBox class="flex flex-col items-center lg:justify-center lg:items-start lg:flex-row ">
         <main class="flex flex-col items-center w-full bg-transparent">
-          <div v-show="!isLoading.isLoading" class="w-full">
-            <Suspense>
-              <slot />
-            </Suspense>
+          <div v-show="!isLoading.state.value.isLoading" class="w-full">
+            <slot />
           </div>
-          <div v-if="isLoading.isLoading" class="w-full">
+          <div v-if="isLoading.state.value.isLoading" class="w-full">
             <ContentSection class="text-white text-2lg">
               <PlaceHolder />
             </ContentSection>
@@ -30,7 +28,6 @@
           </aside>
         </div>
       </CommonContentWidthBox>
-
       <SpBottomBtn :is-show="isBottomBtnShow" />
       <AppFooter />
     </div>
@@ -40,7 +37,7 @@
 <script lang="ts" setup>
 const isBottomBtnShow = ref<boolean>(false)
 const { state: rootRect } = useRootRectStore()
-const { state: isLoading } = useLoadingStore()
+const isLoading = useLoadingStore()
 
 // カテゴリ一覧の取得
 const { state, set: setCategories, selected } = useCategoryStore()

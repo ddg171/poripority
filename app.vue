@@ -17,7 +17,9 @@ nuxtApp.hook('page:start', () => {
   isLoading.set(true)
 })
 nuxtApp.hook('page:finish', () => {
-  isLoading.set(false)
+  setTimeout(() => {
+    isLoading.set(false)
+  }, 500)
 })
 
 const ScrollHandler = () => {
