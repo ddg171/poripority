@@ -3,7 +3,9 @@
     <AppHeader ref="header" />
     <div class="flex flex-col items-center w-full min-h-screen">
       <main class="flex flex-col items-center w-full min-h-screen">
-        <slot />
+        <div class="w-full">
+          <slot />
+        </div>
       </main>
     </div>
     <SpBottomBtn :is-show="isBottomBtnShow" />
