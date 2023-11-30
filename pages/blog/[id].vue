@@ -14,21 +14,22 @@
       <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
       <ArticleNavigation :published-at="article?.publishedAt" />
       <ClientOnly>
-        <teleport :disabled="!!isLoading.state" to="#side-contents">
-          <AsideContentsBox v-if="headings.length>0" class="mb-2">
-            <AppHeading3 class="mb-2">
-              目次
-            </AppHeading3>
-            <ArticleHeadingList :headings="headings" />
-          </AsideContentsBox>
-          <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-            <AppHeading3 class="mb-2">
-              画像
-            </AppHeading3>
-
-            <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
-          </AsideContentsBox>
-        </teleport>
+        <div v-if="!isLoading.state.value.isLoading">
+          <teleport to="#side-contents">
+            <AsideContentsBox v-if="headings.length>0" class="mb-2">
+              <AppHeading3 class="mb-2">
+                目次
+              </AppHeading3>
+              <ArticleHeadingList :headings="headings" />
+            </AsideContentsBox>
+            <AsideContentsBox v-if="imgList.length>0" class="mb-2">
+              <AppHeading3 class="mb-2">
+                画像
+              </AppHeading3>
+              <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
+            </AsideContentsBox>
+          </teleport>
+        </div>
       </ClientOnly>
 
       <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
