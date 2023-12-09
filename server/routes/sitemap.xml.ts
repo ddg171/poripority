@@ -24,5 +24,6 @@ export default defineEventHandler(async (event) => {
 
   sitemapStr = sitemapStr + '</urlset>'
   event.node.res.setHeader('content-type', 'text/xml')
+  setHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')
   event.node.res.end(sitemapStr)
 })
