@@ -10,9 +10,9 @@
           format="webp"
           legacy-format="jpeg"
           fit="crop"
-          height="800"
-          width="800"
-          :img-attrs="{ class:'w-full bg-lightgreen/25', alt:`${props.article.title}のサムネイル画像`,height:500,width:500, decoding: 'async',loading: 'lazy'}"
+          height="200"
+          width="200"
+          :img-attrs="{ class:'w-full bg-lightgreen/25', alt:`${props.article.title}のサムネイル画像`,height:200,width:200, decoding: 'async',loading: 'lazy'}"
           :modifiers="{q: 50}"
           :data-loaded="isPictureLoaded"
           @load="isPictureLoaded = true"
@@ -46,10 +46,9 @@ import { Article } from '~~/types/articles'
 interface Props{
     article:Article
     category?:string
-    heading?:2|3
 }
 
-const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined, heading: () => 3 })
+const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined })
 
 const isPictureLoaded = ref<boolean>(false)
 
