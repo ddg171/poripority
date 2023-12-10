@@ -75,7 +75,7 @@
 import { makeSeoMetaInput } from '~~/utils/useHead'
 const scrollOption = ref({ updateHistory: false, offset: -64 })
 const config = useRuntimeConfig()
-const title = 'About|' + config.public.siteName
+const title = 'About-' + config.public.siteName
 const description = 'profile, skill, contact'
 const contactHeadingShow = ref(false)
 const contactShow = ref(false)
