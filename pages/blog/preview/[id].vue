@@ -76,7 +76,7 @@ setTitle(pageTitle.value)
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return article?.value?.title + '|' + config.public.siteName
+  return article?.value?.title + '-' + config.public.siteName
 })
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''
