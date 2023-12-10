@@ -5,7 +5,6 @@
         :article="a"
         :offset="i+offset"
         :category="category"
-        :heading="2"
       />
     </li>
     <slot />

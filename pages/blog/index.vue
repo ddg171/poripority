@@ -97,7 +97,7 @@ watch(pageTitle, (v) => {
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return (category.value ? `${categoryName.value}の記事一覧` : '記事一覧') + '|' + config.public.siteName
+  return (category.value ? `${categoryName.value}の記事一覧` : '記事一覧') + '-' + config.public.siteName
 })
 const description = computed<string>(() => {
   return (`${categoryName.value ? categoryName.value + 'に関する' : '全'}記事一覧/`) + (totalCount.value === 0 ? '全0件中0件を表示' : `全${totalCount.value}件中${offset.value + 1}-${offset.value + articles.value.length}件目を表示`)

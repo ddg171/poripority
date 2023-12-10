@@ -58,7 +58,7 @@ const subtitles = ref<string[]>([
 ])
 
 const config = useRuntimeConfig()
-const headTitle = title.value + '|' + config.public.siteName
+const headTitle = title.value + '-' + config.public.siteName
 const description = subtitles.value[0] || ''
 
 useSeoMeta(makeSeoMetaInput(headTitle, description, 'all', 'website')
