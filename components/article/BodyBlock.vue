@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content{
-  @apply flex flex-col  text-base;
+  @apply flex flex-col  font-medium text-base leading-7 md:leading-6;
 }
 
 .cms-content strong{
