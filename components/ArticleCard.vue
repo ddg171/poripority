@@ -1,5 +1,5 @@
 <template>
-  <article class="flex  items-start flex-row bg-darkblue">
+  <article class="flex  items-start flex-row bg-darkblue hover:cursor-pointer hover:bg-green focus-within:bg-green" @click.stop="router.push(`/blog/${props.article.id}`)">
     <div class="w-32 h-32 overflow-hidden shrink-0 bg-darkblue">
       <CommonAppLink :to="to" class="w-full h-full flex items-center justify-start md:justify-center bg-green/50" :title="props.article.title ">
         <NuxtPicture
@@ -47,6 +47,7 @@ interface Props{
     article:Article
     category?:string
 }
+const router = useRouter()
 
 const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined })
 
