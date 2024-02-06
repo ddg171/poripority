@@ -28,6 +28,7 @@ export interface Article extends Commonschema {
     references:Reference[]|null
     imageRefs?:{[T:string]:string}
     index?:{level:number, id:string, text:string}[]
+    ads?:Ads[]
 }
 
 export type ArticleRef = Omit<Article, 'createdAt'|'updatedAt'|'revisedAt'|'subtitle'|'content'|'eyecatch'|'references'>

@@ -40,6 +40,7 @@
       <AppHeading2 class="mb-2">
         広告欄
       </AppHeading2>
+      <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
     </ContentSection>
   </div>
 </template>
