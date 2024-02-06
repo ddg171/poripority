@@ -1,24 +1,22 @@
 <template>
   <div class="flex items-start flex-row bg-white">
     <div class=" overflow-hidden h-28 w-28  md:h-40 md:w-40 shrink-0 bg-darkblue">
-      <CommonAppLink :to="props.ads.amazon" class="w-full h-full flex items-center justify-start md:justify-center bg-green/50" :title="props.ads.name ">
-        <NuxtPicture
-          v-if="props.ads.img?.url"
-          class="article-thumb w-full border-solid border-black opacity-100 transition-opacity duration-500"
-          provider="imgix"
-          :src="props.ads.img.url||``"
-          format="webp"
-          legacy-format="jpeg"
-          fit="crop"
-          height="200"
-          width="200"
-          :img-attrs="{ class:'w-full bg-lightgreen/25', alt:`${props.ads.name}のサムネイル画像`,height:200,width:200, decoding: 'async',loading: 'lazy'}"
-          :modifiers="{q: 50}"
-        />
-        <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
-          {{ msg }}
-        </div>
-      </CommonAppLink>
+      <NuxtPicture
+        v-if="props.ads.img?.url"
+        class="article-thumb w-full border-solid border-black opacity-100 transition-opacity duration-500"
+        provider="imgix"
+        :src="props.ads.img.url||``"
+        format="webp"
+        legacy-format="jpeg"
+        fit="crop"
+        height="200"
+        width="200"
+        :img-attrs="{ class:'w-full bg-lightgreen/25', alt:`${props.ads.name}のサムネイル画像`,height:200,width:200, decoding: 'async',loading: 'lazy'}"
+        :modifiers="{q: 50}"
+      />
+      <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
+        {{ msg }}
+      </div>
     </div>
     <div class="flex flex-col justify-between py-1 m-0 md:h-36 md:px-2 grow">
       <div class="w-full ">
@@ -29,6 +27,15 @@
             </CommonAppLink>
           </h3>
         </div>
+      </div>
+      <div class="w-full flex">
+        <a :href="props.ads.amazon" class="flex items-center justify-center p-2 mx-1 text-xl bg-amazonorange text-amazongray hover:opacity-75">
+          amazon
+        </a>
+        <a class="flex items-center justify-center p-2 mx-1 text-base  bg-darkblue">
+
+          楽天
+        </a>
       </div>
     </div>
   </div>

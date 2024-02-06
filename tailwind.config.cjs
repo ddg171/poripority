@@ -57,7 +57,9 @@ module.exports = {
       twttr: '#1DA1F2',
       discord: '#5865F2',
       qiita: '#55C500',
-      reddit: '#FF5700'
+      reddit: '#FF5700',
+      amazonorange: '#FF9900',
+      amazongray: '#333R48',
 
     },
     extend: {
