@@ -1,6 +1,6 @@
 <template>
-  <article class="flex flex-col items-start md:flex-row bg-darkblue">
-    <div class="w-full overflow-hidden h-36 md:w-36 md:h-36 shrink-0 bg-darkblue">
+  <article class="flex  items-start flex-row bg-darkblue hover:cursor-pointer hover:bg-green focus-within:bg-green" @click.stop="router.push(`/blog/${props.article.id}`)">
+    <div class="w-32 h-32 overflow-hidden shrink-0 bg-darkblue">
       <CommonAppLink :to="to" class="w-full h-full flex items-center justify-start md:justify-center bg-green/50" :title="props.article.title ">
         <NuxtPicture
           v-if="props.article.eyecatch?.url"
@@ -22,16 +22,16 @@
         </div>
       </CommonAppLink>
     </div>
-    <div class="flex flex-col justify-between py-1 m-0 md:h-36 md:px-2 grow">
+    <div class="flex flex-col justify-between py-1 m-0 h-32  md:px-2 grow">
       <div class="w-full ">
-        <div class="mb-0 text-xl font-semibold">
+        <div class="mb-0 text-lg md:text-xl font-semibold">
           <h3>
             <CommonAppLink :to="to">
               {{ props.article.title }}
             </CommonAppLink>
           </h3>
         </div>
-        <p class="text-md ">
+        <p class="hidden md:block text-md ">
           {{ props.article.subtitle }}
         </p>
       </div>
@@ -47,6 +47,7 @@ interface Props{
     article:Article
     category?:string
 }
+const router = useRouter()
 
 const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined })
 
