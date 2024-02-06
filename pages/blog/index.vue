@@ -11,11 +11,6 @@
       </ArticleList>
       <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
     </Contentsection>
-    <ContentSection>
-      <AppHeading2 class="mb-2">
-        広告欄
-      </AppHeading2>
-    </ContentSection>
   </div>
 </template>
 

@@ -22,6 +22,7 @@ export const usePageTopStore = () => {
     state,
     selected,
     set: set(state),
+    reset: reset(state),
     clear: clear(state)
 
   }
@@ -36,12 +37,22 @@ const set = (state:Ref<PageTitleProp>) => {
   }
 }
 
-const clear = (state:Ref<PageTitleProp>) => {
+const reset = (state:Ref<PageTitleProp>) => {
   return () => {
     state.value = {
       title: '',
       subtitles: [],
       topImg: blankTopImg
+    }
+  }
+}
+
+const clear = (state:Ref<PageTitleProp>) => {
+  return () => {
+    state.value = {
+      title: '',
+      subtitles: [],
+      topImg: null
     }
   }
 }
