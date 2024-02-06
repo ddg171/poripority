@@ -17,6 +17,7 @@ export interface Ads extends Commonschema{
     name:string
     img:MicroCMSImage
     amazon:string
+    rakuten?:string
 }
 
 export interface Article extends Commonschema {
