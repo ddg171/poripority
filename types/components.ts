@@ -37,7 +37,7 @@ export interface Reference{
     title?:string
 }
 
-export interface Eyecatch{
+export interface MicroCMSImage{
     url:string
     height:number
     width:number

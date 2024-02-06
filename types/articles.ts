@@ -1,5 +1,5 @@
 import { MicroCMSQueries } from 'microcms-js-sdk'
-import { Eyecatch, Reference } from './components'
+import { MicroCMSImage, Reference } from './components'
 
 interface Commonschema{
     id:string
@@ -13,11 +13,17 @@ export interface Category extends Commonschema{
     name:string
 }
 
+export interface Ads extends Commonschema{
+    name:string
+    img:MicroCMSImage
+    amazon:string
+}
+
 export interface Article extends Commonschema {
     title:string
     subtitle:string|null
     content:string
-    eyecatch:Eyecatch
+    eyecatch:MicroCMSImage
     category:Category
     references:Reference[]|null
     imageRefs?:{[T:string]:string}
