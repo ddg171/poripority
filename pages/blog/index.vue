@@ -15,7 +15,6 @@
       <AppHeading2 class="mb-2">
         広告欄
       </AppHeading2>
-      <AdsenseBottomAd1 />
     </ContentSection>
   </div>
 </template>
