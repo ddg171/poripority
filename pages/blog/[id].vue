@@ -36,11 +36,13 @@
         <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
       </OverlayBox>
     </Contentsection>
-    <ContentSection>
+    <ContentSection v-if="article?.ads?.length">
       <AppHeading2 class="mb-2">
         広告欄
       </AppHeading2>
-      <AdsenseBottomAd1 />
+      <div class="w-full flex flex-col gap-4 px-2">
+        <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
+      </div>
     </ContentSection>
   </div>
 </template>
@@ -55,6 +57,8 @@ import { cropSquare } from '~~/utils/imageAPIHelper'
 definePageMeta({
   layout: 'blog'
 })
+const { set: setTitle, clear: clearTitle } = usePageTopStore()
+clearTitle()
 
 const config = useRuntimeConfig()
 const route = useRoute()
@@ -69,7 +73,6 @@ if (!article.value || err?.value) {
 // 選択カテゴリの取得
 const categoryStore = useCategoryStore()
 categoryStore.select(article.value.category.id || null)
-const { set: setTitle } = usePageTopStore()
 const pageTitle = computed<PageTitleProp>(() => {
   const title = article.value?.title || ''
   const subtitle = article.value?.subtitle || ''

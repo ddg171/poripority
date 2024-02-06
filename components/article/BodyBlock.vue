@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article class="flex flex-col mb-6 text-white cms-content cms-content-width" v-html="content" />
+  <article id="article-body" class="flex flex-col mb-6 text-white cms-content cms-content-width" v-html="content" />
 </template>
 <script setup lang="ts">
 import { Heading, ImageList } from '~~/types/articles'
@@ -27,20 +27,22 @@ const imageClickHandler = (e:Event):void => {
 
 onMounted(() => {
   nextTick(() => {
-    const doc = convertStrToDocument(content.value)
-    const imageList = getImgList(doc)
-    const headings = getHeadingList(doc)
-    emits('img-list', imageList)
-    emits('heading-list', headings)
-    const imgs = document.querySelectorAll('article picture')
-    imgs.forEach((img) => {
-      img.addEventListener('click', imageClickHandler)
-    })
+    setTimeout(() => {
+      const doc = convertStrToDocument(content.value)
+      const imageList = getImgList(doc)
+      const headings = getHeadingList(doc)
+      emits('img-list', imageList)
+      emits('heading-list', headings)
+      const imgs = document.querySelectorAll('article#article-body picture')
+      imgs.forEach((img) => {
+        img.addEventListener('click', imageClickHandler)
+      })
+    }, 150)
   })
 })
 
 onBeforeUnmount(() => {
-  const imgs = document.querySelectorAll('article picture')
+  const imgs = document.querySelectorAll('article#article-body picture')
   imgs.forEach((img) => {
     img.removeEventListener('click', imageClickHandler)
   })
@@ -53,7 +55,7 @@ onBeforeUnmount(() => {
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content{
-  @apply flex flex-col  text-base;
+  @apply flex flex-col  font-medium text-base leading-7 md:leading-6;
 }
 
 .cms-content strong{

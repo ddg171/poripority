@@ -11,12 +11,6 @@
       </ArticleList>
       <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
     </Contentsection>
-    <ContentSection>
-      <AppHeading2 class="mb-2">
-        広告欄
-      </AppHeading2>
-      <AdsenseBottomAd1 />
-    </ContentSection>
   </div>
 </template>
 
@@ -32,7 +26,7 @@ definePageMeta({
 const isLoading = useLoadingStore()
 const config = useRuntimeConfig()
 
-const limit = ref<number>(5)
+const limit = ref<number>(10)
 
 // 記事取得処理用のクエリパラメータ
 const route = useRoute()

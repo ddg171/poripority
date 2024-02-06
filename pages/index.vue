@@ -111,19 +111,13 @@
           </div>
         </div>
       </ContentSection>
-      <ContentSection>
-        <AppHeading2 class="mb-2">
-          広告欄
-        </AppHeading2>
-        <AdsenseBottomAd1 />
-      </ContentSection>
     </CommonContentWidthBox>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Article } from '~~/types/articles'
-import { SliderContent, Eyecatch, LinkParams } from '~~/types/components'
+import { SliderContent, MicroCMSImage, LinkParams } from '~~/types/components'
 
 const latestArticles = ref<Article[]>([])
 const isArticleLoading = ref<boolean>(true)
@@ -183,7 +177,7 @@ onMounted(async () => {
     latestArticles.value = data.contents || []
     if (latestArticles.value.length) {
       const a = latestArticles.value[0]
-      const eyecatch: Eyecatch = a.eyecatch
+      const eyecatch: MicroCMSImage = a.eyecatch
       const src = eyecatch.url
 
       const ArticleforSlider: SliderContent = {
