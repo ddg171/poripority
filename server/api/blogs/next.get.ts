@@ -9,7 +9,7 @@ export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload
   const publishedAt = params.publishedAt
   const category = params.category
   const limit = 1
-  let filters:string = `publishedAt[greater_than]${publishedAt}`
+  let filters = `publishedAt[greater_than]${publishedAt}`
   if (isNotEmptyString(category)) {
     filters = filters + `[and]category[equals]${category}`
   }

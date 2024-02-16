@@ -1,9 +1,13 @@
 <template>
   <div class="w-full">
-    <ContentSection class="grid ">
+    <ContentSection class="grid">
       <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
         <ShareBtnBox :title="title" />
-        <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+        <ArticleInfoBox
+          :category="article?.category"
+          :published-date="article?.publishedAt"
+          class=""
+        />
       </div>
       <div class="mb-2 text-sm p-2 bg-gray">
         <CommonAppLink class="text-orange" to="/disclaimer">
@@ -11,21 +15,22 @@
         </CommonAppLink>
       </div>
 
-      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
+      <ArticleBodyBlock
+        :content="article?.content"
+        @img-list="setImgList"
+        @img-click="imgClickHandler"
+        @heading-list="headingListHandler"
+      />
       <ArticleNavigation :published-at="article?.publishedAt" />
       <ClientOnly>
         <div v-if="!isLoading.state.value.isLoading">
           <teleport to="#side-contents">
-            <AsideContentsBox v-if="headings.length>0" class="mb-2">
-              <AppHeading3 class="mb-2">
-                目次
-              </AppHeading3>
+            <AsideContentsBox v-if="headings.length > 0" class="mb-2">
+              <AppHeading3 class="mb-2"> 目次 </AppHeading3>
               <ArticleHeadingList :headings="headings" />
             </AsideContentsBox>
-            <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-              <AppHeading3 class="mb-2">
-                画像
-              </AppHeading3>
+            <AsideContentsBox v-if="imgList.length > 0" class="mb-2">
+              <AppHeading3 class="mb-2"> 画像 </AppHeading3>
               <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
             </AsideContentsBox>
           </teleport>
@@ -35,11 +40,9 @@
       <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
         <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
       </OverlayBox>
-    </Contentsection>
+    </ContentSection>
     <ContentSection v-if="article?.ads?.length">
-      <AppHeading2 class="mb-2">
-        広告欄
-      </AppHeading2>
+      <AppHeading2 class="mb-2"> 広告欄 </AppHeading2>
       <div class="w-full flex flex-col gap-4 px-2">
         <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
       </div>
@@ -48,119 +51,128 @@
 </template>
 
 <script setup lang="ts">
-import { useState, useGtag } from 'vue-gtag-next'
+import { useState, useGtag } from "vue-gtag-next";
 
-import { Article, Heading, ImageList } from '~~/types/articles'
-import { PageTitleProp } from '~~/types/components'
-import { cropSquare } from '~~/utils/imageAPIHelper'
+import { Article, Heading, ImageList } from "~~/types/articles";
+import { PageTitleProp } from "~~/types/components";
+import { cropSquare } from "~~/utils/imageAPIHelper";
 
 definePageMeta({
-  layout: 'blog'
-})
-const { set: setTitle, clear: clearTitle } = usePageTopStore()
-clearTitle()
+  layout: "blog",
+});
+const { set: setTitle, clear: clearTitle } = usePageTopStore();
+clearTitle();
 
-const config = useRuntimeConfig()
-const route = useRoute()
-const isLoading = useLoadingStore()
+const config = useRuntimeConfig();
+const route = useRoute();
+const isLoading = useLoadingStore();
 
 // 記事の取得
-const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
+const { data: article, error: err } = await useFetch<Article>(
+  `/api/blogs/${route.params.id}`
+);
 if (!article.value || err?.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
+  throw createError({
+    statusCode: 404,
+    statusMessage: "Sorry,The article is not found",
+  });
 }
 
 // 選択カテゴリの取得
-const categoryStore = useCategoryStore()
-categoryStore.select(article.value.category.id || null)
+const categoryStore = useCategoryStore();
+categoryStore.select(article.value.category.id || null);
 const pageTitle = computed<PageTitleProp>(() => {
-  const title = article.value?.title || ''
-  const subtitle = article.value?.subtitle || ''
-  const src = article.value?.eyecatch?.url || '/images/webp/blanktitle01w2000.webp'
+  const title = article.value?.title || "";
+  const subtitle = article.value?.subtitle || "";
+  const src =
+    article.value?.eyecatch?.url || "/images/webp/blanktitle01w2000.webp";
   return {
     title,
     subtitles: [subtitle],
     topImg: {
       src,
-      alt: '',
-      title: ''
-    }
-  }
-})
-setTitle(pageTitle.value)
+      alt: "",
+      title: "",
+    },
+  };
+});
+setTitle(pageTitle.value);
 // 自動で更新
 watch(pageTitle, (v) => {
-  setTitle(v)
-})
+  setTitle(v);
+});
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return article?.value?.title + '-' + config.public.siteName
-})
+  return article?.value?.title + "-" + config.public.siteName;
+});
 const description = computed<string>(() => {
-  return article?.value?.subtitle || ''
-})
+  return article?.value?.subtitle || "";
+});
 
-const seoMeta:{[T:string]:string|(()=>string)} = {
+const seoMeta: { [T: string]: string | (() => string) } = {
   title: () => `${title.value}`,
   ogTitle: () => `${title.value}`,
   description: () => `${description.value}`,
   ogDescription: () => `${description.value}`,
-  robots: 'all',
-  ogType: 'article',
+  robots: "all",
+  ogType: "article",
   ogSiteName: config.public.siteName,
-  twitterCard: 'summary_large_image'
-}
+  twitterCard: "summary_large_image",
+};
 
-const ogpImg = cropSquare(article?.value?.eyecatch, false, 1200)?.url
+const ogpImg = cropSquare(article?.value?.eyecatch, false, 1200)?.url;
 if (ogpImg) {
-  seoMeta.ogImage = () => ogpImg
+  seoMeta.ogImage = () => ogpImg;
 }
 
-useSeoMeta(seoMeta)
+useSeoMeta(seoMeta);
 
 // 画像拡大表示用
-const selectedId = ref<string|undefined>(undefined)
+const selectedId = ref<string | undefined>(undefined);
 
 onMounted(() => {
-  window.addEventListener('keyup', escapeKeyEventhandler)
+  window.addEventListener("keyup", escapeKeyEventhandler);
 
   // Gtagのページビューイベント対応
-  const gtagState = useState()
-  if (!gtagState.isEnabled) { return }
-  const gtag = useGtag()
+  const gtagState = useState();
+  if (!gtagState.isEnabled) {
+    return;
+  }
+  const gtag = useGtag();
 
   gtag.pageview({
     page_title: article.value?.title,
-    page_path: window.location.pathname
-  })
-})
-const setImgList = (l:ImageList) => {
-  imgList.value = l
-}
-const imgList = ref<ImageList>([])
+    page_path: window.location.pathname,
+  });
+});
+const setImgList = (l: ImageList) => {
+  imgList.value = l;
+};
+const imgList = ref<ImageList>([]);
 
-const imgClickHandler = (id:string|undefined = undefined) => {
-  selectedId.value = id
-}
+const imgClickHandler = (id: string | undefined = undefined) => {
+  selectedId.value = id;
+};
 
-const headingListHandler = (h:Heading[]) => {
-  headings.value = h
-}
+const headingListHandler = (h: Heading[]) => {
+  headings.value = h;
+};
 
-const headings = ref<Heading[]>([])
+const headings = ref<Heading[]>([]);
 
-const escapeKeyEventhandler = (e:KeyboardEvent) => {
-  const key = e.key
-  if (key !== 'Escape') { return }
-  if (!selectedId.value) {
-    return
+const escapeKeyEventhandler = (e: KeyboardEvent) => {
+  const key = e.key;
+  if (key !== "Escape") {
+    return;
   }
-  selectedId.value = undefined
-}
+  if (!selectedId.value) {
+    return;
+  }
+  selectedId.value = undefined;
+};
 
 onUnmounted(() => {
-  window.removeEventListener('keyup', escapeKeyEventhandler)
-})
-
+  window.removeEventListener("keyup", escapeKeyEventhandler);
+});
 </script>

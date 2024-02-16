@@ -1,6 +1,6 @@
 import { MicroCMSImage } from '~~/types/components'
 
-export function resizeWithTargetWidth (eyecatch:MicroCMSImage, targetWidth:number, webp:boolean = true):MicroCMSImage {
+export function resizeWithTargetWidth (eyecatch:MicroCMSImage, targetWidth:number, webp = true):MicroCMSImage {
   if (!eyecatch) { return eyecatch }
   const origWidth:number = eyecatch.width
   const origHeight:number = eyecatch.height
@@ -15,7 +15,7 @@ export function resizeWithTargetWidth (eyecatch:MicroCMSImage, targetWidth:numbe
   }
 }
 
-export function cropSquare (eyecatch?:MicroCMSImage, webp:boolean = true, size = 400):MicroCMSImage|null {
+export function cropSquare (eyecatch?:MicroCMSImage, webp = true, size = 400):MicroCMSImage|null {
   if (!eyecatch) { return null }
   const url = removeURLParams(eyecatch.url) + `?fit=crop&h=${size}&w=${size}&q=70` + (webp ? '&fm=webp' : '')
   return {

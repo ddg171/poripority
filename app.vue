@@ -8,39 +8,41 @@
 </template>
 
 <script lang="ts" setup>
+const app = ref<null | Element>(null);
 
-const app = ref<null|Element>(null)
-
-const nuxtApp = useNuxtApp()
-const isLoading = useLoadingStore()
-nuxtApp.hook('page:start', () => {
-  isLoading.set(true)
-})
-nuxtApp.hook('page:finish', () => {
+const nuxtApp = useNuxtApp();
+const isLoading = useLoadingStore();
+nuxtApp.hook("page:start", () => {
+  isLoading.set(true);
+});
+nuxtApp.hook("page:finish", () => {
   setTimeout(() => {
-    isLoading.set(false)
-  }, 500)
-})
+    isLoading.set(false);
+  }, 500);
+});
 
 const ScrollHandler = () => {
-  if (!app.value) { return }
-  const rect = app.value.getClientRects()
-  if (rect.length === 0) { return }
-  const target = rect[0]
-  const rootRectStore = useRootRectStore()
-  rootRectStore.set(target)
-}
+  if (!app.value) {
+    return;
+  }
+  const rect = app.value.getClientRects();
+  if (rect.length === 0) {
+    return;
+  }
+  const target = rect[0];
+  const rootRectStore = useRootRectStore();
+  rootRectStore.set(target);
+};
 
 onMounted(() => {
   nextTick(() => {
-    window.addEventListener('scroll', ScrollHandler)
-  })
-})
+    window.addEventListener("scroll", ScrollHandler);
+  });
+});
 
 onBeforeUnmount(() => {
-  window.addEventListener('scroll', ScrollHandler)
-})
-
+  window.addEventListener("scroll", ScrollHandler);
+});
 </script>
 
 <style lang="scss">
@@ -48,6 +50,7 @@ onBeforeUnmount(() => {
 .layout-leave-active {
   transition: all 0.1s;
 }
+
 .layout-enter-from,
 .layout-leave-to {
   // opacity: 0.75;

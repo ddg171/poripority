@@ -19,7 +19,6 @@
 </template>
 
 <script lang="ts" setup>
-// eslint-disable-next-line import/named
 import { NuxtApp } from '#app'
 import { LinkParams, PageTitleProp } from '~~/types/components'
 
@@ -30,7 +29,7 @@ const pageTitle = ref<PageTitleProp>({
   title: 'ページを表示できませんでした。',
   subtitles: [],
   topImg: {
-    webp: '/images/webp/blanktitle01w2000.webp',
+    src: '/images/webp/blanktitle01w2000.webp',
     alt: '',
     title: ''
 

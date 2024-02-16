@@ -1,6 +1,6 @@
 import { LinkParams } from '~~/types/components'
 
-export function prev (offset:number = 0, articleNum:number = 0, totalCount:number = 0, limit:number = 0, category:string = ''):LinkParams|null {
+export function prev (offset = 0, articleNum = 0, totalCount = 0, limit = 0, category = ''):LinkParams|null {
   const currentPosition = offset + articleNum
   if (totalCount - currentPosition <= 0) { return null }
   let p = currentPosition >= totalCount ? '' : `/blog?offset=${currentPosition}`
@@ -10,7 +10,7 @@ export function prev (offset:number = 0, articleNum:number = 0, totalCount:numbe
   return { path: p, name: `次の${limit}件` }
 }
 
-export function next (offset:number = 0, articleNum:number = 0, limit:number = 0, category:string = ''):LinkParams|null {
+export function next (offset = 0, articleNum = 0, limit = 0, category = ''):LinkParams|null {
   const currentPosition = offset + articleNum
   if (offset <= 0) { return null }
 

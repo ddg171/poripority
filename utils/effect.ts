@@ -6,7 +6,7 @@ function randomUTF16CharCode (): number {
   return code
 }
 
-export function replaceRandomCharactor (str: string, startAt:number = 0):string {
+export function replaceRandomCharactor (str: string, startAt = 0):string {
   if (!str) { return '' }
   const strArray :string[] = new Array(...str)
   return strArray.map((char, index) => {

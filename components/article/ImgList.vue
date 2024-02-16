@@ -19,7 +19,7 @@ defineEmits<{(e:'click', v:string):void}>()
 
 const props = withDefaults(defineProps<Props>(), { imgList: () => [] })
 
-const crop = (url:string, size:number = 64):string => {
+const crop = (url:string, size = 64):string => {
   const arg = {
     url,
     width: 64,
