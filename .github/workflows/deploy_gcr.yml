@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - production
 
 name: Build and Deploy to Cloud Run
 env:
@@ -14,7 +14,7 @@ env:
   PORT: 8080
   BASE_URL: https://poripority.com
   GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
-  
+
 
 jobs:
   deploy:
