@@ -14,6 +14,8 @@ env:
   BASE_URL: https://poripority.com
   GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
   FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+  CI_CREDENTIAL: ${{ secrets.CI_CREDENTIAL }}
+  GOOGLE_APPLICATION_CREDENTIALS: /tmp/credentials.json
 
 jobs:
   build_and_deploy:
@@ -25,6 +27,8 @@ jobs:
         with:
           node-version: 18.x
           registry-url: "https://registry.npmjs.org"
+      - name: decode CI_CREDENTIAL
+        run: echo $CI_CREDENTIAL | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
       - name: install packages
         run: npm ci
       - name: install Firebase CLI
@@ -42,4 +46,4 @@ jobs:
       - name: set project
         run: firebase use ${{ secrets.PROJECT_ID }}
       - name: deploy to Firebase
-        run: firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy
