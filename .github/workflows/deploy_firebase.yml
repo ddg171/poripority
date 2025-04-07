@@ -13,12 +13,11 @@ env:
   PORT: 8080
   BASE_URL: https://poripority.com
   GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
-  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   CI_CREDENTIAL: ${{ secrets.CI_CREDENTIAL }}
   GOOGLE_APPLICATION_CREDENTIALS: /tmp/credentials.json
 
 jobs:
-  build_and_deploy:
+  build_and_deploy_to_firebase:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
