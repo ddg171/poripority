@@ -7,7 +7,6 @@ name: Build and Deploy to Cloud Run
 env:
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
   SERVICE_NAME: ${{secrets.SERVICE_NAME}}
-  FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
   MICROCMS_SERVEICE_ID: ${{ secrets.MICROCMS_SERVEICE_ID }}
   MICROCMS_API: ${{ secrets.MICROCMS_API }}
   HOST: 0.0.0.0
