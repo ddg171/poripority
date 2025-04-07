@@ -9,6 +9,7 @@ const vh = {
   '1/4h': '25vh',
   '1/3h': '33vh',
   '1/2h': '50vh',
+  '2/3h': '66vh',
   '3/4h': '75vh',
   '4/5h': '80vh',
   '9/10h': '90vh'
@@ -56,7 +57,9 @@ module.exports = {
       twttr: '#1DA1F2',
       discord: '#5865F2',
       qiita: '#55C500',
-      reddit: '#FF5700'
+      reddit: '#FF5700',
+      amazonorange: '#FF9900',
+      amazongray: '#333R48',
 
     },
     extend: {
@@ -83,10 +86,10 @@ module.exports = {
       minWidth: {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px',
-        ...vh
+        ...px
       },
       fontFamily: {
-        sans: ['Helvetica Neue', 'Helvetica', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Arial', 'Yu Gothic', 'Meiryo', 'sans-serif', ...defaultTheme.fontFamily.sans]
+        sans: ['Avenir', 'Open Sans', 'Helvetica Neue', 'Helvetica,Arial', 'Verdana,Roboto', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'YuGothic', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', 'sans-serif', ...defaultTheme.fontFamily.sans]
       }
     },
     variants: {

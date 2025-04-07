@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
   let sitemapStr = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
 
-  const pathList = ['', '/works', '/about', '/blog']
+  const pathList = ['', '/works', '/about', '/blog', '/disclaimer']
   articles.contents?.forEach((article:{id:string}) => {
     if (!article?.id) { return }
     pathList.push(`/blog/${article.id}`)
@@ -24,5 +24,6 @@ export default defineEventHandler(async (event) => {
 
   sitemapStr = sitemapStr + '</urlset>'
   event.node.res.setHeader('content-type', 'text/xml')
+  setHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')
   event.node.res.end(sitemapStr)
 })

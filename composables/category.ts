@@ -1,16 +1,19 @@
 import { useState } from '#app'
-import { Ref } from 'nuxt/dist/app/compat/capi'
 import { Category } from '~~/types/articles'
 
 export const useCategoryStore = () => {
   const state = useState<Category[]>(
     () => { return [] })
+  const selected = useState<string|null>(
+    () => { return null }
+  )
   return {
     state,
+    selected,
     set: set(state),
     asObject: asObject(state),
-    get: get(state)
-
+    get: get(state),
+    select: select(selected)
   }
 }
 
@@ -28,4 +31,8 @@ const asObject = (state:Ref<Category[]>) => ():{[t:string]:Category} => {
 const get = (state:Ref<Category[]>) => (id:string):Category|null => {
   const obj = asObject(state)()
   return obj[id] || null
+}
+
+const select = (selected:Ref<string|null>) => (id:string|null) => {
+  selected.value = id
 }

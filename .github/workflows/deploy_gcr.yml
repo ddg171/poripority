@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - main
+      - production
 
 name: Build and Deploy to Cloud Run
 env:
@@ -14,7 +14,7 @@ env:
   PORT: 8080
   BASE_URL: https://poripority.com
   GA_MEASUREMENT_ID: ${{ secrets.GA_MEASUREMENT_ID }}
-  
+
 
 jobs:
   deploy:
@@ -61,6 +61,8 @@ jobs:
             --image=asia.gcr.io/${{ secrets.PROJECT_ID }}/${{ secrets.SERVICE_NAME }}:${{ github.sha }} \
             --region="asia-northeast2" \
             --service-account=${{secrets.SERVICE_ACCOUNT_NAME }}@${{ secrets.PROJECT_ID }}.iam.gserviceaccount.com \
-            --allow-unauthenticated
+            --allow-unauthenticated \
+            --cpu-boost \
+            --max-instances 3
 
 

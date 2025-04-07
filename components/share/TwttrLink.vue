@@ -1,8 +1,8 @@
 <template>
-  <ShareSnsLink :link="link" class="text-white bg-twttr border-twttr" target="_blank" tabindex="0" title="Twitter">
+  <ShareSnsLink :link="link" class="text-white bg-black border-black" target="_blank" tabindex="0" title="Twitter">
     <Icon
       class="w-full h-full"
-      name="mdi:twitter"
+      name="simple-icons:x"
     />
   </ShareSnsLink>
 </template>

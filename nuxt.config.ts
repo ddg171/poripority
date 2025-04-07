@@ -1,5 +1,7 @@
 import { defineNuxtConfig } from 'nuxt/config'
 
+import { blankImages } from './utils/prerenderImages'
+
 const SITE_NAME = 'The hut of Poripority'
 const DESCRIPTION = 'Hata_kazeが趣味で作ったWebサイト'
 export default defineNuxtConfig({
@@ -9,11 +11,14 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
+        { name: 'og:title', content: SITE_NAME },
         { name: 'robots', content: 'all' },
         { name: 'description', content: DESCRIPTION },
+        { name: 'og:description', content: DESCRIPTION },
         { property: 'og:type', content: 'website' },
         { property: 'og:site_name', content: SITE_NAME },
-        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' }
+        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' },
+        { property: 'twitter:card', content: 'summary_large_image' }
       ],
       link: [
         { rel: 'icon', href: '/favicon.ico', id: 'favicon' }
@@ -40,7 +45,12 @@ export default defineNuxtConfig({
     shim: false
   },
   css: ['~/assets/css/tailwind.scss'],
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image-edge', 'nuxt-icon', ['@nuxtjs/robots', { Disallow: '/blog/preview/*', Sitemap: process.env.BASE_URL + '/sitemap.xml' }]],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image',
+    'nuxt-icon',
+    ['@nuxtjs/robots', { Disallow: '/blog/preview/*', Sitemap: process.env.BASE_URL + '/sitemap.xml' }]
+  ],
   image: {
     imgix: {
       baseURL: ''
@@ -49,7 +59,13 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
-      routes: ['/works', '/about']
+      routes: [
+        '/',
+        '/works',
+        '/about',
+        '/disclaimer',
+        ...blankImages
+      ]
     }
   },
   build: {

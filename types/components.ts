@@ -1,16 +1,19 @@
 export interface LinkParams {
+    id?:string
     name:string
     path:string
     disabled?:boolean
     isExternal?:boolean
 }
 export interface PictureBoxProp {
-    source?: string[]
-    webp: string
-    jpg?: string
+    src: string
     alt: string
     title: string
     fromCMS?:boolean
+}
+export interface Photo {
+  isShow:boolean
+  src:string
 }
 
 export interface SliderContent {
@@ -34,7 +37,7 @@ export interface Reference{
     title?:string
 }
 
-export interface Eyecatch{
+export interface MicroCMSImage{
     url:string
     height:number
     width:number

@@ -2,96 +2,138 @@
   <div class="w-full">
     <ContentSection class="grid ">
       <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-        <ShareBtnBox :title="headTitle" />
+        <ShareBtnBox :title="title" />
         <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
       </div>
+      <div class="mb-2 text-sm p-2 bg-gray">
+        <CommonAppLink class="text-orange" to="/disclaimer">
+          当webサイトの特記事項についてはこちらをご確認ください。
+        </CommonAppLink>
+      </div>
+
       <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
-      <ArticleNavigation :published-at="article?.publishedAt" :category="category" />
+      <ArticleNavigation :published-at="article?.publishedAt" />
       <ClientOnly>
-        <teleport to="#top-box">
-          <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
-        </teleport>
-        <teleport to="#side-contents">
-          <AsideContentsBox v-if="headings.length>0" class="mb-2">
-            <AppHeading3>目次</AppHeading3>
-            <ClientOnly>
+        <div v-if="!isLoading.state.value.isLoading">
+          <teleport to="#side-contents">
+            <AsideContentsBox v-if="headings.length>0" class="mb-2">
+              <AppHeading3 class="mb-2">
+                目次
+              </AppHeading3>
               <ArticleHeadingList :headings="headings" />
-            </ClientOnly>
-          </AsideContentsBox>
-          <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-            <AppHeading3>画像</AppHeading3>
-            <ClientOnly>
+            </AsideContentsBox>
+            <AsideContentsBox v-if="imgList.length>0" class="mb-2">
+              <AppHeading3 class="mb-2">
+                画像
+              </AppHeading3>
               <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
-            </ClientOnly>
-          </AsideContentsBox>
-        </teleport>
+            </AsideContentsBox>
+          </teleport>
+        </div>
       </ClientOnly>
+
       <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
         <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
       </OverlayBox>
     </Contentsection>
+    <ContentSection v-if="article?.ads?.length">
+      <AppHeading2 class="mb-2">
+        広告欄
+      </AppHeading2>
+      <div class="w-full flex flex-col gap-4 px-2">
+        <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
+      </div>
+    </ContentSection>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useState, useGtag } from 'vue-gtag-next'
+
 import { Article, Heading, ImageList } from '~~/types/articles'
-import { Eyecatch, PictureBoxProp, PageTitleProp } from '~~/types/components'
+import { PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
-import { setPageMetaData } from '~~/composables/helper/head'
 
 definePageMeta({
   layout: 'blog'
 })
-
-// カテゴリの取得
-const { data: categoryList } = await useFetch('/api/category')
-const categoryStore = useCategoryStore()
-categoryStore.set(categoryList.value?.contents || [])
-
-const route = useRoute()
-const isLoading = useLoadingStore()
-const pageTitle = ref<PageTitleProp>({
-  title: '記事',
-  subtitles: [],
-  topImg: {
-    webp: '/images/webp/blanktitle01w2000.webp',
-    alt: '',
-    title: '',
-    fromCMS: true
-
-  }
-})
-
-const category = ref<string|null>(route.query?.category?.toString() || null)
-const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
-const value = article.value
-if (!value || err?.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
-}
-const selectedId = ref<string|undefined>(undefined)
+const { set: setTitle, clear: clearTitle } = usePageTopStore()
+clearTitle()
 
 const config = useRuntimeConfig()
-const headTitle = ref<string>(value.title + '|' + config.public.siteName)
-const description = value.subtitle || ''
-const image:string|undefined = value.eyecatch ? cropSquare(value.eyecatch).url : undefined
-setPageMetaData(headTitle.value, description, 'all', 'article', image)
+const route = useRoute()
+const isLoading = useLoadingStore()
 
-const eyecatch:Eyecatch|undefined = value?.eyecatch || undefined
-const topImg:PictureBoxProp|null = eyecatch
-  ? {
-      webp: eyecatch.url,
+// 記事の取得
+const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
+if (!article.value || err?.value) {
+  throw createError({ statusCode: 404, statusMessage: 'Sorry,The article is not found' })
+}
+
+// 選択カテゴリの取得
+const categoryStore = useCategoryStore()
+categoryStore.select(article.value.category.id || null)
+const pageTitle = computed<PageTitleProp>(() => {
+  const title = article.value?.title || ''
+  const subtitle = article.value?.subtitle || ''
+  const src = article.value?.eyecatch?.url || '/images/webp/blanktitle01w2000.webp'
+  return {
+    title,
+    subtitles: [subtitle],
+    topImg: {
+      src,
       alt: '',
-      title: '',
-      fromCMS: true
+      title: ''
     }
-  : null
-onMounted(() => {
-  const t:PageTitleProp = {
-    title: article.value?.title || '記事が見つかりませんでした',
-    topImg,
-    subtitles: article.value?.subtitle ? [article.value.subtitle] : []
   }
-  pageTitle.value = t
+})
+setTitle(pageTitle.value)
+// 自動で更新
+watch(pageTitle, (v) => {
+  setTitle(v)
+})
+
+// metaタグ側で使う
+const title = computed<string>(() => {
+  return article?.value?.title + '-' + config.public.siteName
+})
+const description = computed<string>(() => {
+  return article?.value?.subtitle || ''
+})
+
+const seoMeta:{[T:string]:string|(()=>string)} = {
+  title: () => `${title.value}`,
+  ogTitle: () => `${title.value}`,
+  description: () => `${description.value}`,
+  ogDescription: () => `${description.value}`,
+  robots: 'all',
+  ogType: 'article',
+  ogSiteName: config.public.siteName,
+  twitterCard: 'summary_large_image'
+}
+
+const ogpImg = cropSquare(article?.value?.eyecatch, false, 1200)?.url
+if (ogpImg) {
+  seoMeta.ogImage = () => ogpImg
+}
+
+useSeoMeta(seoMeta)
+
+// 画像拡大表示用
+const selectedId = ref<string|undefined>(undefined)
+
+onMounted(() => {
+  window.addEventListener('keyup', escapeKeyEventhandler)
+
+  // Gtagのページビューイベント対応
+  const gtagState = useState()
+  if (!gtagState.isEnabled) { return }
+  const gtag = useGtag()
+
+  gtag.pageview({
+    page_title: article.value?.title,
+    page_path: window.location.pathname
+  })
 })
 const setImgList = (l:ImageList) => {
   imgList.value = l
@@ -117,10 +159,6 @@ const escapeKeyEventhandler = (e:KeyboardEvent) => {
   selectedId.value = undefined
 }
 
-onMounted(() => {
-  isLoading.set(false)
-  window.addEventListener('keyup', escapeKeyEventhandler)
-})
 onUnmounted(() => {
   window.removeEventListener('keyup', escapeKeyEventhandler)
 })

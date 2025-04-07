@@ -12,24 +12,22 @@
         :next="i===next"
         :prev="i===prev"
       >
-        <div class="relative w-full h-full top-slider-content">
+        <TopRelativeBox class="top-slider-content">
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
-          <div class="absolute flex items-center justify-center w-full h-full ">
-            <CommonContentWidthBox class="flex items-end justify-start">
-              <div class="flex flex-col w-full px-4 py-2 md:px-16 md:py-6 bg-green/75 md:w-auto mb-1/5h md:mb-1/6h">
-                <AppHeading2 :data-is-tight="!!c.text.isTight">
-                  <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
-                    {{ c.text.title }}
-                  </CommonAppLink>
-                  <span v-else>{{ c.text.title }}</span>
-                </AppHeading2>
-                <p v-for="p , t in c.text.para" :key="t" class="text-lg md:text-2xl">
-                  {{ p }}
-                </p>
-              </div>
-            </CommonContentWidthBox>
-          </div>
-        </div>
+          <TopTextBox>
+            <div class="flex flex-col w-full px-4 py-2 md:px-16 md:py-6  bg-green/75 md:w-auto mb-1/5h md:mb-1/6h">
+              <AppHeading2 :data-is-tight="!!c.text.isTight">
+                <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
+                  {{ c.text.title }}
+                </CommonAppLink>
+                <span v-else>{{ c.text.title }}</span>
+              </AppHeading2>
+              <p v-for="p , t in c.text.para" :key="t" class="text-lg md:text-xl font-medium">
+                {{ p }}
+              </p>
+            </div>
+          </TopTextBox>
+        </TopRelativeBox>
       </div>
       <TopSliderBtnList
         v-model="sliderPage"

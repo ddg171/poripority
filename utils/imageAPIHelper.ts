@@ -1,6 +1,6 @@
-import { Eyecatch } from '~~/types/components'
+import { MicroCMSImage } from '~~/types/components'
 
-export function resizeWithTargetWidth (eyecatch:Eyecatch, targetWidth:number, webp:boolean = true):Eyecatch {
+export function resizeWithTargetWidth (eyecatch:MicroCMSImage, targetWidth:number, webp:boolean = true):MicroCMSImage {
   if (!eyecatch) { return eyecatch }
   const origWidth:number = eyecatch.width
   const origHeight:number = eyecatch.height
@@ -15,8 +15,8 @@ export function resizeWithTargetWidth (eyecatch:Eyecatch, targetWidth:number, we
   }
 }
 
-export function cropSquare (eyecatch:Eyecatch, webp:boolean = true, size = 400):Eyecatch {
-  if (!eyecatch) { return eyecatch }
+export function cropSquare (eyecatch?:MicroCMSImage, webp:boolean = true, size = 400):MicroCMSImage|null {
+  if (!eyecatch) { return null }
   const url = removeURLParams(eyecatch.url) + `?fit=crop&h=${size}&w=${size}&q=70` + (webp ? '&fm=webp' : '')
   return {
     url,
@@ -42,4 +42,26 @@ export function removeURLParams (url:string):string|undefined {
   } catch {
     return undefined
   }
+}
+
+export function getImageExt (filePath:string):string|undefined {
+  try {
+    const urlArry = filePath.split('.')
+    return urlArry[urlArry.length - 1]
+  } catch {
+    return undefined
+  }
+}
+
+type ImageFormat ='webp'|'jpg'|'png'
+
+export function checkImageFormat (filePath:string):ImageFormat|undefined {
+  if (!filePath) { return undefined }
+  const ext = getImageExt(filePath)
+  if (!ext) { return undefined }
+  const extLower = ext.toLocaleLowerCase()
+  if (['jpg', 'jpeg'].includes(extLower)) { return 'jpg' }
+  if (['png'].includes(extLower)) { return 'png' }
+  if (['webp'].includes(extLower)) { return 'webp' }
+  return undefined
 }

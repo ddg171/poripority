@@ -1,12 +1,12 @@
 <template>
-  <AboutContentSection id="profile" class="sticky top-0 z-10 min-h-screen pt-10 bg-gray md:pt-16" @in="isShown=true">
+  <AboutContentSection id="profile" class="py-16 bg-gray " @in="isShown=true">
     <template #heading>
       <AppHeading2>
         Profile
       </AppHeading2>
     </template>
     <template #default>
-      <div class="flex flex-col items-start justify-center w-full text-white md:flex-row ">
+      <div class="flex flex-col items-start justify-center w-full h-full text-white md:flex-row ">
         <div class="flex items-center justify-center w-full pb-2 md:h-1/2h profile-pic md:w-1/2">
           <div class="flex flex-col items-center justify-start ">
             <NuxtPicture
@@ -28,34 +28,38 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="h-16 text-xl">
-                  <td class="font-bold">
+                <tr class="h-16  text-xl">
+                  <td class="w-40 font-bold">
                     name
                   </td>
-                  <td class="w-30">
-                    <EffectShuffleSpan text="yamamoto tomohiro" :trriger="isShown" />
+                  <td class="text-left">
+                    <EffectShuffleSpan text="Yamamoto Tomohiro" :trriger="isShown" />
                   </td>
                 </tr>
                 <tr class="h-16 text-xl">
-                  <td class="font-bold">
+                  <td class="w-40 font-bold">
                     Year of birth
                   </td>
-                  <td>
+                  <td class=" text-left">
                     <EffectShuffleSpan text="1991" :trriger="isShown" :delay="500" />
                   </td>
                 </tr>
                 <tr class="h-16 text-xl">
-                  <td class="font-bold">
-                    Hometown
+                  <td class="w-40 font-bold">
+                    Place of birth
                   </td>
-                  <td><EffectShuffleSpan text="Hiroshima,Japan" :trriger="isShown" :delay="750" /></td>
+                  <td class="text-left">
+                    <EffectShuffleSpan text="Hiroshima,Japan" :trriger="isShown" :delay="750" />
+                  </td>
                 </tr>
 
                 <tr class="h-16 text-xl">
-                  <td class="font-bold">
+                  <td class="w-40 font-bold">
                     Hobby
                   </td>
-                  <td><EffectShuffleSpan text="Photograph,PC game,etc..." :trriger="isShown" :delay="1000" /></td>
+                  <td class="text-left">
+                    <EffectShuffleSpan text="Photography ,PC game,etc..." :trriger="isShown" :delay="1000" />
+                  </td>
                 </tr>
               </tbody>
             </table>

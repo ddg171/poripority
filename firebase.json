@@ -1,5 +1,7 @@
 {
   "hosting": {
+    "trailingSlash": false,
+    "cleanUrls": true,
     "public": ".output/public",
     "ignore": [
       "firebase.json",
@@ -32,6 +34,56 @@
         "source": "/sitemap/**",
         "destination": "/sitemap.xml",
         "type": 302
+      },
+      {
+        "source": "**/*.php",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/wp-admin/**",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/wp-admin",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/admin/**",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/wp-content",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/wp-content/**",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/.well-lnown",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/.well-lnown/**",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/uploads",
+        "destination": "/404",
+        "type": 302
+      },
+      {
+        "source": "/uploads/**",
+        "destination": "/404",
+        "type": 302
       }
     ],
     "headers": [
@@ -45,7 +97,7 @@
         ]
       },
       {
-        "source": "**/*.@(webp|jpg|jpeg|gif|png|svg|woff|json|css)",
+        "source": "**/*.@(html|webp|jpg|jpeg|gif|png|svg|woff|json|css)",
         "headers": [
           {
             "key": "Cache-Control",

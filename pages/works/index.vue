@@ -146,13 +146,11 @@
 
 <script setup lang="ts">
 import { PictureBoxProp, LinkParams } from '~~/types/components'
-import { setPageMetaData } from '~~/composables/helper/head'
+import { makeSeoMetaInput } from '~~/utils/useHead'
 
 const title = ref<string>('制作物')
 const topImg = ref<PictureBoxProp>({
-  webp: '/images/webp/works-img01w2000.webp',
-  source: ['/images/webp/works-img01w640.webp 640w,/images/webp/works-img01w1270.webp 1024w,'],
-  jpg: '/images/webp/works-img01w640.jpg',
+  src: '/images/webp/works-img01w2000.webp',
   alt: '',
   title: 'TOP画像',
   fromCMS: true
@@ -184,8 +182,10 @@ const imgAttr = ref(
 )
 
 const config = useRuntimeConfig()
-const headTitle = title.value + '|' + config.public.siteName
+const headTitle = title.value + '-' + config.public.siteName
 const description = subtitles.value[0] || ''
 
-setPageMetaData(headTitle, description, 'all', 'website')
+useSeoMeta(makeSeoMetaInput(headTitle, description, 'all', 'website')
+)
+
 </script>
