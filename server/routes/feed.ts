@@ -1,28 +1,49 @@
 import client from '~~/lib/microCMS'
 import { Api } from '~~/types/articles'
+import { getTextContent } from '~~/utils/contentParser'
 
 export default defineEventHandler(async (event) => {
   const baseURL = process.env.BASE_URL
   const queries:Api.BlogQuery = {
     orders: '-publishedAt',
-    fields: 'id',
+    fields: 'id,title,content,publishedAt',
     limit: 100
   }
   const articles = await client.get({ endpoint: 'blogs', queries })
-  let sitemapStr = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`
+  
+  // RSSフィードのヘッダー部分
+  let rssStr = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ブログフィード</title>
+    <link>${baseURL}</link>
+    <description>ブログの最新記事</description>
+    <language>ja-JP</language>
+    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <atom:link href="${baseURL}/feed" rel="self" type="application/rss+xml" />`
 
-  const pathList = ['', '/works', '/about', '/blog']
-  articles.contents?.forEach((article:{id:string}) => {
+  // 記事データをRSS形式に変換
+  articles.contents?.forEach((article: any) => {
     if (!article?.id) { return }
-    pathList.push(`/blog/${article.id}`)
-  })
-  pathList.forEach((path:string) => {
-    const u = `<url><loc>${baseURL}${path}</loc></url>`
-    sitemapStr = sitemapStr + u
+    const pubDate = new Date(article.publishedAt).toUTCString()
+    // 本文を100文字に制限
+    const truncatedContent =  getTextContent(article.content).substring(0, 100) + '...'
+    rssStr += `
+    <item>
+      <title>${article.title}</title>
+      <link>${baseURL}/blog/${article.id}</link>
+      <guid>${baseURL}/blog/${article.id}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description><![CDATA[${truncatedContent}]]></description>
+    </item>`
   })
 
-  sitemapStr = sitemapStr + '</urlset>'
-  event.node.res.setHeader('content-type', 'text/xml')
-  event.node.res.end(sitemapStr)
+  // RSSフィードのフッター部分
+  rssStr += `
+  </channel>
+</rss>`
+
+  // レスポンスヘッダーを設定
+  event.node.res.setHeader('content-type', 'application/xml')
+  event.node.res.end(rssStr)
 })
