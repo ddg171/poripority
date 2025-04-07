@@ -6,6 +6,11 @@ export function convertStrToDocument (contentRaw:string):Document {
   return parser.parseFromString(contentRaw, 'text/html')
 }
 
+export function getTextContent (contentRaw:string):string {
+  const doc = convertStrToDocument(contentRaw)
+  return doc.body.textContent || ''
+}
+
 function changeImgParams (doc:Document):Document {
   const images = doc.querySelectorAll('img')
   images.forEach((img:HTMLImageElement, i:number) => {
