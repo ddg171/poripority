@@ -1,9 +1,11 @@
 import client from '~~/lib/microCMS'
-import { Api } from '~~/types/articles'
+import { Api, Article } from '~~/types/articles'
 import { getTextContent } from '~~/utils/contentParser'
 
+
 export default defineEventHandler(async (event) => {
-  const baseURL = process.env.BASE_URL
+  const config = useRuntimeConfig()
+  const baseURL = config.public.baseURL
   const queries:Api.BlogQuery = {
     orders: '-publishedAt',
     fields: 'id,title,content,publishedAt',
@@ -15,15 +17,15 @@ export default defineEventHandler(async (event) => {
   let rssStr = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ブログフィード</title>
+    <title>${config.public.siteName}</title>
     <link>${baseURL}</link>
-    <description>ブログの最新記事</description>
+    <description>${config.public.description}</description>
     <language>ja-JP</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseURL}/feed" rel="self" type="application/rss+xml" />`
 
   // 記事データをRSS形式に変換
-  articles.contents?.forEach((article: any) => {
+  articles.contents?.forEach((article: Article) => {
     if (!article?.id) { return }
     const pubDate = new Date(article.publishedAt).toUTCString()
     // 本文を100文字に制限
