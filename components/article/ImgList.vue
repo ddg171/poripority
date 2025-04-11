@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ImageList } from '~~/types/articles'
+import { ImageList } from '~~/types/articles';
 
 interface Props {
     imgList:ImageList
@@ -22,10 +22,10 @@ const props = withDefaults(defineProps<Props>(), { imgList: () => [] })
 const crop = (url:string, size:number = 64):string => {
   const arg = {
     url,
-    width: 64,
-    height: 64
+    width: size,
+    height: size
   }
-  return cropSquare(arg, false, size).url
+  return cropSquare(arg, false, size)?.url ?? ''
 }
 
 </script>
