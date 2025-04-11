@@ -36,7 +36,8 @@ export default defineNuxtConfig({
     public: {
       siteName: SITE_NAME,
       baseURL: process.env.BASE_URL,
-      gaMeasurementId: process.env.GA_MEASUREMENT_ID
+      gaMeasurementId: process.env.GA_MEASUREMENT_ID,
+      description: DESCRIPTION
     },
     microCMSAPI: process.env.MICROCMS_API,
     microCMSServiceID: process.env.MICROCMS_SERVEICE_ID
