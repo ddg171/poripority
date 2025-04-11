@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { ImageList } from '~~/types/articles';
+import { ImageList } from '~~/types/articles'
 
 interface Props {
     imgList:ImageList
