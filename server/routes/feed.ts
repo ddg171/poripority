@@ -46,5 +46,6 @@ export default defineEventHandler(async (event) => {
 
   // レスポンスヘッダーを設定
   event.node.res.setHeader('content-type', 'application/xml')
+  setHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')
   event.node.res.end(rssStr)
 })
