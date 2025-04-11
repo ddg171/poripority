@@ -116,4 +116,10 @@ onBeforeUnmount(() => {
   @apply md:text-2xl text-xl mt-6 mb-1 font-bold;
 }
 
+.cms-content code{
+  @apply block bg-gray text-orange p-4 m-2 max-w-full overflow-x-auto  whitespace-pre;
+  max-width: 650px;
+  user-select: all;
+}
+
 </style>
