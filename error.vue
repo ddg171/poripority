@@ -20,8 +20,8 @@
 
 <script lang="ts" setup>
 // eslint-disable-next-line import/named
-import { NuxtApp } from '#app';
-import { LinkParams, PageTitleProp } from '~~/types/components';
+import { NuxtApp } from '#app'
+import { LinkParams, PageTitleProp } from '~~/types/components'
 
 const centerNav = ref<LinkParams>({ name: 'TOPへ', path: '/' })
 defineProps<{ error: NuxtApp['payload']['error'] }>()
