@@ -15,7 +15,6 @@
 </template>
 
 <script setup lang="ts">
-import { FetchContext } from 'ohmyfetch'
 import { Article } from '~~/types/articles'
 import { LinkParams, PageTitleProp } from '~~/types/components'
 
@@ -39,14 +38,16 @@ const category = computed<string>(() => {
   return typeof c === 'string' ? c : ''
 })
 // 記事の取得
-const articleAPI = await useFetch('/api/blogs', {
-  params: { limit: limit.value, offset: offset.value, category: category.value },
-  onRequest (ctx: FetchContext): void {
-    ctx.options.params = {
-      limit: limit.value, offset: offset.value, category: category.value
+const articleAPI = useAsyncData('blogs', () => {
+  return $fetch('/api/blogs', {
+    params: {
+      limit: limit.value,
+      offset: offset.value,
+      category: category.value
     }
-  }
-})
+  })
+}
+)
 const articles = computed<Article[]>(() => {
   return articleAPI.data?.value?.contents || []
 })
