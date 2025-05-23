@@ -12,7 +12,7 @@
           </p>
         </div>
         <ArticleList :articles="latestArticles" class="grid-cols-1 lg:grid-cols-2">
-          <li v-if="latestArticles.length !== 3" />
+          <li v-if="latestArticles.length %2 ===0" />
           <li class="flex items-end justify-center w-full h-auto lg:max-w-xl md:h-full">
             <div
               class="flex items-center justify-center w-full py-3 my-0 text-3xl font-medium readmore-link bg-green hover:bg-lightgreen focus:bg-lightgreen hover:underline"
@@ -87,37 +87,13 @@
           </div>
         </div>
       </ContentSection>
-      <ContentSection>
-        <AppHeading2 class="mb-2">
-          Discordサーバー/居酒屋「ハルキゲニア」
-        </AppHeading2>
-        <div class="flex flex-col justify-start md:flex-row">
-          <WidgetDiscordStatus class="flex justify-center mx-0 my-4 md:my-2" />
-          <div class="mx-0 my-4 md:my-2 md:mx-4">
-            <div class="grid w-full gap-2">
-              <CommonAppApra>
-                Wargame: Red
-                dragonを遊ぶ人向けのDiscordサーバー。気がつけば開設からもう5年以上経過したが元気に運営中。流石に8年前のゲームがメインなので他のゲームも遊ぶ事が多いが、今でも呼びかけてみると対戦相手が見つかる程度には活発。
-              </CommonAppApra>
-              <CommonAppApra>
-                なんだかんだ言いつつWargame:
-                RDで対人戦をもっとも積極的にやっている日本人鯖の一つ。CPU相手の戦闘に飽きてきた方や「俺より強いやつに会いたい」という方にもおすすめ。最近は日本以外からもお客さんが来て賑やかになった。
-              </CommonAppApra>
-              <CommonAppApra>
-                Wargameを含めて主に遊ばれているゲームは以下の通り。他にも色々なゲームを遊ぶことがあり、管理人が触ってないものもそこそこあったりする。
-              </CommonAppApra>
-              <CommonLinkList :links="games" />
-            </div>
-          </div>
-        </div>
-      </ContentSection>
     </CommonContentWidthBox>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Article } from '~~/types/articles'
-import { SliderContent, MicroCMSImage, LinkParams } from '~~/types/components'
+import { MicroCMSImage, SliderContent } from '~~/types/components'
 
 const latestArticles = ref<Article[]>([])
 const isArticleLoading = ref<boolean>(true)
@@ -173,7 +149,7 @@ const topContents = ref<SliderContent[]>([
 
 onMounted(async () => {
   try {
-    const data = await $fetch('/api/blogs', { params: { limit: 3 } })
+    const data = await $fetch('/api/blogs', { params: { limit: 7 } })
     latestArticles.value = data.contents || []
     if (latestArticles.value.length) {
       const a = latestArticles.value[0]
@@ -203,17 +179,6 @@ onMounted(async () => {
     loadingMsg.value = '記事が見つかりません。'
   }
 })
-
-const games = ref<LinkParams[]>(
-  [
-    { name: 'Wargame: Red Dragon', path: 'https://store.steampowered.com/app/251060/Wargame_Red_Dragon', isExternal: true },
-    { name: 'WARNO', path: 'https://store.steampowered.com/app/1611600/WARNO', isExternal: true },
-    { name: 'Escape from Tarkov', path: 'https://www.escapefromtarkov.com/', isExternal: true },
-    { name: 'MechWarrior Online™', path: 'https://mwomercs.com/', isExternal: true },
-    { name: 'Ready or Not', path: 'https://store.steampowered.com/agecheck/app/1144200/', isExternal: true },
-    { name: 'Project Zomboid', path: 'https://projectzomboid.com', isExternal: true }
-  ]
-)
 
 </script>
 
