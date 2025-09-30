@@ -19,6 +19,7 @@ module.exports = {
   ],
   rules: {
     'vue/no-v-html': 'warn'
+    "semi": ["ignore", "always"]
   },
   ignorePatterns: ['node_modules', '.nuxt', 'dist']
 }
