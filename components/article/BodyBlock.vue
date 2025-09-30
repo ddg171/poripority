@@ -3,7 +3,7 @@
   <article id="article-body" class="flex flex-col mb-6 text-white cms-content cms-content-width" v-html="content" />
 </template>
 <script setup lang="ts">
-import { Heading, ImageList } from '~~/types/articles'
+import { Heading, ImageList } from '~~/types/articles';
 
 interface Props{
     content:string|undefined
@@ -117,9 +117,7 @@ onBeforeUnmount(() => {
 }
 
 .cms-content code{
-  @apply block bg-gray text-orange p-4 m-2 max-w-full overflow-x-auto  whitespace-pre;
-  max-width: 650px;
+  @apply block bg-gray text-orange p-4 my-2 overflow-x-auto  whitespace-pre  xl:max-w-[640px] lg:max-w-[400px] md:max-w-[540px] max-w-[320px];
   user-select: all;
 }
-
 </style>
