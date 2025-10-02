@@ -48,6 +48,7 @@ jobs:
             --build-arg _MICROCMS_SERVEICE_ID=${{ secrets.MICROCMS_SERVEICE_ID}} \
             --build-arg _BASE_URL=$BASE_URL \
             --build-arg _GA_MEASUREMENT_ID=${{ secrets.GA_MEASUREMENT_ID}} \
+            --build-arg _ADSENSE_ID=${{ secrets.ADSENSE_ID}} \
             ./ \
 
       - name: Push Docker Image
