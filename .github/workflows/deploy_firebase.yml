@@ -40,6 +40,7 @@ jobs:
           echo HOST="0.0.0.0" >> .env
           echo BASE_URL="https://poripority.com" >> .env
           echo GA_MEASUREMENT_ID="${{secrets.GA_MEASUREMENT_ID}}" >> .env
+          echo ADSENSE_ID="${{secrets.ADSENSE_ID}}" >> .env
       - name: build app
         run: npm run build
       - name: set project
