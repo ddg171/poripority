@@ -117,7 +117,7 @@ onBeforeUnmount(() => {
 }
 
 .cms-content code{
-  @apply block bg-gray text-orange p-4 my-2 overflow-x-auto  whitespace-pre  xl:max-w-[640px] lg:max-w-[400px] md:max-w-[540px] max-w-[320px];
+  @apply block bg-gray text-orange p-4 my-2 overflow-x-auto  whitespace-pre-wrap w-full;
   user-select: all;
 }
 </style>
