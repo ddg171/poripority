@@ -3,6 +3,7 @@
   <article id="article-body" class="flex flex-col mb-6 text-white cms-content cms-content-width" v-html="content" />
 </template>
 <script setup lang="ts">
+import DOMPurify from 'isomorphic-dompurify';
 import { Heading, ImageList } from '~~/types/articles';
 
 interface Props{
@@ -11,9 +12,9 @@ interface Props{
 
 const props = defineProps<Props>()
 
-const emits = defineEmits<{(e:'img-list', v:ImageList):void, (e:'img-click', v:string):void, (e:'heading-list', v:Heading[]):void}>()
+const emits = defineEmits<{ (e: 'img-list', v: ImageList): void, (e: 'img-click', v: string): void, (e: 'heading-list', v: Heading[]): void }>()
 
-const content = computed<string>(() => convertContent(props.content))
+const content = computed<string>(() => DOMPurify.sanitize(convertContent(props.content)))
 
 const imageClickHandler = (e:Event):void => {
   const img = e?.target
