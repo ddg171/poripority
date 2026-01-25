@@ -74,5 +74,11 @@ export default defineNuxtConfig({
       routes: ['/', '/works', '/about', '/disclaimer', ...blankImages],
     },
   },
-  build: {},
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ['isomorphic-dompurify'],
+      },
+    },
+  },
 });
