@@ -34,6 +34,7 @@
     "@nuxtjs/google-adsense": "^3.0.0",
     "@nuxtjs/robots": "^3.0.0",
     "date-fns": "^2.29.3",
+    "dompurify": "^3.3.1",
     "microcms-js-sdk": "^2.7.0",
     "universal-dom-parser": "^0.0.3",
     "vue-gtag-next": "^1.14.0",
