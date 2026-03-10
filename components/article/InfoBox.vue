@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 import { parseISO } from 'date-fns'
-import { Category } from '~~/types/articles'
+import type { Category } from '~~/types/articles'
 
 interface Props{
     publishedDate?:string|null

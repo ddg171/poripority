@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { Heading } from '~~/types/articles'
+import type { Heading } from '~~/types/articles'
 
 interface Props{
     headings:Heading[]

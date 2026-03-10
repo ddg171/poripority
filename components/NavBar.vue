@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { LinkParams } from '~~/types/components'
+import type { LinkParams } from '~~/types/components'
 
 interface Props {
     menus:LinkParams[]
@@ -68,7 +68,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  if (!hasResizeHandler) { return }
+  if (!hasResizeHandler.value) { return }
   window.removeEventListener('resize', hideNav)
 })
 </script>

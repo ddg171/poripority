@@ -83,6 +83,7 @@ const contactShow = ref(false)
 const seoMeta = makeSeoMetaInput(title, description)
 
 useSeoMeta(seoMeta)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const hero = ref<any>(null)
 
 onMounted(() => {

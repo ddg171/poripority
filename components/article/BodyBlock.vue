@@ -4,7 +4,7 @@
 </template>
 <script setup lang="ts">
 import DOMPurify from 'dompurify';
-import { Heading, ImageList } from '~~/types/articles';
+import type { Heading, ImageList } from '~~/types/articles';
 
 interface Props{
     content:string|undefined

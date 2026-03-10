@@ -10,7 +10,7 @@ const observer = ref<IntersectionObserver|null>(null)
 
 const wrapper = ref<null | Element>(null)
 
-const emits = defineEmits<{(e:'in'):void, (e:'out'):void }>()
+const emits = defineEmits<{ (e: 'in' | 'out'): void }>()
 interface Props {
     threshold?:number
     trantision?:'vertical'|'none'

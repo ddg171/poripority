@@ -1,5 +1,5 @@
 import client from '~~/lib/microCMS'
-import { Api } from '~~/types/articles'
+import type { Api } from '~~/types/articles'
 
 export default defineEventHandler(async (event) => {
   const baseURL = process.env.BASE_URL

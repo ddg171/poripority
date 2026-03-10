@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { SliderContent } from '~~/types/components'
+import type { SliderContent } from '~~/types/components'
 
 interface Props {
     sliderContents:SliderContent[]

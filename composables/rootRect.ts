@@ -1,4 +1,4 @@
-import { Ref } from 'nuxt/dist/app/compat/capi'
+import type { Ref } from 'nuxt/dist/app/compat/capi'
 import { useState } from '#app'
 
 type RoofRect = Omit<DOMRect, 'toJSON'>

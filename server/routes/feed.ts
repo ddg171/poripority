@@ -1,5 +1,5 @@
 import client from '~~/lib/microCMS'
-import { Api, Article } from '~~/types/articles'
+import type { Api, Article } from '~~/types/articles'
 import { getTextContent } from '~~/utils/contentParser'
 
 export default defineEventHandler(async (event) => {

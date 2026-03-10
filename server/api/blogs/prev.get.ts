@@ -1,6 +1,6 @@
 import client from '~~/lib/microCMS'
 import { isNotEmptyString } from '~~/utils/validator'
-import { Api, ArticleRef } from '~~/types/articles'
+import type { Api, ArticleRef } from '~~/types/articles'
 
 export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<ArticleRef>> => {
   const params = getQuery(event)

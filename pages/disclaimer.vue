@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { PictureBoxProp } from '~~/types/components'
+import type { PictureBoxProp } from '~~/types/components'
 import { makeSeoMetaInput } from '~~/utils/useHead'
 
 const title = ref<string>('特記事項')

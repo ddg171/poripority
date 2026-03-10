@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { Article } from '~~/types/articles'
+import type { Article } from '~~/types/articles'
 interface Props{
     article:Article
     category?:string
