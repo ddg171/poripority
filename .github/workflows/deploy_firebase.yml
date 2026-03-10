@@ -24,7 +24,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 22.x
           registry-url: "https://registry.npmjs.org"
       - name: decode CI_CREDENTIAL
         run: echo $CI_CREDENTIAL | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
