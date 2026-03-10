@@ -11,7 +11,7 @@ ARG _ADSENSE_ID
 
 COPY package*.json ./
 
-RUN npm install --omit-dev
+RUN npm install
 
 ENV NODE_ENV=$_NODE_ENV
 ENV MICROCMS_API=$_MICROCMS_API
