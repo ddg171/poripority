@@ -10,6 +10,10 @@
   },
   "type": "module",
   "devDependencies": {
+    "@iconify-json/healthicons": "^1.2.12",
+    "@iconify-json/iconoir": "^1.2.10",
+    "@iconify-json/logos": "^1.2.10",
+    "@iconify-json/skill-icons": "^1.2.4",
     "@nuxt/eslint": "latest",
     "@nuxt/icon": "latest",
     "@nuxtjs/tailwindcss": "latest",
