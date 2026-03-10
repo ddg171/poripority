@@ -15,8 +15,8 @@
 </template>
 
 <script setup lang="ts">
-import { Article } from '~~/types/articles'
-import { LinkParams, PageTitleProp } from '~~/types/components'
+import type { Article } from '~~/types/articles'
+import type { LinkParams, PageTitleProp } from '~~/types/components'
 
 definePageMeta({
   layout: 'blog'

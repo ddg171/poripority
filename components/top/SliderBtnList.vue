@@ -41,7 +41,7 @@ interface Props{
 
 const props = withDefaults(defineProps<Props>(), { contentNum: 0, modelValue: -1, isStopped: false })
 
-const emits = defineEmits<{(e:'jump', v:number):void, (e:'toggle', s:boolean):void, (e:'update:modelValue', v:number):void}>()
+const emits = defineEmits<{ (e: 'jump' | 'update:modelValue', v: number): void; (e: 'toggle', s: boolean): void }>()
 
 const sliderPage = computed<number>({ get: () => { return props.modelValue }, set: (val:number) => { emits('update:modelValue', val) } })
 

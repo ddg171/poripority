@@ -22,8 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { ImageList } from '~~/types/articles'
-import { PictureBoxProp } from '~~/types/components'
+import type { ImageList } from '~~/types/articles'
+import type { PictureBoxProp } from '~~/types/components'
 
 interface Props {
     imageList?:ImageList

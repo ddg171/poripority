@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { LinkParams } from '~~/types/components'
+import type { LinkParams } from '~~/types/components'
 
 interface Props {
     links:LinkParams[]

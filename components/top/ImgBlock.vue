@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { PictureBoxProp } from '~~/types/components'
+import type { PictureBoxProp } from '~~/types/components'
 
 interface Props {
     img?:PictureBoxProp|undefined|null

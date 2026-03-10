@@ -30,6 +30,7 @@ export default defineNuxtConfig({
     },
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
+  compatibilityDate: '2024-11-01',
   runtimeConfig: {
     public: {
       siteName: SITE_NAME,
@@ -48,7 +49,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxt/image',
-    'nuxt-icon',
+    '@nuxt/icon',
+    '@nuxt/eslint',
     [
       '@nuxtjs/robots',
       {
@@ -71,6 +73,7 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
+      failOnError: false,
       routes: ['/', '/works', '/about', '/disclaimer', ...blankImages],
     },
   },

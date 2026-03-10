@@ -1,5 +1,5 @@
-import { MicroCMSQueries } from 'microcms-js-sdk'
-import { MicroCMSImage, Reference } from './components'
+import type { MicroCMSQueries } from 'microcms-js-sdk'
+import type { MicroCMSImage, Reference } from './components'
 
 interface Commonschema{
     id:string
@@ -45,6 +45,7 @@ export interface Heading {
     id:string|null
 }
 
+// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace Api {
     export type IndexResponsePayload<T=Article|Category|ArticleRef> ={
         contents:T[]

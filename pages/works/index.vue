@@ -145,7 +145,7 @@
 </template>
 
 <script setup lang="ts">
-import { PictureBoxProp, LinkParams } from '~~/types/components'
+import type { PictureBoxProp, LinkParams } from '~~/types/components'
 import { makeSeoMetaInput } from '~~/utils/useHead'
 
 const title = ref<string>('制作物')

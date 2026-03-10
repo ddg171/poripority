@@ -1,4 +1,4 @@
-/* eslint-disable no-var */
+ 
 
 declare global{
 var twttr:{widgets:{load:Function}}|undefined
