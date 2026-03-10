@@ -50,8 +50,8 @@
 <script setup lang="ts">
 import { useState, useGtag } from 'vue-gtag-next'
 
-import { Article, Heading, ImageList } from '~~/types/articles'
-import { PageTitleProp } from '~~/types/components'
+import type { Article, Heading, ImageList } from '~~/types/articles'
+import type { PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({

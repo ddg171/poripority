@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { Photo } from '~~/types/components'
+import type { Photo } from '~~/types/components'
 const photos = ref<Photo[]>(
   [
     { isShow: false, src: '/images/webp/about/photo001.webp' },

@@ -16,8 +16,8 @@
 </template>
 
 <script setup lang="ts">
-import { Category } from '~/types/articles'
-import { LinkParams } from '~~/types/components'
+import type { Category } from '~/types/articles'
+import type { LinkParams } from '~~/types/components'
 interface Props{
   categories?: Category[], selected?:string|null
 }

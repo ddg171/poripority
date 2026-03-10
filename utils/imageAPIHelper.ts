@@ -1,4 +1,4 @@
-import { MicroCMSImage } from '~~/types/components'
+import type { MicroCMSImage } from '~~/types/components'
 
 export function resizeWithTargetWidth (eyecatch:MicroCMSImage, targetWidth:number, webp:boolean = true):MicroCMSImage {
   if (!eyecatch) { return eyecatch }

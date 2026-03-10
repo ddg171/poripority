@@ -1,5 +1,5 @@
 import client from '~~/lib/microCMS'
-import { Category } from '~~/types/articles'
+import type { Category } from '~~/types/articles'
 
 export default defineEventHandler(async (event):Promise<Category> => {
   setHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')

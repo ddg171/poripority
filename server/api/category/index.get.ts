@@ -1,5 +1,5 @@
 import client from '~~/lib/microCMS'
-import { Api, Category } from '~~/types/articles'
+import type { Api, Category } from '~~/types/articles'
 
 export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<Category>> => {
   setHeader(event, 'Cache-Control', 'public, max-age=6000, s-maxage=6000')

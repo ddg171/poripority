@@ -1,5 +1,5 @@
 import { useState } from '#app'
-import { Category } from '~~/types/articles'
+import type { Category } from '~~/types/articles'
 
 export const useCategoryStore = () => {
   const state = useState<Category[]>(

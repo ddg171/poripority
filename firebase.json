@@ -97,6 +97,15 @@
         ]
       },
       {
+        "source": "/404",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "max-age=259200"
+          }
+        ]
+      },
+      {
         "source": "**/*.@(html|webp|jpg|jpeg|gif|png|svg|woff|json|css)",
         "headers": [
           {

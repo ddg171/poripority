@@ -1,5 +1,5 @@
 import { useState } from '#app'
-import { PageTitleProp } from '~/types/components'
+import type { PageTitleProp } from '~/types/components'
 
 const blankSrc = '/images/webp/blanktitle01w2000.webp'
 const blankTopImg = {

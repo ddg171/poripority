@@ -92,8 +92,8 @@
 </template>
 
 <script setup lang="ts">
-import { Article } from '~~/types/articles'
-import { MicroCMSImage, SliderContent } from '~~/types/components'
+import type { Article } from '~~/types/articles'
+import type { MicroCMSImage, SliderContent } from '~~/types/components'
 
 const latestArticles = ref<Article[]>([])
 const isArticleLoading = ref<boolean>(true)
@@ -175,7 +175,7 @@ onMounted(async () => {
       throw new Error('記事がありません。')
     }
     isArticleLoading.value = false
-  } catch (_) {
+  } catch {
     loadingMsg.value = '記事が見つかりません。'
   }
 })

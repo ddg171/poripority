@@ -1,5 +1,5 @@
 import DOMParser from 'universal-dom-parser'
-import { Heading, ImageList } from '~~/types/articles'
+import type { Heading, ImageList } from '~~/types/articles'
 
 export function convertStrToDocument (contentRaw:string):Document {
   const parser = new DOMParser()

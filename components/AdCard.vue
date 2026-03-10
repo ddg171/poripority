@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { Ads } from '~~/types/articles'
+import type { Ads } from '~~/types/articles'
 interface Props {
   ads: Ads
 }
