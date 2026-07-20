@@ -31,8 +31,6 @@ const ScrollHandler = () => {
   rootRectStore.set(target)
 }
 
-const 
-
 onMounted(() => {
   nextTick(() => {
     window.addEventListener('scroll', ScrollHandler)
