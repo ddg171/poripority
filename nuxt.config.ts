@@ -1,80 +1,18 @@
-import { defineNuxtConfig } from 'nuxt/config';
+import tailwindcss from '@tailwindcss/vite';
 
-import { blankImages } from './utils/prerenderImages';
-
-const SITE_NAME = 'The hut of Poripority';
-const DESCRIPTION = 'Hata_kazeが趣味で作ったWebサイト';
 export default defineNuxtConfig({
-  app: {
-    head: {
-      title: SITE_NAME,
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
-      meta: [
-        { name: 'og:title', content: SITE_NAME },
-        { name: 'robots', content: 'all' },
-        { name: 'description', content: DESCRIPTION },
-        { name: 'og:description', content: DESCRIPTION },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: SITE_NAME },
-        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' },
-        { property: 'twitter:card', content: 'summary_large_image' },
-      ],
-      link: [{ rel: 'icon', href: '/favicon.ico', id: 'favicon' }],
-      style: [],
-      script: [],
-      htmlAttrs: {
-        lang: 'ja',
-        prefix: 'og: https://ogp.me/ns#',
-      },
-    },
-    layoutTransition: { name: 'layout', mode: 'out-in' },
+  compatibilityDate: '2025-07-15',
+  devtools: { enabled: true },
+  css: ['~/assets/css/main.css'],
+  vite: {
+    plugins: [tailwindcss()],
   },
-  compatibilityDate: '2024-11-01',
-  runtimeConfig: {
-    public: {
-      siteName: SITE_NAME,
-      baseURL: process.env.BASE_URL,
-      gaMeasurementId: process.env.GA_MEASUREMENT_ID,
-      description: DESCRIPTION,
-      adsenseId: process.env.ADSENSE_ID,
-    },
-    microCMSAPI: process.env.MICROCMS_API,
-    microCMSServiceID: process.env.MICROCMS_SERVEICE_ID,
-  },
-  typescript: {
-    shim: false,
-  },
-  css: ['~/assets/css/tailwind.scss'],
   modules: [
-    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
     '@nuxt/image',
+    '@nuxtjs/robots',
+    '@nuxtjs/seo',
     '@nuxt/icon',
-    '@nuxt/eslint',
-    [
-      '@nuxtjs/robots',
-      {
-        Disallow: '/blog/preview/*',
-        Sitemap: process.env.BASE_URL + '/sitemap.xml',
-      },
-    ],
-    [
-      '@nuxtjs/google-adsense',
-      {
-        id: process.env.ADSENSE_ID,
-      },
-    ],
+    '@nuxtjs/google-adsense',
   ],
-  image: {
-    imgix: {
-      baseURL: '',
-    },
-  },
-  nitro: {
-    compressPublicAssets: true,
-    prerender: {
-      failOnError: false,
-      routes: ['/', '/works', '/about', '/disclaimer', ...blankImages],
-    },
-  },
 });
