@@ -9,9 +9,9 @@
 
 const menus = [
   { name: 'TOP', path: '/' },
-  { name: 'Blog', path: '/blog' },
-  { name: 'Works', path: '/works' },
-  { name: 'About', path: '/about' }
+  { name: 'ARTICLES', path: '/blog' },
+  { name: 'WORKS', path: '/works' },
+  { name: 'ABOUT', path: '/about' }
 ]
 
 const isSticky = ref<boolean>(false)

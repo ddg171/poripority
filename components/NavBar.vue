@@ -1,10 +1,10 @@
 <template>
-  <nav class=" px-2 md:pr-8 bg-transparent navbar flex flex-row-reverse md:flex-row items-center">
+  <nav class=" px-2 md:pr-4 bg-transparent navbar flex flex-row-reverse md:flex-row items-center">
     <input id="hamburger-toggle" v-model="isShow" type="checkbox" class="hidden" @change="$emit('toggle',isShow)">
     <label for="hamburger-toggle" class="block p-2 border border-solid hamburger-button md:hidden border-green hover:border-white">
       <span class="bg-lightgreen" />
     </label>
-    <ul class="self-end hidden  md:h-full overflow-hidden nav-links  md:flex md:flex-row md:gap-8 md:items-center" @click="hideNav">
+    <ul class="self-end hidden md:h-full overflow-hidden nav-links  md:flex md:flex-row md:gap-4 md:items-center" @click="hideNav">
       <li v-for="m ,i in props.menus " :key="i" class="w-full h-16 md:h-8 md:pr-4  flex items-center justify-center font-medium border-b border-lightgray border-solid  font-xl bg-green hover:bg-lightgreen  md:border-none">
         <NuxtLink :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="h-full w-full pl-2 flex items-center justify-center  overflow-hidden border-l-8 border-solid nav-link  md:justify-start  md:border-l-4 border-l-gray " :data-nowlocation="m.path ===currentPath ">
           <span class=" text-lg md:text-sm font-semibold  tracking-wider" :data-transition="transitionTrigger">
