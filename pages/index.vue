@@ -3,7 +3,7 @@
     <TopSlider :slider-contents="topContents" :duration="5000" />
     <CommonContentWidthBox class="flex flex-col items-center ">
       <!-- 新規コンポーネント -->
-      <section class="w-full p-4 md:px-0  flex flex-col gap-8">
+      <section class="w-full p-4 xl:px-2  flex flex-col gap-8">
         <div class="pb-2  border-b border-lightgreen border-solid">
           <div class="flex items-center gap-2">
             <span class="block h-5 w-5 bg-orange" />
@@ -17,7 +17,7 @@
           </div>
         </div>
         <div>
-          <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
             <li v-for="a in latestArticles" :key="a.id">
               <!-- 新記事カード -->
               <article class="relative aspect-square bg-darkblue border-2 article-card border-lightgreen"
@@ -34,6 +34,9 @@
                   <h3 class="text-md font-semibold text-white">
                     {{ a.title }}
                   </h3>
+                  <p class="text-sm text-lightgray mt-1">
+                    updated: 2026/03/15 16:27
+                  </p>
                 </div>
               </article>
 
@@ -42,7 +45,7 @@
         </div>
       </section>
 
-      <section class="w-full p-4 md:px-0  flex flex-col gap-8">
+      <section class="w-full p-4 xl:px-2  flex flex-col gap-8">
         <div class="pb-2  border-b border-lightgreen border-solid">
           <div class="flex items-center gap-2">
             <span class="block h-5 w-5 bg-lightgreen" />
@@ -76,7 +79,7 @@
         </div>
       </section>
 
-      <section class="w-full p-4 md:px-0  flex flex-col gap-8">
+      <section class="w-full p-4 xl:px-2  flex flex-col gap-8">
         <div class="pb-2  border-b border-lightgreen border-solid">
           <div class="flex items-center gap-2">
             <span class="block h-5 w-5 bg-lightgreen" />
@@ -179,7 +182,7 @@ const topContents = ref<SliderContent[]>([
 
 onMounted(async () => {
   try {
-    const data = await $fetch('/api/blogs', { params: { limit: 3 } })
+    const data = await $fetch('/api/blogs', { params: { limit: 4 } })
     latestArticles.value = data.contents || []
     if (latestArticles.value.length) {
       const a = latestArticles.value[0]
