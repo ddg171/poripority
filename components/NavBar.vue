@@ -20,7 +20,7 @@
 import type { LinkParams } from '~~/types/components';
 
 interface Props {
-    menus:LinkParams[]
+    menus?:LinkParams[]
 
 }
 
