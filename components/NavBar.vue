@@ -1,13 +1,13 @@
 <template>
-  <nav class="h-full px-2 bg-transparent navbar">
+  <nav class=" px-2 md:pr-8 bg-transparent navbar flex flex-row-reverse md:flex-row items-center">
     <input id="hamburger-toggle" v-model="isShow" type="checkbox" class="hidden" @change="$emit('toggle',isShow)">
     <label for="hamburger-toggle" class="block p-2 border border-solid hamburger-button md:hidden border-green hover:border-white">
       <span class="bg-lightgreen" />
     </label>
-    <ul class="self-end h-0 overflow-hidden nav-links md:h-full md:flex" @click="hideNav">
-      <li v-for="m ,i in props.menus " :key="i" class="flex items-center justify-center w-full h-16 font-medium border-b border-white border-solid md:w-24 font-xl bg-green hover:bg-lightgreen lg:mx-4 md:px-2 md:border-none">
-        <NuxtLink :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="flex items-center justify-center w-full h-full overflow-hidden border-l-8 border-solid nav-link md:h-1/2 md:justify-start md:items-end md:border-l-4 border-l-gray md:pl-2 md:pb-1" :data-nowlocation="m.path ===currentPath ">
-          <span class="translate-y-full nav-link-span" :data-transition="transitionTrigger">
+    <ul class="self-end hidden  md:h-full overflow-hidden nav-links  md:flex md:flex-row md:gap-8 md:items-center" @click="hideNav">
+      <li v-for="m ,i in props.menus " :key="i" class="w-full h-16 md:h-8 md:pr-4  flex items-center justify-center font-medium border-b border-lightgray border-solid  font-xl bg-green hover:bg-lightgreen  md:border-none">
+        <NuxtLink :to="m.path" :is-red="samePath(m.path,currentPath)" tabindex="0" class="h-full w-full pl-2 flex items-center justify-center  overflow-hidden border-l-8 border-solid nav-link  md:justify-start  md:border-l-4 border-l-gray " :data-nowlocation="m.path ===currentPath ">
+          <span class=" text-lg md:text-sm font-semibold  tracking-wider" :data-transition="transitionTrigger">
             {{ m.name }}
           </span>
         </NuxtLink>
@@ -148,16 +148,8 @@ left: 24px;
   top:calc(50% - 5px/2);
   transform: rotate(-45deg);
 }
-.nav-link-span{
-  transition: none;
 
-}
 
-.nav-link-span[data-transition="true"]{
-      transform: none !important;
-      transition: transform 0.3s ease-out;
-      transition-delay:0.3s;
-}
 
 @media screen and (max-width: 767px){
 
@@ -166,10 +158,10 @@ left: 24px;
   flex-direction: column;
   justify-content: flex-start;
   position: absolute;
-  top:64px;
+  top:80px;
   left: 0;
   width: 100%;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 80px);
   margin: 0;
   padding: 0;
   z-index: 100;
@@ -179,6 +171,13 @@ left: 24px;
 #hamburger-toggle:checked~ .nav-links li{
   margin: 0 !important;
 }
+
+/* リストの上辺にも境界線を追加 */
+#hamburger-toggle:checked~ .nav-links li:first-child{
+  border-top: 1px solid;
+  margin: 0 !important;
+}
+
 }
 
 </style>
