@@ -5,7 +5,7 @@
         <Icon name="charm:tent" class="w-6 h-6 font-thin"/>
       </div>
       <div class="flex flex-col justify-center">
-        <span class="block text-base md:text-lg font-medium italic tracking-tighter font-mono text-white">{{ siteName }}</span>
+        <span class="block text-lg md:text-xl font-medium italic tracking-tighter font-mono text-white">{{ siteName }}</span>
         <span class="block text-xs/3  md:text-sm/2 font-thin text-lightgray  opacity-50">Hata_kaze's website.</span>
       </div>  
     </a>
