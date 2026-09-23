@@ -1,9 +1,7 @@
 <template>
-  <header class="top-0 z-50 w-full text-white bg-green" :is-sticky="isSticky">
-    <div id="AppHeader-container" class="flex flex-row justify-between h-full AppHeader-container">
+  <header id="app-header" class="top-0 z-50  w-full h-20 text-white bg-green flex flex-row justify-between align-middle" :is-sticky="isSticky">
       <SiteName />
       <NavBar :menus="menus" :current-path="$route.fullPath" @toggle="toggle" />
-    </div>
   </header>
 </template>
 
@@ -24,9 +22,7 @@ const toggle = (val:boolean) => {
 </script>
 
 <style scoped>
-header{
-    height: 64px;
-}
+
 
 header[is-sticky="true"]{
   position: sticky;
