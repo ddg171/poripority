@@ -4,7 +4,7 @@
       <TopImgBlock :img="props.topImg" />
       <div v-if="props.title" class="absolute flex items-center justify-center w-full h-full title-box transition-all duration-500">
         <CommonContentWidthBox class="flex items-end justify-start">
-          <div class="flex flex-col w-full py-2 px-4 md:px-16 md:py-6 bg-green/75 md:w-auto mb-16 lg:mb-1/6h">
+          <div class="flex flex-col w-full py-2 px-4 md:px-16 md:py-4 bg-green/75 md:w-auto mb-16 lg:mb-1/6h">
             <AppHeading1>
               <span>{{ props.title }}</span>
             </AppHeading1>
@@ -19,12 +19,12 @@
 </template>
 
 <script setup lang="ts">
-import type { PictureBoxProp } from '~~/types/components'
+import type { PictureBoxProp } from '~~/types/components';
 
 interface Props {
-  topImg: PictureBoxProp | null
+  topImg?: PictureBoxProp | null
   title: string
-  subtitles: string[]
+  subtitles?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {

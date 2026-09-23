@@ -1,5 +1,5 @@
 <template>
-  <TopConteinerBlock class="h-1/2h lg:h-1/3h max-h-1080p min-h-480p">
+  <TopConteinerBlock class="h-100 md:h-150">
     <div class="relative flex items-center justify-center w-full h-full top-slider">
       <p v-if="sliderPage===-1" class="text-3xl text-white">
         loading...

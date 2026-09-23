@@ -24,13 +24,20 @@ const vw = {
   '1/2w': '50vw',
   '3/4w': '75vw'
 }
-const px = {
+const p = {
   '1080p': '1080px',
   '960p': '960px',
   '720p': '720px',
   '480p': '480px',
   '360p': '360px',
   '240p': '240px'
+}
+
+const rem = {
+  "100": "25rem",
+  "150": "37.5rem",
+    "200": "50rem"
+
 }
 
 module.exports = {
@@ -65,28 +72,35 @@ module.exports = {
     extend: {
       height: {
         ...vh,
-        '2/1': '200%'
+        '2/1': '200%',
+        ...rem,
       },
       minHeight: {
         ...vh,
-        ...px
+        ...p,
+        ...rem,
       },
       maxHeight: {
-        ...px
+        ...p,
+        ...rem
+
       },
       margin: vh,
       width: {
-        ...vw
+        ...vw,
+        ...rem
       },
       maxWidth: {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px',
-        ...vh
+        ...vh,
+        ...rem,
       },
       minWidth: {
         'screen-3xl': '1792px',
         'screen-1920p': '1920px',
-        ...px
+        ...p,
+        ...rem,
       },
       fontFamily: {
         sans: ['Avenir', 'Open Sans', 'Helvetica Neue', 'Helvetica,Arial', 'Verdana,Roboto', '游ゴシック', 'Yu Gothic', '游ゴシック体', 'YuGothic', 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'Meiryo UI', 'メイリオ', 'Meiryo', 'ＭＳ Ｐゴシック', 'MS PGothic', 'sans-serif', ...defaultTheme.fontFamily.sans]
