@@ -1,17 +1,11 @@
 <template>
-  <TopConteinerBlock class="h-100 md:h-150">
+  <TopConteinerBlock class="h-100 md:h-150 bg-darkblue">
     <div class="relative flex items-center justify-center w-full h-full top-slider">
-      <p v-if="sliderPage===-1" class="text-3xl text-white">
+      <p v-if="sliderPage === -1" class="text-3xl text-white">
         loading...
       </p>
-      <div
-        v-for="c,i in props.sliderContents"
-        :key="i"
-        class="absolute w-full h-full top-slider-content-wrapper"
-        :isShow="sliderPage===i"
-        :next="i===next"
-        :prev="i===prev"
-      >
+      <div v-for="c, i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper"
+        :isShow="sliderPage === i" :next="i === next" :prev="i === prev">
         <TopRelativeBox class="top-slider-content">
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
           <TopTextBox>
@@ -22,20 +16,15 @@
                 </CommonAppLink>
                 <span v-else>{{ c.text.title }}</span>
               </AppHeading2>
-              <p v-for="p , t in c.text.para" :key="t" class="text-lg md:text-xl font-medium">
+              <p v-for="p, t in c.text.para" :key="t" class="text-lg md:text-xl font-medium">
                 {{ p }}
               </p>
             </div>
           </TopTextBox>
         </TopRelativeBox>
       </div>
-      <TopSliderBtnList
-        v-model="sliderPage"
-        :content-num="contentNum"
-        :is-stopped="isStopped"
-        @jump="jump"
-        @toggle="toggle"
-      />
+      <TopSliderBtnList v-model="sliderPage" :content-num="contentNum" :is-stopped="isStopped" @jump="jump"
+        @toggle="toggle" />
     </div>
   </TopConteinerBlock>
 </template>
@@ -44,8 +33,8 @@
 import type { SliderContent } from '~~/types/components'
 
 interface Props {
-    sliderContents:SliderContent[]
-    duration:number
+  sliderContents: SliderContent[]
+  duration: number
 }
 
 const sliderPage = ref<number>(-1)
@@ -68,7 +57,7 @@ const nextPage = () => {
   sliderPage.value++
 }
 
-const jump = (num:number) => {
+const jump = (num: number) => {
   if (num > contentNum.value) { return }
   sliderPage.value = num
   if (!timerId.value) { return }
@@ -94,7 +83,7 @@ const start = () => {
   timerId.value = window.setInterval(nextPage, props.duration)
 }
 
-const toggle = (isStopped:boolean) => {
+const toggle = (isStopped: boolean) => {
   if (!isStopped) { return stop() }
   start()
 }
@@ -117,37 +106,37 @@ onMounted(async () => {
 
 </script>
 <style scoped>
-h2[data-is-tight=true]{
+h2[data-is-tight=true] {
   letter-spacing: -0.125rem;
 }
-.top-slider-content-wrapper{
+
+.top-slider-content-wrapper {
   display: none;
-  transition: transform 0.5s ;
+  transition: transform 0.5s;
   z-index: -10;
 
 }
 
-.top-slider-content-wrapper[isShow="true"]{
+.top-slider-content-wrapper[isShow="true"] {
   display: block;
-  opacity: 1 ;
+  opacity: 1;
   transform: translateX(0);
   z-index: 2;
 }
 
-.top-slider-content-wrapper[next="true"]{
+.top-slider-content-wrapper[next="true"] {
   display: block;
 
-  opacity: 1 ;
+  opacity: 1;
   transform: translateX(100vw);
   z-index: 1;
 }
 
-.top-slider-content-wrapper[prev="true"]{
+.top-slider-content-wrapper[prev="true"] {
   display: block;
 
-  opacity: 1 ;
+  opacity: 1;
   transform: translateX(-100vw);
   z-index: 1;
 }
-
 </style>
