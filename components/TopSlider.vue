@@ -9,14 +9,15 @@
         <TopRelativeBox class="top-slider-content">
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
           <TopTextBox>
-            <div class="flex flex-col w-full px-4 py-2 md:px-16 md:py-4  bg-green/75 md:w-auto mb-16 md:mb-40">
+            <div
+              class="flex flex-col gap-1 pl-6 pr-6 md:pr-16 py-6  bg-darkblue/90 border border-lightgreen  mb-16 md:mb-40">
               <AppHeading2 :data-is-tight="!!c.text.isTight">
                 <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                   {{ c.text.title }}
                 </CommonAppLink>
                 <span v-else>{{ c.text.title }}</span>
               </AppHeading2>
-              <p v-for="p, t in c.text.para" :key="t" class="text-lg md:text-xl font-medium">
+              <p v-for="p, t in c.text.para" :key="t" class="text-sm md:text-md font-medium">
                 {{ p }}
               </p>
             </div>
