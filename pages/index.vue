@@ -20,8 +20,10 @@
           <!-- 新コンポーネント -->
           <V2TopContentBox img-src="/images/webp/shrimp.webp" description="管理人の写真">
             <CommonAppApra>
-              "The hut of Poripority"にようこそ。このWebサイトは"<span
-                class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
+              "The hut of Poripority"にようこそ。
+            </CommonAppApra>
+            <CommonAppApra>
+              このWebサイトは"<span class="font-bold">Hata_kaze</span>"が趣味で色々フロントエンドの実験をしたり、ブログをやったりする個人サイトです。
             </CommonAppApra>
             <CommonAppApra>
               以前はBloggerでブログをやっていましたが放置気味になってしまったので、心機一転ということでこちらに移転しました。
@@ -37,8 +39,7 @@
         <template #content>
           <V2TopContentBox is-reverse img-src="/images/webp/diagram.webp" description="当Webサイトの構成図">
             <CommonAppApra>
-              フロントエンドはNuxt/Vue(いずれもv3)+Typescript+Tailwind CSSで制作しています。
-              Nuxt3になってから開発サーバの起動、ビルドが非常に高速になり、非常に快適な開発環境になりました。
+              フロントエンドはNuxt/Vue+Typescript+Tailwind CSSで制作しています。
             </CommonAppApra>
             <CommonAppApra>
               バックエンドについてはGCP上にデプロイされています。Firebase Hostingを使用しており、動的コンテンツのみGoogle
