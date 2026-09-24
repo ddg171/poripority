@@ -11,41 +11,18 @@
           </NuxtLink>
         </template>
         <template #content>
-          <ul class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
-            <li v-for="a in latestArticles" :key="a.id">
-              <!-- 新記事カード -->
-              <article class="relative aspect-square bg-darkblue border-2 article-card border-lightgreen"
-                @click.stop="router.push(`/blog/${a.id}`)">
-                <NuxtPicture v-if="a.eyecatch?.url" class="object-cover opacity-100 transition-opacity duration-500"
-                  provider="imgix" :src="a.eyecatch?.url || ``" format="webp" legacy-format="jpeg" fit="crop"
-                  height="200" width="200"
-                  :img-attrs="{ class: 'w-full bg-lightgreen/25', alt: `${a.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
-                  :modifiers="{ q: 50 }" />
-                <div class="absolute bottom-0 left-0 w-full h-1/2 px-2 pb-4 article-title-bg flex flex-col justify-end">
-                  <NuxtLink :to="`/blog?category=${a.category.id}`"
-                    class="w-fit p-2 bg-gray/75 text-xs text-orange hover:bg-gray hover:font-bold hover:cursor-pointer"
-                    @click.stop="() => { }">{{ a.category.name }}</NuxtLink>
-                  <h3 class="text-md font-semibold text-white">
-                    {{ a.title }}
-                  </h3>
-                  <p class="text-sm text-lightgray mt-1">
-                    updated: 2026/03/15 16:27
-                  </p>
-                </div>
-              </article>
-
-            </li>
-          </ul>
+          <V2ArticleList v-if="!isArticleLoading" :articles="latestArticles" />
+          <V2ArticleListSkelton v-else />
         </template>
       </V2CommonContentSection>
       <V2CommonContentSection header-text="Welcome!" :is-important="false">
         <template #content>
           <div class=" bg-darkblue border border-lightgreen">
             <div class="flex flex-col-reverse gap-2 lg:flex-row items-center md:items-start">
-              <div class="bg-white w-72 h-72 shrink-0">
+              <div class="bg-white w-72 h-72 sm:w-96 sm:h-96 shrink-0">
                 <div class="relative w-72 h-full">
                   <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpeg" class="absolute top-0 left-0"
-                    :img-attrs="{ alt: '管理人の写真', height: 288, width: 288, decoding: 'async' }" />
+                    :img-attrs="{ alt: '管理人の写真', height: 540, width: 540, decoding: 'async' }" />
                   <p class="absolute bottom-0 left-0 block  w-full text-sm text-center bg-darkblue/75 py-1">
                     管理人の写真
                   </p>
@@ -71,7 +48,7 @@
             <div class="flex flex-col-reverse gap-2 lg:flex-row items-center md:items-start">
               <div class=" flex items-center justify-center">
                 <div class="relative w-72 h-72 sm:w-96 sm:h-96   shrink-0">
-                  <NuxtPicture src="/images/webp/diagram.webp" legacy-format="jpeg" class="diagram"
+                  <NuxtPicture src="/images/webp/diagram.webp" legacy-format="jpeg"
                     :img-attrs="{ alt: '当Webサイトの構成図', height: 540, width: 540, decoding: 'async' }" />
                   <p class="block absolute bottom-0 left-0 w-full text-sm text-center bg-darkblue/50 py-1">
                     当Webサイトの構成図
@@ -106,7 +83,7 @@
 import type { Article } from '~~/types/articles'
 import type { MicroCMSImage, SliderContent } from '~~/types/components'
 
-const router = useRouter()
+
 
 const latestArticles = ref<Article[]>([])
 const isArticleLoading = ref<boolean>(true)
@@ -166,6 +143,7 @@ onMounted(async () => {
     latestArticles.value = data.contents || []
     if (latestArticles.value.length) {
       const a = latestArticles.value[0]
+      if (!a) return
       const eyecatch: MicroCMSImage = a.eyecatch
       const src = eyecatch.url
 
@@ -194,14 +172,3 @@ onMounted(async () => {
 })
 
 </script>
-
-<style scoped>
-.article-card:hover img {
-  transform: scale(2);
-  transition: transform 0.3s ease-in-out;
-}
-
-.article-title-bg {
-  background: linear-gradient(to top, #002130, #002130 20%, rgba(0, 0, 0, 0.0));
-}
-</style>
