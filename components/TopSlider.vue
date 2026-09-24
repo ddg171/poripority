@@ -10,7 +10,7 @@
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
           <TopTextBox>
             <div
-              class="flex flex-col gap-1 pl-6 pr-6 md:pr-16 py-6  bg-darkblue/90 border border-lightgreen  mb-16 md:mb-40">
+              class="flex flex-col gap-1 pl-4 pr-4 md:pr-16 py-4  bg-darkblue/90 border border-lightgreen  mb-20 md:mb-40">
               <AppHeading2 :data-is-tight="!!c.text.isTight">
                 <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
                   {{ c.text.title }}
