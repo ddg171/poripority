@@ -1,7 +1,7 @@
 <template>
     <section class="w-full p-4 xl:px-2  flex flex-col gap-4">
         <div class="pb-2  border-b border-lightgreen border-solid">
-            <div class="flex items-center gap-2">
+            <div v-if="props.headerText" class="flex items-center gap-2">
                 <V2CommonAppHeadingH2 :is-important="props.isImportant">
                     {{ props.headerText }}
                 </V2CommonAppHeadingH2>
@@ -17,8 +17,9 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
     isImportant?: boolean
-    headerText: string
+    headerText?: string
 }>(), {
-    isImportant: false
+    isImportant: false,
+    headerText: undefined,
 })
 </script>
