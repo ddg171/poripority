@@ -1,16 +1,18 @@
 <template>
   <div class="w-full">
-    <ContentSection class="w-full h-full">
-      <PlaceHolder v-if="pending" />
-      <ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
-        <div v-if="totalCount===0" class="flex items-center justify-center w-full h-48">
-          <p>
-            記事が見つかりませんでした。
-          </p>
-        </div>
-      </ArticleList>
-      <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
-    </Contentsection>
+    <V2CommonContentSection class="w-full h-full" header-text="記事">
+      <template #content>
+        <PlaceHolder v-if="pending" />
+        <V2ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
+          <div v-if="totalCount === 0" class="flex items-center justify-center w-full h-48">
+            <p>
+              記事が見つかりませんでした。
+            </p>
+          </div>
+        </V2ArticleList>
+        <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
+      </template>>
+    </V2CommonContentSection>
   </div>
 </template>
 
@@ -109,11 +111,11 @@ useSeoMeta({
 })
 
 // ページネーション
-const rightNav = computed<LinkParams|null>(() => {
+const rightNav = computed<LinkParams | null>(() => {
   return prev(offset.value, articles.value.length, totalCount.value, limit.value, category.value)
 })
 const centerNav = ref<LinkParams>({ path: '/blog', name: '記事一覧へ' })
-const leftNav = computed<LinkParams|null>(() => {
+const leftNav = computed<LinkParams | null>(() => {
   return next(offset.value, articles.value.length, limit.value, category.value)
 })
 

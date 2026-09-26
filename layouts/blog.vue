@@ -2,7 +2,7 @@
   <CommonLayoutBox id="layout" class="">
     <AppHeader />
     <div class="flex flex-col items-center w-full min-h-screen">
-      <div id="top-box" class="w-full mb-2">
+      <div id="top-box" class="w-full mb-2 min-h-[100px]">
         <ClientOnly>
           <PageTop :title="pageTitle.title" :top-img="pageTitle.topImg" :subtitles="pageTitle.subtitles" />
         </ClientOnly>
@@ -13,17 +13,20 @@
             <slot />
           </div>
           <div v-if="isLoading.state.value.isLoading" class="w-full">
-            <ContentSection class="text-white text-2lg">
-              <PlaceHolder />
-            </ContentSection>
+            <V2ArticleListSkelton :number-of-items="10" />
+
           </div>
         </main>
         <div id="side" class="sticky top-0 w-full mx-0 lg:w-96 lg:mx-4 shrink-0">
           <aside class="flex flex-col-reverse w-full mb-2">
-            <AsideContentsBox id="category" class="mb-2">
-              <V2CommonAppHeadingH3>カテゴリ</V2CommonAppHeadingH3>
-              <CategoryList :categories="state || []" :selected="selected" />
-            </AsideContentsBox>
+            <V2CommonContentSection id="category" class="mb-2" header-text="カテゴリ">
+              <template #content>
+                <div class="border border-lightgreen">
+
+                  <CategoryList :categories="state || []" :selected="selected" />
+                </div>
+              </template>
+            </V2CommonContentSection>
             <div id="side-contents" class="grid" />
           </aside>
         </div>

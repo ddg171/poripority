@@ -1,12 +1,12 @@
 <template>
-  <ul class="text-lg min-h-240p">
+  <ul class="text-lg min-h-[240px] ">
     <ClientOnly>
-      <CommonLinkListElem class="category-li" :selected="selected===''">
+      <CommonLinkListElem class="category-li" :selected="selected === ''">
         <CommonAppLink to="/blog">
           全て
         </CommonAppLink>
       </CommonLinkListElem>
-      <CommonLinkListElem v-for="c in categories" :key="c.id" class="category-li" :selected="props.selected===c.id">
+      <CommonLinkListElem v-for="c in categories" :key="c.id" class="category-li" :selected="props.selected === c.id">
         <CommonAppLink :to="c.path">
           {{ c.name }}
         </CommonAppLink>
@@ -16,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Category } from '~/types/articles'
-import type { LinkParams } from '~~/types/components'
-interface Props{
-  categories?: Category[], selected?:string|null
+import type { Category } from '~/types/articles';
+import type { LinkParams } from '~~/types/components';
+interface Props {
+  categories?: Category[], selected?: string | null
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -40,7 +40,7 @@ const categories = computed<LinkParams[]>(() => {
 </script>
 
 <style scoped lang="scss">
-.category-li[selected="true"]{
+.category-li[selected="true"] {
   font-weight: 800 !important;
   @apply bg-green/50
 }

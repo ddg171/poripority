@@ -9,7 +9,7 @@
             <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
                 {{ msg }}
             </div>
-            <div class="absolute bottom-0 left-0 w-full h-1/3 px-2 pb-4 article-title-bg flex flex-col justify-end">
+            <div class="absolute bottom-0 left-0 w-full px-1 pb-1 pt-4  article-title-bg flex flex-col justify-end">
                 <NuxtLink :to="`/blog?category=${props.article.category.id}`"
                     class="w-fit p-1 bg-gray/75 text-xs text-orange hover:bg-gray hover:font-bold hover:cursor-pointer"
                     @click.stop="() => { }">{{ props.article.category.name }}</NuxtLink>
@@ -65,6 +65,6 @@ const publishedDate = computed<string>(() => articleDate(parseISO(props.article.
 </script>
 <style scoped>
 .article-title-bg {
-    background: linear-gradient(to top, #002130, #002130 50%, rgba(0, 0, 0, 0.0));
+    background: linear-gradient(to top, #002130c7, #002130c7 50%, rgba(0, 0, 0, 0.0));
 }
 </style>
