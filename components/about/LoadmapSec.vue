@@ -1,7 +1,7 @@
 <template>
   <AboutContentSection id="loadmap" class="sticky top-0 z-30 py-20 bg-darkblue md:py-28" @in="isShown = true">
     <template #heading>
-      <V2CommonAppHeadingH2>
+      <V2CommonAppHeadingH2 :is-important="true">
         Loadmap
       </V2CommonAppHeadingH2>
     </template>

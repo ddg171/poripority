@@ -1,7 +1,7 @@
 <template>
   <AboutContentSection id="skill" :threshold="0.25" class="z-20 py-16 bg-green " @in="isShown = true">
     <template #heading>
-      <V2CommonAppHeadingH2 class="z-40">
+      <V2CommonAppHeadingH2 class="z-40" :is-important="true">
         Skill
       </V2CommonAppHeadingH2>
     </template>

@@ -15,7 +15,7 @@
         <div v-show="headingTransitionTrrigger" class="absolute flex justify-center w-full h-full backdrop-blur-sm">
           <CommonContentWidthBox class="flex items-end justify-start">
             <div class="flex flex-col w-full px-4 py-6 md:px-16 bg-green/75 md:w-auto mb-1/5h md:mb-1/7h">
-              <V2CommonAppHeadingH1 class="pl-2 text-6xl font-semibold text-white border-l-4 border-white border-solid">
+              <V2CommonAppHeadingH1 :is-important="true">
                 <span>
                   ABOUT ME
                 </span>

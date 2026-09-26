@@ -1,7 +1,7 @@
 <template>
   <AboutContentSection id="profile" class="py-16 bg-gray " @in="isShown = true">
     <template #heading>
-      <V2CommonAppHeadingH2>
+      <V2CommonAppHeadingH2 :is-important="true">
         Profile
       </V2CommonAppHeadingH2>
     </template>

@@ -44,7 +44,7 @@
           <div class="absolute flex items-center justify-center w-full h-full ">
             <CommonContentWidthBox class="flex items-center justify-start">
               <div class="flex flex-col  px-4 py-2 md:px-16 md:py-6 bg-green ">
-                <V2CommonAppHeadingH2>
+                <V2CommonAppHeadingH2 :is-important="true">
                   Contact
                 </V2CommonAppHeadingH2>
               </div>
