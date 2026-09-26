@@ -1,5 +1,5 @@
 <template>
-  <TopConteinerBlock class="h-48 md:h-64 w-full bg-darkblue">
+  <TopConteinerBlock class="h-48 md:h-64 mb-2 w-full bg-darkblue">
     <div :data-show="isShow" class="relative h-full transition-all duration-500 opacity-0 title-content-box page-title">
       <TopImgBlock :img="props.topImg" />
       <div v-if="props.title"
