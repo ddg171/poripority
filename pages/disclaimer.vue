@@ -5,9 +5,9 @@
     </div>
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
-        <AppHeading2 class="mb-2">
+        <V2CommonAppHeadingH2 class="mb-2">
           免責事項
-        </AppHeading2>
+        </V2CommonAppHeadingH2>
         <WorksParaBox>
           <CommonAppApra>
             当Webサイト内に掲載されている内容については極力正確な内容になるように努めておりますが、その内容の正確性や安全性を保証するものではありません。当サイト内の情報の引用、ご利用により生じたいかなる損害についても、当サイトは一切の責任を負いかねます。
@@ -21,9 +21,9 @@
         </WorksParaBox>
       </ContentSection>
       <ContentSection>
-        <AppHeading2 class="mb-2">
+        <V2CommonAppHeadingH2 class="mb-2">
           広告掲載ポリシー
-        </AppHeading2>
+        </V2CommonAppHeadingH2>
         <WorksParaBox>
           <CommonAppApra>
             当Webサイトはアフィリエイト広告及びバナー広告を掲載しています。広告の掲載により、当ブログが収益を得ることがあります。またブログ記事内の商品名及びサービス名には、アフィリエイトリンクが含まれている場合があります。

@@ -5,22 +5,23 @@
         <ShareBtnBox :title="title" />
         <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
       </div>
-      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
+      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
+        @heading-list="headingListHandler" />
       <ArticleNavigation :published-at="article?.publishedAt" />
       <ClientOnly>
         <teleport to="#side-contents">
-          <AsideContentsBox v-if="headings.length>0" class="mb-2">
-            <AppHeading3 class="mb-2">
+          <AsideContentsBox v-if="headings.length > 0" class="mb-2">
+            <V2CommonAppHeadingH3 class="mb-2">
               目次
-            </AppHeading3>
+            </V2CommonAppHeadingH3>
             <ClientOnly>
               <ArticleHeadingList :headings="headings" />
             </ClientOnly>
           </AsideContentsBox>
-          <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-            <AppHeading3 class="mb-2">
+          <AsideContentsBox v-if="imgList.length > 0" class="mb-2">
+            <V2CommonAppHeadingH3 class="mb-2">
               画像
-            </AppHeading3>
+            </V2CommonAppHeadingH3>
             <ClientOnly>
               <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
             </ClientOnly>
@@ -82,7 +83,7 @@ const description = computed<string>(() => {
   return article?.value?.subtitle || ''
 })
 
-const seoMeta:{[T:string]:string|(()=>string)} = {
+const seoMeta: { [T: string]: string | (() => string) } = {
   title: () => `${title.value}`,
   ogTitle: () => `${title.value}`,
   description: () => `${description.value}`,
@@ -101,28 +102,28 @@ if (ogpImg) {
 useSeoMeta(seoMeta)
 
 // 画像拡大表示用
-const selectedId = ref<string|undefined>(undefined)
+const selectedId = ref<string | undefined>(undefined)
 
 onMounted(() => {
   isLoading.set(false)
   window.addEventListener('keyup', escapeKeyEventhandler)
 })
-const setImgList = (l:ImageList) => {
+const setImgList = (l: ImageList) => {
   imgList.value = l
 }
 const imgList = ref<ImageList>([])
 
-const imgClickHandler = (id:string|undefined = undefined) => {
+const imgClickHandler = (id: string | undefined = undefined) => {
   selectedId.value = id
 }
 
-const headingListHandler = (h:Heading[]) => {
+const headingListHandler = (h: Heading[]) => {
   headings.value = h
 }
 
 const headings = ref<Heading[]>([])
 
-const escapeKeyEventhandler = (e:KeyboardEvent) => {
+const escapeKeyEventhandler = (e: KeyboardEvent) => {
   const key = e.key
   if (key !== 'Escape') { return }
   if (!selectedId.value) {

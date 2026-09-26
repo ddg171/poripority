@@ -1,8 +1,8 @@
 <template>
   <article :id="props.id" class="flex flex-col items-start justify-center  h-full">
-    <AppHeading3 class="mb-2">
+    <V2CommonAppHeadingH3 class="mb-2">
       <slot name="name" />
-    </AppHeading3>
+    </V2CommonAppHeadingH3>
 
     <div class="flex items-center justify-center   p-1 lg:w-72 lg:h-72 bg-green/50">
       <slot name="pic" />
@@ -16,7 +16,7 @@
       <WorksParaBox>
         <slot name="introduction" />
       </WorksParaBox>
-      <div v-if="links.length!==0" class="mt-auto">
+      <div v-if="links.length !== 0" class="mt-auto">
         <p class="w-full text-lg font-semibold">
           リンク・関連ページ
         </p>
@@ -27,11 +27,11 @@
 </template>
 
 <script setup lang="ts">
-import type { LinkParams } from '~~/types/components'
+import type { LinkParams } from '~~/types/components';
 
-interface Props{
-    id:string
-    links:LinkParams[]
+interface Props {
+  id: string
+  links: LinkParams[]
 }
 
 const props = withDefaults(defineProps<Props>(), { id: '', links: () => [] })

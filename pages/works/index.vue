@@ -6,9 +6,9 @@
 
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
       <ContentSection>
-        <AppHeading2 class="mb-2">
+        <V2CommonAppHeadingH2 class="mb-2">
           制作物について
-        </AppHeading2>
+        </V2CommonAppHeadingH2>
         <WorksParaBox>
           <CommonAppApra>
             筆者が最初に学習したプログラミング言語はPythonだったのだが、色々あってFirebaseを触るようになり、同時にフロントエンドが必要ということでVuejsを触り、基本が大事と言ってバニラJSを触っているうちに気がつけばJavascriptメインになっていた。
@@ -34,12 +34,8 @@
                 運用中
               </template>
               <template #pic>
-                <NuxtPicture
-                  class="picture-box"
-                  src="/images/webp/works-img02-01w2000.webp"
-                  legacy-format="jpeg"
-                  :img-attrs="imgAttr"
-                />
+                <NuxtPicture class="picture-box" src="/images/webp/works-img02-01w2000.webp" legacy-format="jpeg"
+                  :img-attrs="imgAttr" />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -62,12 +58,8 @@
                 運用中
               </template>
               <template #pic>
-                <NuxtPicture
-                  class="picture-box"
-                  src="images/webp/works-img02-02w640.webp"
-                  legacy-format="jpeg"
-                  :img-attrs="imgAttr"
-                />
+                <NuxtPicture class="picture-box" src="images/webp/works-img02-02w640.webp" legacy-format="jpeg"
+                  :img-attrs="imgAttr" />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -90,12 +82,8 @@
                 運用中
               </template>
               <template #pic>
-                <NuxtPicture
-                  class="picture-box"
-                  src="images/webp/works-img02-03w640.webp"
-                  legacy-format="jpeg"
-                  :img-attrs="imgAttr"
-                />
+                <NuxtPicture class="picture-box" src="images/webp/works-img02-03w640.webp" legacy-format="jpeg"
+                  :img-attrs="imgAttr" />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -118,12 +106,8 @@
                 制作中断
               </template>
               <template #pic>
-                <NuxtPicture
-                  class="picture-box"
-                  src="images/webp/works-img02-04w640.webp"
-                  legacy-format="jpeg"
-                  :img-attrs="imgAttr"
-                />
+                <NuxtPicture class="picture-box" src="images/webp/works-img02-04w640.webp" legacy-format="jpeg"
+                  :img-attrs="imgAttr" />
               </template>
               <template #introduction>
                 <CommonAppApra>
@@ -145,7 +129,7 @@
 </template>
 
 <script setup lang="ts">
-import type { PictureBoxProp, LinkParams } from '~~/types/components'
+import type { LinkParams, PictureBoxProp } from '~~/types/components'
 import { makeSeoMetaInput } from '~~/utils/useHead'
 
 const title = ref<string>('制作物')

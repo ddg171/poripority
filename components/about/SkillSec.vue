@@ -1,9 +1,9 @@
 <template>
-  <AboutContentSection id="skill" :threshold="0.25" class="z-20 py-16 bg-green " @in="isShown=true">
+  <AboutContentSection id="skill" :threshold="0.25" class="z-20 py-16 bg-green " @in="isShown = true">
     <template #heading>
-      <AppHeading2 class="z-40">
+      <V2CommonAppHeadingH2 class="z-40">
         Skill
-      </AppHeading2>
+      </V2CommonAppHeadingH2>
     </template>
     <template #default>
       <div class="z-30 flex flex-col items-center justify-center w-full text-white">
@@ -84,24 +84,20 @@
         </div>
 
         <div class="w-full ">
-          <AppHeading3 class="mb-1 md:mb-2">
+          <V2CommonAppHeadingH3 class="mb-1 md:mb-2">
             Examples
-          </AppHeading3>
+          </V2CommonAppHeadingH3>
           <ul class="flex flex-col justify-around w-full gap-1 md:flex-row md:gap-2 lg:justify-start">
-            <AboutSkillExampleElem
-              name="メール自動送信システム"
-              :techs="['Vue.js/Nuxt.js(フロントエンド)','Firestore(DB)','Cloud Functions(バックエンド)','Cloud Scheduler','Sendgrid(メール送信サービス)']"
-            >
+            <AboutSkillExampleElem name="メール自動送信システム"
+              :techs="['Vue.js/Nuxt.js(フロントエンド)', 'Firestore(DB)', 'Cloud Functions(バックエンド)', 'Cloud Scheduler', 'Sendgrid(メール送信サービス)']">
               <p>
                 登録された宛先へメールを自動送信するシステムを制作しました。
                 Firestoreにドキュメントが作成されるとCloud Functionsがトリガーされ、Sendgridへメール送信リクエストを送信します。
                 管理画面では送信タスクの作成と、テンプレート編集・送信済みタスク結果確認ができます。
               </p>
             </AboutSkillExampleElem>
-            <AboutSkillExampleElem
-              name="研修参加報告システム"
-              :techs="['Vue.js/Nuxt.js(フロントエンド)','Firebase Authentication(認証)','Firestore(DB)','Cloud Functions(バックエンド)','Firebase Storage(ファイル保存)']"
-            >
+            <AboutSkillExampleElem name="研修参加報告システム"
+              :techs="['Vue.js/Nuxt.js(フロントエンド)', 'Firebase Authentication(認証)', 'Firestore(DB)', 'Cloud Functions(バックエンド)', 'Firebase Storage(ファイル保存)']">
               <p>
                 研修参加者が管理者へ参加報告を行うためのWebアプリです。
                 管理者は研修参加者の登録と、参加報告の確認ができます。
@@ -109,10 +105,8 @@
                 参加報告にはファイルを添付できます。
               </p>
             </AboutSkillExampleElem>
-            <AboutSkillExampleElem
-              name="このWebサイト"
-              :techs="['Vue.js/Nuxt.js(フロントエンド)','Google Cloudrun(バックエンド)','Github Actions(CI/CD)','Firebase Hosting(静的ファイル配信/ドメイン接続)','Micro CMS(コンテンツ管理)']"
-            >
+            <AboutSkillExampleElem name="このWebサイト"
+              :techs="['Vue.js/Nuxt.js(フロントエンド)', 'Google Cloudrun(バックエンド)', 'Github Actions(CI/CD)', 'Firebase Hosting(静的ファイル配信/ドメイン接続)', 'Micro CMS(コンテンツ管理)']">
               <p>
                 NuxtjsとヘッドレスCMSを組み合わせて制作しました。
                 Github Actionsにより、リポジトリにpushされると自動でビルド・デプロイが行われます。

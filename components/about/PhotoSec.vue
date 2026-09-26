@@ -1,40 +1,23 @@
 <template>
-  <AboutContentSection id="photography" class="z-20  bg-darkblue py-16" @in="isShown=true">
+  <AboutContentSection id="photography" class="z-20  bg-darkblue py-16" @in="isShown = true">
     <template #heading>
-      <AppHeading2>
+      <V2CommonAppHeadingH2>
         Photography
-      </AppHeading2>
+      </V2CommonAppHeadingH2>
     </template>
     <template #default>
-      <div class="flex flex-col items-center lg:items-start justify-center w-full text-white lg:flex-row gap-4 lg:gap-8">
+      <div
+        class="flex flex-col items-center lg:items-start justify-center w-full text-white lg:flex-row gap-4 lg:gap-8">
         <div class="relative pb-2  w-96 h-96 profile-pic bg-darkblue  overflow-hidden">
-          <NuxtPicture
-            :src="photo1"
+          <NuxtPicture :src="photo1"
             class="absolute z-20  top-0 left-6 w-72 h-72 bg-green/50 hover:z-50  hover:w-80 hover:h-80 transition-all  drop-shadow-2xl"
-            legacy-format="jpeg"
-            height="320"
-            width="320"
-            :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
-          />
-          <NuxtPicture
-            :src="photo2"
+            legacy-format="jpeg" height="320" width="320" :img-attrs="{ class: 'h-full w-full object-cover', alt: '' }" />
+          <NuxtPicture :src="photo2"
             class="absolute z-10 bottom-0  left-0 w-32 h-32 hover:z-50 hover:w-80 hover:h-80 transition-all  drop-shadow-2xl"
-            legacy-format="jpeg"
-            height="320"
-            width="320"
-
-            :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
-          />
-          <NuxtPicture
-            :src="photo3"
+            legacy-format="jpeg" height="320" width="320" :img-attrs="{ class: 'h-full w-full object-cover', alt: '' }" />
+          <NuxtPicture :src="photo3"
             class="absolute z-30 bottom-4  right-2 w-40 h-40  hover:z-50  hover:w-80 hover:h-80 transition-all drop-shadow-2xl"
-
-            legacy-format="jpeg"
-            height="320"
-            width="320"
-
-            :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
-          />
+            legacy-format="jpeg" height="320" width="320" :img-attrs="{ class: 'h-full w-full object-cover', alt: '' }" />
         </div>
         <div class="flex flex-row items-center w-full  justify-center lg:justify-start  md:w-1/2 md:grow-0 px-2">
           <div class=" h-full flex flex-col items-start gap-2">

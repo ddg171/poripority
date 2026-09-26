@@ -3,14 +3,10 @@
     <div v-show="isShown" class="relative w-full h-full">
       <div class="absolute flex items-center justify-center w-full h-full overflow-hidden ">
         <div class="grid w-full h-full grid-cols-4 grid-rows-4">
-          <div v-for="p,i in photos" :key="i" class="w-full h-full border-white photo-box">
+          <div v-for="p, i in photos" :key="i" class="w-full h-full border-white photo-box">
             <div v-show="p.isShow" class="w-full h-full text-white border ">
-              <NuxtPicture
-                :src="p.src"
-                class="object-cover w-full h-full"
-                legacy-format="jpeg"
-                :img-attrs="{ class:'h-full w-full object-cover', alt:''}"
-              />
+              <NuxtPicture :src="p.src" class="object-cover w-full h-full" legacy-format="jpeg"
+                :img-attrs="{ class: 'h-full w-full object-cover', alt: '' }" />
             </div>
           </div>
         </div>
@@ -19,11 +15,11 @@
         <div v-show="headingTransitionTrrigger" class="absolute flex justify-center w-full h-full backdrop-blur-sm">
           <CommonContentWidthBox class="flex items-end justify-start">
             <div class="flex flex-col w-full px-4 py-6 md:px-16 bg-green/75 md:w-auto mb-1/5h md:mb-1/7h">
-              <AppHeading1 class="pl-2 text-6xl font-semibold text-white border-l-4 border-white border-solid">
+              <V2CommonAppHeadingH1 class="pl-2 text-6xl font-semibold text-white border-l-4 border-white border-solid">
                 <span>
                   ABOUT ME
                 </span>
-              </AppHeading1>
+              </V2CommonAppHeadingH1>
               <p class="text-2xl text-white md:text-4xl">
                 Now is better than never!
               </p>
@@ -59,7 +55,7 @@ const photos = ref<Photo[]>(
   ]
 )
 
-const shuffleIndex = ():number[] => {
+const shuffleIndex = (): number[] => {
   const index = photos.value.map((_, i) => i)
   return shuffleArray<number>(index)
 }
@@ -94,12 +90,11 @@ defineExpose({
 </script>
 
 <style scoped>
-
-.hero{
+.hero {
   height: calc(100vh - 64px - 3rem);
 }
 
-.hero-enter-active{
+.hero-enter-active {
   opacity: 1;
   transition: opacity 0.25s linear;
   transition-delay: 0.25s;
@@ -109,5 +104,4 @@ defineExpose({
 .hero-leave-to {
   opacity: 0;
 }
-
 </style>

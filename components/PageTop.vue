@@ -2,13 +2,14 @@
   <TopConteinerBlock class="w-full h-full">
     <div :data-show="isShow" class="relative h-full transition-all duration-500 opacity-0 title-content-box page-title">
       <TopImgBlock :img="props.topImg" />
-      <div v-if="props.title" class="absolute flex items-center justify-center w-full h-full title-box transition-all duration-500">
+      <div v-if="props.title"
+        class="absolute flex items-center justify-center w-full h-full title-box transition-all duration-500">
         <CommonContentWidthBox class="flex items-end justify-start">
           <div class="flex flex-col w-full py-2 px-4 md:px-16 md:py-4 bg-green/75 md:w-auto mb-16 lg:mb-1/6h">
-            <AppHeading1>
+            <V2CommonAppHeadingH1>
               <span>{{ props.title }}</span>
-            </AppHeading1>
-            <p v-for="t , i in props.subtitles" :key="i" class="text-white text-md md:text-lg font-medium">
+            </V2CommonAppHeadingH1>
+            <p v-for="t, i in props.subtitles" :key="i" class="text-white text-md md:text-lg font-medium">
               {{ t }}
             </p>
           </div>
@@ -41,11 +42,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.title-content-box[data-show=true]{
+.title-content-box[data-show=true] {
   opacity: 1 !important;
 }
 
-.title-content-box[data-show=false]{
+.title-content-box[data-show=false] {
   transition: none !important;
 }
 </style>

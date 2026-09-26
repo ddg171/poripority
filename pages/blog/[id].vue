@@ -11,21 +11,22 @@
         </CommonAppLink>
       </div>
 
-      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
+      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
+        @heading-list="headingListHandler" />
       <ArticleNavigation :published-at="article?.publishedAt" />
       <ClientOnly>
         <div v-if="!isLoading.state.value.isLoading">
           <teleport to="#side-contents">
-            <AsideContentsBox v-if="headings.length>0" class="mb-2">
-              <AppHeading3 class="mb-2">
+            <AsideContentsBox v-if="headings.length > 0" class="mb-2">
+              <V2CommonAppHeadingH3 class="mb-2">
                 目次
-              </AppHeading3>
+              </V2CommonAppHeadingH3>
               <ArticleHeadingList :headings="headings" />
             </AsideContentsBox>
-            <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-              <AppHeading3 class="mb-2">
+            <AsideContentsBox v-if="imgList.length > 0" class="mb-2">
+              <V2CommonAppHeadingH3 class="mb-2">
                 画像
-              </AppHeading3>
+              </V2CommonAppHeadingH3>
               <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
             </AsideContentsBox>
           </teleport>
@@ -37,9 +38,9 @@
       </OverlayBox>
     </Contentsection>
     <ContentSection v-if="article?.ads?.length">
-      <AppHeading2 class="mb-2">
+      <V2CommonAppHeadingH2 class="mb-2">
         広告欄
-      </AppHeading2>
+      </V2CommonAppHeadingH2>
       <div class="w-full flex flex-col gap-4 px-2">
         <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
       </div>
@@ -48,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { useState, useGtag } from 'vue-gtag-next'
+import { useGtag, useState } from 'vue-gtag-next'
 
 import type { Article, Heading, ImageList } from '~~/types/articles'
 import type { PageTitleProp } from '~~/types/components'
@@ -101,7 +102,7 @@ const description = computed<string>(() => {
   return article?.value?.subtitle || ''
 })
 
-const seoMeta:{[T:string]:string|(()=>string)} = {
+const seoMeta: { [T: string]: string | (() => string) } = {
   title: () => `${title.value}`,
   ogTitle: () => `${title.value}`,
   description: () => `${description.value}`,
@@ -120,7 +121,7 @@ if (ogpImg) {
 useSeoMeta(seoMeta)
 
 // 画像拡大表示用
-const selectedId = ref<string|undefined>(undefined)
+const selectedId = ref<string | undefined>(undefined)
 
 onMounted(() => {
   window.addEventListener('keyup', escapeKeyEventhandler)
@@ -135,22 +136,22 @@ onMounted(() => {
     page_path: window.location.pathname
   })
 })
-const setImgList = (l:ImageList) => {
+const setImgList = (l: ImageList) => {
   imgList.value = l
 }
 const imgList = ref<ImageList>([])
 
-const imgClickHandler = (id:string|undefined = undefined) => {
+const imgClickHandler = (id: string | undefined = undefined) => {
   selectedId.value = id
 }
 
-const headingListHandler = (h:Heading[]) => {
+const headingListHandler = (h: Heading[]) => {
   headings.value = h
 }
 
 const headings = ref<Heading[]>([])
 
-const escapeKeyEventhandler = (e:KeyboardEvent) => {
+const escapeKeyEventhandler = (e: KeyboardEvent) => {
   const key = e.key
   if (key !== 'Escape') { return }
   if (!selectedId.value) {
