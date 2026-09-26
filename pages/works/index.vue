@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col items-center justify-center w-full text-white page-works">
-    <div id="top-box" class="w-full mb-4 h-1/3h lg:h-3/4h max-h-960p min-h-240p">
+    <div id="top-box" class="w-full">
       <PageTop :title="title" :top-img="topImg" :subtitles="subtitles" />
     </div>
 
