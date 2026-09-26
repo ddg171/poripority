@@ -82,8 +82,7 @@ const topContents = ref<SliderContent[]>([
       para: [
         'Welcome to the "hut" of Poripority.'
       ],
-      isTight: true
-    }
+    },
   },
   {
     pic: {
@@ -138,7 +137,8 @@ onMounted(async () => {
           title: a.title,
           para: a.subtitle ? [a.subtitle] : [],
           to: `/blog/${a.id}`
-        }
+        },
+        isImportant: true
       }
       topContents.value.push(ArticleforSlider)
     }

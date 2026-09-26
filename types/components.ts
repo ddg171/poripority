@@ -1,45 +1,44 @@
 export interface LinkParams {
-    id?:string
-    name:string
-    path:string
-    disabled?:boolean
-    isExternal?:boolean
+  id?: string;
+  name: string;
+  path: string;
+  disabled?: boolean;
+  isExternal?: boolean;
 }
 export interface PictureBoxProp {
-    src: string
-    alt: string
-    title: string
-    fromCMS?:boolean
+  src: string;
+  alt: string;
+  title: string;
+  fromCMS?: boolean;
 }
 export interface Photo {
-  isShow:boolean
-  src:string
+  isShow: boolean;
+  src: string;
 }
 
 export interface SliderContent {
-    pic: PictureBoxProp,
-      text: {
-        title: string,
-        para: string[],
-        to?:string,
-        isTight?:boolean
-      }
+  pic: PictureBoxProp;
+  text: {
+    title: string;
+    para: string[];
+    to?: string;
+  };
+  isImportant?: boolean;
 }
 
 export interface PageTitleProp {
-    title:string,
-    topImg:PictureBoxProp|null,
-    subtitles:string[]
+  title: string;
+  topImg: PictureBoxProp | null;
+  subtitles: string[];
 }
 
-export interface Reference{
-    url:string
-    title?:string
+export interface Reference {
+  url: string;
+  title?: string;
 }
 
-export interface MicroCMSImage{
-    url:string
-    height:number
-    width:number
-
+export interface MicroCMSImage {
+  url: string;
+  height: number;
+  width: number;
 }

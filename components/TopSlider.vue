@@ -9,18 +9,7 @@
         <TopRelativeBox class="top-slider-content">
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
           <TopTextBox>
-            <div
-              class="flex flex-col gap-1 pl-4 pr-4 md:pr-16 py-4  bg-darkblue/90 border border-lightgreen  mb-20 md:mb-40">
-              <V2CommonAppHeadingH2 :data-is-tight="!!c.text.isTight">
-                <CommonAppLink v-if="!!c.text.to" :to="c.text.to" class="hover:underline" tabindex="-1">
-                  {{ c.text.title }}
-                </CommonAppLink>
-                <span v-else>{{ c.text.title }}</span>
-              </V2CommonAppHeadingH2>
-              <p v-for="p, t in c.text.para" :key="t" class="text-sm md:text-md font-medium">
-                {{ p }}
-              </p>
-            </div>
+            <V2CommonEyeCatchTextBoxTop :content="c.text" :is-important="c.isImportant" />
           </TopTextBox>
         </TopRelativeBox>
       </div>
