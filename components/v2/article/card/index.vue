@@ -1,26 +1,37 @@
 <template>
     <V2ArticleCardFrame>
-        <article class="w-full h-full relative overflow-hidden" @click.stop="router.push(`/blog/${props.article.id}`)">
-            <NuxtPicture v-if="props.article.eyecatch?.url" class="opacity-100 transition-opacity duration-500 "
-                provider="imgix" :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg" fit="crop"
-                height="200" width="200"
-                :img-attrs="{ class: 'card-thumb w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
-                :modifiers="{ q: 50 }" />
-            <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
-                {{ msg }}
+        <article class="w-full h-full flex flex-col " @click.stop="router.push(`/blog/${props.article.id}`)">
+            <div class="aspect-3/2 relative overflow-hidden shrink-0">
+                <NuxtPicture v-if="props.article.eyecatch?.url" class="opacity-100 transition-opacity duration-500 "
+                    provider="imgix" :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg"
+                    fit="crop" height="200" width="200"
+                    :img-attrs="{ class: 'card-thumb w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
+                    :modifiers="{ q: 50 }" />
+                <div v-else class="absolute inset-0 flex items-center justify-center bg-gray/50">
+                    {{ msg }}
+                </div>
             </div>
-            <div class="absolute bottom-0 left-0 w-full px-1 pb-1 pt-4  article-title-bg flex flex-col justify-end">
-                <NuxtLink :to="`/blog?category=${props.article.category.id}`"
-                    class="w-fit p-1 bg-gray/75 text-xs text-orange hover:bg-gray hover:font-bold hover:cursor-pointer"
-                    @click.stop="() => { }">{{ props.article.category.name }}</NuxtLink>
-                <h3 class="text-md font-semibold tracking-tighter text-white hover:underline">
-                    <NuxtLink :to="to">
-                        {{ props.article.title }}
-                    </NuxtLink>
-                </h3>
-                <p class="text-sm text-lightgray mt-1">
-                    {{ publishedDate }}
-                </p>
+            <div class="w-full h-full p-4  article-title-bg flex flex-col  justify-between gap-1">
+                <div class="flex flex-col gap-1">
+                    <NuxtLink :to="`/blog?category=${props.article.category.id}`"
+                        class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
+                        @click.stop="() => { }"># {{ props.article.category.name }}</NuxtLink>
+
+                    <h3 class="text-xl font-semibold tracking-tighter text-white hover:underline">
+                        <NuxtLink :to="to">
+                            {{ props.article.title }}
+                        </NuxtLink>
+                    </h3>
+                    <p class="ml-1 text-sm text-lightgray">
+                        {{ props.article.subtitle }}
+                    </p>
+
+                </div>
+                <div class="shrink-0 border-t border-lightgreen pt-2">
+                    <p class="ml-1 text-xs text-lightgray">
+                        published time: {{ publishedDate }}
+                    </p>
+                </div>
             </div>
         </article>
     </V2ArticleCardFrame>
