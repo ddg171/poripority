@@ -11,13 +11,13 @@
                     {{ msg }}
                 </div>
             </div>
-            <div class="w-full h-full p-4  article-title-bg flex flex-col  justify-between gap-1">
+            <div class="w-full h-full p-4  article-title-bg flex flex-col  justify-between gap-2">
                 <div class="flex flex-col gap-1">
                     <NuxtLink :to="`/blog?category=${props.article.category.id}`"
                         class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
                         @click.stop="() => { }"># {{ props.article.category.name }}</NuxtLink>
 
-                    <h3 class="text-xl font-semibold tracking-tighter text-white hover:underline">
+                    <h3 class="text-xl font-semibold tracking-tighter text-white ">
                         <NuxtLink :to="to">
                             {{ props.article.title }}
                         </NuxtLink>
@@ -27,9 +27,9 @@
                     </p>
 
                 </div>
-                <div class="shrink-0 border-t border-lightgreen pt-2">
-                    <p class="ml-1 text-xs text-lightgray">
-                        published time: {{ publishedDate }}
+                <div class="shrink-0 border-t border-lightgreen pt-4">
+                    <p class="mr-2 text-xs text-right text-lightgray">
+                        updated at {{ publishedDate }}
                     </p>
                 </div>
             </div>

@@ -118,7 +118,7 @@ const topContents = ref<SliderContent[]>([
 
 onMounted(async () => {
   try {
-    const data = await $fetch('/api/blogs', { params: { limit: 4 } })
+    const data = await $fetch('/api/blogs', { params: { limit: 3 } })
     latestArticles.value = data.contents || []
     if (latestArticles.value.length) {
       const a = latestArticles.value[0]
