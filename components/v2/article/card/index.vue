@@ -1,14 +1,14 @@
 <template>
     <V2ArticleCardFrame>
         <article class="w-full h-full flex flex-col " @click.stop="router.push(`/blog/${props.article.id}`)">
-            <div class="aspect-3/2 relative overflow-hidden shrink-0">
-                <NuxtPicture v-if="props.article.eyecatch?.url" class="opacity-100 transition-opacity duration-500 "
+            <div class="relative overflow-hidden shrink-0">
+                <NuxtPicture v-if="props.article.eyecatch?.url" class=" opacity-100 transition-opacity duration-500 "
                     provider="imgix" :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg"
                     fit="crop" height="200" width="200"
-                    :img-attrs="{ class: 'card-thumb w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
+                    :img-attrs="{ class: 'card-thumb aspect-3/2 w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
                     :modifiers="{ q: 50 }" />
-                <div v-else class="absolute inset-0 flex items-center justify-center bg-gray/50">
-                    {{ msg }}
+                <div v-else class="px-4 py-8  font-semibold text-lightgreen/75 bg-gray">
+                    No Eyecatch
                 </div>
             </div>
             <div class="w-full h-full p-4  article-title-bg flex flex-col  justify-between gap-2">
@@ -39,6 +39,7 @@
 
 <script setup lang="ts">
 import { parseISO } from 'date-fns';
+import { defineProps, withDefaults, } from 'vue';
 import type { Article } from '~~/types/articles';
 interface Props {
     article: Article
@@ -50,9 +51,7 @@ const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: un
 
 const isPictureLoaded = ref<boolean>(false)
 
-const msg = computed<string>(() => {
-    return props.article?.eyecatch?.url ? 'loading...' : 'no image'
-})
+
 
 onMounted(() => {
     setTimeout(() => {
