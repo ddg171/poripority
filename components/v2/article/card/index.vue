@@ -7,15 +7,19 @@
                     fit="crop" height="200" width="200"
                     :img-attrs="{ class: 'card-thumb aspect-3/2 w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
                     :modifiers="{ q: 50 }" />
-                <div v-else class="px-4 py-8  font-semibold text-lightgreen/75 bg-gray">
+                <div v-else class="px-5 py-8 flex  items-center  font-semibold text-lightgreen/75 bg-gray">
+                    <Icon name="carbon:no-image" class=" mr-1 text-md text-lightgreen" />
                     No Eyecatch
                 </div>
             </div>
-            <div class="w-full h-full p-4  article-title-bg flex flex-col  justify-between gap-2">
+            <div class="w-full h-full px-4 pt-2 pb-6  article-title-bg flex flex-col  justify-between gap-2">
                 <div class="flex flex-col gap-1">
-                    <NuxtLink :to="`/blog?category=${props.article.category.id}`"
-                        class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
-                        @click.stop="() => { }"># {{ props.article.category.name }}</NuxtLink>
+                    <p class="ml-1 flex align-items-center justify-start">
+                        <Icon name="ant-design:calendar-outlined" class=" mr-1 text-sm text-lightgreen" />
+                        <span class="text-xs text-lightgray">
+                            {{ publishedDate }}
+                        </span>
+                    </p>
 
                     <h3 class="text-xl font-semibold tracking-tighter text-white ">
                         <NuxtLink :to="to">
@@ -27,10 +31,14 @@
                     </p>
 
                 </div>
-                <div class="shrink-0 border-t border-lightgreen pt-4">
-                    <p class="mr-2 text-xs text-right text-lightgray">
-                        updated at {{ publishedDate }}
-                    </p>
+                <div class="shrink-0 border-t border-lightgreen pt-4 flex items-center justify-between">
+                    <NuxtLink :to="`/blog?category=${props.article.category.id}`"
+                        class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
+                        @click.stop="() => { }"># {{ props.article.category.name }}</NuxtLink>
+                    <div class="h-6 w-6 flex items-center justify-center bg-green">
+                        <Icon name="akar-icons:arrow-up-right" class="text-sm text-lightgray font-semibold" />
+                    </div>
+
                 </div>
             </div>
         </article>
