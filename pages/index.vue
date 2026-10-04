@@ -1,6 +1,8 @@
 <template>
-  <div class="flex flex-col items-center justify-center w-full text-white page-index">
-    <TopSlider :slider-contents="topContents" :duration="5000" />
+  <V2CommonPageContainer>
+    <template #hero>
+      <TopSlider :slider-contents="topContents" :duration="5000" />
+    </template>
     <CommonContentWidthBox class="flex flex-col items-center ">
       <!-- 新規コンポーネント -->
       <V2CommonContentSection header-text="Latest Articles" :is-important="true">
@@ -15,7 +17,7 @@
           <V2ArticleListSkelton v-else />
         </template>
       </V2CommonContentSection>
-      <V2CommonContentSection header-text="Welcome!" :is-important="false">
+      <V2CommonContentSection header-text="Welcome!" :is-important="false" class="text-white">
         <template #content>
           <!-- 新コンポーネント -->
           <V2TopContentBox img-src="/images/webp/shrimp.webp" description="管理人の写真">
@@ -35,7 +37,7 @@
 
         </template>
       </V2CommonContentSection>
-      <V2CommonContentSection header-text="About this web site" :is-important="false">
+      <V2CommonContentSection header-text="About this web site" :is-important="false" class="text-white">
         <template #content>
           <V2TopContentBox is-reverse img-src="/images/webp/diagram.webp" description="当Webサイトの構成図">
             <CommonAppApra>
@@ -56,7 +58,7 @@
         </template>
       </V2CommonContentSection>
     </CommonContentWidthBox>
-  </div>
+  </V2CommonPageContainer>
 </template>
 
 <script setup lang="ts">

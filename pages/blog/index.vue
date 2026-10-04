@@ -1,39 +1,37 @@
 <template>
-  <div class="flex flex-col items-center justify-center w-full text-white page-index gap-2">
-    <CommonContentWidthBox class="flex flex-col items-center ">
-      <V2CommonContentSectionFrame class="w-full h-full">
-        <V2CommonContentSectionHeaderFrame class="w-full">
-          <div class="flex flex-col gap-2">
-            <div class="flex flex-col gap-1">
-              <h1 class="text-3xl font-semibold text-white">{{ title }}</h1>
-              <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ subtitle }}</p>
-            </div>
+  <V2CommonPageContainer>
+    <V2CommonContentSectionFrame class="w-full h-full py-10">
+      <V2CommonContentSectionHeaderFrame class="w-full">
+        <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
+            <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
+            <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ subtitle }}</p>
           </div>
-        </V2CommonContentSectionHeaderFrame>
-        <ul class="flex flex-wrap gap-2">
-          <li>
-            <CommonAppLink :to="`/blog`">
-              全て
-            </CommonAppLink>
-          </li>
-          <li v-for="c in categories" :key="c.id">
-            <CommonAppLink :to="`/blog?category=${c.id}`">
-              {{ c.name }}
-            </CommonAppLink>
-          </li>
-        </ul>
-        <V2ArticleListSkeleton v-if="pending" />
-        <V2ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
-          <div v-if="totalCount === 0" class="flex items-center justify-center w-full h-48">
-            <p>
-              記事が見つかりませんでした。
-            </p>
-          </div>
-        </V2ArticleList>
-        <BottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
-      </V2CommonContentSectionFrame>
-    </CommonContentWidthBox>
-  </div>
+        </div>
+      </V2CommonContentSectionHeaderFrame>
+      <ul class="flex flex-wrap gap-2">
+        <li>
+          <CommonAppLink :to="`/blog`">
+            全て
+          </CommonAppLink>
+        </li>
+        <li v-for="c in categories" :key="c.id">
+          <CommonAppLink :to="`/blog?category=${c.id}`">
+            {{ c.name }}
+          </CommonAppLink>
+        </li>
+      </ul>
+      <V2ArticleListSkeleton v-if="isLoading" />
+      <V2ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
+        <div v-if="totalCount === 0" class="flex items-center justify-center w-full h-48">
+          <p>
+            記事が見つかりませんでした。
+          </p>
+        </div>
+      </V2ArticleList>
+      <V2ArticleBottomNavigation :left="leftNav" :center="centerNav" :right="rightNav" />
+    </V2CommonContentSectionFrame>
+  </V2CommonPageContainer>
 </template>
 
 <script setup lang="ts">
@@ -50,7 +48,7 @@ definePageMeta({
 const { state: categories, } = useCategoryStore()
 
 
-const isLoading = useLoadingStore()
+const isLoading = ref<boolean>(false)
 const config = useRuntimeConfig()
 
 const limit = ref<number>(10)
@@ -66,14 +64,16 @@ const category = computed<string>(() => {
   return typeof c === 'string' ? c : ''
 })
 // 記事の取得
-const articleAPI = useAsyncData('blogs', () => {
-  return $fetch('/api/blogs', {
+const articleAPI = useAsyncData('blogs', async () => {
+  const articles = await $fetch('/api/blogs', {
     params: {
       limit: limit.value,
       offset: offset.value,
       category: category.value
     }
   })
+  isLoading.value = false
+  return articles
 }
 )
 const articles = computed<Article[]>(() => {
@@ -82,9 +82,7 @@ const articles = computed<Article[]>(() => {
 const totalCount = computed<number>(() => {
   return articleAPI?.data?.value?.totalCount || 0
 })
-const pending = computed<boolean>(() => {
-  return !!articleAPI?.pending.value
-})
+
 
 // 選択カテゴリの取得
 const categoryStore = useCategoryStore()
@@ -130,6 +128,7 @@ const leftNav = computed<LinkParams | null>(() => {
 })
 
 watch(() => route.query.category, async () => {
+
   await articleAPI?.refresh()
   categoryStore.select(category.value)
   window.scroll(0, 0)
@@ -141,7 +140,7 @@ watch(() => route.query.offset, async () => {
 })
 
 onMounted(() => {
-  isLoading.set(false)
+  isLoading.value = false
 })
 
 </script>

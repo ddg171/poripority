@@ -6,13 +6,14 @@
             </CommonAppLink>
             <span v-else>{{ props.content.title }}</span>
         </V2CommonAppHeadingH2>
-        <p v-for="p, t in props.content.para" :key="t" class="text-sm md:text-md font-medium">
+        <p v-for="p, t in props.content.para" :key="t" class="text-white text-sm md:text-md font-medium">
             {{ p }}
         </p>
     </V2CommonEyeCatchTextBoxFrame>
 </template>
 
 <script setup lang="ts">
+import { defineProps, withDefaults, } from 'vue';
 import type { SliderContent } from '~/types/components';
 
 const props = withDefaults(defineProps<{
