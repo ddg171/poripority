@@ -9,21 +9,10 @@
           </div>
         </div>
       </V2CommonContentSectionHeaderFrame>
-      <ul class="flex flex-wrap gap-2">
-        <li>
-          <CommonAppLink :to="`/blog`">
-            全て
-          </CommonAppLink>
-        </li>
-        <li v-for="c in categories" :key="c.id">
-          <CommonAppLink :to="`/blog?category=${c.id}`">
-            {{ c.name }}
-          </CommonAppLink>
-        </li>
-      </ul>
-      <V2ArticleListSkeleton v-if="isLoading" />
+      <V2CategoryList :categories="categories" :selected-category="category" />
+      <V2ArticleListSkelton v-if="isLoading" :number-of-items="12" />
       <V2ArticleList v-else :articles="articles" :category="category" class="grid-cols-1">
-        <div v-if="totalCount === 0" class="flex items-center justify-center w-full h-48">
+        <div v-if="!isLoading && totalCount === 0" class="flex items-center justify-center w-full h-48">
           <p>
             記事が見つかりませんでした。
           </p>
