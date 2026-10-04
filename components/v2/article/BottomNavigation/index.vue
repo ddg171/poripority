@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center justify-center w-full my-6 bottom-nav">
+  <div class="flex items-center justify-center w-full bottom-nav">
     <div class="w-24 mx-1 md:w-28 h-11 sm:mx-4">
       <V2ArticleBottomNavigationButtonLink v-if="props.left" :link-param="props.left" />
     </div>

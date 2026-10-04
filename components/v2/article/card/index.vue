@@ -32,9 +32,12 @@
 
                 </div>
                 <div class="shrink-0 border-t border-lightgreen pt-4 flex items-center justify-between">
-                    <NuxtLink :to="`/blog?category=${props.article.category.id}`"
-                        class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
-                        @click.stop="() => { }"># {{ props.article.category.name }}</NuxtLink>
+                    <div class="flex">
+                        <Icon name="dashicons:category" class=" mr-2 text-2xl text-lightgray" />
+                        <NuxtLink :to="`/blog?category=${props.article.category.id}`"
+                            class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
+                            @click.stop="() => { }"># {{ props.article.category.name }}</NuxtLink>
+                    </div>
                     <div class="h-6 w-6 flex items-center justify-center bg-green">
                         <Icon name="akar-icons:arrow-up-right" class="text-sm text-lightgray font-semibold" />
                     </div>
