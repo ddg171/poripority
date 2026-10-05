@@ -1,69 +1,59 @@
 <template>
-  <div class="w-full">
-    <ContentSection class="grid ">
-      <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-        <ShareBtnBox :title="title" />
-        <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
-      </div>
-      <div class="mb-2 text-sm p-2 bg-gray">
-        <CommonAppLink class="text-orange" to="/disclaimer">
-          当webサイトの特記事項についてはこちらをご確認ください。
-        </CommonAppLink>
-      </div>
-
-      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
-        @heading-list="headingListHandler" />
-      <ArticleNavigation :published-at="article?.publishedAt" />
-      <ClientOnly>
-        <div v-if="!isLoading.state.value.isLoading">
-          <teleport to="#side-contents">
-            <AsideContentsBox v-if="headings.length > 0" class="mb-2">
-              <V2CommonAppHeadingH3 class="mb-2">
-                目次
-              </V2CommonAppHeadingH3>
-              <ArticleHeadingList :headings="headings" />
-            </AsideContentsBox>
-            <AsideContentsBox v-if="imgList.length > 0" class="mb-2">
-              <V2CommonAppHeadingH3 class="mb-2">
-                画像
-              </V2CommonAppHeadingH3>
-              <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
-            </AsideContentsBox>
-          </teleport>
+  <V2CommonPageContainer>
+    <V2CommonContentSectionFrame class="w-full h-full py-10">
+      <V2CommonContentSectionHeaderFrame class="w-full">
+        <div class="flex flex-col gap-2">
+          <div class="flex flex-col gap-1">
+            <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
+            <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ description }}</p>
+          </div>
         </div>
-      </ClientOnly>
+      </V2CommonContentSectionHeaderFrame>
 
-      <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
-        <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
-      </OverlayBox>
-    </Contentsection>
-    <ContentSection v-if="article?.ads?.length">
-      <V2CommonAppHeadingH2 class="mb-2">
-        広告欄
-      </V2CommonAppHeadingH2>
-      <div class="w-full flex flex-col gap-4 px-2">
-        <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
-      </div>
-    </ContentSection>
-  </div>
+
+      <ContentSection class="grid ">
+        <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
+          <ShareBtnBox :title="title" />
+          <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+        </div>
+        <div class="mb-2 text-sm p-2 bg-gray">
+          <CommonAppLink class="text-orange" to="/disclaimer">
+            当webサイトの特記事項についてはこちらをご確認ください。
+          </CommonAppLink>
+        </div>
+
+        <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
+          @heading-list="headingListHandler" />
+        <ArticleNavigation :published-at="article?.publishedAt" />
+        <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
+          <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
+        </OverlayBox>
+      </Contentsection>
+      <ContentSection v-if="article?.ads?.length">
+        <V2CommonAppHeadingH2 class="mb-2">
+          広告欄
+        </V2CommonAppHeadingH2>
+        <div class="w-full flex flex-col gap-4 px-2">
+          <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
+        </div>
+      </ContentSection>
+    </V2CommonContentSectionFrame>
+  </V2CommonPageContainer>
 </template>
 
 <script setup lang="ts">
 import { useGtag, useState } from 'vue-gtag-next'
 
 import type { Article, Heading, ImageList } from '~~/types/articles'
-import type { PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
-  layout: 'blog'
+  layout: 'v2-blog'
 })
-const { set: setTitle, clear: clearTitle } = usePageTopStore()
-clearTitle()
+
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const isLoading = useLoadingStore()
 
 // 記事の取得
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
@@ -74,37 +64,20 @@ if (!article.value || err?.value) {
 // 選択カテゴリの取得
 const categoryStore = useCategoryStore()
 categoryStore.select(article.value.category.id || null)
-const pageTitle = computed<PageTitleProp>(() => {
-  const title = article.value?.title || ''
-  const subtitle = article.value?.subtitle || ''
-  const src = article.value?.eyecatch?.url || '/images/webp/blanktitle01w2000.webp'
-  return {
-    title,
-    subtitles: [subtitle],
-    topImg: {
-      src,
-      alt: '',
-      title: ''
-    }
-  }
-})
-setTitle(pageTitle.value)
-// 自動で更新
-watch(pageTitle, (v) => {
-  setTitle(v)
-})
+
+
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return article?.value?.title + '-' + config.public.siteName
+  return article?.value?.title
 })
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''
 })
 
 const seoMeta: { [T: string]: string | (() => string) } = {
-  title: () => `${title.value}`,
-  ogTitle: () => `${title.value}`,
+  title: () => `${title.value}` + '-' + config.public.siteName,
+  ogTitle: () => `${title.value}` + '-' + config.public.siteName,
   description: () => `${description.value}`,
   ogDescription: () => `${description.value}`,
   robots: 'all',
