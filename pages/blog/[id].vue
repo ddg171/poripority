@@ -7,11 +7,9 @@
           <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ description }}</p>
         </div>
       </V2CommonContentSectionHeaderFrame>
-
-
       <V2CommonContentSectionFrame>
-        <V2CommonContentBoxFrame v-if="article.eyecatch.url" class="">
-          <NuxtPicture :src="article.eyecatch.url" :alt="article?.contents?.title" :width="article.eyecatch.width"
+        <V2CommonContentBoxFrame v-if="article.eyecatch?.url" class="">
+          <NuxtPicture :src="article.eyecatch.url" :alt="article?.title" :width="article.eyecatch.width"
             :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
             :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
         </V2CommonContentBoxFrame>
