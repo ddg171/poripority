@@ -1,19 +1,11 @@
 <template>
-  <div class="flex items-start flex-row bg-white">
+  <div class="flex items-start flex-row bg-lightgray  border-l-4 border-l-orange">
     <div class=" overflow-hidden h-28 w-28  md:h-36 md:w-36 shrink-0 bg-darkblue">
-      <NuxtPicture
-        v-if="props.ads.img?.url"
-        class="article-thumb w-full opacity-100 transition-opacity duration-500"
-        provider="imgix"
-        :src="props.ads.img.url || ``"
-        format="webp"
-        legacy-format="jpeg"
-        fit="clamp"
-        height="150"
+      <NuxtPicture v-if="props.ads.img?.url" class="article-thumb w-full opacity-100 transition-opacity duration-500"
+        provider="imgix" :src="props.ads.img.url || ``" format="webp" legacy-format="jpeg" fit="clamp" height="150"
         width="150"
         :img-attrs="{ class: 'w-full bg-lightgreen/25', alt: `${props.ads.name}のサムネイル画像`, height: 150, width: 150, decoding: 'async', loading: 'lazy' }"
-        :modifiers="{ h:150,w:150, q: 10 }"
-      />
+        :modifiers="{ h: 150, w: 150, q: 10 }" />
       <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
         {{ msg }}
       </div>
@@ -42,7 +34,8 @@
 </template>
 
 <script setup lang="ts">
-import type { Ads } from '~~/types/articles'
+import { defineProps, } from 'vue';
+import type { Ads } from '~~/types/articles';
 interface Props {
   ads: Ads
 }
