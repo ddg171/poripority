@@ -7,7 +7,7 @@
       </span>
     </p>
     <div v-if="props.category" class="ml-1 flex gap-1">
-      <Icon name="dashicons:category" class=" mr-1 text-xl text-lightgray" />
+      <Icon name="dashicons:category" class=" mr-1 text-xl text-lightgreen" />
       <NuxtLink :to="`/blog?category=${props.category.id}`"
         class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
         @click.stop="() => { }"># {{ props.category.name }}</NuxtLink>
