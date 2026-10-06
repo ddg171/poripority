@@ -2,41 +2,49 @@
   <V2CommonPageContainer>
     <V2CommonContentSectionFrame class="w-full h-full py-10">
       <V2CommonContentSectionHeaderFrame class="w-full">
-        <div class="flex flex-col gap-2">
-          <div class="flex flex-col gap-1">
-            <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
-            <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ description }}</p>
-          </div>
+        <div class="flex flex-col gap-1">
+          <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
+          <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ description }}</p>
         </div>
       </V2CommonContentSectionHeaderFrame>
 
 
-      <ContentSection class="grid ">
-        <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-          <ShareBtnBox :title="title" />
-          <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
-        </div>
-        <div class="mb-2 text-sm p-2 bg-gray">
-          <CommonAppLink class="text-orange" to="/disclaimer">
-            当webサイトの特記事項についてはこちらをご確認ください。
-          </CommonAppLink>
-        </div>
+      <V2CommonContentSectionFrame>
+        <V2CommonContentBoxFrame v-if="article.eyecatch.url" class="">
+          <NuxtPicture :src="article.eyecatch.url" :alt="article?.contents?.title" :width="article.eyecatch.width"
+            :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
+            :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
+        </V2CommonContentBoxFrame>
+        <V2CommonContentBox class="p-1 md:p-4 md:mx-20">
+          <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2">
+            <ShareBtnBox :title="title" />
+            <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+          </div>
+          <div class="w-full mb-2 text-sm p-2 bg-gray">
+            <CommonAppLink class="text-orange" to="/disclaimer">
+              当webサイトの特記事項についてはこちらをご確認ください。
+            </CommonAppLink>
+          </div>
 
-        <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
-          @heading-list="headingListHandler" />
-        <ArticleNavigation :published-at="article?.publishedAt" />
+        </V2CommonContentBox>
+        <V2CommonContentBox class="p-1 md:p-4 md:mx-20">
+          <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
+            @heading-list="headingListHandler" />
+
+          <ArticleNavigation :published-at="article?.publishedAt" />
+        </V2CommonContentBox>
         <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
           <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
         </OverlayBox>
-      </Contentsection>
-      <ContentSection v-if="article?.ads?.length">
-        <V2CommonAppHeadingH2 class="mb-2">
-          広告欄
-        </V2CommonAppHeadingH2>
-        <div class="w-full flex flex-col gap-4 px-2">
-          <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
-        </div>
-      </ContentSection>
+      </V2CommonContentSectionFrame>
+      <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄">
+        <template #content>
+          <div class="w-full flex flex-col gap-4 px-2">
+            <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
+          </div>
+        </template>
+
+      </V2CommonContentSection>
     </V2CommonContentSectionFrame>
   </V2CommonPageContainer>
 </template>
