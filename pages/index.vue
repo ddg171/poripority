@@ -20,7 +20,7 @@
       <V2CommonContentSection header-text="Welcome!" :is-important="false" class="text-white">
         <template #content>
           <!-- 新コンポーネント -->
-          <V2TopContentBox img-src="/images/webp/shrimp.webp" description="管理人の写真">
+          <V2CommonContentBox img-src="/images/webp/shrimp.webp" description="管理人の写真">
             <CommonAppApra>
               "The hut of Poripority"にようこそ。
             </CommonAppApra>
@@ -33,13 +33,13 @@
             <CommonAppApra>
               技術的な内容はおそらくQitta等に投稿しますが、それ以外の雑多な話はこちらで更新予定です。
             </CommonAppApra>
-          </V2TopContentBox>
+          </V2CommonContentBox>
 
         </template>
       </V2CommonContentSection>
       <V2CommonContentSection header-text="About this web site" :is-important="false" class="text-white">
         <template #content>
-          <V2TopContentBox is-reverse img-src="/images/webp/diagram.webp" description="当Webサイトの構成図">
+          <V2CommonContentBox is-reverse img-src="/images/webp/diagram.webp" description="当Webサイトの構成図">
             <CommonAppApra>
               フロントエンドはNuxt/Vue+Typescript+Tailwind CSSで制作しています。
             </CommonAppApra>
@@ -53,7 +53,7 @@
             <CommonAppApra>
               CI/CD(Github Actions)を導入しており、Mainブランチに変更内容がPushされると自動でビルド・デプロイが行われます。
             </CommonAppApra>
-          </V2TopContentBox>
+          </V2CommonContentBox>
 
         </template>
       </V2CommonContentSection>
