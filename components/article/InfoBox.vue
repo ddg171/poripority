@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-1">
     <p class="ml-1 flex align-items-center justify-start">
       <Icon name="ant-design:calendar-outlined" class=" mr-1 text-xl text-lightgreen" />
       <span class="text-sm text-lightgray">

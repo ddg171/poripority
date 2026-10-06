@@ -14,7 +14,7 @@
             :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
         </V2CommonContentBoxFrame>
         <V2CommonContentBox class="p-1 md:p-4 md:mx-20">
-          <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2">
+          <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2 gap-2">
             <ShareBtnBox :title="title" />
             <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
           </div>
@@ -35,9 +35,9 @@
           <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
         </OverlayBox>
       </V2CommonContentSectionFrame>
-      <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄">
+      <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄" class="">
         <template #content>
-          <div class="w-full flex flex-col gap-4 px-2">
+          <div class="w-full flex flex-col gap-4 ">
             <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
           </div>
         </template>
