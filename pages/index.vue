@@ -20,7 +20,7 @@
       <V2CommonContentSection header-text="Welcome!" :is-important="false" class="text-white">
         <template #content>
           <!-- 新コンポーネント -->
-          <V2CommonContentBox img-src="/images/webp/shrimp.webp" description="管理人の写真">
+          <V2CommonContentBox img-src="/images/webp/shrimp.webp" description="管理人の想像図">
             <CommonAppApra>
               "The hut of Poripority"にようこそ。
             </CommonAppApra>

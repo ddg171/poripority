@@ -10,7 +10,7 @@
         <div class="flex items-center justify-center w-full pb-2 md:h-1/2h profile-pic md:w-1/2">
           <div class="flex flex-col items-center justify-start ">
             <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpeg" class="w-28 h-28 md:w-60 md:h-60"
-              :img-attrs="{ alt: '管理人の写真', height: 240, width: 240, decoding: 'async' }" />
+              :img-attrs="{ alt: '管理人の想像図', height: 240, width: 240, decoding: 'async' }" />
           </div>
         </div>
         <div

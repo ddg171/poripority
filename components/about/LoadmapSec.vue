@@ -12,7 +12,7 @@
             <NuxtPicture src="/images/webp/shrimp.webp" legacy-format="jpeg" class="w-28 h-28 md:w-60 md:h-60"
               :img-attrs="{ decoding: 'async' }" />
             <p class="w-full text-sm text-center">
-              管理人の写真
+              管理人の想像図
             </p>
           </div>
         </div>
