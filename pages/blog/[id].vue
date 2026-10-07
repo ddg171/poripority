@@ -14,9 +14,9 @@
             :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
         </V2CommonContentBoxFrame>
         <V2ArticleContentBox>
-          <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2 gap-2">
-            <ShareBtnBox :title="title" />
+          <div class="w-full flex  justify-between mb-2 gap-4">
             <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+            <ShareBtnBox :title="title" />
           </div>
           <div class="w-full mb-2 text-sm p-2 bg-gray">
             <CommonAppLink class="text-orange" to="/disclaimer">
