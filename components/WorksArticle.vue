@@ -1,18 +1,19 @@
 <template>
-  <article :id="props.id" class="flex flex-col items-start justify-center  h-full">
+  <article :id="props.id"
+    class="p-2 flex flex-col items-start justify-center  h-full bg-darkblue border border-lightgreen">
     <V2CommonAppHeadingH3 class="mb-2">
       <slot name="name" />
     </V2CommonAppHeadingH3>
 
-    <div class="flex items-center justify-center   p-1 lg:w-72 lg:h-72 bg-green/50">
+    <div class="flex items-center justify-center  text-white   bg-green/50">
       <slot name="pic" />
     </div>
 
-    <p class="w-full text-lg font-semibold text-left">
+    <p class="w-full text-lg font-semibold text-left text-white">
       状況:
       <slot name="status" />
     </p>
-    <div class="h-full  flex flex-col justify-between">
+    <div class="text-white h-full  flex flex-col justify-between">
       <WorksParaBox>
         <slot name="introduction" />
       </WorksParaBox>
@@ -27,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps, withDefaults, } from 'vue';
 import type { LinkParams } from '~~/types/components';
 
 interface Props {

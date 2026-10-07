@@ -1,30 +1,33 @@
 <template>
-  <div class="flex flex-col items-center justify-center w-full text-white page-works">
-    <div id="top-box" class="w-full">
+  <V2CommonPageContainer>
+    <template #hero>
       <PageTop :title="title" :top-img="topImg" :subtitles="subtitles" />
-    </div>
+    </template>
 
     <div class="flex flex-col items-center w-full max-w-screen-xl ">
-      <ContentSection>
-        <V2CommonAppHeadingH2 class="mb-2">
-          制作物について
-        </V2CommonAppHeadingH2>
-        <WorksParaBox>
-          <CommonAppApra>
-            筆者が最初に学習したプログラミング言語はPythonだったのだが、色々あってFirebaseを触るようになり、同時にフロントエンドが必要ということでVuejsを触り、基本が大事と言ってバニラJSを触っているうちに気がつけばJavascriptメインになっていた。
-            途中で投げたものとかも結構あるが、こうやって並べてみるとなんかそれっぽくなったので安心している。
-          </CommonAppApra>
-          <CommonAppApra>
-            大体のアプリはJavascriptで開発している。フレームワークはVue/Nuxtが主。デプロイ先にはGCPのサービスを使っている。あとFirebaseは最初に触ったバックエンドということもあって結構好き。
-          </CommonAppApra>
-          <CommonAppApra>
-            世の中的にはクラウドはAWS、フロントエンドはReact/Nextという話なので、そのうちここにもAWS(の無料枠)とReactを使った制作物が並ぶかもしれない。
-          </CommonAppApra>
-        </WorksParaBox>
-      </ContentSection>
+      <V2CommonContentSectionFrame>
+        <div class="flex flex-col items-center w-full max-w-screen-lg md:px-20">
+          <V2CommonContentSection header-text="制作物について" is-important>
+            <template #content>
+              <V2CommonContentBox class="md:px-4 text-white textt-lg leading-relaxed">
+                <CommonAppApra>
+                  筆者が最初に学習したプログラミング言語はPythonだったのだが、色々あってFirebaseを触るようになり、同時にフロントエンドが必要ということでVuejsを触り、基本が大事と言ってバニラJSを触っているうちに気がつけばJavascriptメインになっていた。
+                  途中で投げたものとかも結構あるが、こうやって並べてみるとなんかそれっぽくなったので安心している。
+                </CommonAppApra>
+                <CommonAppApra>
+                  大体のアプリはJavascriptで開発している。フレームワークはVue/Nuxtが主。デプロイ先にはGCPのサービスを使っている。あとFirebaseは最初に触ったバックエンドということもあって結構好き。
+                </CommonAppApra>
+                <CommonAppApra>
+                  世の中的にはクラウドはAWS、フロントエンドはReact/Nextという話なので、そのうちここにもAWS(の無料枠)とReactを使った制作物が並ぶかもしれない。
+                </CommonAppApra>
+              </V2CommonContentBox>
+            </template>
+          </V2CommonContentSection>
+        </div>
+      </V2CommonContentSectionFrame>
 
-      <ContentSection>
-        <div class="grid w-full h-full grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
+      <V2CommonContentSectionFrame>
+        <div class="grid w-full h-full grid-cols-1 gap-2 lg:grid-cols-2 xl:grid-cols-3">
           <IntersectionWrapper>
             <WorksArticle id="this-site" :links="linksPrprty">
               <template #name>
@@ -123,9 +126,10 @@
             </WorksArticle>
           </IntersectionWrapper>
         </div>
-      </ContentSection>
+      </V2CommonContentSectionFrame>
     </div>
-  </div>
+  </V2CommonPageContainer>
+
 </template>
 
 <script setup lang="ts">
@@ -159,7 +163,7 @@ const linksYbb = ref<LinkParams[]>([{
   path: 'https://yubaba-7bad4.web.app/'
 }])
 
-const imgAttr = ref(
+const imgAttr = ref<{ decoding: "async" }>(
   {
     decoding: 'async'
   }
