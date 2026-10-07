@@ -60,7 +60,7 @@ onBeforeUnmount(() => {
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content {
-  @apply flex flex-col font-medium text-base leading-7 md:leading-6;
+  @apply flex flex-col font-medium text-lg leading-relaxed;
 }
 
 .cms-content strong {
@@ -113,7 +113,15 @@ onBeforeUnmount(() => {
 .cms-content h1,
 .cms-content h2,
 .cms-content h3 {
-  @apply pl-2 border-solid border-white border-l-4;
+  @apply flex items-center;
+}
+
+
+.cms-content h1::before,
+.cms-content h2::before,
+.cms-content h3::before {
+  content: "";
+  @apply inline-block h-6 w-6 bg-lightgreen mr-1;
 }
 
 .cms-content *:first-child {
@@ -122,11 +130,11 @@ onBeforeUnmount(() => {
 
 .cms-content h1,
 .cms-content h2 {
-  @apply md:text-3xl text-2xl mt-10 mb-1 font-bold;
+  @apply md:text-3xl text-2xl mt-10 mb-2 font-bold;
 }
 
 .cms-content h3 {
-  @apply md:text-2xl text-xl mt-6 mb-1 font-bold;
+  @apply md:text-2xl text-xl mt-6 mb-2 font-bold;
 }
 
 .cms-content code {
