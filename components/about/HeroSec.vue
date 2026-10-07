@@ -74,6 +74,7 @@ watch(isShown, (isShown) => {
     const index = shuffleIndex()
     index.forEach((i, j) => {
       setTimeout(() => {
+        if (!photos.value[i]) return
         photos.value[i].isShow = true
       }, j * interval + delay)
     })
