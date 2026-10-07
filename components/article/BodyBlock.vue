@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 }
 
 .cms-content .img-wrapper {
-  @apply w-full flex justify-center items-center my-4;
+  @apply w-full flex justify-center items-center my-2;
 }
 
 .img-wrapper picture {
@@ -142,15 +142,15 @@ onBeforeUnmount(() => {
 
 .cms-content h1,
 .cms-content h2 {
-  @apply md:text-3xl text-2xl mt-10 mb-2 font-bold;
+  @apply md:text-3xl text-2xl mt-8 mb-2 font-bold;
 }
 
 .cms-content h3 {
-  @apply md:text-xl text-lg mt-8 mb-2 font-bold;
+  @apply md:text-xl text-lg mt-4 mb-2 font-bold;
 }
 
 .cms-content h4 {
-  @apply md:text-lg text-base mt-6 mb-2 font-semibold;
+  @apply md:text-lg text-base mt-2 mb-2 font-semibold;
 }
 
 .cms-content code {
