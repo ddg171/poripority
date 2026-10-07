@@ -1,17 +1,12 @@
 <template>
-  <TopConteinerBlock class="w-full h-full">
+  <TopConteinerBlock class="h-48 md:h-64 mb-2 w-full bg-darkblue">
     <div :data-show="isShow" class="relative h-full transition-all duration-500 opacity-0 title-content-box page-title">
       <TopImgBlock :img="props.topImg" />
-      <div v-if="props.title" class="absolute flex items-center justify-center w-full h-full title-box transition-all duration-500">
+      <div v-if="props.title"
+        class="absolute flex items-center justify-center w-full h-full title-box transition-all duration-500">
         <CommonContentWidthBox class="flex items-end justify-start">
-          <div class="flex flex-col w-full py-2 px-4 md:px-16 md:py-6 bg-green/75 md:w-auto mb-16 lg:mb-1/6h">
-            <AppHeading1>
-              <span>{{ props.title }}</span>
-            </AppHeading1>
-            <p v-for="t , i in props.subtitles" :key="i" class="text-white text-lg md:text-xl font-medium">
-              {{ t }}
-            </p>
-          </div>
+          <V2CommonEyeCatchTextBox :content="{ title: props.title, para: props.subtitles }"
+            class="md:w-auto mb-8 lg:mb-8" />
         </CommonContentWidthBox>
       </div>
     </div>
@@ -19,12 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import type { PictureBoxProp } from '~~/types/components'
+import type { PictureBoxProp } from '~~/types/components';
 
 interface Props {
-  topImg: PictureBoxProp | null
+  topImg?: PictureBoxProp | null
   title: string
-  subtitles: string[]
+  subtitles?: string[]
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -41,11 +36,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.title-content-box[data-show=true]{
+.title-content-box[data-show=true] {
   opacity: 1 !important;
 }
 
-.title-content-box[data-show=false]{
+.title-content-box[data-show=false] {
   transition: none !important;
 }
 </style>
