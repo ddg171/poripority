@@ -60,7 +60,7 @@ onBeforeUnmount(() => {
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
 
 .cms-content {
-  @apply flex flex-col font-medium text-lg leading-relaxed;
+  @apply flex flex-col font-normal text-base leading-relaxed;
 }
 
 .cms-content strong {
@@ -68,7 +68,7 @@ onBeforeUnmount(() => {
 }
 
 .cms-content .img-wrapper {
-  @apply w-full flex justify-center items-center my-4;
+  @apply w-full flex justify-center items-center my-2;
 }
 
 .img-wrapper picture {
@@ -84,20 +84,20 @@ onBeforeUnmount(() => {
 }
 
 .cms-content ul {
-  @apply md:ml-4 ml-0 my-4;
+  @apply md:ml-4 ml-2 mb-4;
 }
 
 .cms-content li {
-  @apply flex justify-start items-center;
+  @apply flex justify-start items-center text-sm;
 }
 
 .cms-content li::before {
   content: "//";
-  @apply self-start text-white text-xl font-extrabold mr-2
+  @apply self-start text-white text-base font-extrabold mr-2
 }
 
 .cms-content a {
-  @apply underline font-bold
+  @apply underline font-semibold;
 }
 
 .cms-content a::after {
@@ -110,18 +110,30 @@ onBeforeUnmount(() => {
   @apply bg-lightgreen/50
 }
 
-.cms-content h1,
-.cms-content h2,
-.cms-content h3 {
-  @apply flex items-center;
-}
-
-
 .cms-content h1::before,
 .cms-content h2::before,
-.cms-content h3::before {
+.cms-content h3::before,
+.cms-content h4::before {
   content: "";
-  @apply inline-block h-6 w-6 bg-lightgreen mr-1;
+  @apply inline-block align-bottom;
+}
+
+.cms-content h1::before,
+.cms-content h2::before {
+  @apply inline-block h-6 w-6 mr-1 mb-1 bg-lightgreen;
+}
+
+.cms-content h3::before,
+.cms-content h4::before {
+  @apply inline-block h-5 w-5 mr-1 mb-1;
+}
+
+.cms-content h3::before {
+  @apply bg-green;
+}
+
+.cms-content h4::before {
+  @apply bg-green/50;
 }
 
 .cms-content *:first-child {
@@ -130,11 +142,15 @@ onBeforeUnmount(() => {
 
 .cms-content h1,
 .cms-content h2 {
-  @apply md:text-3xl text-2xl mt-10 mb-2 font-bold;
+  @apply md:text-3xl text-2xl mt-8 mb-2 font-bold;
 }
 
 .cms-content h3 {
-  @apply md:text-2xl text-xl mt-6 mb-2 font-bold;
+  @apply md:text-xl text-lg mt-4 mb-2 font-bold;
+}
+
+.cms-content h4 {
+  @apply md:text-lg text-base mt-2 mb-2 font-semibold;
 }
 
 .cms-content code {
