@@ -1,13 +1,9 @@
 <template>
-  <CommonLayoutBox id="layout" class="relative">
+  <CommonLayoutBox id="layout">
     <AppHeader ref="header" />
-    <div class="flex flex-col items-center w-full min-h-screen">
       <main class="flex flex-col items-center w-full min-h-screen">
-        <div class="w-full">
           <slot />
-        </div>
       </main>
-    </div>
     <SpBottomBtn :is-show="isBottomBtnShow" />
 
     <AppFooter />
@@ -20,7 +16,7 @@ const { state } = useRootRectStore()
 
 watch(state, (b) => {
   const top = b.top
-  const isShow = !!(top < -80)
+  const isShow = !!(top < -100)
   isBottomBtnShow.value = isShow
 })
 

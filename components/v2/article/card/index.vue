@@ -1,0 +1,82 @@
+<template>
+    <V2ArticleCardFrame>
+        <article class="w-full h-full flex flex-col " @click.stop="router.push(`/blog/${props.article.id}`)">
+            <div class="relative overflow-hidden shrink-0">
+                <NuxtPicture v-if="props.article.eyecatch?.url" class=" opacity-100 transition-opacity duration-500 "
+                    provider="imgix" :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg"
+                    fit="crop" height="200" width="200"
+                    :img-attrs="{ class: 'card-thumb aspect-3/2 w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
+                    :modifiers="{ q: 50 }" />
+                <div v-else class="px-5 py-8 flex  items-center  font-semibold text-lightgreen/75 bg-gray">
+                    <Icon name="carbon:no-image" class=" mr-1 text-md text-lightgreen" />
+                    No Eyecatch
+                </div>
+            </div>
+            <div class="w-full h-full px-4 pt-2 pb-6  article-title-bg flex flex-col  justify-between gap-2">
+                <div class="flex flex-col gap-1">
+                    <V2ArticleInfoDateInfo :published-date="props.article.publishedAt" />
+
+
+                    <h3 class="text-xl font-semibold tracking-tighter text-white ">
+                        <NuxtLink :to="to">
+                            {{ props.article.title }}
+                        </NuxtLink>
+                    </h3>
+                    <p class="ml-1 text-sm text-lightgray">
+                        {{ props.article.subtitle }}
+                    </p>
+
+                </div>
+                <div class="shrink-0 border-t border-lightgreen pt-4 flex items-center justify-between">
+                    <V2ArticleInfoCategoryInfo :category="props.article.category" />
+                    <div class="h-6 w-6 flex items-center justify-center bg-green">
+                        <Icon name="akar-icons:arrow-up-right" class="text-sm text-lightgray font-semibold" />
+                    </div>
+
+                </div>
+            </div>
+        </article>
+    </V2ArticleCardFrame>
+</template>
+
+<script setup lang="ts">
+import { parseISO } from 'date-fns';
+import { defineProps, withDefaults, } from 'vue';
+import type { Article } from '~~/types/articles';
+interface Props {
+    article: Article
+    category?: string
+}
+const router = useRouter()
+
+const props = withDefaults(defineProps<Props>(), { offset: () => 0, category: undefined })
+
+const isPictureLoaded = ref<boolean>(false)
+
+
+
+onMounted(() => {
+    setTimeout(() => {
+        isPictureLoaded.value = true
+    }, 5000)
+})
+
+const to = computed<string>(
+    () => {
+        const path = `/blog/${props.article.id}`
+        const params: string[] = []
+        if (props.category) {
+            params.push(`category=${props.category}`)
+        }
+
+        return params.length ? path + '?' + params.join('&') : path
+    })
+
+const publishedDate = computed<string>(() => articleDate(parseISO(props.article.publishedAt || '')))
+
+</script>
+<style scoped>
+.article-title-bg {
+    background: linear-gradient(to top, #002130c7, #002130c7 50%, rgba(0, 0, 0, 0.0));
+}
+</style>

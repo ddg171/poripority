@@ -1,7 +1,7 @@
 <template>
-  <div class="sticky bottom-0 flex items-end justify-end w-full h-0 mt-16 px-3 pb-2 overflow-y-visible left-full">
+  <div class="sticky bottom-0 flex items-end justify-end w-full h-0 mt-12 px-3 pb-2 overflow-y-visible left-full">
     <Transition name="slide-in">
-      <CommonAppBtn v-show="props.isShow" id="to-top-btn" class="border border-darkblue" @click="scrollToTop">
+      <CommonAppBtn v-show="props.isShow" id="to-top-btn" class="border border-darkblue mx-0" @click="scrollToTop">
         <Icon name="material-symbols:vertical-align-top" />
         一番上へ
       </CommonAppBtn>
@@ -11,8 +11,8 @@
 
 <script setup lang="ts">
 
-interface Props{
-isShow?:boolean
+interface Props {
+  isShow?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), { isShow: true })
@@ -27,7 +27,7 @@ const scrollToTop = () => {
 </script>
 
 <style scoped>
-.slide-in-enter-active{
+.slide-in-enter-active {
   transition: all 0.25s ease-out;
 }
 

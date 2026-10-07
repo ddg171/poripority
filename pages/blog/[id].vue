@@ -1,68 +1,65 @@
 <template>
-  <div class="w-full">
-    <ContentSection class="grid ">
-      <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-        <ShareBtnBox :title="title" />
-        <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
-      </div>
-      <div class="mb-2 text-sm p-2 bg-gray">
-        <CommonAppLink class="text-orange" to="/disclaimer">
-          当webサイトの特記事項についてはこちらをご確認ください。
-        </CommonAppLink>
-      </div>
-
-      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler" @heading-list="headingListHandler" />
-      <ArticleNavigation :published-at="article?.publishedAt" />
-      <ClientOnly>
-        <div v-if="!isLoading.state.value.isLoading">
-          <teleport to="#side-contents">
-            <AsideContentsBox v-if="headings.length>0" class="mb-2">
-              <AppHeading3 class="mb-2">
-                目次
-              </AppHeading3>
-              <ArticleHeadingList :headings="headings" />
-            </AsideContentsBox>
-            <AsideContentsBox v-if="imgList.length>0" class="mb-2">
-              <AppHeading3 class="mb-2">
-                画像
-              </AppHeading3>
-              <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
-            </AsideContentsBox>
-          </teleport>
+  <V2CommonPageContainer>
+    <V2CommonContentSectionFrame class="w-full h-full py- md:py-10">
+      <V2CommonContentSectionHeaderFrame class="w-full">
+        <div class="flex flex-col gap-1">
+          <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
+          <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ description }}</p>
         </div>
-      </ClientOnly>
+      </V2CommonContentSectionHeaderFrame>
+      <V2CommonContentSectionFrame>
+        <V2CommonContentBoxFrame v-if="article.eyecatch?.url" class="">
+          <NuxtPicture :src="article.eyecatch.url" :alt="article?.title" :width="article.eyecatch.width"
+            :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
+            :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
+        </V2CommonContentBoxFrame>
+        <V2ArticleContentBox>
+          <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2 gap-2">
+            <ShareBtnBox :title="title" />
+            <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+          </div>
+          <div class="w-full mb-2 text-sm p-2 bg-gray">
+            <CommonAppLink class="text-orange" to="/disclaimer">
+              当webサイトの特記事項についてはこちらをご確認ください。
+            </CommonAppLink>
+          </div>
 
-      <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
-        <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
-      </OverlayBox>
-    </Contentsection>
-    <ContentSection v-if="article?.ads?.length">
-      <AppHeading2 class="mb-2">
-        広告欄
-      </AppHeading2>
-      <div class="w-full flex flex-col gap-4 px-2">
-        <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
-      </div>
-    </ContentSection>
-  </div>
+        </V2ArticleContentBox>
+        <V2ArticleContentBox>
+          <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
+            @heading-list="headingListHandler" />
+
+          <ArticleNavigation :published-at="article?.publishedAt" />
+        </V2ArticleContentBox>
+        <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
+          <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
+        </OverlayBox>
+      </V2CommonContentSectionFrame>
+      <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄" class="">
+        <template #content>
+          <div class="w-full flex flex-col gap-4 ">
+            <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
+          </div>
+        </template>
+
+      </V2CommonContentSection>
+    </V2CommonContentSectionFrame>
+  </V2CommonPageContainer>
 </template>
 
 <script setup lang="ts">
-import { useState, useGtag } from 'vue-gtag-next'
+import { useGtag, useState } from 'vue-gtag-next'
 
 import type { Article, Heading, ImageList } from '~~/types/articles'
-import type { PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
-  layout: 'blog'
+  layout: 'v2-blog'
 })
-const { set: setTitle, clear: clearTitle } = usePageTopStore()
-clearTitle()
+
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const isLoading = useLoadingStore()
 
 // 記事の取得
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/${route.params.id}`)
@@ -73,37 +70,20 @@ if (!article.value || err?.value) {
 // 選択カテゴリの取得
 const categoryStore = useCategoryStore()
 categoryStore.select(article.value.category.id || null)
-const pageTitle = computed<PageTitleProp>(() => {
-  const title = article.value?.title || ''
-  const subtitle = article.value?.subtitle || ''
-  const src = article.value?.eyecatch?.url || '/images/webp/blanktitle01w2000.webp'
-  return {
-    title,
-    subtitles: [subtitle],
-    topImg: {
-      src,
-      alt: '',
-      title: ''
-    }
-  }
-})
-setTitle(pageTitle.value)
-// 自動で更新
-watch(pageTitle, (v) => {
-  setTitle(v)
-})
+
+
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return article?.value?.title + '-' + config.public.siteName
+  return article?.value?.title || 'no title'
 })
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''
 })
 
-const seoMeta:{[T:string]:string|(()=>string)} = {
-  title: () => `${title.value}`,
-  ogTitle: () => `${title.value}`,
+const seoMeta: { [T: string]: string | (() => string) } = {
+  title: () => `${title.value}` + '-' + config.public.siteName,
+  ogTitle: () => `${title.value}` + '-' + config.public.siteName,
   description: () => `${description.value}`,
   ogDescription: () => `${description.value}`,
   robots: 'all',
@@ -120,7 +100,7 @@ if (ogpImg) {
 useSeoMeta(seoMeta)
 
 // 画像拡大表示用
-const selectedId = ref<string|undefined>(undefined)
+const selectedId = ref<string | undefined>(undefined)
 
 onMounted(() => {
   window.addEventListener('keyup', escapeKeyEventhandler)
@@ -135,22 +115,22 @@ onMounted(() => {
     page_path: window.location.pathname
   })
 })
-const setImgList = (l:ImageList) => {
+const setImgList = (l: ImageList) => {
   imgList.value = l
 }
 const imgList = ref<ImageList>([])
 
-const imgClickHandler = (id:string|undefined = undefined) => {
+const imgClickHandler = (id: string | undefined = undefined) => {
   selectedId.value = id
 }
 
-const headingListHandler = (h:Heading[]) => {
+const headingListHandler = (h: Heading[]) => {
   headings.value = h
 }
 
 const headings = ref<Heading[]>([])
 
-const escapeKeyEventhandler = (e:KeyboardEvent) => {
+const escapeKeyEventhandler = (e: KeyboardEvent) => {
   const key = e.key
   if (key !== 'Escape') { return }
   if (!selectedId.value) {

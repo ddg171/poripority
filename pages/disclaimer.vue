@@ -1,43 +1,45 @@
 <template>
-  <div class="flex flex-col items-center justify-center w-full text-white page-works">
-    <div id="top-box" class="w-full mb-4 h-1/3h lg:h-3/4h max-h-960p min-h-240p">
+  <V2CommonPageContainer>
+    <template #hero>
       <PageTop :title="title" :top-img="topImg" :subtitles="subtitles" />
-    </div>
-    <div class="flex flex-col items-center w-full max-w-screen-xl ">
-      <ContentSection>
-        <AppHeading2 class="mb-2">
-          免責事項
-        </AppHeading2>
-        <WorksParaBox>
-          <CommonAppApra>
-            当Webサイト内に掲載されている内容については極力正確な内容になるように努めておりますが、その内容の正確性や安全性を保証するものではありません。当サイト内の情報の引用、ご利用により生じたいかなる損害についても、当サイトは一切の責任を負いかねます。
-          </CommonAppApra>
-          <CommonAppApra>
-            当Webサイトは、予告なしに内容を変更または削除する場合があります。また、当Webサイトの構築・運用のために使用しているプログラム、ツール、ライブラリ、Webサービス等の障害及び脆弱性により生じたいかなる損害についても、当サイトは一切の責任を負いかねます。
-          </CommonAppApra>
-          <CommonAppApra>
-            当Webサイトからリンクされている第三者のWebサイトの内容について、当サイトは一切の責任を負いかねます。
-          </CommonAppApra>
-        </WorksParaBox>
-      </ContentSection>
-      <ContentSection>
-        <AppHeading2 class="mb-2">
-          広告掲載ポリシー
-        </AppHeading2>
-        <WorksParaBox>
-          <CommonAppApra>
-            当Webサイトはアフィリエイト広告及びバナー広告を掲載しています。広告の掲載により、当ブログが収益を得ることがあります。またブログ記事内の商品名及びサービス名には、アフィリエイトリンクが含まれている場合があります。
-          </CommonAppApra>
-          <CommonAppApra>
-            当Webサイト内に掲載されるバナー広告の内容について、当サイトは一切の責任を負いかねます。
-          </CommonAppApra>
-          <CommonAppApra>
-            当ブログ内で金銭・機材等の授受・貸与を伴う商品の宣伝を行う場合については、該当記事内で明記します。
-          </CommonAppApra>
-        </WorksParaBox>
-      </ContentSection>
-    </div>
-  </div>
+
+    </template>
+    <V2CommonContentSectionFrame>
+      <div class="flex flex-col items-center w-full max-w-screen-lg md:px-20">
+        <V2CommonContentSection header-text="免責事項" is-important>
+          <template #content>
+            <V2CommonContentBox class="md:px-4 text-white textt-lg leading-relaxed">
+              <CommonAppApra>
+                当Webサイト内に掲載されている内容については極力正確な内容になるように努めておりますが、その内容の正確性や安全性を保証するものではありません。当サイト内の情報の引用、ご利用により生じたいかなる損害についても、当サイトは一切の責任を負いかねます。
+              </CommonAppApra>
+              <CommonAppApra>
+                当Webサイトは、予告なしに内容を変更または削除する場合があります。また、当Webサイトの構築・運用のために使用しているプログラム、ツール、ライブラリ、Webサービス等の障害及び脆弱性により生じたいかなる損害についても、当サイトは一切の責任を負いかねます。
+              </CommonAppApra>
+              <CommonAppApra>
+                当Webサイトからリンクされている第三者のWebサイトの内容について、当サイトは一切の責任を負いかねます。
+              </CommonAppApra>
+            </V2CommonContentBox>
+          </template>
+        </V2CommonContentSection>
+        <V2CommonContentSection header-text="広告掲載ポリシー" is-important>
+          <template #content>
+            <V2CommonContentBox class="md:px-4 text-white textt-lg leading-relaxed">
+              <CommonAppApra>
+                当Webサイトはアフィリエイト広告及びバナー広告を掲載しています。広告の掲載により、当ブログが収益を得ることがあります。またブログ記事内の商品名及びサービス名には、アフィリエイトリンクが含まれている場合があります。
+              </CommonAppApra>
+              <CommonAppApra>
+                当Webサイト内に掲載されるバナー広告の内容について、当サイトは一切の責任を負いかねます。
+              </CommonAppApra>
+              <CommonAppApra>
+                当ブログ内で金銭・機材等の授受・貸与を伴う商品の宣伝を行う場合については、該当記事内で明記します。
+              </CommonAppApra>
+            </V2CommonContentBox>
+          </template>
+
+        </V2CommonContentSection>
+      </div>
+    </V2CommonContentSectionFrame>
+  </V2CommonPageContainer>
 </template>
 
 <script setup lang="ts">
