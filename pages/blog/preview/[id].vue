@@ -1,39 +1,50 @@
 <template>
-  <div class="w-full">
-    <ContentSection class="grid">
-      <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-        <ShareBtnBox :title="title" />
-        <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
-      </div>
-      <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
-        @heading-list="headingListHandler" />
-      <ArticleNavigation :published-at="article?.publishedAt" />
-      <ClientOnly>
-        <teleport to="#side-contents">
-          <AsideContentsBox v-if="headings.length > 0" class="mb-2">
-            <V2CommonAppHeadingH3 class="mb-2">
-              目次
-            </V2CommonAppHeadingH3>
-            <ClientOnly>
-              <ArticleHeadingList :headings="headings" />
-            </ClientOnly>
-          </AsideContentsBox>
-          <AsideContentsBox v-if="imgList.length > 0" class="mb-2">
-            <V2CommonAppHeadingH3 class="mb-2">
-              画像
-            </V2CommonAppHeadingH3>
-            <ClientOnly>
-              <ArticleImgList :img-list="imgList" @click="imgClickHandler" />
-            </ClientOnly>
-          </AsideContentsBox>
-        </teleport>
-      </ClientOnly>
-      <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
-        <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
-      </OverlayBox>
-      <ArticleCard v-if="article" :article="article" />
-    </Contentsection>
-  </div>
+  <V2CommonPageContainer>
+    <V2CommonContentSectionFrame class="w-full h-full py-6 md:py-10">
+      <V2CommonContentSectionHeaderFrame class="w-full">
+        <div class="flex flex-col gap-1">
+          <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
+          <p class="text-xs sm:text-sm text-lightgray font-mono mt-1">{{ description }}</p>
+        </div>
+      </V2CommonContentSectionHeaderFrame>
+      <V2CommonContentSectionFrame>
+        <V2CommonContentBoxFrame v-if="article.eyecatch?.url" class="">
+          <NuxtPicture :src="article.eyecatch.url" :alt="article?.title" :width="article.eyecatch.width"
+            :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
+            :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
+        </V2CommonContentBoxFrame>
+        <V2ArticleContentBox>
+          <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2 gap-2">
+            <ShareBtnBox :title="title" />
+            <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+          </div>
+          <div class="w-full mb-2 text-sm p-2 bg-gray">
+            <CommonAppLink class="text-orange" to="/disclaimer">
+              当webサイトの特記事項についてはこちらをご確認ください。
+            </CommonAppLink>
+          </div>
+
+        </V2ArticleContentBox>
+        <V2ArticleContentBox>
+          <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
+            @heading-list="headingListHandler" />
+
+          <ArticleNavigation :published-at="article?.publishedAt" />
+        </V2ArticleContentBox>
+        <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
+          <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
+        </OverlayBox>
+      </V2CommonContentSectionFrame>
+      <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄" class="">
+        <template #content>
+          <div class="w-full flex flex-col gap-4 ">
+            <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
+          </div>
+        </template>
+
+      </V2CommonContentSection>
+    </V2CommonContentSectionFrame>
+  </V2CommonPageContainer>
 </template>
 
 <script setup lang="ts">
@@ -42,7 +53,7 @@ import type { PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
-  layout: 'preview'
+  layout: 'v2-blog'
 })
 
 const config = useRuntimeConfig()

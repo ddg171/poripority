@@ -1,11 +1,6 @@
 <template>
   <ClientOnly>
-    <BottomNavigation
-      v-if="!isLoading"
-      :left="left"
-      :center="center"
-      :right="right"
-    />
+    <BottomNavigation v-if="!isLoading" :left="left" :center="center" :right="right" />
     <div v-else class="flex items-center justify-center w-full text-lg text-white">
       Loading...
     </div>
@@ -13,28 +8,29 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps, withDefaults, } from 'vue'
 import type { LinkParams } from '~~/types/components'
 
 interface Props {
-  publishedAt:string|null,
-  category?:string|null
+  publishedAt?: string,
+  category?: string
 }
 
-type Params ={
-  publishedAt:string|null
-  category?:string|null
+type Params = {
+  publishedAt: string | null
+  category?: string | null
 }
 
-const props = withDefaults(defineProps<Props>(), { publishedAt: null, category: null })
-const next = ref<string|null>(null)
-const prev = ref<string|null>(null)
+const props = withDefaults(defineProps<Props>(), { publishedAt: undefined, category: undefined })
+const next = ref<string | null>(null)
+const prev = ref<string | null>(null)
 const isLoading = ref<boolean>(true)
-const getNext = async (publishedAt:string|null, category:string|null = null) => {
+const getNext = async (publishedAt: string | null, category: string | null = null) => {
   if (!publishedAt) {
     next.value = ''
     return
   }
-  const params:Params = { publishedAt }
+  const params: Params = { publishedAt }
   if (category) {
     params.category = category
   }
@@ -43,12 +39,12 @@ const getNext = async (publishedAt:string|null, category:string|null = null) => 
   next.value = refs.length !== 0 ? refs[0].id : null
 }
 
-const getPrev = async (publishedAt:string|null, category:string|null = null) => {
+const getPrev = async (publishedAt: string | null, category: string | null = null) => {
   if (!publishedAt) {
     next.value = ''
     return
   }
-  const params:Params = { publishedAt }
+  const params: Params = { publishedAt }
   if (category) {
     params.category = category
   }
@@ -61,7 +57,7 @@ await Promise.allSettled([getNext(props.publishedAt, props.category), getPrev(pr
 const centerPath = props.category ? `/blog?category=${props.category}` : '/blog'
 
 const center = ref<LinkParams>({ path: centerPath, name: '記事一覧へ' })
-const left = computed<LinkParams|null>(() => {
+const left = computed<LinkParams | null>(() => {
   if (!next.value) { return null }
   const p = `/blog/${next.value}`
   return {
@@ -69,7 +65,7 @@ const left = computed<LinkParams|null>(() => {
     path: props.category ? p + `&categpry=${props.category}` : p
   }
 })
-const right = computed<LinkParams|null>(() => {
+const right = computed<LinkParams | null>(() => {
   if (!prev.value) { return null }
   const p = `/blog/${prev.value}`
   return {
