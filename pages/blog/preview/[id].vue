@@ -8,8 +8,8 @@
         </div>
       </V2CommonContentSectionHeaderFrame>
       <V2CommonContentSectionFrame>
-        <V2CommonContentBoxFrame v-if="article.eyecatch?.url" class="">
-          <NuxtPicture :src="article.eyecatch.url" :alt="article?.title" :width="article.eyecatch.width"
+        <V2CommonContentBoxFrame v-if="article?.eyecatch?.url" class="">
+          <NuxtPicture :src="article?.eyecatch.url" :alt="article?.title" :width="article.eyecatch.width"
             :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
             :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
         </V2CommonContentBoxFrame>
@@ -48,7 +48,6 @@
 
 <script setup lang="ts">
 import type { Article, Heading, ImageList } from '~~/types/articles'
-import type { PageTitleProp } from '~~/types/components'
 import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
@@ -57,7 +56,6 @@ definePageMeta({
 
 const config = useRuntimeConfig()
 const route = useRoute()
-const isLoading = useLoadingStore()
 
 const { data: article, error: err } = await useFetch<Article>(`/api/blogs/preview/${route.params.id}`, { query: { key: route.query?.key } })
 const value = article?.value
@@ -68,34 +66,18 @@ if (!value || err?.value) {
 const categoryStore = useCategoryStore()
 categoryStore.set([])
 
-const { set: setTitle } = usePageTopStore()
-const pageTitle = computed<PageTitleProp>(() => {
-  const title = article.value?.title || ''
-  const subtitle = article.value?.subtitle || ''
-  const src = article.value?.eyecatch?.url || '/images/webp/blanktitle01w2000.webp'
-  return {
-    title,
-    subtitles: [subtitle],
-    topImg: {
-      src,
-      alt: '',
-      title: ''
-    }
-  }
-})
-setTitle(pageTitle.value)
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return article?.value?.title + '-' + config.public.siteName
+  return article?.value?.title || 'no title'
 })
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''
 })
 
 const seoMeta: { [T: string]: string | (() => string) } = {
-  title: () => `${title.value}`,
-  ogTitle: () => `${title.value}`,
+  title: () => `${title.value}` + '-' + config.public.siteName,
+  ogTitle: () => `${title.value}` + '-' + config.public.siteName,
   description: () => `${description.value}`,
   ogDescription: () => `${description.value}`,
   robots: 'all',
@@ -115,7 +97,6 @@ useSeoMeta(seoMeta)
 const selectedId = ref<string | undefined>(undefined)
 
 onMounted(() => {
-  isLoading.set(false)
   window.addEventListener('keyup', escapeKeyEventhandler)
 })
 const setImgList = (l: ImageList) => {

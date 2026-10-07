@@ -1,6 +1,6 @@
 <template>
   <V2CommonPageContainer>
-    <V2CommonContentSectionFrame class="w-full h-full py-6 md:py-10">
+    <V2CommonContentSectionFrame class="w-full h-full py- md:py-10">
       <V2CommonContentSectionHeaderFrame class="w-full">
         <div class="flex flex-col gap-1">
           <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
@@ -75,7 +75,7 @@ categoryStore.select(article.value.category.id || null)
 
 // metaタグ側で使う
 const title = computed<string>(() => {
-  return article?.value?.title
+  return article?.value?.title || 'no title'
 })
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''

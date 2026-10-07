@@ -12,8 +12,8 @@ import { defineProps, withDefaults, } from 'vue'
 import type { LinkParams } from '~~/types/components'
 
 interface Props {
-  publishedAt?: string,
-  category?: string
+  publishedAt?: string | null,
+  category?: string | null
 }
 
 type Params = {
@@ -21,7 +21,7 @@ type Params = {
   category?: string | null
 }
 
-const props = withDefaults(defineProps<Props>(), { publishedAt: undefined, category: undefined })
+const props = withDefaults(defineProps<Props>(), { publishedAt: null, category: null })
 const next = ref<string | null>(null)
 const prev = ref<string | null>(null)
 const isLoading = ref<boolean>(true)
@@ -36,7 +36,7 @@ const getNext = async (publishedAt: string | null, category: string | null = nul
   }
   const result = await useFetch('/api/blogs/next', { params })
   const refs = result.data.value?.contents || []
-  next.value = refs.length > 0 ? refs[0]?.id || null : null
+  next.value = refs.length !== 0 ? refs[0]?.id || null : null
 }
 
 const getPrev = async (publishedAt: string | null, category: string | null = null) => {
