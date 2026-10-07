@@ -29,7 +29,6 @@
           <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
             @heading-list="headingListHandler" />
 
-          <ArticleNavigation :published-at="article?.publishedAt" />
         </V2ArticleContentBox>
         <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
           <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />

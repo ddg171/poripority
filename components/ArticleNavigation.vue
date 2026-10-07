@@ -36,7 +36,7 @@ const getNext = async (publishedAt: string | null, category: string | null = nul
   }
   const result = await useFetch('/api/blogs/next', { params })
   const refs = result.data.value?.contents || []
-  next.value = refs.length !== 0 ? refs[0].id : null
+  next.value = refs.length > 0 ? refs[0]?.id || null : null
 }
 
 const getPrev = async (publishedAt: string | null, category: string | null = null) => {
@@ -50,7 +50,7 @@ const getPrev = async (publishedAt: string | null, category: string | null = nul
   }
   const result = await useFetch('/api/blogs/prev', { params })
   const refs = result.data.value?.contents || []
-  prev.value = refs.length !== 0 ? refs[0].id : null
+  prev.value = refs.length !== 0 ? refs[0]?.id || null : null
 }
 
 await Promise.allSettled([getNext(props.publishedAt, props.category), getPrev(props.publishedAt, props.category)])
