@@ -32,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { defineExpose, } from 'vue'
 import type { Photo } from '~~/types/components'
 const photos = ref<Photo[]>(
   [
@@ -91,7 +92,7 @@ defineExpose({
 
 <style scoped>
 .hero {
-  height: calc(100vh - 64px - 3rem);
+  height: calc(100vh - 80px - 2rem);
 }
 
 .hero-enter-active {

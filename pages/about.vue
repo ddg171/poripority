@@ -96,10 +96,6 @@ onMounted(() => {
 </script>
 
 <style lang="postcss" scoped>
-.hero {
-  height: calc(100vh - 48px - 3rem);
-}
-
 .hero-enter-active {
   @apply opacity-100 transition-opacity duration-200 delay-500;
 }
