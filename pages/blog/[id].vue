@@ -13,10 +13,10 @@
             :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
             :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
         </V2CommonContentBoxFrame>
-        <V2CommonContentBox class="p-1 md:p-4 md:mx-20">
+        <V2ArticleContentBox>
           <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2 gap-2">
             <ShareBtnBox :title="title" />
-            <ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+            <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
           </div>
           <div class="w-full mb-2 text-sm p-2 bg-gray">
             <CommonAppLink class="text-orange" to="/disclaimer">
@@ -24,13 +24,13 @@
             </CommonAppLink>
           </div>
 
-        </V2CommonContentBox>
-        <V2CommonContentBox class="p-1 md:p-4 md:mx-20">
+        </V2ArticleContentBox>
+        <V2ArticleContentBox>
           <ArticleBodyBlock :content="article?.content" @img-list="setImgList" @img-click="imgClickHandler"
             @heading-list="headingListHandler" />
 
           <ArticleNavigation :published-at="article?.publishedAt" />
-        </V2CommonContentBox>
+        </V2ArticleContentBox>
         <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
           <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
         </OverlayBox>

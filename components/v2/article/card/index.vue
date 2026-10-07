@@ -14,12 +14,8 @@
             </div>
             <div class="w-full h-full px-4 pt-2 pb-6  article-title-bg flex flex-col  justify-between gap-2">
                 <div class="flex flex-col gap-1">
-                    <p class="ml-1 flex align-items-center justify-start">
-                        <Icon name="ant-design:calendar-outlined" class=" mr-1 text-sm text-lightgreen" />
-                        <span class="text-xs text-lightgray">
-                            {{ publishedDate }}
-                        </span>
-                    </p>
+                    <V2ArticleInfoDateInfo :published-date="props.article.publishedAt" />
+
 
                     <h3 class="text-xl font-semibold tracking-tighter text-white ">
                         <NuxtLink :to="to">
@@ -32,12 +28,7 @@
 
                 </div>
                 <div class="shrink-0 border-t border-lightgreen pt-4 flex items-center justify-between">
-                    <div class="flex">
-                        <Icon name="dashicons:category" class=" mr-2 text-2xl text-lightgreen" />
-                        <NuxtLink :to="`/blog?category=${props.article.category.id}`"
-                            class="w-fit px-2 py-1 bg-gray/75 border border-lightgreen text-xs text-white hover:bg-gray  hover:cursor-pointer"
-                            @click.stop="() => { }"># {{ props.article.category.name }}</NuxtLink>
-                    </div>
+                    <V2ArticleInfoCategoryInfo :category="props.article.category" />
                     <div class="h-6 w-6 flex items-center justify-center bg-green">
                         <Icon name="akar-icons:arrow-up-right" class="text-sm text-lightgray font-semibold" />
                     </div>
