@@ -1,6 +1,6 @@
 <template>
   <V2CommonPageContainer>
-    <V2CommonContentSectionFrame class="w-full h-full py-10">
+    <V2CommonContentSectionFrame class="w-full h-full py-6 md:py-10">
       <V2CommonContentSectionHeaderFrame class="w-full">
         <div class="flex flex-col gap-1">
           <V2CommonAppHeadingH1 is-important>{{ title }}</V2CommonAppHeadingH1>
