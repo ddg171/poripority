@@ -20,11 +20,11 @@ jobs:
   build_and_deploy_to_firebase:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
-          node-version: 22.x
+          node-version: 24.x
           registry-url: "https://registry.npmjs.org"
       - name: decode CI_CREDENTIAL
         run: echo $CI_CREDENTIAL | base64 --decode > $GOOGLE_APPLICATION_CREDENTIALS
