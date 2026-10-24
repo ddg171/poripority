@@ -6,8 +6,11 @@
     "start": "source .env && node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "biome check .",
-    "format": "biome format --fix ."
+    "check": "biome check .",
+    "lint": "biome lint .",
+    "lint-fix": "biome lint --fix .",
+    "format": "biome format .",
+    "format-fix": "biome format --fix ."
   },
   "type": "module",
   "devDependencies": {

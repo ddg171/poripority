@@ -41,12 +41,26 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.vue"],
+      "includes": ["**/*.vue", "**/*.svg", "**/*.scss", "**/*.html"],
       "linter": {
         "rules": {
           "correctness": {
             "noUnusedVariables": "off",
             "noUnusedImports": "off"
+          },
+          "complexity": {
+            "noImportantStyles": "warn"
+          },
+          "suspicious": {
+            "noUnknownAtRules": "warn"
+          },
+          "a11y": {
+            "useKeyWithClickEvents": "info",
+            "useHeadingContent": "off",
+            "useAnchorContent": "off",
+            "noSvgWithoutTitle": "warn",
+            "noStaticElementInteractions": "warn",
+            "useHtmlLang": "off"
           }
         }
       }
