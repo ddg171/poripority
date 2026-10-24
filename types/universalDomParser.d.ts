@@ -1,1 +1,1 @@
-declare module 'universal-dom-parser'
+declare module "universal-dom-parser";

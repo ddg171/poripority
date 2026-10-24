@@ -1,32 +1,33 @@
-import client from '~~/lib/microCMS'
-import { isNotEmptyString } from '~~/utils/validator'
-import type { Api, Article } from '~~/types/articles'
+import client from "~~/lib/microCMS";
+import type { Api, Article } from "~~/types/articles";
+import { isNotEmptyString } from "~~/utils/validator";
 
-export default defineEventHandler(async (event):Promise<Api.IndexResponsePayload<Article>> => {
-  const params = getQuery(event)
-  setHeader(event, 'Cache-Control', 'public, max-age=600, s-maxage=600')
+export default defineEventHandler(
+  async (event): Promise<Api.IndexResponsePayload<Article>> => {
+    const params = getQuery(event);
+    setHeader(event, "Cache-Control", "public, max-age=600, s-maxage=600");
 
-  const queries:Api.BlogQuery = {
-    orders: '-publishedAt',
-    fields: 'id,title,subtitle,eyecatch,updatedAt,createdAt,publishedAt,category'
-  }
-  const limit = Number(params.limit)
-  if (!isNaN(limit)) {
-    queries.limit = limit < 100 ? limit : 100
-  }
-  const offset = Number(params.offset)
-  if (!isNaN(offset)) {
-    queries.offset = offset
-  }
-  const category = params.category
-  if (isNotEmptyString(category)) {
-    queries.filters = `category[equals]${category}`
-  }
-  const res = await client
-    .get({
-      endpoint: 'blogs',
-      queries
-
-    })
-  return res
-})
+    const queries: Api.BlogQuery = {
+      orders: "-publishedAt",
+      fields:
+        "id,title,subtitle,eyecatch,updatedAt,createdAt,publishedAt,category",
+    };
+    const limit = Number(params.limit);
+    if (!isNaN(limit)) {
+      queries.limit = limit < 100 ? limit : 100;
+    }
+    const offset = Number(params.offset);
+    if (!isNaN(offset)) {
+      queries.offset = offset;
+    }
+    const category = params.category;
+    if (isNotEmptyString(category)) {
+      queries.filters = `category[equals]${category}`;
+    }
+    const res = await client.get({
+      endpoint: "blogs",
+      queries,
+    });
+    return res;
+  },
+);

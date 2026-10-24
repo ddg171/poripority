@@ -74,6 +74,7 @@
 
 <script setup lang="ts">
 import { makeSeoMetaInput } from '~~/utils/useHead'
+
 const scrollOption = ref({ updateHistory: false, offset: -64 })
 const config = useRuntimeConfig()
 const title = 'About-' + config.public.siteName

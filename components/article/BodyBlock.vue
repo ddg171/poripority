@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article id="article-body" class="flex flex-col mb-4 text-white cms-content cms-content-width" v-html="content" />
+  <article id="article-body" class="mb-4 font-normal text-base leading-relaxed text-white cms-content"
+    v-html="content" />
 </template>
 <script setup lang="ts">
 import DOMPurify from 'dompurify';
@@ -58,12 +59,15 @@ onBeforeUnmount(() => {
 <style lang="postcss">
 /* MicroCMSから取得した内容に対するCSS */
 /* applyの使用については議論があるが、統一されたスタイルの適用ができるため使用している。 */
-
-.cms-content {
-  @apply flex flex-col font-normal text-base leading-relaxed;
+br {
+  display: contents;
+  height: 0;
 }
 
-.cms-content strong {
+.cms-content strong,
+.cms-content b,
+.cms-content em,
+.cms-content i {
   @apply contents;
 }
 
@@ -125,7 +129,7 @@ onBeforeUnmount(() => {
 
 .cms-content h3::before,
 .cms-content h4::before {
-  @apply inline-block h-5 w-5 mr-1 mb-1;
+  @apply inline-block h-5 w-5 mr-1 mb-1 mt-4;
 }
 
 .cms-content h3::before {

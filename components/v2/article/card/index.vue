@@ -2,10 +2,10 @@
     <V2ArticleCardFrame>
         <article class="w-full h-full flex flex-col " @click.stop="router.push(`/blog/${props.article.id}`)">
             <div class="relative overflow-hidden shrink-0">
-                <NuxtPicture v-if="props.article.eyecatch?.url" class=" opacity-100 transition-opacity duration-500 "
+                <NuxtPicture v-if="props.article.eyecatch?.url" class=" opacity-100 transition-opacity duration-500"
                     provider="imgix" :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg"
-                    fit="crop" height="200" width="200"
-                    :img-attrs="{ class: 'card-thumb aspect-3/2 w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
+                    fit="cover" height="200" width="300"
+                    :img-attrs="{ class: 'card-thumb aspect-3/2 w-full h-auto hover:scale-105 transition-transform duration-300', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 300, decoding: 'async', loading: 'lazy' }"
                     :modifiers="{ q: 50 }" />
                 <div v-else class="px-5 py-8 flex  items-center  font-semibold text-lightgreen/75 bg-gray">
                     <Icon name="carbon:no-image" class=" mr-1 text-md text-lightgreen" />
@@ -43,6 +43,7 @@
 import { parseISO } from 'date-fns';
 import { defineProps, withDefaults, } from 'vue';
 import type { Article } from '~~/types/articles';
+
 interface Props {
     article: Article
     category?: string

@@ -6,7 +6,8 @@
     "start": "source .env && node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "lint": "eslint ."
+    "lint": "biome check .",
+    "format": "biome format --fix ."
   },
   "type": "module",
   "devDependencies": {
@@ -14,11 +15,9 @@
     "@iconify-json/iconoir": "^1.2.10",
     "@iconify-json/logos": "^1.2.10",
     "@iconify-json/skill-icons": "^1.2.4",
-    "@nuxt/eslint": "latest",
     "@nuxt/icon": "latest",
     "@nuxtjs/tailwindcss": "latest",
     "autoprefixer": "latest",
-    "eslint": "latest",
     "firebase-tools": "^11.1.0",
     "nuxt": "4.x",
     "postcss": "latest",
@@ -27,6 +26,7 @@
     "typescript": "latest"
   },
   "dependencies": {
+    "@biomejs/biome": "^2.6.3",
     "@nuxt/image": "latest",
     "@nuxtjs/google-adsense": "latest",
     "@nuxtjs/robots": "latest",

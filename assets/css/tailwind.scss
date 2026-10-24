@@ -5,17 +5,17 @@
 html {
   scroll-behavior: smooth;
 }
-p{
+p {
   overflow-wrap: anywhere !important;
 }
 @layer components {
-  body{
-    @apply bg-gray
+  body {
+    @apply bg-gray;
   }
-    .img-inside-picture {
-      @apply min-h-full min-w-full object-cover ;
-    }
-    .picture-box{
-      @apply w-full h-full flex justify-center items-center
-    }
+  .img-inside-picture {
+    @apply min-h-full min-w-full object-cover;
   }
+  .picture-box {
+    @apply w-full h-full flex justify-center items-center;
+  }
+}
