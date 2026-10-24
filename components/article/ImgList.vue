@@ -15,7 +15,7 @@ interface Props {
     imgList:ImageList
 }
 
-defineEmits<{(e:'click', v:string):void}>()
+defineEmits<(e:'click', v:string) => void>()
 
 const props = withDefaults(defineProps<Props>(), { imgList: () => [] })
 

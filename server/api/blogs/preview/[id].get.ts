@@ -1,24 +1,23 @@
-import client from '~~/lib/microCMS'
-import type { Article } from '~~/types/articles'
+import client from "~~/lib/microCMS";
+import type { Article } from "~~/types/articles";
 
-export default defineEventHandler(async (event):Promise<Article> => {
-  const contentId = event.context?.params?.id
-  const k = getQuery(event).key
-  const draftKey = typeof k === 'string' ? k.toString() : null
+export default defineEventHandler(async (event): Promise<Article> => {
+  const contentId = event.context?.params?.id;
+  const k = getQuery(event).key;
+  const draftKey = typeof k === "string" ? k.toString() : null;
   if (!contentId || !draftKey) {
-    throw createError({ statusCode: 400, statusMessage: 'err' })
+    throw createError({ statusCode: 400, statusMessage: "err" });
   }
   try {
-    const res = await client
-      .get({
-        endpoint: 'blogs',
-        contentId,
-        queries: {
-          draftKey
-        }
-      })
-    return res
+    const res = await client.get({
+      endpoint: "blogs",
+      contentId,
+      queries: {
+        draftKey,
+      },
+    });
+    return res;
   } catch {
-    throw createError({ statusCode: 404, statusMessage: 'err' })
+    throw createError({ statusCode: 404, statusMessage: "err" });
   }
-})
+});

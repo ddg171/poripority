@@ -1,20 +1,19 @@
-import client from '~~/lib/microCMS'
-import type { Article } from '~~/types/articles'
+import client from "~~/lib/microCMS";
+import type { Article } from "~~/types/articles";
 
-export default defineEventHandler(async (event):Promise<Article> => {
-  const contentId = event?.context?.params?.id
-  setHeader(event, 'Cache-Control', 'public, max-age=600, s-maxage=600')
+export default defineEventHandler(async (event): Promise<Article> => {
+  const contentId = event?.context?.params?.id;
+  setHeader(event, "Cache-Control", "public, max-age=600, s-maxage=600");
   if (!contentId) {
-    throw createError({ statusCode: 400, statusMessage: 'err' })
+    throw createError({ statusCode: 400, statusMessage: "err" });
   }
   try {
-    const res = await client
-      .get({
-        endpoint: 'blogs',
-        contentId
-      })
-    return res
+    const res = await client.get({
+      endpoint: "blogs",
+      contentId,
+    });
+    return res;
   } catch {
-    throw createError({ statusCode: 404, statusMessage: 'err' })
+    throw createError({ statusCode: 404, statusMessage: "err" });
   }
-})
+});

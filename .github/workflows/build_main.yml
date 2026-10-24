@@ -37,4 +37,3 @@ jobs:
           echo ADSENSE_ID="${{secrets.ADSENSE_ID}}" >> .env
       - name: build app
         run: npm run build
-
