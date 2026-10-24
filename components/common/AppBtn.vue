@@ -1,6 +1,7 @@
 <template>
   <button
     class="flex items-center justify-center p-1 mx-1 text-base text-white btn w-28 h-11  bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-darkblue"
+    type="button"
     :variant="props.variant" :disabled="props.disabled">
     <slot />
   </button>

@@ -6,7 +6,7 @@
             </CommonAppLink>
             <span v-else>{{ props.content.title }}</span>
         </V2CommonAppHeadingH1>
-        <p v-for="p, t in props.content.para" :key="t" class="text-sm md:text-md font-medium text-white">
+        <p v-for="(p, t) in props.content.para" :key="t" class="text-sm md:text-md font-medium text-white">
             {{ p }}
         </p>
     </V2CommonEyeCatchTextBoxFrame>
