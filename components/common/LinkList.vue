@@ -1,7 +1,7 @@
 <template>
   <ul>
     <slot name="first" />
-    <CommonLinkListElem v-for="l,i in props.links" :key="i">
+    <CommonLinkListElem v-for="(l,i) in props.links" :key="i">
       <CommonAppLink v-if="!l.isExternal" :to="l.path">
         {{ l.name }}
       </CommonAppLink>
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import type { LinkParams } from '~~/types/components'
+import type { LinkParams } from '~~/types/components';
 
 interface Props {
     links:LinkParams[]

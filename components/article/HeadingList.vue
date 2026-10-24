@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <CommonLinkListElem v-for="h,i in props.headings" :key="i" :data-level="h.level" class="heading-li">
+    <CommonLinkListElem v-for="(h,i) in props.headings" :key="i" :data-level="h.level" class="heading-li">
       <a v-smooth-scroll :href="`#${h.id}`" class="hover:underline">
         {{ h.title }}
       </a>
@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import type { Heading } from '~~/types/articles'
+import type { Heading } from '~~/types/articles';
 
 interface Props{
     headings:Heading[]

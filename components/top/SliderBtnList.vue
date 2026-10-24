@@ -11,6 +11,7 @@
         aria-label="スライダーのページ移動"
         title="スライダーのページ移動"
         tabindex="0"
+        type="button"
         @click="$emit('jump',c-1)"
       />
     </li>
@@ -23,6 +24,7 @@
         title="スライダーの停止・再生切替"
         :isStopped="props.isStopped"
         tabindex="0"
+        type="button"
         @click="$emit('toggle',props.isStopped)"
       >
         <Icon v-if="props.isStopped" name="material-symbols:play-arrow" class="w-full h-full" />

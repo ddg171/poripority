@@ -1,6 +1,12 @@
 <template>
   <div class="relative overflow-hidden ">
-    <button :disabled="disabled" class="flex items-center justify-center w-16 h-8 p-2 border border-green bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-gray" title="クリックするとURLをクリップボードにコピーします。" @click="copy">
+    <button 
+      title="クリックするとURLをクリップボードにコピーします。" 
+      class="flex items-center justify-center w-16 h-8 p-2 border border-green bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-gray" 
+      :disabled="disabled" 
+      type="button"
+      @click="copy"
+      >
       <Icon name="mdi:content-copy" class="text-white" />
     </button>
     <transition>

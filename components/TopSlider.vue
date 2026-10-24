@@ -4,7 +4,7 @@
       <p v-if="sliderPage === -1" class="text-3xl text-white">
         loading...
       </p>
-      <div v-for="c, i in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper"
+      <div v-for="(c, i) in props.sliderContents" :key="i" class="absolute w-full h-full top-slider-content-wrapper"
         :isShow="sliderPage === i" :next="i === next" :prev="i === prev">
         <TopRelativeBox class="top-slider-content">
           <TopImgBlock :img="c.pic" class="top-img-block" :from-c-s-m="c.pic.fromCMS" />
@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import type { SliderContent } from '~~/types/components'
+import type { SliderContent } from '~~/types/components';
 
 interface Props {
   sliderContents: SliderContent[]
