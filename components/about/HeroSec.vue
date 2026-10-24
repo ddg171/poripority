@@ -34,6 +34,7 @@
 <script setup lang="ts">
 import { defineExpose, } from 'vue'
 import type { Photo } from '~~/types/components'
+
 const photos = ref<Photo[]>(
   [
     { isShow: false, src: '/images/webp/about/photo001.webp' },

@@ -1,16 +1,16 @@
-import client from '~~/lib/microCMS'
-import type { Api, Article } from '~~/types/articles'
-import { getTextContent } from '~~/utils/contentParser'
+import client from "~~/lib/microCMS";
+import type { Api, Article } from "~~/types/articles";
+import { getTextContent } from "~~/utils/contentParser";
 
 export default defineEventHandler(async (event) => {
-  const config = useRuntimeConfig()
-  const baseURL = config.public.baseURL
-  const queries:Api.BlogQuery = {
-    orders: '-publishedAt',
-    fields: 'id,title,content,publishedAt',
-    limit: 100
-  }
-  const articles = await client.get({ endpoint: 'blogs', queries })
+  const config = useRuntimeConfig();
+  const baseURL = config.public.baseURL;
+  const queries: Api.BlogQuery = {
+    orders: "-publishedAt",
+    fields: "id,title,content,publishedAt",
+    limit: 100,
+  };
+  const articles = await client.get({ endpoint: "blogs", queries });
 
   // RSSフィードのヘッダー部分
   let rssStr = `<?xml version="1.0" encoding="UTF-8"?>
@@ -21,14 +21,17 @@ export default defineEventHandler(async (event) => {
     <description>${config.public.description}</description>
     <language>ja-JP</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-    <atom:link href="${baseURL}/feed" rel="self" type="application/rss+xml" />`
+    <atom:link href="${baseURL}/feed" rel="self" type="application/rss+xml" />`;
 
   // 記事データをRSS形式に変換
   articles.contents?.forEach((article: Article) => {
-    if (!article?.id) { return }
-    const pubDate = new Date(article.publishedAt).toUTCString()
+    if (!article?.id) {
+      return;
+    }
+    const pubDate = new Date(article.publishedAt).toUTCString();
     // 本文を100文字に制限
-    const truncatedContent = getTextContent(article.content).substring(0, 100) + '...'
+    const truncatedContent =
+      getTextContent(article.content).substring(0, 100) + "...";
     rssStr += `
     <item>
       <title>${article.title}</title>
@@ -36,16 +39,16 @@ export default defineEventHandler(async (event) => {
       <guid>${baseURL}/blog/${article.id}</guid>
       <pubDate>${pubDate}</pubDate>
       <description><![CDATA[${truncatedContent}]]></description>
-    </item>`
-  })
+    </item>`;
+  });
 
   // RSSフィードのフッター部分
   rssStr += `
   </channel>
-</rss>`
+</rss>`;
 
   // レスポンスヘッダーを設定
-  event.node.res.setHeader('content-type', 'application/xml')
-  setHeader(event, 'Cache-Control', 'public, max-age=3600, s-maxage=3600')
-  event.node.res.end(rssStr)
-})
+  event.node.res.setHeader("content-type", "application/xml");
+  setHeader(event, "Cache-Control", "public, max-age=3600, s-maxage=3600");
+  event.node.res.end(rssStr);
+});

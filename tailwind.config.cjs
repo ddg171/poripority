@@ -1,88 +1,86 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 const vh = {
-  '1/8h': '12.5vh',
-  '1/7h': '14.3vh',
-  '1/6h': '16.67vh',
-  '1/5h': '20vh',
-  '1/4h': '25vh',
-  '1/3h': '33vh',
-  '1/2h': '50vh',
-  '2/3h': '66vh',
-  '3/4h': '75vh',
-  '4/5h': '80vh',
-  '9/10h': '90vh'
-}
+  "1/8h": "12.5vh",
+  "1/7h": "14.3vh",
+  "1/6h": "16.67vh",
+  "1/5h": "20vh",
+  "1/4h": "25vh",
+  "1/3h": "33vh",
+  "1/2h": "50vh",
+  "2/3h": "66vh",
+  "3/4h": "75vh",
+  "4/5h": "80vh",
+  "9/10h": "90vh",
+};
 const vw = {
-  '1/8w': '12.5vw',
-  '1/7w': '14.3vw',
-  '1/6w': '16.67vw',
-  '1/5w': '20vw',
-  '1/4w': '25vw',
-  '1/3w': '33vw',
-  '1/2w': '50vw',
-  '3/4w': '75vw'
-}
+  "1/8w": "12.5vw",
+  "1/7w": "14.3vw",
+  "1/6w": "16.67vw",
+  "1/5w": "20vw",
+  "1/4w": "25vw",
+  "1/3w": "33vw",
+  "1/2w": "50vw",
+  "3/4w": "75vw",
+};
 const p = {
-  '1080p': '1080px',
-  '960p': '960px',
-  '720p': '720px',
-  '480p': '480px',
-  '360p': '360px',
-  '240p': '240px'
-}
+  "1080p": "1080px",
+  "960p": "960px",
+  "720p": "720px",
+  "480p": "480px",
+  "360p": "360px",
+  "240p": "240px",
+};
 
 const rem = {
-  "100": "25rem",
-  "150": "37.5rem",
-    "200": "50rem"
-
-}
+  100: "25rem",
+  150: "37.5rem",
+  200: "50rem",
+};
 
 module.exports = {
   // mode: "jit",
   content: [
-    './app.vue',
-    './components/**/*.{js,vue,ts}',
-    './pages/**/*.vue',
-    './layouts/*.vue'
+    "./app.vue",
+    "./components/**/*.{js,vue,ts}",
+    "./pages/**/*.vue",
+    "./layouts/*.vue",
   ],
-  darkMode: 'media', // or 'class'
+  darkMode: "media", // or 'class'
   theme: {
     colors: {
-      green: '#016461',
-      lightgreen: '#019585',
-      darkblue: '#002130',
-      gray: '#292929',
-      lightgray: '#E6E6E6',
-      red: '#C40026',
-      white: '#ffffff',
-      black: '#000000',
-      orange: '#FF7347',
-      transparent: 'transparent',
-      twttr: '#1DA1F2',
-      discord: '#5865F2',
-      qiita: '#55C500',
-      reddit: '#FF5700',
-      amazonorange: '#FF9900',
-      amazongray: '#333R48',
-
+      green: "#016461",
+      lightgreen: "#019585",
+      darkblue: "#002130",
+      gray: "#292929",
+      lightgray: "#E6E6E6",
+      red: "#C40026",
+      white: "#ffffff",
+      black: "#000000",
+      orange: "#FF7347",
+      transparent: "transparent",
+      twttr: "#1DA1F2",
+      discord: "#5865F2",
+      qiita: "#55C500",
+      reddit: "#FF5700",
+      amazonorange: "#FF9900",
+      amazongray: "#333R48",
     },
     extend: {
       aspectRatio: {
-        '16/9': '16 / 9',
-        '4/3': '4 / 3',
-        '1/1': '1 / 1',
-        '21/9': '21 / 9',
-        '3/2': '3 / 2',
-        '2/3': '2 / 3',
-        '3/4': '3 / 4',
-        '4/5': '4 / 5'
+        "16/9": "16 / 9",
+        "4/3": "4 / 3",
+        "1/1": "1 / 1",
+        "21/9": "21 / 9",
+        "3/2": "3 / 2",
+        "2/3": "2 / 3",
+        "3/4": "3 / 4",
+        "4/5": "4 / 5",
       },
       height: {
         ...vh,
-        '2/1': '200%',
+        "2/1": "200%",
         ...rem,
       },
       minHeight: {
@@ -92,34 +90,46 @@ module.exports = {
       },
       maxHeight: {
         ...p,
-        ...rem
-
+        ...rem,
       },
       margin: vh,
       width: {
         ...vw,
-        ...rem
+        ...rem,
       },
       maxWidth: {
-        'screen-3xl': '1792px',
-        'screen-1920p': '1920px',
+        "screen-3xl": "1792px",
+        "screen-1920p": "1920px",
         ...vh,
         ...rem,
       },
       minWidth: {
-        'screen-3xl': '1792px',
-        'screen-1920p': '1920px',
+        "screen-3xl": "1792px",
+        "screen-1920p": "1920px",
         ...p,
         ...rem,
       },
       // -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', '"Noto Sans"', 'Arial', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"']
-      }
+        sans: [
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          '"Helvetica Neue"',
+          '"Noto Sans"',
+          "Arial",
+          "sans-serif",
+          '"Apple Color Emoji"',
+          '"Segoe UI Emoji"',
+          '"Segoe UI Symbol"',
+          '"Noto Color Emoji"',
+        ],
+      },
     },
     variants: {
-      extend: {}
-    }
+      extend: {},
+    },
   },
-  plugins: []
-}
+  plugins: [],
+};

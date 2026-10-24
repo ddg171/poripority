@@ -36,6 +36,7 @@
 <script setup lang="ts">
 import { defineProps, } from 'vue';
 import type { Ads } from '~~/types/articles';
+
 interface Props {
   ads: Ads
 }

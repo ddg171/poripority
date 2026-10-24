@@ -4,6 +4,7 @@
 
 <script setup lang="ts">
 import { sleep } from '~~/utils/util'
+
 interface Props {
     text?: string
     trriger?:boolean

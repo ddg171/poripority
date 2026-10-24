@@ -43,6 +43,7 @@
 
 <script setup lang="ts">
 import type { Article } from '~~/types/articles'
+
 interface Props{
     article:Article
     category?:string

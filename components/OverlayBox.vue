@@ -11,6 +11,6 @@
 interface Props{
     isShow:boolean
 }
-defineEmits<{(e:'click'):void}>()
+defineEmits<(e:'click') => void>()
 const props = withDefaults(defineProps<Props>(), { isShow: false })
 </script>
