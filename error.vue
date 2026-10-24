@@ -11,7 +11,7 @@
               {{ error?.message||"エラーが発生しました。" }}
             </p>
             <BottomNavigation :left="null" :center="centerNav" :right="null" />
-          </Contentsection>
+          </ContentSection>
         </div>
       </div>
     </NuxtLayout>
@@ -20,8 +20,8 @@
 
 <script lang="ts" setup>
  
-import type { NuxtApp } from '#app'
-import type { LinkParams, PageTitleProp } from '~~/types/components'
+import type { NuxtApp } from '#app';
+import type { LinkParams, PageTitleProp } from '~~/types/components';
 
 const centerNav = ref<LinkParams>({ name: 'TOPへ', path: '/' })
 defineProps<{ error: NuxtApp['payload']['error'] }>()

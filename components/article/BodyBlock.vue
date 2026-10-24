@@ -97,7 +97,7 @@ br {
 
 .cms-content li::before {
   content: "//";
-  @apply self-start text-white text-base font-extrabold mr-2
+  @apply self-start text-white text-base font-extrabold mr-2;
 }
 
 .cms-content a {
@@ -111,7 +111,7 @@ br {
 
 .cms-content a:hover,
 .cms-content a:focus {
-  @apply bg-lightgreen/50
+  @apply bg-lightgreen/50;
 }
 
 .cms-content h1::before,

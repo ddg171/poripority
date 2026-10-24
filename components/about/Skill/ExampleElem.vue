@@ -7,8 +7,8 @@
       <h5 class="text-lg">
         使用技術
       </h5>
-      <ul class="mb-2 ">
-        <li v-for="t,i in props.techs" :key="i">
+      <ul class="mb-2">
+        <li v-for="(t,i) in props.techs" :key="`tech-${i}`">
           {{ t }}
         </li>
       </ul>

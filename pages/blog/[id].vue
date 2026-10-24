@@ -31,7 +31,7 @@
 
           <ArticleNavigation :published-at="article?.publishedAt" />
         </V2ArticleContentBox>
-        <OverlayBox :is-show="!!selectedId" @click="imgClickHandler(undefined)">
+        <OverlayBox :is-show="!!selectedId" @click-outside="imgClickHandler(undefined)">
           <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
         </OverlayBox>
       </V2CommonContentSectionFrame>

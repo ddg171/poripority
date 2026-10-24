@@ -1,9 +1,9 @@
 <template>
-  <section id="hero" class="w-full hero max-h-1080p min-h-480p bg-darkblue snap-start" @click="show">
+  <section id="hero" class="w-full hero max-h-1080p min-h-480p bg-darkblue snap-start">
     <div v-show="isShown" class="relative w-full h-full">
       <div class="absolute flex items-center justify-center w-full h-full overflow-hidden ">
         <div class="grid w-full h-full grid-cols-4 grid-rows-4">
-          <div v-for="p, i in photos" :key="i" class="w-full h-full border-white photo-box">
+          <div v-for="(p, i) in photos" :key="i" class="w-full h-full border-white photo-box">
             <div v-show="p.isShow" class="w-full h-full text-white border ">
               <NuxtPicture :src="p.src" class="object-cover w-full h-full" legacy-format="jpeg"
                 :img-attrs="{ class: 'h-full w-full object-cover', alt: '' }" />
@@ -24,7 +24,7 @@
                 Now is better than never!
               </p>
             </div>
-          </commoncontentwidthbox>
+          </CommonContentWidthBox>
         </div>
       </transition>
     </div>
