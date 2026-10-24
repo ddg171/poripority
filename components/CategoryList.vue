@@ -18,6 +18,7 @@
 <script setup lang="ts">
 import type { Category } from '~/types/articles';
 import type { LinkParams } from '~~/types/components';
+
 interface Props {
   categories?: Category[], selected?: string | null
 }

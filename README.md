@@ -42,6 +42,7 @@ npm run preview
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
 ## enviroment variables
+
 Please write enviroment variables (secrets,tokens,baseURL...) in .env file.
 Requred variables are here.
 

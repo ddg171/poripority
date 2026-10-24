@@ -24,7 +24,7 @@ interface Props {
 
 }
 
-const emits = defineEmits<{(e:'toggle', value:boolean):void}>()
+const emits = defineEmits<(e:'toggle', value:boolean) => void>()
 
 const samePath = (path:string, fullPath:string):boolean => {
   if (!fullPath) { return false }

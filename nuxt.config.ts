@@ -1,36 +1,36 @@
-import { defineNuxtConfig } from 'nuxt/config';
+import { defineNuxtConfig } from "nuxt/config";
 
-import { blankImages } from './utils/prerenderImages';
+import { blankImages } from "./utils/prerenderImages";
 
-const SITE_NAME = 'The hut of Poripority';
-const DESCRIPTION = 'Hata_kazeが趣味で作ったWebサイト';
+const SITE_NAME = "The hut of Poripority";
+const DESCRIPTION = "Hata_kazeが趣味で作ったWebサイト";
 export default defineNuxtConfig({
   app: {
     head: {
       title: SITE_NAME,
-      charset: 'utf-8',
-      viewport: 'width=device-width, initial-scale=1',
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
       meta: [
-        { name: 'og:title', content: SITE_NAME },
-        { name: 'robots', content: 'all' },
-        { name: 'description', content: DESCRIPTION },
-        { name: 'og:description', content: DESCRIPTION },
-        { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: SITE_NAME },
-        { property: 'og:image', content: process.env.BASE_URL + '/ogp.jpg' },
-        { property: 'twitter:card', content: 'summary_large_image' },
+        { name: "og:title", content: SITE_NAME },
+        { name: "robots", content: "all" },
+        { name: "description", content: DESCRIPTION },
+        { name: "og:description", content: DESCRIPTION },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: SITE_NAME },
+        { property: "og:image", content: process.env.BASE_URL + "/ogp.jpg" },
+        { property: "twitter:card", content: "summary_large_image" },
       ],
-      link: [{ rel: 'icon', href: '/favicon.ico', id: 'favicon' }],
+      link: [{ rel: "icon", href: "/favicon.ico", id: "favicon" }],
       style: [],
       script: [],
       htmlAttrs: {
-        lang: 'ja',
-        prefix: 'og: https://ogp.me/ns#',
+        lang: "ja",
+        prefix: "og: https://ogp.me/ns#",
       },
     },
-    layoutTransition: { name: 'layout', mode: 'out-in' },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: "2024-11-01",
   runtimeConfig: {
     public: {
       siteName: SITE_NAME,
@@ -45,21 +45,20 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  css: ['~/assets/css/tailwind.scss'],
+  css: ["~/assets/css/tailwind.scss"],
   modules: [
-    '@nuxtjs/tailwindcss',
-    '@nuxt/image',
-    '@nuxt/icon',
-    '@nuxt/eslint',
+    "@nuxtjs/tailwindcss",
+    "@nuxt/image",
+    "@nuxt/icon",
     [
-      '@nuxtjs/robots',
+      "@nuxtjs/robots",
       {
-        Disallow: '/blog/preview/*',
-        Sitemap: process.env.BASE_URL + '/sitemap.xml',
+        Disallow: "/blog/preview/*",
+        Sitemap: process.env.BASE_URL + "/sitemap.xml",
       },
     ],
     [
-      '@nuxtjs/google-adsense',
+      "@nuxtjs/google-adsense",
       {
         id: process.env.ADSENSE_ID,
       },
@@ -67,14 +66,14 @@ export default defineNuxtConfig({
   ],
   image: {
     imgix: {
-      baseURL: '',
+      baseURL: "",
     },
   },
   nitro: {
     compressPublicAssets: true,
     prerender: {
       failOnError: false,
-      routes: ['/', '/works', '/about', '/disclaimer', ...blankImages],
+      routes: ["/", "/works", "/about", "/disclaimer", ...blankImages],
     },
   },
 });
