@@ -1,7 +1,6 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
-  <article id="article-body" class="mb-4 font-normal text-base leading-relaxed text-white cms-content"
-    v-html="content" />
+  <article id="article-body" class="font-normal text-base leading-relaxed text-white cms-content" v-html="content" />
 </template>
 <script setup lang="ts">
 import DOMPurify from 'dompurify';
@@ -88,7 +87,7 @@ br {
 }
 
 .cms-content ul {
-  @apply md:ml-4 ml-2 mb-4;
+  @apply md:ml-4 ml-2 mb-2;
 }
 
 .cms-content li {
