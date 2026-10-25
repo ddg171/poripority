@@ -61,7 +61,7 @@ function replaceImgToPicture(doc: Document): Document {
   return doc;
 }
 
-function anchorTurnsToTargetBlank(doc: Document): Document { 
+function anchorTurnsToTargetBlank(doc: Document): Document {
   const anchors = doc.querySelectorAll("a");
   anchors.forEach((a) => {
     a.setAttribute("target", "_blank");
