@@ -16,8 +16,10 @@ const props = defineProps<Props>()
 const emits = defineEmits<{ (e: 'img-list', v: ImageList): void, (e: 'img-click', v: string): void, (e: 'heading-list', v: Heading[]): void }>()
 
 const content = computed<string>(() => {
-  const convertedContent = convertContent(props.content)
-  return DOMPurify.sanitize ? DOMPurify.sanitize(convertedContent) : convertedContent
+  if (!props?.content) { return '' }
+  return DOMPurify.sanitize ? DOMPurify.sanitize(props?.content, {
+    ADD_ATTR: ['target'],
+  }) : props.content
 })
 
 const imageClickHandler = (e: Event): void => {
