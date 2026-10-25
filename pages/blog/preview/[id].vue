@@ -36,9 +36,7 @@
       </V2CommonContentSectionFrame>
       <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄" class="">
         <template #content>
-          <div class="w-full flex flex-col gap-4 ">
-            <AdCard v-for="a in article?.ads" :key="a.id" :ads="a" />
-          </div>
+          <V2AdList :ads="article?.ads" class="mb-2" />
         </template>
 
       </V2CommonContentSection>
