@@ -71,13 +71,16 @@ categoryStore.set([])
 const title = computed<string>(() => {
   return article?.value?.title || 'no title'
 })
+const seoTitle = computed<string>(() => {
+  return "[preview]"+ title.value + '-' + config.public.siteName
+})
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''
 })
 
 const seoMeta: { [T: string]: string | (() => string) } = {
-  title: () => `${title.value}` + '-' + config.public.siteName,
-  ogTitle: () => `${title.value}` + '-' + config.public.siteName,
+  title: () => seoTitle.value,
+  ogTitle: () => seoTitle.value,
   description: () => `${description.value}`,
   ogDescription: () => `${description.value}`,
   robots: 'all',
