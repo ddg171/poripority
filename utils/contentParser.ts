@@ -61,6 +61,15 @@ function replaceImgToPicture(doc: Document): Document {
   return doc;
 }
 
+function anchorTurnsToTargetBlank(doc: Document): Document {
+  const anchors = doc.querySelectorAll("a");
+  anchors.forEach((a) => {
+    a.setAttribute("target", "_blank");
+    a.setAttribute("rel", "noopener noreferrer");
+  });
+  return doc;
+}
+
 export function convertContent(contentRaw: string | null | undefined): string {
   if (!contentRaw || typeof contentRaw !== "string") {
     return "";
@@ -68,7 +77,8 @@ export function convertContent(contentRaw: string | null | undefined): string {
   try {
     const doc = convertStrToDocument(contentRaw);
     const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)));
-    return formatDocToString(resizedDoc);
+    const anchorEditrdDoc = anchorTurnsToTargetBlank(resizedDoc);
+    return formatDocToString(anchorEditrdDoc);
   } catch {
     return contentRaw;
   }
