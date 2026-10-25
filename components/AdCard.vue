@@ -10,7 +10,7 @@
         {{ msg }}
       </div>
     </div>
-    <div class="flex flex-col justify-between py-2 m-0 md:h-36 grow">
+    <div class="flex flex-col justify-between py-2 pl-2 pr-6 m-0 md:h-36 grow">
       <div class="w-full ">
         <div class="mb-0 text-xs md:text-sm font-semibold">
           <h3>
