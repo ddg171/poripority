@@ -65,7 +65,7 @@ module.exports = {
       qiita: "#55C500",
       reddit: "#FF5700",
       amazonorange: "#FF9900",
-      amazongray: "#333R48",
+      amazongray: "#232f3e",
     },
     extend: {
       aspectRatio: {

@@ -3,12 +3,12 @@
 </template>
 
 <script setup lang="ts">
-import { sleep } from '~~/utils/util'
+import { sleep } from '~~/utils/util';
 
 interface Props {
-    text?: string
-    trriger?:boolean
-    delay?: number
+  text?: string
+  trriger?: boolean
+  delay?: number
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -19,7 +19,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const shuffledText = ref<string>('')
 
-watch(() => props.trriger, (newVal:boolean) => {
+watch(() => props.trriger, (newVal: boolean) => {
   if (!newVal) {
     shuffledText.value = props.text
     return
@@ -31,10 +31,10 @@ const shuffle = async () => {
   await sleep(props.delay)
   const charNum = props.text.length
   const duration = 500
-  const startAt = new Date().getTime()
+  const startAt = Date.now()
   shuffledText.value = ''
   const timerId = setInterval(() => {
-    const now = new Date().getTime()
+    const now = Date.now()
     const diff = now - startAt
     if (diff >= duration) {
       shuffledText.value = props.text
