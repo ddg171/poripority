@@ -6,7 +6,8 @@
     </V2AdListFrame>
 </template>
 
-<script setup lang="ts">import type { Ads } from '~/types/articles';
+<script setup lang="ts">
+import type { Ads } from '~/types/articles';
 
 const props = defineProps<{ ads: Ads[] }>()
 

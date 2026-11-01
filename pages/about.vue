@@ -72,7 +72,8 @@
   </div>
 </template>
 
-<script setup lang="ts">import { makeSeoMetaInput } from '~~/utils/useHead'
+<script setup lang="ts">
+import { makeSeoMetaInput } from '~~/utils/useHead'
 
 const scrollOption = ref({ updateHistory: false, offset: -64 })
 const config = useRuntimeConfig()

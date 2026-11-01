@@ -19,7 +19,8 @@
   </TopConteinerBlock>
 </template>
 
-<script setup lang="ts">import type { SliderContent } from '~~/types/components';
+<script setup lang="ts">
+import type { SliderContent } from '~~/types/components';
 
 interface Props {
   sliderContents: SliderContent[]

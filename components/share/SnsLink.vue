@@ -4,8 +4,9 @@
   </a>
 </template>
 
-<script setup lang="ts">interface Props {
-  link: string
+<script setup lang="ts">
+interface Props{
+    link:string
 }
 
 const props = defineProps<Props>()

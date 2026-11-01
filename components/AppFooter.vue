@@ -32,6 +32,7 @@
   </footer>
 </template>
 
-<script setup lang="ts">const config = useRuntimeConfig()
+<script setup lang="ts">
+const config = useRuntimeConfig()
 const baseURL = config.public.baseURL
 </script>

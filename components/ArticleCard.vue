@@ -1,14 +1,22 @@
 <template>
-  <article class="flex  items-start flex-row bg-darkblue hover:cursor-pointer hover:bg-green focus-within:bg-green"
-    @click.stop="router.push(`/blog/${props.article.id}`)">
+  <article class="flex  items-start flex-row bg-darkblue hover:cursor-pointer hover:bg-green focus-within:bg-green" @click.stop="router.push(`/blog/${props.article.id}`)">
     <div class="w-32 h-32 overflow-hidden shrink-0 bg-darkblue">
-      <CommonAppLink :to="to" class="w-full h-full flex items-center justify-start md:justify-center bg-green/50"
-        :title="props.article.title">
-        <NuxtPicture v-if="props.article.eyecatch?.url"
-          class="article-thumb w-full opacity-100 transition-opacity duration-500" provider="imgix"
-          :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg" fit="crop" height="200" width="200"
-          :img-attrs="{ class: 'w-full bg-lightgreen/25', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
-          :modifiers="{ q: 50 }" :data-loaded="isPictureLoaded" @load="isPictureLoaded = true" />
+      <CommonAppLink :to="to" class="w-full h-full flex items-center justify-start md:justify-center bg-green/50" :title="props.article.title ">
+        <NuxtPicture
+          v-if="props.article.eyecatch?.url"
+          class="article-thumb w-full opacity-100 transition-opacity duration-500"
+          provider="imgix"
+          :src="props.article.eyecatch?.url||``"
+          format="webp"
+          legacy-format="jpeg"
+          fit="crop"
+          height="200"
+          width="200"
+          :img-attrs="{ class:'w-full bg-lightgreen/25', alt:`${props.article.title}のサムネイル画像`,height:200,width:200, decoding: 'async',loading: 'lazy'}"
+          :modifiers="{q: 50}"
+          :data-loaded="isPictureLoaded"
+          @load="isPictureLoaded = true"
+        />
         <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
           {{ msg }}
         </div>
@@ -33,11 +41,12 @@
   </article>
 </template>
 
-<script setup lang="ts">import type { Article } from '~~/types/articles';
+<script setup lang="ts">
+import type { Article } from '~~/types/articles'
 
-interface Props {
-  article: Article
-  category?: string
+interface Props{
+    article:Article
+    category?:string
 }
 const router = useRouter()
 
@@ -58,7 +67,7 @@ onMounted(() => {
 const to = computed<string>(
   () => {
     const path = `/blog/${props.article.id}`
-    const params: string[] = []
+    const params:string[] = []
     if (props.category) {
       params.push(`category=${props.category}`)
     }
@@ -69,7 +78,7 @@ const to = computed<string>(
 </script>
 
 <style scoped lang="scss">
-.article-thumb[data-loaded="false"] {
+.article-thumb[data-loaded="false"]{
   @apply opacity-0
 }
 </style>

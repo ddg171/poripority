@@ -44,7 +44,8 @@
   </V2CommonPageContainer>
 </template>
 
-<script setup lang="ts">import type { Article, Heading, ImageList } from '~~/types/articles'
+<script setup lang="ts">
+import type { Article, Heading, ImageList } from '~~/types/articles'
 import { cropSquare } from '~~/utils/imageAPIHelper'
 
 definePageMeta({
@@ -69,7 +70,7 @@ const title = computed<string>(() => {
   return article?.value?.title || 'no title'
 })
 const seoTitle = computed<string>(() => {
-  return "[preview]" + title.value + '-' + config.public.siteName
+  return "[preview]"+ title.value + '-' + config.public.siteName
 })
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''

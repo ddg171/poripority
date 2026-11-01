@@ -7,7 +7,8 @@
     </p>
 </template>
 
-<script setup lang="ts">import { parseISO } from 'date-fns';
+<script setup lang="ts">
+import { parseISO } from 'date-fns';
 
 
 interface Props {

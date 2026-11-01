@@ -15,7 +15,8 @@
   </ul>
 </template>
 
-<script setup lang="ts">import type { Category } from '~/types/articles';
+<script setup lang="ts">
+import type { Category } from '~/types/articles';
 import type { LinkParams } from '~~/types/components';
 
 interface Props {

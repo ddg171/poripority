@@ -9,7 +9,8 @@
   </li>
 </template>
 
-<script setup lang="ts">interface Props {
+<script setup lang="ts">
+interface Props {
   name: string
 }
 

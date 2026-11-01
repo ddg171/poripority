@@ -45,7 +45,8 @@
   </V2CommonPageContainer>
 </template>
 
-<script setup lang="ts">import { useGtag, useState } from 'vue-gtag-next'
+<script setup lang="ts">
+import { useGtag, useState } from 'vue-gtag-next'
 
 import type { Article, Heading, ImageList } from '~~/types/articles'
 import { cropSquare } from '~~/utils/imageAPIHelper'

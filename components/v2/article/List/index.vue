@@ -6,7 +6,8 @@
     </V2ArticleListFrame>
 </template>
 
-<script setup lang="ts">import type { Article } from '~/types/articles';
+<script setup lang="ts">
+import type { Article } from '~/types/articles';
 
 const props = defineProps<{ articles: Article[] }>()
 

@@ -2,7 +2,8 @@
   <span class="inline">{{ shuffledText }}</span>
 </template>
 
-<script setup lang="ts">import { sleep } from '~~/utils/util';
+<script setup lang="ts">
+import { sleep } from '~~/utils/util';
 
 interface Props {
   text?: string

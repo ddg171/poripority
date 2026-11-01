@@ -1,12 +1,16 @@
 <template>
   <ShareSnsLink :link="link" class="text-white bg-black border-black" target="_blank" tabindex="0" title="Twitter">
-    <Icon class="w-full h-full" name="simple-icons:x" />
+    <Icon
+      class="w-full h-full"
+      name="simple-icons:x"
+    />
   </ShareSnsLink>
 </template>
 
-<script setup lang="ts">interface Props {
-  text?: string
-  url?: string
+<script setup lang="ts">
+interface Props {
+    text?:string
+    url?:string
 }
 
 const props = defineProps<Props>()

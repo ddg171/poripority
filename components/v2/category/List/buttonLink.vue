@@ -5,7 +5,8 @@
     </NuxtLink>
 </template>
 
-<script setup lang="ts">interface Props {
+<script setup lang="ts">
+interface Props {
     to?: string
     isSelected: boolean
 }

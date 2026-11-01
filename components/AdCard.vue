@@ -34,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+
 import type { Ads } from '~~/types/articles';
 
 interface Props {

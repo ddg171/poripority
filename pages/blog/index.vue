@@ -23,7 +23,8 @@
   </V2CommonPageContainer>
 </template>
 
-<script setup lang="ts">import type { Article } from '~~/types/articles'
+<script setup lang="ts">
+import type { Article } from '~~/types/articles'
 import type { LinkParams } from '~~/types/components'
 
 definePageMeta({
