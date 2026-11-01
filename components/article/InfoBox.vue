@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import { parseISO } from 'date-fns';
-import { defineProps, } from 'vue';
+
 import type { Category } from '~~/types/articles';
 
 interface Props {

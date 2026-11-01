@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, } from 'vue';
+
 import type { Category } from '~/types/articles';
 
 interface Props {

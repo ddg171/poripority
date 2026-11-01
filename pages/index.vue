@@ -14,7 +14,7 @@
         </template>
         <template #content>
           <V2ArticleList v-if="!isArticleLoading" :articles="latestArticles" />
-          <V2ArticleListSkelton v-else />
+          <V2ArticleListSkelton v-else :number-of-items="3" />
         </template>
       </V2CommonContentSection>
       <V2CommonContentSection header-text="Welcome!" :is-important="false" class="text-white">
@@ -109,7 +109,7 @@ const topContents = ref<SliderContent[]>([
       fromCMS: false
     },
     text: {
-      title: 'Blog',
+      title: 'ARTICLES',
       para: [
         '投稿記事はこちら'
       ],

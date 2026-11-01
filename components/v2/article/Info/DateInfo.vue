@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { parseISO } from 'date-fns';
-import { defineProps, } from 'vue';
+
 
 interface Props {
     publishedDate?: string | null

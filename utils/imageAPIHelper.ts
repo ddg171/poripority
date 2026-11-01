@@ -15,8 +15,7 @@ export function resizeWithTargetWidth(
   const height: number = Math.floor(
     isBigger ? origHeight * (targetWidth / origWidth) : origHeight,
   );
-  const url =
-    eyecatch.url + `?h=${height}&w=${width}` + (webp ? "&fm=webp" : "");
+  const url = `${eyecatch.url}?h=${height}&w=${width}${webp ? "&fm=webp" : ""}`;
   return {
     url,
     width,

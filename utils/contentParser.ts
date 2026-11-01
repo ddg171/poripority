@@ -1,5 +1,6 @@
 import DOMParser from "universal-dom-parser";
 import type { Heading, ImageList } from "~~/types/articles";
+import { removeURLParams } from "~~/utils/imageAPIHelper";
 
 export function convertStrToDocument(contentRaw: string): Document {
   const parser = new DOMParser();
@@ -14,7 +15,7 @@ export function getTextContent(contentRaw: string): string {
 function changeImgParams(doc: Document): Document {
   const images = doc.querySelectorAll("img");
   images.forEach((img: HTMLImageElement, i: number) => {
-    img.src = removeURLParams(img.src) + "?w=700&q=70";
+    img.src = `${removeURLParams(img.src)}?w=700&q=70`;
     img.setAttribute("data-src-url", img.src);
     img.setAttribute("width", "700");
     img.setAttribute("height", "700");
@@ -71,9 +72,7 @@ function anchorTurnsToTargetBlank(doc: Document): Document {
 }
 
 export function convertContent(contentRaw: string | null | undefined): string {
-  if (!contentRaw || typeof contentRaw !== "string") {
-    return "";
-  }
+  if (!contentRaw || typeof contentRaw !== "string") return "";
   try {
     const doc = convertStrToDocument(contentRaw);
     const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)));

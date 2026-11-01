@@ -1,5 +1,5 @@
 <template>
-  <CommonLayoutBox id="layout" class="">
+  <CommonLayoutBox id="layout">
     <AppHeader />
     <div class="flex flex-col items-center w-full min-h-screen">
       <div id="top-box" class="w-full mb-4 ">

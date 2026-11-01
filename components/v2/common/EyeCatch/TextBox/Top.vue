@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, } from 'vue';
+
 import type { SliderContent } from '~/types/components';
 
 const props = withDefaults(defineProps<{
