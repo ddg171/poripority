@@ -109,7 +109,7 @@ const topContents = ref<SliderContent[]>([
       fromCMS: false
     },
     text: {
-      title: 'Blog',
+      title: 'ARTICLES',
       para: [
         '投稿記事はこちら'
       ],
