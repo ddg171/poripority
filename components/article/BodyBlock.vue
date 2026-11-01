@@ -73,11 +73,11 @@ br {
 }
 
 .cms-content .img-wrapper {
-  @apply w-full flex justify-center items-center my-2;
+  @apply w-full flex justify-center items-center my-6;
 }
 
 .img-wrapper picture {
-  @apply md:w-96 w-full flex justify-center items-center;
+  @apply md:w-96 w-full flex justify-center items-center mx-4 md:mx-2;
 }
 
 .cms-content img {
