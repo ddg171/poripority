@@ -126,12 +126,12 @@ br {
 
 .cms-content h1::before,
 .cms-content h2::before {
-  @apply inline-block h-6 w-6 mr-1 mb-1 bg-lightgreen;
+  @apply inline-block h-6 w-6 md:h-7 md:w-7 mr-1 mb-1 md:mb-1 bg-lightgreen;
 }
 
 .cms-content h3::before,
 .cms-content h4::before {
-  @apply inline-block h-5 w-5 mr-1 mb-1 mt-4;
+  @apply inline-block h-4 w-4 md:h-5 md:w-5 mx-1 mb-1 mt-4;
 }
 
 .cms-content h3::before {
