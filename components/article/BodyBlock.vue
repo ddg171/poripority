@@ -2,8 +2,7 @@
 <template>
   <article id="article-body" class="font-normal text-base leading-relaxed text-white cms-content" v-html="content" />
 </template>
-<script setup lang="ts">
-import DOMPurify from 'dompurify';
+<script setup lang="ts">import DOMPurify from 'dompurify';
 import type { Heading, ImageList } from '~~/types/articles';
 ;
 

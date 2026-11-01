@@ -6,7 +6,6 @@
 </template>
 
 <script setup lang="ts">
-
 import type { LinkParams } from '~~/types/components';
 
 const props = withDefaults(

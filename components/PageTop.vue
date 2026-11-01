@@ -13,8 +13,7 @@
   </TopConteinerBlock>
 </template>
 
-<script setup lang="ts">
-import type { PictureBoxProp } from '~~/types/components';
+<script setup lang="ts">import type { PictureBoxProp } from '~~/types/components';
 
 interface Props {
   topImg?: PictureBoxProp | null

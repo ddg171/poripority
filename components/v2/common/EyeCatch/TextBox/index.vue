@@ -12,8 +12,7 @@
     </V2CommonEyeCatchTextBoxFrame>
 </template>
 
-<script setup lang="ts">
-import type { SliderContent } from '~/types/components';
+<script setup lang="ts">import type { SliderContent } from '~/types/components';
 
 const props = withDefaults(defineProps<{
     content: SliderContent["text"]

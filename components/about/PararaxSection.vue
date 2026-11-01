@@ -14,7 +14,6 @@
 </template>
 
 <script setup lang="ts">
-
 const photos = ref<string[]>(
   [
     '/images/webp/about/hato_001.webp',

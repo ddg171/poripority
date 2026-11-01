@@ -1,18 +1,11 @@
 <template>
-  <NuxtPicture
-
-    :provider="provider"
-    :src="props.src"
-    class="picture-box"
-    legacy-format="jpeg"
-    :img-attrs="imgAttr"
-    :modifiers="modifiers"
-  />
+  <NuxtPicture :provider="provider" :src="props.src" class="picture-box" legacy-format="jpeg" :img-attrs="imgAttr"
+    :modifiers="modifiers" />
 </template>
 
-<script setup lang="ts">
-interface Props {
-    src:string, alt?:string, title?:string, fromCms?:boolean}
+<script setup lang="ts">interface Props {
+  src: string, alt?: string, title?: string, fromCms?: boolean
+}
 
 const imgAttr = computed(() => {
   return {
@@ -34,13 +27,12 @@ const provider = computed(() => {
 const modifiers = computed(() => {
   return props.fromCMS
     ? {
-        fm: 'webp',
-        decoding: 'async'
+      fm: 'webp',
+      decoding: 'async'
 
-      }
+    }
     : {}
 })
 
 </script>
-<style scoped lang="scss">
-</style>
+<style scoped lang="scss"></style>

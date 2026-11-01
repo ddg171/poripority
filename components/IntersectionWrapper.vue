@@ -4,21 +4,20 @@
   </div>
 </template>
 
-<script setup lang="ts">
-const trigger = ref<boolean>(false)
-const observer = ref<IntersectionObserver|null>(null)
+<script setup lang="ts">const trigger = ref<boolean>(false)
+const observer = ref<IntersectionObserver | null>(null)
 
 const wrapper = ref<null | Element>(null)
 
 const emits = defineEmits<(e: 'in' | 'out') => void>()
 interface Props {
-    threshold?:number
-    trantision?:'vertical'|'none'
+  threshold?: number
+  trantision?: 'vertical' | 'none'
 }
 
 const props = withDefaults(defineProps<Props>(), { threshold: 0.4, trantision: 'vertical' })
 
-const intersectionHandler = (e:IntersectionObserverEntry[]) => {
+const intersectionHandler = (e: IntersectionObserverEntry[]) => {
   if (e.length === 0) { return }
   if (!e[0].isIntersecting) {
     emits('out')
@@ -50,7 +49,7 @@ onMounted(() => {
   })
 })
 
-watch(() => trigger.value, (val:boolean) => {
+watch(() => trigger.value, (val: boolean) => {
   if (!val) {
     emits('out')
     return
@@ -65,22 +64,24 @@ onUnmounted(() => {
 </script>
 
 <style>
-.intersection-wrapper[trigger=false]>*{
-    opacity: 0;
-}
-.intersection-wrapper[trigger=true]>*{
-    opacity: 1;
-    transform: none;
-    transition: all 0.5s;
+.intersection-wrapper[trigger=false]>* {
+  opacity: 0;
 }
 
-.intersection-wrapper[trigger=false][transition="none"]>*{
-    opacity: 1 !important;
-    transform: none !important;
-    transition:none !important;
+.intersection-wrapper[trigger=true]>* {
+  opacity: 1;
+  transform: none;
+  transition: all 0.5s;
+}
+
+.intersection-wrapper[trigger=false][transition="none"]>* {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
 
 }
-.intersection-wrapper[transition="vertical"][trigger=false] >*{
+
+.intersection-wrapper[transition="vertical"][trigger=false]>* {
   transform: translateY(20%);
 }
 </style>

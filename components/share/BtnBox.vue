@@ -6,10 +6,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
-interface Props{
-    title?:string
-    url?:string
+<script setup lang="ts">interface Props {
+  title?: string
+  url?: string
 }
 
 const props = defineProps<Props>()

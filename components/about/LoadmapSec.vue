@@ -70,7 +70,6 @@
   </AboutContentSection>
 </template>
 
-<script setup lang="ts">
-const isShown = ref<boolean>(false)
+<script setup lang="ts">const isShown = ref<boolean>(false)
 
 </script>

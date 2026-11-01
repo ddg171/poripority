@@ -16,8 +16,7 @@
     </V2CommonContentBoxFrame>
 </template>
 
-<script setup lang="ts">
-const props = withDefaults(defineProps<{
+<script setup lang="ts">const props = withDefaults(defineProps<{
     imgSrc?: string
     description?: string
     isReverse?: boolean

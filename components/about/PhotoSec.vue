@@ -45,8 +45,7 @@
   </AboutContentSection>
 </template>
 
-<script setup lang="ts">
-const isShown = ref<boolean>(false)
+<script setup lang="ts">const isShown = ref<boolean>(false)
 
 const photo1 = ref<string>('/images/webp/about/photo101.webp')
 const photo2 = ref<string>('/images/webp/about/photo102.webp')

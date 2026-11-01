@@ -9,7 +9,6 @@
 </template>
 
 <script setup lang="ts">
-
 import type { Category } from '~~/types/articles';
 
 interface Props {

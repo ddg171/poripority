@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-
 import type { LinkParams } from '~~/types/components';
 
 interface Props {

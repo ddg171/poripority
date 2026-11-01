@@ -13,7 +13,6 @@
 </template>
 
 <script setup lang="ts">
-
 import type { SliderContent } from '~/types/components';
 
 const props = withDefaults(defineProps<{

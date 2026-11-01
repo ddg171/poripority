@@ -1,31 +1,24 @@
 <template>
   <div class="relative overflow-hidden ">
-    <button 
-      title="クリックするとURLをクリップボードにコピーします。" 
-      class="flex items-center justify-center w-16 h-8 p-2 border border-green bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-gray" 
-      :disabled="disabled" 
-      type="button"
-      @click="copy"
-      >
+    <button title="クリックするとURLをクリップボードにコピーします。"
+      class="flex items-center justify-center w-16 h-8 p-2 border border-green bg-green hover:bg-lightgreen focus:bg-lightgreen disabled:bg-gray"
+      :disabled="disabled" type="button" @click="copy">
       <Icon name="mdi:content-copy" class="text-white" />
     </button>
     <transition>
-      <div
-        v-if="resultShow"
-        class="absolute inset-0 flex items-center justify-center w-16 h-8 p-2 text-sm text-black border border-green bg-lightgray"
-      >
+      <div v-if="resultShow"
+        class="absolute inset-0 flex items-center justify-center w-16 h-8 p-2 text-sm text-black border border-green bg-lightgray">
         Copied.
       </div>
     </transition>
   </div>
 </template>
 
-<script setup lang="ts">
-const route = useRoute()
+<script setup lang="ts">const route = useRoute()
 const config = useRuntimeConfig()
 const resultShow = ref<boolean>(false)
 
-watch(resultShow, (val:boolean) => {
+watch(resultShow, (val: boolean) => {
   if (!val) { return }
   setTimeout(() => { resultShow.value = false }, 2000)
 })
@@ -52,7 +45,7 @@ const copy = () => {
 
 </script>
 <style scoped>
-.v-enter-active{
+.v-enter-active {
   transition: all 0.25s ease-out;
 }
 
