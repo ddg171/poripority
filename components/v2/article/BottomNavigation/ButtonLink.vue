@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, withDefaults, } from 'vue';
+
 import type { LinkParams } from '~~/types/components';
 
 const props = withDefaults(

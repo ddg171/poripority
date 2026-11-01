@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
 import { parseISO } from 'date-fns';
-import { defineProps, withDefaults, } from 'vue';
+
 import type { Article } from '~~/types/articles';
 
 interface Props {
