@@ -8,7 +8,7 @@
         </div>
       </V2CommonContentSectionHeaderFrame>
       <V2CommonContentSectionFrame>
-        <V2CommonContentBoxFrame v-if="article?.eyecatch?.url" class="">
+        <V2CommonContentBoxFrame v-if="article?.eyecatch?.url">
           <NuxtPicture :src="article?.eyecatch.url" :alt="article?.title" :width="article.eyecatch.width"
             :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
             :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
@@ -16,7 +16,7 @@
         <V2ArticleContentBox>
           <div class="w-full flex flex-col sm:flex-row sm:justify-between mb-2 gap-2">
             <ShareBtnBox :title="title" />
-            <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+            <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" />
           </div>
           <div class="w-full mb-2 text-sm p-2 bg-gray">
             <CommonAppLink class="text-orange" to="/disclaimer">
@@ -34,7 +34,7 @@
           <ArticleImgDetail :image-list="imgList" :selected-id="selectedId" />
         </OverlayBox>
       </V2CommonContentSectionFrame>
-      <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄" class="">
+      <V2CommonContentSection v-if="article?.ads?.length" header-text="広告欄">
         <template #content>
           <V2AdList :ads="article?.ads" class="mb-2" />
         </template>
@@ -70,7 +70,7 @@ const title = computed<string>(() => {
   return article?.value?.title || 'no title'
 })
 const seoTitle = computed<string>(() => {
-  return "[preview]"+ title.value + '-' + config.public.siteName
+  return "[preview]" + title.value + '-' + config.public.siteName
 })
 const description = computed<string>(() => {
   return article?.value?.subtitle || ''

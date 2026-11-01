@@ -8,14 +8,14 @@
         </div>
       </V2CommonContentSectionHeaderFrame>
       <V2CommonContentSectionFrame>
-        <V2CommonContentBoxFrame v-if="article?.eyecatch?.url" class="">
+        <V2CommonContentBoxFrame v-if="article?.eyecatch?.url">
           <NuxtPicture :src="article.eyecatch.url" :alt="article?.title" :width="article.eyecatch.width"
             :height="article.eyecatch.width" legacy-format="jpeg" class="w-full h-full"
             :img-attrs="{ alt: 'アイキャッチ画像', height: article.eyecatch.width, width: article.eyecatch.width, decoding: 'async', class: 'w-full h-auto' }" />
         </V2CommonContentBoxFrame>
         <V2ArticleContentBox>
           <div class="w-full flex  justify-between mb-2 gap-4">
-            <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" class="" />
+            <V2ArticleInfoBox :category="article?.category" :published-date="article?.publishedAt" />
             <ShareBtnBox :title="title" />
           </div>
           <div class="w-full mb-2 text-sm p-2 bg-gray">
