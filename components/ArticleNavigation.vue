@@ -62,7 +62,7 @@ const left = computed<LinkParams | null>(() => {
   const p = `/blog/${next.value}`
   return {
     name: '新しい記事へ',
-    path: props.category ? p + `&categpry=${props.category}` : p
+    path: props.category ? `${p}&categpry=${props.category}` : p
   }
 })
 const right = computed<LinkParams | null>(() => {
@@ -70,7 +70,7 @@ const right = computed<LinkParams | null>(() => {
   const p = `/blog/${prev.value}`
   return {
     name: '古い記事へ',
-    path: props.category ? p + `&categpry=${props.category}` : p
+    path: props.category ? `${p}&categpry=${props.category}` : p
   }
 })
 

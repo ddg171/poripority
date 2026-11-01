@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import DOMPurify from 'dompurify';
 import type { Heading, ImageList } from '~~/types/articles';
+
 ;
 
 interface Props {

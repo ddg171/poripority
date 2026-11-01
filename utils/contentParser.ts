@@ -15,7 +15,7 @@ export function getTextContent(contentRaw: string): string {
 function changeImgParams(doc: Document): Document {
   const images = doc.querySelectorAll("img");
   images.forEach((img: HTMLImageElement, i: number) => {
-    img.src = removeURLParams(img.src) + "?w=700&q=70";
+    img.src = `${removeURLParams(img.src)}?w=700&q=70`;
     img.setAttribute("data-src-url", img.src);
     img.setAttribute("width", "700");
     img.setAttribute("height", "700");
@@ -62,7 +62,7 @@ function replaceImgToPicture(doc: Document): Document {
   return doc;
 }
 
-function anchorTurnsToTargetBlank(doc: Document): Document { 
+function anchorTurnsToTargetBlank(doc: Document): Document {
   const anchors = doc.querySelectorAll("a");
   anchors.forEach((a) => {
     a.setAttribute("target", "_blank");
@@ -72,9 +72,7 @@ function anchorTurnsToTargetBlank(doc: Document): Document {
 }
 
 export function convertContent(contentRaw: string | null | undefined): string {
-  if (!contentRaw || typeof contentRaw !== "string") {
-    return "";
-  }
+  if (!contentRaw || typeof contentRaw !== "string") return "";
   try {
     const doc = convertStrToDocument(contentRaw);
     const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)));

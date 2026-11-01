@@ -6,7 +6,8 @@
         :title="props.article.title">
         <NuxtPicture v-if="props.article.eyecatch?.url"
           class="article-thumb w-full opacity-100 transition-opacity duration-500" provider="imgix"
-          :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg" fit="crop" height="200" width="200"
+          :src="props.article.eyecatch?.url || ``" format="webp" legacy-format="jpeg" fit="crop" height="200"
+          width="200"
           :img-attrs="{ class: 'w-full bg-lightgreen/25', alt: `${props.article.title}のサムネイル画像`, height: 200, width: 200, decoding: 'async', loading: 'lazy' }"
           :modifiers="{ q: 50 }" :data-loaded="isPictureLoaded" @load="isPictureLoaded = true" />
         <div v-else class="w-full h-full flex justify-center items-center text-sm text-white underline">
@@ -64,7 +65,7 @@ const to = computed<string>(
       params.push(`category=${props.category}`)
     }
 
-    return params.length ? path + '?' + params.join('&') : path
+    return params.length ? `${path}?${params.join('&')}` : path
   })
 
 </script>
