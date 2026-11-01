@@ -4,8 +4,8 @@
 </template>
 <script setup lang="ts">
 import DOMPurify from 'dompurify';
-import { defineEmits, defineProps, } from 'vue';
 import type { Heading, ImageList } from '~~/types/articles';
+;
 
 interface Props {
   content: string | undefined

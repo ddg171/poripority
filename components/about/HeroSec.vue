@@ -32,8 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineExpose, } from 'vue'
-import type { Photo } from '~~/types/components'
+import type { Photo } from '~~/types/components';
 
 const photos = ref<Photo[]>(
   [
