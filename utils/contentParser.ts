@@ -1,5 +1,6 @@
 import DOMParser from "universal-dom-parser";
 import type { Heading, ImageList } from "~~/types/articles";
+import { removeURLParams } from "~~/utils/imageAPIHelper";
 
 export function convertStrToDocument(contentRaw: string): Document {
   const parser = new DOMParser();
