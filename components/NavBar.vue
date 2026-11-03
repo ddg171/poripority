@@ -58,7 +58,7 @@ const route = useRoute()
 const currentPath = computed(() => {
   const path = route.path
   const pathArry = path.split('/')
-  return `${pathArry.length > 1 ? pathArry[1] : ''}`
+  return `/${pathArry.length > 1 ? pathArry[1] : ''}`
 })
 
 const hideNav = () => {
