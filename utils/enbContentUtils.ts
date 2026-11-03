@@ -27,6 +27,7 @@ export function pickAndReplaceAnchorToAdIframe(doc: Document): Document {
       iframe.setAttribute("data_href", `${a.getAttribute("href")}`);
       iframe.setAttribute("scrolling", "no");
       iframe.setAttribute("frameborder", "0");
+      iframe.setAttribute("sandbox", "");
       const iframeWrapper = doc.createElement("div");
       iframeWrapper.appendChild(iframe);
       iframeWrapper.setAttribute("class", "iframe-ad");
