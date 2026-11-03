@@ -6,8 +6,6 @@
 import DOMPurify from 'dompurify';
 import type { Heading, ImageList } from '~~/types/articles';
 
-;
-
 interface Props {
   content: string | undefined
 }
@@ -19,7 +17,7 @@ const emits = defineEmits<{ (e: 'img-list', v: ImageList): void, (e: 'img-click'
 const content = computed<string>(() => {
   if (!props?.content) { return '' }
   return DOMPurify.sanitize ? DOMPurify.sanitize(props?.content, {
-    ADD_ATTR: ['target'],
+    ADD_ATTR: ['target','iframe'],
   }) : props.content
 })
 
@@ -86,7 +84,12 @@ br {
 }
 
 .cms-content iframe {
-  max-width: 100%;
+  @apply mx-auto my-2 max-w-full;
+
+}
+
+.cms-content .iframe-ad {
+  @apply w-full flex flex-col my-2 p-2 items-center;
 }
 
 .cms-content ul {
