@@ -22,9 +22,11 @@ export function pickAndReplaceAnchorToAdIframe(doc: Document): Document {
       iframe.setAttribute("id", `ad-iframe-${i}`);
       iframe.setAttribute("src", `https://example.com`);
       iframe.setAttribute("height", "200");
-      iframe.setAttribute("width", "200");
+      iframe.setAttribute("width", "315");
       iframe.setAttribute("loading", "lazy");
       iframe.setAttribute("data_href", `${a.getAttribute("href")}`);
+      iframe.setAttribute("scrolling", "no");
+      iframe.setAttribute("frameborder", "0");
       const iframeWrapper = doc.createElement("div");
       iframeWrapper.appendChild(iframe);
       iframeWrapper.setAttribute("class", "iframe-ad");

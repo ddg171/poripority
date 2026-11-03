@@ -85,11 +85,17 @@ br {
 
 .cms-content iframe {
   @apply mx-auto my-2 max-w-full;
+  min-width:300px;
+  min-height:200px;
 
 }
 
 .cms-content .iframe-ad {
-  @apply w-full flex flex-col my-2 p-2 items-center;
+  @apply w-full flex flex-col my-2 p-2 items-center bg-white;
+}
+
+.cms-content .iframe-ad:empty{
+  @apply h-16 w-16;
 }
 
 .cms-content ul {
