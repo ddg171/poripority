@@ -1,5 +1,6 @@
 import DOMParser from "universal-dom-parser";
 import type { Heading, ImageList } from "~~/types/articles";
+import { pickAndReplaceAnchorToAdIframe } from "~~/utils/enbContentUtils";
 import { removeURLParams } from "~~/utils/imageAPIHelper";
 
 export function convertStrToDocument(contentRaw: string): Document {
@@ -53,11 +54,12 @@ function replaceImgToPicture(doc: Document): Document {
     p.setAttribute("id", `image-${i}`);
     const s = doc.createElement("source");
     s.setAttribute("type", "image/webp");
-    s.setAttribute("srcset", img.src + "&fm=webp");
+    s.setAttribute("srcset", `${img.src}&fm=webp`);
     p.appendChild(s);
     p.appendChild(clonedImg);
-    img?.parentNode?.insertBefore(p, img);
-    img?.parentNode?.removeChild(img);
+    const parent = img?.parentNode;
+    parent?.insertBefore(p, img);
+    parent?.removeChild(img);
   });
   return doc;
 }
@@ -75,10 +77,15 @@ export function convertContent(contentRaw: string | null | undefined): string {
   if (!contentRaw || typeof contentRaw !== "string") return "";
   try {
     const doc = convertStrToDocument(contentRaw);
+    // 画像のリサイズ
     const resizedDoc = replaceImgToPicture(wrapImgs(changeImgParams(doc)));
-    const anchorEditrdDoc = anchorTurnsToTargetBlank(resizedDoc);
-    return formatDocToString(anchorEditrdDoc);
-  } catch {
+    // 記事内広告として表示するためのコンテンツを変換
+    const embedAdAddedDoc = pickAndReplaceAnchorToAdIframe(resizedDoc);
+    // 残った通常のAタグの設定
+    const anchorEditedDoc = anchorTurnsToTargetBlank(embedAdAddedDoc);
+    return formatDocToString(anchorEditedDoc);
+  } catch (error) {
+    console.error("Error converting content:", error);
     return contentRaw;
   }
 }

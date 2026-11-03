@@ -1,5 +1,6 @@
 import client from "~~/lib/microCMS";
 import type { Article } from "~~/types/articles";
+import { convertContent } from "~~/utils/contentParser";
 
 export default defineEventHandler(async (event): Promise<Article> => {
   const contentId = event.context?.params?.id;
@@ -16,8 +17,13 @@ export default defineEventHandler(async (event): Promise<Article> => {
         draftKey,
       },
     });
-    return res;
-  } catch {
+    const resWithConvertedContent = {
+      ...res,
+      content: convertContent(res.content),
+    };
+    return resWithConvertedContent;
+  } catch (e) {
+    console.error(e);
     throw createError({ statusCode: 404, statusMessage: "err" });
   }
 });
