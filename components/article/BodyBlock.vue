@@ -16,9 +16,16 @@ const emits = defineEmits<{ (e: 'img-list', v: ImageList): void, (e: 'img-click'
 
 const content = computed<string>(() => {
   if (!props?.content) { return '' }
-  return DOMPurify.sanitize ? DOMPurify.sanitize(props?.content, {
-    ADD_ATTR: ['target','iframe'],
-  }) : props.content
+  try{
+    return DOMPurify.sanitize ? DOMPurify.sanitize(props?.content, {
+      ADD_ATTR: ['target'],
+      ADD_TAGS:["iframe"]
+    }) : props.content
+
+  }catch(e){
+console.error(e)
+
+  }
 })
 
 const imageClickHandler = (e: Event): void => {
